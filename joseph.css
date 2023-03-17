@@ -1,0 +1,92 @@
+a:link { color: #A02B00; text-decoration: none; }
+a:visited { color: #996600; text-decoration: none; }
+a:active { color: red; text-decoration: none; }
+a:hover { color: #FF9900; text-decoration: none; font-weight: bold; }
+
+h1,h2,h3,h4,p,ul,ol,li,div,span,td,th,nobr,b,i { font-family: 'Droid Serif', sans-serif; }
+
+h1 { 
+	color: #669999; 
+	font-size: 26px; 
+	margin-top: 20px; 
+	margin-bottom: 12px; 
+	margin-left: 32px; 
+}
+
+div.intro {
+	margin-left: 32px;
+	margin-bottom: 28px; 
+	text-align: left;
+}
+
+div.paragraph {
+	margin-left: 20px; 
+	margin-bottom: 20px; 
+	margin-top: 36px;
+	text-align: left;
+}
+
+td.index { 
+	background-color: #ECE5B6; 
+	width: 175px; 
+	height: 20px; 
+   	text-align: center; 
+   	border-style: solid; 
+   	border-color: #FFFFFF; 
+   	border-width: 1px; 
+}
+
+ul.list1 { 
+	list-style-image: url("_themes/edge/aedgbul1.gif"); 
+	margin-left: 20px;  
+}
+
+ul.list2 { 
+	list-style-image:url("images/block2.gif"); 
+	margin-left: 32px; 
+	margin-bottom: 36px;
+}
+
+ul.list-paper { 
+	list-style-type: square; margin-left: 32px; 
+    margin-bottom: 36px; 
+}
+
+li.paper { 
+	margin-bottom: 20px; 
+	padding-left: 8px; 
+}
+
+li.school { 
+	margin-bottom: 8px; 
+	padding-left: 8px;
+}
+
+li.research { 
+	margin-bottom: 1px; 
+	padding-left: 8px;
+}
+
+li.course { 
+	margin-bottom: 1px; 
+	padding-left: 8px;
+}
+
+li.hobby { 
+	margin-bottom: 1px; 
+	padding-left: 8px; 
+}
+
+figure {
+    display: inline-block;
+    border: 1px dotted gray;
+    margin: 20px; /* adjust as needed */
+}
+figure img {
+    vertical-align: top;
+}
+figure figcaption {
+    border: 1px dotted blue;
+    text-align: center;
+}
+
