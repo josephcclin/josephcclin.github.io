@@ -1,0 +1,33 @@
+[info]
+title=Sandstone
+codepage=65001
+version=3.00
+format=2.00
+readonly=true
+refcount=1
+
+[titles]
+1036=Grès
+1031=Sandstein
+3082=Arenisca
+1040=Granito
+1035=Hiekkakivi
+1030=Sandsten
+1044=Sandstein
+1053=Sandsten
+1046=Arenito
+1043=Zandsteen
+2052=沙粒
+1028=沙岩
+1041=砂岩
+1042=사암
+1029=Pískovec
+1045=Piaskowiec
+1032=Αμμόλιθος
+1038=Homokkő
+1049=Песчаник
+1055=Kumtaşı
+2070=Areia
+1037=אבן חול
+1054=หินทราย
+1025=صخر رملي

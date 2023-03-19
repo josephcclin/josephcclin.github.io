@@ -1,0 +1,97 @@
+.mstheme
+{
+	separator-image: url(btzhsepd.gif);
+	list-image-1: url(btzbul1d.gif);
+	list-image-2: url(btzbul2d.gif);
+	list-image-3: url(btzbul3d.gif);
+
+	nav-banner-image: url(btzbannd.gif);
+
+	navbutton-horiz-normal: url(btznvhnd.gif);
+	navbutton-horiz-pushed: url(btznvhsd.gif);
+
+	navbutton-vert-normal: url(btznvvnd.gif);
+	navbutton-vert-pushed: url(btznvvsd.gif);
+
+	navbutton-home-normal: url(btzhomed.gif);
+
+	navbutton-next-normal: url(btznextd.gif);
+
+	navbutton-prev-normal: url(btzprevd.gif);
+
+	navbutton-up-normal: url(btzupbtd.gif);
+
+}
+
+.mstheme-bannertxt
+{
+	font-family: Verdana, Arial, Helvetica;
+	color: rgb(255,204,0);
+	text-align: center;
+	vertical-align: middle;
+}
+.mstheme-horiz-navtxt
+{
+	font-family: Verdana, Arial, Helvetica;
+	font-weight: bold;
+	color: rgb(0,51,153);
+	text-align: center;
+	vertical-align: middle;
+}
+
+.mstheme-vert-navtxt
+{
+	font-family: Verdana, Arial, Helvetica;
+	font-weight: bold;
+	color: rgb(0,51,153);
+	text-align: center;
+	vertical-align: middle;
+}
+
+.mstheme-navtxthome
+{
+	font-family: Verdana, Arial, Helvetica;
+	font-weight: bold;
+	color: rgb(0,51,204);
+	text-align: center;
+	vertical-align: middle;
+}
+
+.mstheme-navtxtnext
+{
+	font-family: Verdana, Arial, Helvetica;
+	font-weight: bold;
+	color: rgb(0,51,204);
+	text-align: center;
+	vertical-align: middle;
+}
+
+.mstheme-navtxtprev
+{
+	font-family: Verdana, Arial, Helvetica;
+	font-weight: bold;
+	color: rgb(0,51,204);
+	text-align: center;
+	vertical-align: middle;
+}
+
+.mstheme-navtxtup
+{
+	font-family: Verdana, Arial, Helvetica;
+	font-weight: bold;
+	color: rgb(0,51,204);
+	text-align: center;
+	vertical-align: middle;
+}
+UL
+{ 
+	list-style-image: url(btzbul1d.gif);
+}
+UL UL
+{
+	list-style-image: url(btzbul2d.gif);
+}
+UL UL UL
+{
+	list-style-image: url(btzbul3d.gif);
+}

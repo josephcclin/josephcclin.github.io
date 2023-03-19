@@ -1,0 +1,72 @@
+.mstheme
+{
+	nav-banner-image: url(stonbnr.gif);
+	separator-image: url(stonrul.gif);
+	list-image-1: url(stonbu1.gif);
+	list-image-2: url(stonbu2.gif);
+	list-image-3: url(stonbu3.gif);
+	navbutton-horiz-pushed: url(stonhbs.gif);
+	navbutton-horiz-normal: url(stonhb.gif);
+	navbutton-vert-pushed: url(stonvbs.gif);
+	navbutton-vert-normal: url(stonvb.gif);
+	navbutton-home-normal: url(stonhom.gif);
+	navbutton-up-normal: url(stonup.gif);
+	navbutton-prev-normal: url(stonpre.gif);
+	navbutton-next-normal: url(stonnxt.gif);
+}
+.mstheme-bannertxt
+{
+	font-family: Arial, Helvetica;
+	font-size: 6;
+	color: rgb(204,204,153);
+}
+.mstheme-horiz-navtxt
+{
+	font-family: Arial, Helvetica;
+	font-size: 2;
+	font-weight: bold;
+	color: rgb(204,204,153);
+}
+.mstheme-vert-navtxt
+{
+	font-family: Arial, Helvetica;
+	font-size: 2;
+	font-weight: bold;
+	color: rgb(204,204,153);
+}
+.mstheme-navtxthome
+{
+	font-family: Arial, Helvetica;
+	font-size: 1;
+	color: rgb(204,204,153);
+}
+.mstheme-navtxtup
+{
+	font-family: Arial, Helvetica;
+	font-size: 1;
+	color: rgb(204,204,153);
+}
+.mstheme-navtxtprev
+{
+	font-family: Arial, Helvetica;
+	font-size: 1;
+	color: rgb(204,204,153);
+}
+.mstheme-navtxtnext
+{
+	font-family: Arial, Helvetica;
+	font-size: 1;
+	color: rgb(204,204,153);
+}
+UL
+{ 
+	list-style-image: url(stonbu1.gif);
+}
+UL UL
+{
+	list-style-image: url(stonbu2.gif);
+}
+UL UL UL
+{
+	list-style-image: url(stonbu3.gif);
+}

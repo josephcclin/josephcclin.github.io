@@ -1,0 +1,103 @@
+<html>
+
+<head>
+<title>A Type Checker</title>
+</head>
+
+<body>
+<br>
+<b><font face="Times New Roman" size="5">A type checker for Lotus</font></b>
+<br>
+<br>
+<font face="Times New Roman">Check user's program if there is any type error and 
+print out the symbol tables of his program.
+</font>
+<br>
+This project will use the lexical analyzer, the parser and the architecture of the 
+pretty printer.
+<br>
+<br>
+<b><font face="Times New Roman" size="4">Description</font></b>
+<br>
+<br>
+<font face="Times New Roman">The type checker shall read input from stdin, 
+writes output to stdout, and writes errors to stderr. <br>
+The type checker should be able to print the symbol tables by using the option ¡§-x¡¨. <br>
+The type checker needs to handle type errors and print error messages. 
+</font>
+<br>
+<br>
+<font face="Times New Roman">The frame of this program is shown in the following figure.</font>
+<br>
+<br>
+<center>
+<img border="0" src="../../images/tychkframe.jpg" width="598" height="456">
+</center>
+<br>
+<br>
+<font face="Times New Roman">
+<b><font size="4">A sample for input the Lotus program</font></b>
+</font>
+<br>
+<br>
+<font face="Courier New">-- A program to sum 1 to n<br>
+int g;<br>
+int main( )<br>
+{<br>
+&nbsp;&nbsp;&nbsp; int n;<br>
+&nbsp;&nbsp;&nbsp; int s;<br>
+&nbsp;&nbsp;&nbsp; int s;<br>
+<br>
+&nbsp;&nbsp;&nbsp; read n;<br>
+&nbsp;&nbsp;&nbsp; if (n &lt; 0) {<br>
+&nbsp;&nbsp;&nbsp; write -1;<br>
+&nbsp;&nbsp;&nbsp; exit;<br>
+&nbsp;&nbsp;&nbsp; } else {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; s = sum(n);<br>
+&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; write t;<br>
+&nbsp;&nbsp;&nbsp; return 0;<br>
+}<br>
+<br>
+int sum(int n)<br>
+{<br>
+&nbsp;&nbsp;&nbsp; int s;<br>
+&nbsp;&nbsp;&nbsp; int n;<br>
+<br>
+&nbsp;&nbsp;&nbsp; s = 0;<br>
+&nbsp;&nbsp;&nbsp; while (n &gt; 0) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; s = s + n;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; n = n - 1;<br>
+&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; s = sum(s, n);<br>
+&nbsp;&nbsp;&nbsp; return s;<br>
+}<br>
+</font>
+<br>
+<br>
+<b><font size="4" face="Times New Roman">The output for this sample</font></b>
+<br>
+<br>
+<font face="Courier New" size="3">
+type error: line 7: identifier s is redeclared.<br>
+type error: line 14: identifier sum is not declared<br>
+type error: line 16: identifier t is not declared<br>
+type error: line 23: identifier n is redeclared.<br>
+type error: line 30: the arity of function sum is not matched<br>
+*** The global symbol table begins ***<br>
+sum: FUNCTION, 1<br>
+*** The symbol table for function sum begins ***<br>
+n: PARAMETER<br>
+s: VARIABLE<br>
+*** The symbol table for function sum ends ***<br>
+main: FUNCTION, 0<br>
+*** The symbol table for function main begins ***<br>
+n: VARIABLE<br>
+s: VARIABLE<br>
+*** The symbol table for function main ends ***<br>
+g: VARIABLE<br>
+*** The global symbol table ends ***<br>
+<br>
+</body>
+
+</html>

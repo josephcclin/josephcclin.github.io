@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<style type="text/css">
+
+span.button {
+	font-size: 20px; 
+}
+
+</style>
+
+<html>
+<head>
+<title>Generating 49/6 random lottery numbers.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="verify-v1" content="yzZXVHtXCVXbtTBNejrVmcm8qaVMjsKQmVKrW/XJUXI=">
+<link type="text/css" rel="stylesheet" href="joseph.css">
+<link rel="shortcut icon" href="http://www.genomics.sinica.edu.tw/favicon.ico">
+<base target="_blank">
+</head>
+<body background="_themes/nature/nabkgnd.jpg"">
+
+<h1 align="center">Generating 49/6 random lottery numbers.</h1>
+<div align="center">
+<button>
+<span class="button" onclick="myFunction()">Click here</span>
+</button>
+</div>
+<br>
+<br>
+<div align="center">
+<tr>
+<td><span class="button" id="entry1"></span></td>
+<td><span class="button" id="entry2"></span></td>
+<td><span class="button" id="entry3"></span></td>
+<td><span class="button" id="entry4"></span></td>
+<td><span class="button" id="entry5"></span></td>
+<td><span class="button" id="entry6"></span></td>
+</tr>
+</div>
+
+
+<script type="text/javascript">
+function myFunction()
+{
+	var ranLottery=new Array(); 
+	ranLottery[0]=Math.round(Math.random()*1000000)%49+1;
+	do {
+		ranLottery[1]=Math.round(Math.random()*1000000)%49+1;
+	} while (ranLottery[1]==ranLottery[0]);
+
+	do {
+		ranLottery[2]=Math.round(Math.random()*1000000)%49+1;
+	} while (ranLottery[2]==ranLottery[0] || ranLottery[2]==ranLottery[1]);
+
+	do {
+		ranLottery[3]=Math.round(Math.random()*1000000)%49+1;
+	} while (ranLottery[3]==ranLottery[0] || ranLottery[3]==ranLottery[1] || ranLottery[3]==ranLottery[2]);
+
+	do {
+		ranLottery[4]=Math.round(Math.random()*1000000)%49+1;
+	} while (ranLottery[4]==ranLottery[0] || ranLottery[4]==ranLottery[1] || ranLottery[4]==ranLottery[2] || ranLottery[4]==ranLottery[3]);
+
+	do {
+		ranLottery[5]=Math.round(Math.random()*1000000)%49+1;
+	} while (ranLottery[5]==ranLottery[0] || ranLottery[5]==ranLottery[1] || ranLottery[5]==ranLottery[2] || ranLottery[5]==ranLottery[3] || ranLottery[5]==ranLottery[4]);
+
+	ranLottery.sort(function(a,b){return a-b});
+
+	document.getElementById("entry1").innerHTML=ranLottery[0] + ", ";
+	document.getElementById("entry2").innerHTML=ranLottery[1] + ", ";
+	document.getElementById("entry3").innerHTML=ranLottery[2] + ", ";
+	document.getElementById("entry4").innerHTML=ranLottery[3] + ", ";
+	document.getElementById("entry5").innerHTML=ranLottery[4] + ", ";
+	document.getElementById("entry6").innerHTML=ranLottery[5] + ". ";
+}
+</script>
+
+</body>
+</html>

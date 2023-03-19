@@ -1,0 +1,107 @@
+.mstheme
+{
+	nav-banner-image: url(poebanna.gif);
+	separator-image: url(poehorsa.gif);
+	list-image-1: url(poebul1a.gif);
+	list-image-2: url(poebul2a.gif);
+	list-image-3: url(poebul3a.gif);
+
+
+	navbutton-horiz-normal: url(poehbuda.gif);
+	navbutton-horiz-hovered: url(poehbuha.gif);
+	navbutton-horiz-pushed: url(poehbusa.gif);
+
+	navbutton-vert-normal: url(poevbuda.gif);
+	navbutton-vert-pushed: url(poevbusa.gif);
+	navbutton-vert-hovered: url(poevbuha.gif);
+
+	navbutton-home-normal: url(poehomda.gif);
+	navbutton-home-hovered: url(poehomha.gif);
+	navbutton-home-pushed: url(poehomsa.gif);
+
+	navbutton-next-normal: url(poenexda.gif);
+	navbutton-next-hovered: url(poenexha.gif);
+	navbutton-next-pushed: url(poenexsa.gif);
+
+	navbutton-prev-normal: url(poepreda.gif);
+	navbutton-prev-hovered: url(poepreha.gif);
+	navbutton-prev-pushed: url(poepresa.gif);
+
+	navbutton-up-normal: url(poeupda.gif);
+	navbutton-up-hovered: url(poeupha.gif);
+	navbutton-up-pushed: url(poeupsa.gif);
+
+}
+
+.mstheme-bannertxt
+{
+	font-family: "Book Antiqua", "Times New Roman", Times;
+	color: rgb(102,51,102);
+	text-align: center;
+	vertical-align: middle;
+}
+.mstheme-horiz-navtxt
+{
+	font-family: "Book Antiqua", "Times New Roman", Times;
+
+	color: rgb(204,204,0);
+	text-align: center;
+	vertical-align: middle;
+}
+
+.mstheme-vert-navtxt
+{
+	font-family: "Book Antiqua", "Times New Roman", Times;
+
+	color: rgb(204,204,0);
+	text-align: center;
+	vertical-align: middle;
+}
+
+.mstheme-navtxthome
+{
+	font-family: "Book Antiqua", "Times New Roman", Times;
+
+	color: rgb(102,0,51);
+	text-align: center;
+	vertical-align: middle;
+}
+
+.mstheme-navtxtnext
+{
+	font-family: "Book Antiqua", "Times New Roman", Times;
+
+	color: rgb(102,0,51);
+	text-align: center;
+	vertical-align: middle;
+}
+
+.mstheme-navtxtprev
+{
+	font-family: "Book Antiqua", "Times New Roman", Times;
+
+	color: rgb(102,0,51);
+	text-align: center;
+	vertical-align: middle;
+}
+
+.mstheme-navtxtup
+{
+	font-family: "Book Antiqua", "Times New Roman", Times;
+
+	color: rgb(102,0,51);
+	text-align: center;
+	vertical-align: middle;
+}
+UL
+{ 
+	list-style-image: url(poebul1a.gif);
+}
+UL UL
+{
+	list-style-image: url(poebul2a.gif);
+}
+UL UL UL
+{
+	list-style-image: url(poebul3a.gif);
+}

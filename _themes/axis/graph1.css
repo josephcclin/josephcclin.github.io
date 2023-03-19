@@ -1,0 +1,81 @@
+.mstheme
+{
+	nav-banner-image: url(aaxibanr.gif);
+	separator-image: url(aaxirule.gif);
+	list-image-1: url(aaxibul1.gif);
+	list-image-2: url(aaxibul2.gif);
+	list-image-3: url(aaxibul3.gif);
+	navbutton-horiz-pushed: url(aaxihsel.gif);
+	navbutton-horiz-normal: url(aaxihbtn.gif);
+	navbutton-horiz-hovered: url(aaxihhov.gif);
+	navbutton-vert-pushed: url(aaxivsel.gif);
+	navbutton-vert-normal: url(aaxivbtn.gif);
+	navbutton-vert-hovered: url(aaxivhov.gif);
+	navbutton-home-normal: url(aaxihom.gif);
+	navbutton-home-hovered: url(aaxihomh.gif);
+	navbutton-home-pushed: url(blhomep.gif);
+	navbutton-up-normal: url(aaxiup.gif);
+	navbutton-up-hovered: url(aaxiuph.gif);
+	navbutton-up-pushed: url(blupp.gif);
+	navbutton-prev-normal: url(aaxibck.gif);
+	navbutton-prev-hovered: url(aaxibckh.gif);
+	navbutton-prev-pushed: url(blprevp.gif);
+	navbutton-next-normal: url(aaxinxt.gif);
+	navbutton-next-hovered: url(aaxinxth.gif);
+	navbutton-next-pushed: url(blnextp.gif);
+}
+.mstheme-bannertxt
+{
+	font-family: trebuchet ms, Arial, Helvetica;
+	font-size: 6;
+	font-weight: bold;
+	color: rgb(0,0,0);
+}
+.mstheme-horiz-navtxt
+{
+	font-family: Trebuchet MS, Arial, Helvetica;
+	font-size: 1;
+	color: rgb(0,0,0);
+}
+.mstheme-vert-navtxt
+{
+	font-family: Trebuchet MS, Arial, Helvetica;
+	font-size: 1;
+	color: rgb(0,0,0);
+}
+.mstheme-navtxthome
+{
+	font-family: trebuchet ms, Arial, Helvetica;
+	font-size: 1;
+	color: rgb(0,0,0);
+}
+.mstheme-navtxtup
+{
+	font-family: trebuchet ms, Arial, Helvetica;
+	font-size: 1;
+	color: rgb(0,0,0);
+}
+.mstheme-navtxtprev
+{
+	font-family: trebuchet ms, Arial, Helvetica;
+	font-size: 1;
+	color: rgb(0,0,0);
+}
+.mstheme-navtxtnext
+{
+	font-family: trebuchet ms, Arial, Helvetica;
+	font-size: 1;
+	color: rgb(0,0,0);
+}
+UL
+{
+	list-style-image: url(aaxibul1.gif);
+}
+UL UL
+{
+	list-style-image: url(aaxibul2.gif);
+}
+UL UL UL
+{
+	list-style-image: url(aaxibul3.gif);
+}

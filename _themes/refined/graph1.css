@@ -1,0 +1,80 @@
+.mstheme
+{
+	nav-banner-image: url(arefbanr.gif);
+	separator-image: url(arefrule.gif);
+	list-image-1: url(arefbul1.gif);
+	list-image-2: url(arefbul2.gif);
+	list-image-3: url(arefbul3.gif);
+	navbutton-horiz-pushed: url(arefhsel.gif);
+	navbutton-horiz-normal: url(arefhbtn.gif);
+	navbutton-horiz-hovered: url(arefhhov.gif);
+	navbutton-vert-pushed: url(arefvsel.gif);
+	navbutton-vert-normal: url(arefvbtn.gif);
+	navbutton-vert-hovered: url(arefvhov.gif);
+	navbutton-home-normal: url(arefhom.gif);
+	navbutton-home-hovered: url(arefhomh.gif);
+	navbutton-home-pushed: url(blhomep.gif);
+	navbutton-up-normal: url(arefup.gif);
+	navbutton-up-hovered: url(arefuph.gif);
+	navbutton-up-pushed: url(blupp.gif);
+	navbutton-prev-normal: url(arefbck.gif);
+	navbutton-prev-hovered: url(arefbckh.gif);
+	navbutton-prev-pushed: url(blprevp.gif);
+	navbutton-next-normal: url(arefnxt.gif);
+	navbutton-next-hovered: url(arefnxth.gif);
+	navbutton-next-pushed: url(blnextp.gif);
+}
+.mstheme-bannertxt
+{
+	font-family: times new roman, Times New Roman, Times;
+	font-size: 6;
+	color: rgb(255,255,255);
+}
+.mstheme-horiz-navtxt
+{
+	font-family: times new roman, Times New Roman, Times;
+	font-size: 2;
+	color: rgb(255,255,255);
+}
+.mstheme-vert-navtxt
+{
+	font-family: Times New Roman, Times New Roman, Times;
+	font-size: 2;
+	color: rgb(255,255,255);
+}
+.mstheme-navtxthome
+{
+	font-family: times new roman, Times New Roman, Times;
+	font-size: 1;
+	color: rgb(255,255,255);
+}
+.mstheme-navtxtup
+{
+	font-family: times new roman, Times New Roman, Times;
+	font-size: 1;
+	color: rgb(255,255,255);
+}
+.mstheme-navtxtprev
+{
+	font-family: times new roman, Times New Roman, Times;
+	font-size: 1;
+	color: rgb(255,255,255);
+}
+.mstheme-navtxtnext
+{
+	font-family: times new roman, Times New Roman, Times;
+	font-size: 1;
+	color: rgb(255,255,255);
+}
+UL
+{
+	list-style-image: url(arefbul1.gif);
+}
+UL UL
+{
+	list-style-image: url(arefbul2.gif);
+}
+UL UL UL
+{
+	list-style-image: url(arefbul3.gif);
+}

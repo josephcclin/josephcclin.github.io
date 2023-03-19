@@ -1,0 +1,127 @@
+.mstheme
+{
+	navbutton-background-color: rgb(255,255,255);
+	top-bar-button: url(bstrglbu.gif);
+}
+.mstheme-topbar-font
+{
+	font-family: Arial, Helvetica;
+	font-size: 1;
+	font-weight: bold;
+	color: rgb(0,0,0);
+}
+body
+{
+	font-family: "Trebuchet MS", Arial, Helvetica;
+	background-image: url(bstrbk.gif);
+}
+h1
+{
+	font-family: "Trebuchet MS", Arial, Helvetica;
+	font-weight: normal;
+	font-style: normal;
+	font-size: 24pt;
+}
+h2
+{
+	font-family: "Trebuchet MS", Arial, Helvetica;
+	font-weight: normal;
+	font-style: normal;
+	font-size: 18pt;
+}
+h3
+{
+	font-family: "Trebuchet MS", Arial, Helvetica;
+	font-weight: normal;
+	font-style: normal;
+	font-size: 14pt;
+}
+h4
+{
+	font-family: "Trebuchet MS", Arial, Helvetica;
+	font-weight: normal;
+	font-style: normal;
+	font-size: 12pt;
+}
+h5
+{
+	font-family: "Trebuchet MS", Arial, Helvetica;
+	font-weight: normal;
+	font-style: normal;
+	font-size: 10pt;
+}
+h6
+{
+	font-family: "Trebuchet MS", Arial, Helvetica;
+	font-weight: normal;
+	font-style: normal;
+	font-size: 8pt;
+}
+BUTTON 
+{
+	border-style: solid;
+	border-width: 1pt;
+	font-size: 8pt;
+	font-family: Arial, Helvetica;
+	font-style: Bold; 
+}
+LABEL, .MSTHEME-LABEL
+{
+	font-size: 8pt;
+	font-family: Arial, Helvetica;
+	font-style: Bold; 
+}
+TEXTAREA
+{
+	border-style: solid;
+	border-width: 1pt;
+	font-size: 8pt;
+	font-family: Arial, Helvetica;
+	font-style: Normal; 
+}
+FIELDSET
+{
+	border-style: solid;
+	border-width: 1pt;
+	font-size: 8pt;
+	font-family: Arial, Helvetica;
+	font-style: Normal; 
+}
+LEGEND
+{
+	font-size: 8pt;
+	font-family: "Trebuchet MS", Arial, Helvetica;
+	font-style: Normal; 
+}
+SELECT
+{
+	border-style: solid;
+	border-width: 1pt;
+	font-size: 8pt;
+	font-family: Arial, Helvetica;
+	font-style: Normal; 
+}
+TABLE
+{
+	font-family: "Trebuchet MS", Arial, Helvetica;
+	font-style: Normal; 
+}
+CAPTION 
+{
+	font-size: 14pt;
+	font-family: "Trebuchet MS", Arial, Helvetica;
+	font-style: Normal; 
+}
+TH
+{
+	font-family: "Trebuchet MS", Arial, Helvetica;
+	font-style: Normal; 
+}
+MARQUEE
+{
+	font-family: "Trebuchet MS", Arial, Helvetic;
+	font-size: 14pt;
+}
+
+
+

@@ -1,0 +1,70 @@
+.mstheme
+{
+	nav-banner-image: url(edgbanr.gif);
+	separator-image: url(edgrule.gif);
+	list-image-1: url(edgbul1.gif);
+	list-image-2: url(edgbul2.gif);
+	list-image-3: url(edgbul3.gif);
+	navbutton-horiz-pushed: url(edghsel.gif);
+	navbutton-horiz-normal: url(edghbtn.gif);
+	navbutton-vert-pushed: url(edgvsel.gif);
+	navbutton-vert-normal: url(edgvbtn.gif);
+	navbutton-home-normal: url(edghom.gif);
+	navbutton-up-normal: url(edgup.gif);
+	navbutton-prev-normal: url(edgbck.gif);
+	navbutton-next-normal: url(edgnxt.gif);
+}
+.mstheme-bannertxt
+{
+	font-family: georgia, Times New Roman, Times;
+	font-size: 6;
+	color: rgb(0,0,0);
+}
+.mstheme-horiz-navtxt
+{
+	font-family: georgia, Times New Roman, Times;
+	font-size: 1;
+	color: rgb(0,0,0);
+}
+.mstheme-vert-navtxt
+{
+	font-family: georgia, Times New Roman, Times;
+	font-size: 1;
+	color: rgb(0,0,0);
+}
+.mstheme-navtxthome
+{
+	font-family: georgia, Times New Roman, Times;
+	font-size: 1;
+	color: rgb(0,0,0);
+}
+.mstheme-navtxtup
+{
+	font-family: georgia, Times New Roman, Times;
+	font-size: 1;
+	color: rgb(0,0,0);
+}
+.mstheme-navtxtprev
+{
+	font-family: georgia, Times New Roman, Times;
+	font-size: 1;
+	color: rgb(0,0,0);
+}
+.mstheme-navtxtnext
+{
+	font-family: georgia, Times New Roman, Times;
+	font-size: 1;
+	color: rgb(0,0,0);
+}
+UL
+{
+	list-style-image: url(edgbul1.gif);
+}
+UL UL
+{
+	list-style-image: url(edgbul2.gif);
+}
+UL UL UL
+{
+	list-style-image: url(edgbul3.gif);
+}

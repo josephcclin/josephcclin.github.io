@@ -1,0 +1,113 @@
+<html>
+
+<head>
+<title>A Pretty Printer for Lotus Language</title>
+</head>
+
+<body>
+
+<b><font face="Times New Roman" size="5">A pretty printer for Lotus</font></b>
+<br>
+<br>
+<br>
+<font face="Times New Roman" size="3">Check user's program if there is any syntax error 
+and help user print his program in a pretty form.</font>
+<br>
+<font face="Times New Roman" size="3">This project will use the lexical analyzer and the parser .
+<br>
+<br>
+<b><font face="Times New Roman" size="4">Description</font></b>
+<br>
+<br>
+<font face="Times New Roman">
+This pretty printer can reprint user's programs by using the option &quot;-t&quot; or 
+just perform syntax analyzing actions without &quot;-t&quot;. 
+</font>
+<br>
+<font face="Times New Roman">Yet, no syntax error recovery is performed. Each syntax 
+error message will include the line number where the error is detected.
+</font>
+<br>
+<font face="Times New Roman">The parser reads input from stdin, writes output to stdout, 
+and writes errors to stderr.
+</font>
+
+<br>
+<br>
+<br>
+<font face="Times New Roman">The frame of this program is shown in the following figure.
+</font>
+<br>
+<br>
+<br>
+<center>
+<img border="0" src="../../images/frame.jpg" width="598" height="456">
+</center>
+<br>
+<br>
+<font face="Times New Roman">
+<br>
+<b><font size="4">A sample for input the Lotus program</font></b></font>
+<br>
+<br>
+<font face="Courier New">-- A program to sum 1 to n
+<br>
+int main( ) { int n; int s; int t;<br>
+read n; if ((n &lt; 0)&amp;&amp;(s&lt;0)||(t&gt;0)) {<br>
+write -1;<br>
+if (n&gt;s) {read s ;<br>
+exit; } else { s = sum(n); }<br>
+} write s; return 0;}<br>
+<br>
+int sum(int n, int s) {<br>
+int s;<br>
+s = 0;<br>
+while <br>
+(n &gt; 0) { s=s+n; n = n - 1;}<br>
+return s;}
+</font>
+<br>
+<br>
+<br>
+<b><font size="4" face="Times New Roman">The output for this sample</font></b>
+<br>
+<br>
+<font face="Courier New">int main()
+<br>
+{<br>
+&nbsp;&nbsp;&nbsp; int n;<br>
+&nbsp;&nbsp;&nbsp; int s;<br>
+&nbsp;&nbsp;&nbsp; int t;<br>
+<br>
+&nbsp;&nbsp;&nbsp; read n;<br>
+&nbsp;&nbsp;&nbsp; if ((n &lt; 0) &amp;&amp; (s &lt; 0) || (t &gt; 0)) {<br>
+&nbsp;&nbsp;&nbsp; write - 1;<br>
+&nbsp;&nbsp;&nbsp; if (n &gt; s) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; read s;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; exit;<br>
+&nbsp;&nbsp;&nbsp; } else {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; s = sum(n);<br>
+&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; write s;<br>
+&nbsp;&nbsp;&nbsp; return 0;<br>
+}<br>
+<br>
+int sum(int n, int s)<br>
+{<br>
+&nbsp;&nbsp;&nbsp; int s;<br>
+<br>
+&nbsp;&nbsp;&nbsp; s = 0;<br>
+&nbsp;&nbsp;&nbsp; while (n &gt; 0) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; s = s + n;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; n = n - 1;<br>
+&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; return s;<br>
+}
+<br>
+<br>
+</font>
+
+</body>
+
+</html>

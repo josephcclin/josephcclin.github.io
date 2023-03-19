@@ -1,0 +1,1174 @@
+\documentclass[xcolor=dvipsnames,envcountsect,handout]{beamer}
+%\documentclass[xcolor=dvipsnames]{beamer}
+\usecolortheme[named=MidnightBlue]{structure}
+%\usecolortheme{seahorse}
+%\usetheme[height=8mm]{Rochester}
+\usetheme{Madrid}
+\useoutertheme{smoothtree} 
+\setbeamertemplate{bibliography item}[text]
+%\setbeamertemplate{navigation symbols}{} 
+\setbeamertemplate{theorems}[numbered]
+%\usepackage{beamerthemeshadow}
+%\setbeamertemplate{footline}[frame number]{}
+\setbeamertemplate{blocks}[rounded][shadow=true] 
+\def\urltilde{\kern -.15em\lower .7ex\hbox{\~{}}\kern .04em}
+\pgfdeclareimage[height=0.8cm]{institution-logo}{ccu-logo}
+\logo{\pgfuseimage{institution-logo}}
+\usepackage{amsmath,bm}
+\usepackage{latexsym}
+\usepackage{amssymb,bm}
+\usepackage{graphicx}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{booktabs}
+\usepackage{boxedminipage}
+\usepackage{mathrsfs}
+\usepackage{hyperref}
+\usepackage{comment}
+\newtheorem{claim}{Claim}
+\newtheorem*{question}{Question}
+\newtheorem*{observation}{Observation}
+\newtheorem*{theory}{Theorem}
+\newtheorem*{Euler}{Euler's formula}
+\newtheorem*{prop}{Proposition}
+\newtheorem*{property}{Property} 
+\newtheorem*{defn}{Definition}
+\newtheorem*{lemm}{Lemma}
+\newtheorem*{conj}{Conjecture}
+%\newcommand{\dotcup}{\ensuremath{\mathaccent\cdot\cup}}
+\renewcommand{\figurename}{\textbf{Fig.}}
+
+
+\title[Greedy graph-based gene-lists alignment]
+{A greedy, graph-based algorithm for the alignment of multiple homologous 
+gene lists}
+\author[Joseph C.-C. Lin]{Jan Fostier, Sebastian Proost, Bart Dhoedt, 
+Yvan Saeys,\\ Piet Demeester, Yves Van de Peer, and Klaas Vandepoele} 
+
+\institute[CSIE, CCU, Taiwan]{} 
+
+\date[30 March 2011]{\vspace{-28pt}\\
+{{\footnotesize {\em Bioinformatics} {\bf 27}
+(2011) 749--756.}\vspace{10pt}\\
+Speaker: Joseph Chuang-Chieh Lin\vspace{10pt}\\
+{\small Department of Computer Science and Information 
+Engineering\\
+National Chung Cheng University.\\
+Taiwan
+\vspace{8pt}\\
+March 30, 2011}}}
+
+
+\begin{document}
+\maketitle
+\beamertemplatetransparentcovereddynamic
+
+
+\begin{frame}
+\frametitle{Self introduction}
+\vspace{-24pt}
+\begin{columns}
+\begin{column}[t]{6cm}
+\begin{itemize}
+\item [] Basic information
+\end{itemize}
+\vspace{-2pt}
+\begin{footnotesize}
+\begin{itemize}
+\item Name: Joseph, Chuang-Chieh Lin
+\item Birth: 5 Dec. 1979 at Tainan City
+\item Married since 2007 \& one daughter
+\item Hobbies: running, reading, \& eating
+\vspace{6pt}
+\item [$\star$] Homepage: \href{http://www.cs.ccu.edu.tw/~lincc}
+{\textcolor{OliveGreen}{http://www.cs.ccu.edu.tw/\urltilde lincc}}
+\item [$\star$] Email addresses:\\ 
+\href{mailto:lincc@cs.ccu.edu.tw}
+{\textcolor{OliveGreen}{lincc@cs.ccu.edu.tw}}
+\href{mailto:josephcclin@gmail.com}
+{\textcolor{OliveGreen}{josephcclin@gmail.com}}
+\end{itemize}
+\end{footnotesize}
+\end{column}
+\hspace{-28pt}
+\begin{column}[t]{6cm}
+\begin{itemize}
+\item [] Education background
+\end{itemize}
+\vspace{-2pt}
+\begin{footnotesize}
+\begin{itemize}
+\item Bachelor of Science: \underline{Mathematics},\\
+{\bf National Cheng Kung University}, \\
+1998 -- 2002
+\item Master of Science: \underline{CSIE},\\
+{\bf National Chi Nan University}\\
+2002 -- 2004,\\
+Thesis supervisor: \\
+Prof. Richard Chia-Tung Lee
+\item Ph.D. (dissertation in progress): \underline{CSIE}, \\
+{\bf National Chung Cheng University}\\
+2004 -- 2011, \\
+Dissertation supervisors: \\
+Prof. Maw-Shang Chang \& \\
+Prof. Peter Rossmanith
+\end{itemize}
+\end{footnotesize}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Self introduction (contd.)}
+%\vspace{-20pt}
+%\begin{columns}
+%\begin{column}[t]{6cm}
+\begin{itemize}
+\item [] Research interests
+\end{itemize}
+\begin{itemize}
+\item Fixed-parameter algorithms
+\vspace{4pt}
+\item Randomized algorithms (property testing)
+\vspace{4pt}
+\item Graph theory \& algorithms
+\vspace{4pt}
+\item Computational biology (phylogenetic tree reconstruction)
+\end{itemize}
+%\end{column}
+%\begin{column}[t]{6cm}
+%\item [] 
+%\end{itemize}
+%\begin{itemize}
+%\item 
+%\item 
+%\end{itemize}
+%\end{column}
+%\end{columns}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Outline}
+\tableofcontents%[pausesections]
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%\begin{frame}
+%\frametitle{Outline}
+%\tableofcontents[currentsection,currentsubsection]
+%\end{frame}
+
+\begin{frame}
+\frametitle{Comparative genomics}
+\begin{itemize}
+\item Comparative genomics:\vspace{8pt}\\
+\begin{itemize}
+\item The study of the relationship of genome structure and function
+across different species. 
+\vspace{6pt}
+\item It exploits similarities \& differences in the proteins, RNA, 
+and regulatory regions (a DNA segment). 
+\vspace{6pt}
+\item An attempt to understand the evolutionary processes acting on 
+genomes. 
+\end{itemize}
+\pause
+\vspace{6pt}
+\item Identification of homologous genomic regions is heavily relied. 
+\begin{itemize}
+\item Using \alert{alignment} tools.
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+
+%====================================================================
+\subsection{Multiple sequence alignments}
+%====================================================================
+
+
+\begin{frame}
+\frametitle{Sequence alignment}
+\vspace{-8pt}
+\begin{columns}
+\begin{column}[t]{4cm}
+\begin{small}
+\begin{table}[H]
+\begin{tabular}{c c c c c c c c}
+$S_1$:  & A & R & G & C & R & C  \\
+$S_2$:  & A & G & A & G & C &   
+\end{tabular}
+\vspace{12pt}\\$\Downarrow$\vspace{12pt}\\
+\begin{tabular}{c c c c c c c c}
+$S_1$:  & A & R  & G & C & R & C  \\
+$S_2$:  & A & -- & G & A & G & C
+\end{tabular}
+\end{table}
+\end{small}
+\end{column}
+\begin{column}[t]{7cm}
+\vspace{-6pt}
+\begin{itemize}
+\item Using dynamic programming \\
+(table-filling method)
+\vspace{8pt}
+\item [] \begin{small}
+$M(i,j) = $
+\[
+\min\left\{\!\!
+\begin{array}{l}
+M(i-1,j-1) + \sigma(S_1(i),S_2(j)),\\
+M(i-1,j)   + \sigma(S_1(i), \mbox{--}),\\
+M(i,j-1)   + \sigma(\mbox{--}, S_2(j)). 
+\end{array}
+\right.
+\]
+\end{small}
+\hspace{20pt} 
+\begin{small}
+$\sigma(\cdot,\cdot)$: score function 
+\begin{itemize}
+\item [] (e.g., PAM~250, BLOSUM~62)
+\end{itemize}
+\end{small}
+\vspace{6pt}
+\item $O(\ell^2)$ time. 
+\begin{itemize}
+\item $\ell$: the maximum sequence length.
+\end{itemize}
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Multiple sequence alignment}
+\begin{columns}
+\begin{column}[t]{5cm}
+\begin{small}
+\begin{table}[H]
+\hspace{-24pt}
+\begin{tabular}{c c c c c c c}
+$S_1$: & A & R & G & C & R & C  \\
+$S_2$: & A & G & A & G & C &    \\
+$S_3$: & R & R & C & R & G &    \\
+\end{tabular}
+\vspace{12pt}\\$\Downarrow$\vspace{12pt}\\
+\hspace{-24pt}
+\begin{tabular}{c c c c c c c}
+$S_1$: & A & R  & G & C & R & C  \\
+$S_2$: & A & -- & G & A & G & C  \\
+$S_3$: & R & R & -- & C & R & G   
+\end{tabular}
+\end{table}
+\end{small}
+\end{column}
+\hspace{-60pt}
+\begin{column}[t]{7cm}
+\vspace{-16pt}
+\begin{itemize}
+\item 
+\begin{footnotesize}
+$M(i,j,k) = $
+\[
+\min\left\{\!\!
+\begin{array}{ll}
+M(i\!-\!1,j\!-\!1,k\!-\!1)\!\!\!\!\!&+\; \sigma(S_1(i),S_2(j),S_3(k)),\\
+M(i-1,j-1,k)   &+\; \sigma(S_1(i),S_2(j),\mbox{--}),\\
+M(i-1,j,k-1)   &+\; \sigma(S_1(i),\mbox{--},S_3(k)),\\
+M(i,j-1,k-1)   &+\; \sigma(\mbox{--},S_2(j),S_3(k)),\\
+M(i-1,j,k)     &+\; \sigma(S_1(i),\mbox{--},\mbox{--}),\\
+M(i,j-1,k)     &+\; \sigma(\mbox{--},S_2(j),\mbox{--}),\\
+M(i,j,k-1)     &+\; \sigma(\mbox{--},\mbox{--},S_3(k)).  
+\end{array}
+\right.
+\]
+\end{footnotesize}
+\vspace{24pt}
+\item $O((2^{\alert<2>{3}}-1)\ell^{\alert<2>{3}})$ time. 
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{A heuristic: progressive MSA}
+{\hspace{12pt}} Main steps of progressive MSA:
+\begin{itemize}
+\item Compute pairwise sequence similarities;
+\item Create a phylogenetic tree (or use a user-defined tree);
+\item Use the phylogenetic tree to carry out a MSA.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{}
+\begin{columns}
+\begin{column}[t]{6cm}
+\vspace{-8pt}
+\begin{table}[H]
+\begin{exampleblock}{}
+\begin{tabular}{c c c c c c c}
+$S_1$: & A & T  & G & C & T & C  \\
+$S_2$: & A & -- & G & A & G & C  \\
+\end{tabular}
+\end{exampleblock}
+\vspace{-10pt}
+\begin{exampleblock}{}
+\begin{tabular}{c c c c c c c}
+$S_2$: & A & G & A & G & C   &    \\
+$S_3$: & G & G & G & G & --  &    \\
+\end{tabular}
+\end{exampleblock}
+\vspace{-10pt}
+\begin{exampleblock}{}
+\begin{tabular}{c c c c c c c}
+$S_1$: & A & T & G & C & T   & C  \\
+$S_3$: & G & G & G & G & --  & -- 
+\end{tabular}
+\end{exampleblock}
+$\Downarrow$
+\begin{alertblock}{}
+\begin{tabular}{c c c c c c c}
+$S_1$: & A & T  & G & C & T & C  \\
+$S_2$: & A & -- & G & A & G & C  
+\end{tabular}
+\end{alertblock}
+\end{table}
+\end{column}
+\begin{column}[t]{5cm}
+\vspace{20pt}
+\begin{figure}[H]
+\centering
+\hspace{-12pt}
+\includegraphics[scale=0.38]{eps/progressive.eps}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{}
+\begin{columns}
+\begin{column}[t]{6cm}
+\vspace{-8pt}
+\begin{table}[H]
+\begin{exampleblock}{}
+\begin{tabular}{c c c c c c c}
+$S_1$: & A & T  & G & C & T & C  \\
+$S_2$: & A & -- & G & A & G & C  
+\end{tabular}
+\end{exampleblock}
+\vspace{-10pt}
+\begin{exampleblock}{}
+\begin{tabular}{c c c c c c c}
+$S_2$: & A & G & A & G & C   &    \\
+$S_3$: & G & G & G & G & --  &    
+\end{tabular}
+\end{exampleblock}
+\vspace{-10pt}
+\begin{exampleblock}{}
+\begin{tabular}{c c c c c c c}
+$S_1$: & A & T & G & C & T   & C  \\
+$S_3$: & G & G & G & G & --  & -- 
+\end{tabular}
+\end{exampleblock}
+$\Downarrow$
+\begin{alertblock}{}
+\begin{tabular}{c c c c c c c}
+$S_1$: & A & T  & G & C & T & C  \\
+$S_2$: & A & -- & G & A & G & C  \\
+$S_3$: & G & \alert{--} & G & G & G & -- 
+\end{tabular}
+\end{alertblock}
+\end{table}
+\end{column}
+\begin{column}[t]{5cm}
+\vspace{20pt}
+\begin{figure}[H]
+\centering
+\hspace{-12pt}
+\includegraphics[scale=0.38]{eps/progressive.eps}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Well known MSA tools}
+\begin{itemize}
+\item CLUSTAL (W) (Higgins \& Sharp 1988; Thompson {\it et al}, 1994)
+\vspace{6pt}
+\item T-COFFEE (Notredame {\it et al}., 1998)
+\vspace{6pt}
+\item MUSCLE (Edgar, 2004)
+\vspace{6pt}
+\item MAFFT (Katoh {\it et al}., 2002)
+\end{itemize}
+\end{frame}
+
+
+
+%====================================================================
+\subsection{Contribution of this paper}
+%====================================================================
+
+
+\begin{frame}
+\frametitle{Contribution of this paper}
+\begin{itemize}
+\item Focus on alignment of multiple, \textcolor{blue}{mutually
+homologous genomic segments} (\alert{gene lists}). \pause
+\begin{itemize}
+\item Homologous: {\em derived from a common ancestor}.
+\item The homologous relationships between individual genes\\
+$\Rightarrow$ established as a preprocessing step. 
+\end{itemize}
+\vspace{10pt}
+\pause
+\item A graph-based approach to create accurate alignments of
+homologous genomic segments. \pause
+\begin{itemize}
+\item Find a maximal number of homologous genes.
+\item The detection of additional homologous genomic segments can be
+facilitated. 
+\end{itemize}
+\end{itemize} 
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Some remarks}
+\begin{itemize}
+\item The MSA of gene lists is much different from that at the
+nucleotide or amino acid level. 
+\end{itemize}
+\vspace{6pt}
+\begin{columns}
+\begin{column}[t]{5cm}
+Nucleotides \& amino acids
+\begin{itemize}
+\item alphabet size: \\nucleotides (4) \\
+amino acids (20). 
+\vspace{6pt}
+\item Through evolution:
+\begin{itemize}
+\item mainly undergo {\em character substitutions}.
+\end{itemize}
+\end{itemize}
+\end{column}
+\begin{column}[t]{5cm}
+Genes (or chromosomes)
+\begin{itemize}
+\item alphabet size: combinations of nucleotides...
+\vspace{6pt}
+\item Through evolution: 
+\begin{itemize}
+\item mainly undergo \\{\em gene loss/insertion}, 
+{\em inversion}, etc. 
+\end{itemize}
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Contribution of this paper (contd.)}
+\vspace{-0.3cm}
+\begin{itemize}
+\item The alignment algorithm: a subroutine of the software 
+{\tt i-ADHoRe}. 
+\begin{itemize}
+\item {\tt i-ADHoRe 3.0} is available at 
+\href{http://bioinformatics.psb.ugent.be/software}
+{\textcolor{OliveGreen}{http://bioinformatics.psb.ugent.be/software}}
+\end{itemize}
+\end{itemize}
+\vspace{9pt}
+\begin{footnotesize}
+\begin{columns}
+\begin{column}[t]{4cm}
+{\hspace{8pt}} original {\tt i-ADHoRe}
+\begin{itemize}
+\item Simillion {\it et al}. 2004.
+\item progressively applies the Needleman-Wunsch (pNW) aligner 
+\item [$\times$] `once a gap, always a gap'.
+\end{itemize}
+\end{column}
+\begin{column}[t]{4cm}
+{\hspace{8pt}} {\tt i-ADHoRe 2.0}
+\begin{itemize}
+\item Simillion {\it et al}. 2008.
+\item Using a greedy, graph-based aligner (GG-aligner).
+\item [\checkmark] Avoiding `once a gap, always a gap'.
+\item [$\times$] Correctly aligned genes are not more.
+\end{itemize}
+\end{column}
+\begin{column}[t]{4cm}
+{\hspace{8pt}} \alert{\tt i-ADHoRe 3.0}
+\begin{itemize}
+\item \alert{Fostier {\it et al}. 2011.}
+\item \alert{New greedy, graph-based aligner (GG2-aligner).}
+\item \alert{Using heuristics to resolve {\em conflicts}}.
+\item [\checkmark] \alert{Outperform pNW and GG aligners.} 
+\end{itemize}
+\end{column}
+\end{columns}
+\end{footnotesize}
+\vspace{6pt}
+\begin{itemize}
+\item The main dataset of genome: \textcolor{ForestGreen}{\em Arabidopsis 
+thaliana}.
+\end{itemize}
+\end{frame}
+
+
+%\begin{comment}
+\begin{frame}
+\frametitle{Arabidopsis thaliana}
+\begin{figure}[H]
+\includegraphics[scale=1.4]{eps/Arabidopsis_thaliana.eps}
+\end{figure}
+\end{frame}
+%\end{comment}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{The algorithm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%\begin{frame}
+%\frametitle{Outline}
+%\tableofcontents[currentsection,currentsubsection]
+%\end{frame}
+
+\begin{frame}
+\frametitle{}
+\begin{center}
+{\LARGE The algorithm}
+\end{center}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{The graph structure (cf.~Lenhof {\it et al}. 1999)}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.30]{eps/active_nodes.eps}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{The graph structure (contd.)}
+$G(V,E,w)$: 
+\begin{itemize}
+\item $N$ genomic segments. 
+\vspace{5pt}
+%\item \# genes in the $i$-th list: $l_i$.
+%\vspace{5pt}
+\item vertices in $V$: genes. 
+\begin{itemize}
+\item $n_{i,j}$: the $j$-th gene on the $i$-th gene-list.
+\item $n_{i,a_i}$: the active node which is the $a_i$-th gene on the
+$i$-th gene-list. 
+\end{itemize}
+\vspace{5pt}
+\item Consecutive genes on a segment are connected through a
+\alert{(directed) edge}. 
+\vspace{5pt}
+\item Homologous genes located on different lists are connected
+through a \alert{link} (undirected edge).
+\vspace{5pt}
+\item Weight $w$: only attributed to links. 
+\end{itemize}
+\end{frame}
+
+
+%====================================================================
+\subsection{The basic procedure}
+%====================================================================
+
+
+\begin{frame}
+\frametitle{The basic procedure}
+\begin{figure}[H]
+\centering
+\hspace{-12pt}
+\includegraphics[scale=0.30]{eps/graph_struct.eps} 
+\end{figure} 
+\end{frame}
+
+
+\begin{frame}
+\frametitle{The basic procedure}
+\begin{figure}[H]
+\centering
+\vspace{-1pt}
+\includegraphics[scale=0.30]{eps/algorithm_1b.eps} 
+\end{figure} 
+\end{frame}
+
+
+\begin{frame}
+\frametitle{The basic procedure}
+\begin{figure}[H]
+\centering
+\vspace{-0.3pt}
+\includegraphics[scale=0.30]{eps/algorithm_1c.eps} 
+\end{figure} 
+\end{frame}
+
+
+\begin{frame}
+\frametitle{The basic procedure}
+\begin{figure}[H]
+\centering
+\hspace{-5pt}
+\includegraphics[scale=0.30]{eps/algorithm_1d.eps} 
+\end{figure} 
+\end{frame}
+
+
+\begin{frame}
+\frametitle{The basic procedure}
+\begin{figure}[H]
+\centering
+\hspace{36pt}
+\includegraphics[scale=0.30]{eps/algorithm_1e.eps} 
+\end{figure} 
+\end{frame}
+
+
+\begin{frame}
+\frametitle{The basic procedure}
+\begin{figure}[H]
+\centering
+\hspace{33pt}
+\includegraphics[scale=0.28]{eps/algorithm_1f.eps} 
+\end{figure} 
+\end{frame}
+
+
+%====================================================================
+\subsection{Conflicts \& cycles}
+%====================================================================
+
+
+\begin{frame}
+\frametitle{Conflicts}
+\begin{itemize}
+\item \textcolor{blue}{alignment of a link}: 
+aligning two nodes connected by a link.
+\vspace{6pt}
+\item a \alert{conflict}: a set of links such that the alignment of 
+some of them prohibits the alignment of others. 
+\vspace{6pt} 
+\begin{itemize}
+%\item No alignable set $S$ can be found among the 
+%active nodes.
+\item It can be resolved by removing one or more links. 
+\item [$\rhd$] Though certain homologous genes will not be placed 
+in the same column finally. 
+\end{itemize}
+\vspace{8pt}
+\item \underline{\bf Goal:} minimize the number of misaligned genes. 
+\begin{itemize}
+\item It's imperative to carefully select the link(s) to be removed.
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Blocking paths/cycles \& direct paths}
+\vspace{-6pt}
+\begin{columns}
+\begin{column}[t]{6cm}
+\begin{itemize}
+\item $P_B = \{L_2,L_3,L_4\}$: \\an \alert{elementary} blocking path 
+from~$u$ to~$v$. 
+\vspace{6pt}
+\item $P_D = \{L_2,L_3\}$: \\an \alert{elementary} direct path 
+between~$x$ and~$y$.
+\vspace{6pt}
+\item $C_C = \{L_1,P_B\}$: \\an \alert{elementary} blocking cycle.
+\vspace{6pt}
+\item [$\star$] $\exists$ conflicts $\Leftrightarrow$ $\exists$ 
+blocking cycle. 
+\end{itemize}
+\end{column}
+\begin{column}[t]{6cm}
+\vspace{-8pt}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.3]{eps/blocking_path_1.eps}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Blocking paths/cycles \& direct paths (contd.)}
+\vspace{-6pt}
+\begin{columns}
+\begin{column}[t]{6cm}
+\begin{itemize}
+\item $P_B = \{L_2,L_3,L_4,L_5\}$: \\a blocking path from~$u$ to~$v$
+(NOT elementary). 
+\vspace{6pt}
+\item $C_C = \{L_1,P_B\}$: \\a blocking cycle (NOT elementary).
+\vspace{6pt}
+\item Yet $C'_C = \{L_3,L_4\}$ is an \alert{elementary} blocking 
+cycle. 
+\vspace{6pt}
+\item Removing either $L_3$ or $L_4$ resolves the conflict!
+\end{itemize}
+\end{column}
+\begin{column}[t]{6cm}
+\vspace{-8pt}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.3]{eps/blocking_path_2.eps}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Minimal conflicts \& elementary blocking cycles}
+\begin{itemize}
+\item a conflict is \alert{minimal}: the removal of {\bf ANY} 
+link from its corresponding blocking cycle resolves {\bf ALL}
+conflicts among the remaining links. 
+\end{itemize}
+\begin{center}
+\begin{minipage}{11cm}
+\begin{prop}
+\begin{itemize}
+\item Minimal conflicts corresponds to elementary blocking cycles and vice
+versa. 
+\item A non-elementary blocking cycle corresponds to one 
+or more minimal conflicts. 
+\end{itemize}
+\end{prop}
+\end{minipage}
+\end{center}
+\begin{itemize}
+\item In what follows, we only consider elementary blocking
+paths/cycles and minimal conflicts. 
+\end{itemize}
+\end{frame}
+
+
+
+%====================================================================
+\subsection{Conflicts detection \& resolution}
+%====================================================================
+
+
+\begin{frame}
+\frametitle{Active conflicts}
+\begin{itemize}
+\item Consider a situation that no alignable set $S$ can be found
+among the $N$ active nodes in~$G$. 
+\item Let $G' = (V,E')$ be the subgraph that only contains the active
+links. 
+\end{itemize}
+\begin{prop}
+\begin{itemize}
+\item If no alignable set can be found among the $N$ active nodes in~$G$ 
+during the basic alignment procedure, then $\exists$ one conflict 
+among the active links.
+\item Furthermore, no alignable set can be found among the same 
+active nodes in~$G'$. 
+\end{itemize}
+\end{prop}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Heuristic by maximum flow}
+\vspace{-6pt}
+\begin{columns}
+\begin{column}[t]{6cm}
+\begin{itemize}
+\item For a link $L_{st}$ (linking $s$ and $t$), we want to assess
+{\em which degree they are connected} \\
+$\Rightarrow$ \alert{maximum flow} $f_{st}$. 
+\vspace{5pt}
+\item Restrictions: 
+\begin{itemize}
+\item Only passing through element blocking/direct paths $s\to t$.
+\item Links: {\em no direction} \& {\em capacity equal to their
+weight~$w$}. 
+\item Edges: keep their directions \& unlimited capacities. 
+\end{itemize}
+\end{itemize}
+\end{column}
+\begin{column}[t]{6cm}
+\vspace{-8pt}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.25]{eps/flow_a.eps}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Heuristic by maximum flow}
+\vspace{-6pt}
+\begin{columns}
+\begin{column}[t]{6cm}
+\begin{itemize}
+\item $f_{st}^D$ (resp., $f_{st}^C$): the max flow of $s\to t$ through
+directed elementary paths (resp., elementary blocking paths). 
+\vspace{6pt}
+\item $f_{st}^C = f_{st} - f_{st}^D$. 
+\vspace{6pt}
+\item Let $S_{L_{st}} = f^D_{st} - |f_{st}^C - f_{\alert{ts}}^C|$.
+\vspace{6pt}
+\item The link $L$ with the lowest score $S_L$ will be removed. 
+\end{itemize}
+\end{column}
+\begin{column}[t]{6cm}
+\vspace{-8pt}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.25]{eps/flow_a.eps}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Heuristic by maximum flow}
+\vspace{-6pt}
+\begin{columns}
+\begin{column}[t]{6cm}
+\begin{itemize}
+\item $f_{st}^C = 2$ for link $L_1$. 
+\vspace{6pt}
+\item $f_{ts}^C = 0$.
+\vspace{6pt}
+\item $f_{st}^D = 1$. 
+\vspace{6pt}
+\item $\therefore S_{L_1} = 1 - 2 = -1$.  
+\end{itemize}
+\end{column}
+\begin{column}[t]{6cm}
+\vspace{-8pt}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.25]{eps/flow_a.eps}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Heuristic by maximum flow} 
+\vspace{-6pt}
+\begin{columns}
+\begin{column}[t]{6cm}
+\begin{itemize}
+\item $f_{st}^C = 1$ for link $L_2$.
+\vspace{6pt}
+\item $f_{ts}^C = 0$.
+\vspace{6pt}
+\item $f_{st}^D = 1$.
+\vspace{6pt}
+\item $\therefore S_{L_2} = 1 - 1 = 0$.
+\end{itemize}
+\end{column}
+\begin{column}[t]{6cm}
+\vspace{-8pt}
+\begin{figure}[H]
+\centering
+\hspace{-4pt}
+\includegraphics[scale=0.25]{eps/flow_b.eps}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Heuristic by maximum flow} 
+\vspace{-6pt}
+\begin{columns}
+\begin{column}[t]{6cm}
+\begin{itemize}
+\item $f_{st}^C = 1$ for link $L_3$.
+\vspace{6pt}
+\item $f_{ts}^C = 0$.
+\vspace{6pt}
+\item $f_{st}^D = 1$.
+\vspace{6pt}
+\item $\therefore S_{L_3} = 1 - 1 = 0$.
+\vspace{6pt}
+\item<2> \textcolor{blue}{Thus we remove the link $L_1$}.
+\end{itemize}
+\end{column}
+\begin{column}[t]{6cm}
+\vspace{-8pt}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.25]{eps/flow_c.eps}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Heuristic by maximum flow} 
+\vspace{-6pt}
+\begin{columns}
+\begin{column}[t]{6cm}
+%\begin{itemize}
+%\item 
+%\end{itemize}
+\end{column}
+\begin{column}[t]{6cm}
+\vspace{-8pt}
+\begin{figure}[H]
+\centering
+\hspace{-1.4cm}
+\includegraphics[scale=0.245]{eps/flow_d.eps}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+%====================================================================
+\subsection{Faster heuristics for conflict resolution}
+%====================================================================
+
+
+\begin{frame}
+\frametitle{Faster heuristics}
+\vspace{-8pt}
+\begin{columns}
+\begin{column}[t]{7.5cm}
+\begin{itemize}
+\item The computation of the max flow ($f$): $O(Ef)$ time 
+(Ford \& Fulkerson 1962).
+\vspace{5pt}
+\item Seeking for upper bounds on $f_{st}^C$ is easier. 
+\vspace{-8pt}
+\begin{itemize}
+\item Find $f_{st,{\tt UB}}^C$ and $f_{ts,{\tt UB}}^C$. 
+\end{itemize}
+\vspace{5pt}
+\item Then we derive a lower bound on $S_{L_{st}}$: 
+\[
+S_{L_{st},{\tt LB}} = f_{st,{\tt LB}}^D - 
+\max\{f_{st,{\tt UB}}^C, f_{ts,{\tt UB}}^C\},
+\]
+where we set $f_{st,{\tt LB}}^D = w(L_{st})$. 
+\vspace{5pt}
+\item Select the active link $L$ with the lowest lower bound
+$S_{L,{\tt LB}}$. 
+\end{itemize}
+\end{column}
+\begin{column}[t]{4.5cm}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.22]{eps/flow_a.eps}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Faster heuristics (contd.)}
+\vspace{-8pt}
+\begin{columns}
+\begin{column}[t]{7.5cm}
+\begin{itemize}
+\item Select the ``longest link". 
+\begin{itemize}
+\item Let $L_{st}$ be an active link with $t =  n_{j,k}$. 
+\vspace{5pt}
+\item Select the active link incident to $n_{j,k}$ for which
+$k-a_j$ is maximal. 
+\end{itemize}
+\end{itemize}
+\end{column}
+\begin{column}[t]{4.5cm}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.22]{eps/flow_a.eps}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+%====================================================================
+%\subsection*{Summary for the heuristics}
+%====================================================================
+
+
+\begin{frame}
+\frametitle{Summary of the heuristics}
+\vspace{-6pt}
+To resolve a conflict, select one of the following {\bf active} link 
+for removal: \vspace{6pt}\\
+\begin{minipage}{12cm}
+\begin{footnotesize}
+\begin{center}
+\begin{tabular}{p{3cm}p{7.5cm}}
+RA (RAndom) & a random link \\
+\midrule
+RC (Random Conflict) & a random link involved in at least one 
+(active or non-active) conflict\\
+\midrule
+RAC (Random Active Conflict) & a random link involved in at least 
+one {\em active} conflict\\
+\midrule
+LL (Longest Link) & the link $L$, involved in at least one active 
+conflict, incident to node $n_{j,k}$ for which $(k-a_j)$ is maximum.\\
+\midrule
+LLBS (Lowest Lower Bound Score) & the link $L$, involved in at least
+one active conflict, with the lowest lower bound score 
+$S_{L,{\tt LB}}$.\\
+\midrule
+LS (Lowest Score) & the link $L$, involved in at least one active 
+conflict, with the lowest score $S_L$.
+\end{tabular}
+\end{center}
+\end{footnotesize}
+\end{minipage}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Experimental results}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%\begin{frame}
+%\frametitle{Outline}
+%\tableofcontents[currentsection,currentsubsection]
+%\end{frame}
+
+
+\begin{frame}
+\frametitle{Datasets}
+\begin{columns}
+\begin{column}[t]{6cm}
+Dataset I: \\
+{\footnotesize Arabidopsis thaliana genome (2000)}
+\begin{small}
+\begin{itemize}
+\item [$\rhd$] It contains both strongly diverged and more closely
+related homologous chromosomal regions.
+\item Running i-ADHoRe on the genome separately. 
+\item 921 sets of homologous genome segments are produced. 
+\item $N$: varies from 2 to 11. 
+\end{itemize}
+\end{small}
+\end{column}
+\begin{column}[t]{6cm}
+Dataset II: \\
+{\footnotesize Genomes of \\
+Arabidopsis thaliana, \\
+Populus trichocarpa (Tuskan {\it et al}., 2006) \& \\
+Vitis vinifera (by Jaillon {\it et al}., 2007).}
+\begin{small}
+\begin{itemize}
+\item Running i-ADHoRe on the genomes. 
+\item 7821 sets of homologous genome segments are produced. 
+\item $N$: varies from 2 to 15.
+\end{itemize}
+\end{small}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{}
+\vspace{-8pt}
+\begin{figure}[H]
+\includegraphics[scale=0.45]{eps/datasetI.eps}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.32]{eps/datasetII.eps}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{}
+\begin{itemize}
+\item LLBS is used as the default heuristic for i-ADHoRe. 
+\vspace{8pt}
+\item Experiments on an extremely large dataset: 
+\begin{itemize}
+\item Dozens of eukaryotic speices (Hubbard {\it et al}., 2009). 
+\vspace{4pt}
+\item This method can handle $N = 50$ (enough for practical uses). 
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\section{Conclusion}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%\begin{frame}
+%\frametitle{Outline}
+%\tableofcontents[currentsection,currentsubsection]
+%\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{frame}
+\frametitle{}
+\begin{center}
+{\Huge Thank you.}
+\end{center}
+\end{frame}
+
+
+\end{document}
+
+

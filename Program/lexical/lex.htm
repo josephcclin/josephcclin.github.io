@@ -1,0 +1,145 @@
+<html>
+
+<head>
+<title>Lexical Analyzer for Lotus Language</title>
+</head>
+
+<body>
+<br>
+<b>
+<font face="Times New Roman" size="5">A Lexical Analyzer for a small language </font>
+<font face="Monotype Corsiva" size="6"><i>
+Lotus</i>
+</font>
+</b>
+<br>
+<br>
+<br>
+<b><font face="Times New Roman">Token types:</font></b>
+<br>
+<br>
+<font face="Times New Roman">A lexical analyzer for a small language, called &quot;<i>Lotus</i>
+&quot;. Lotus contains the following six types of tokens:</font>
+<br>
+<br>
+
+<table border="2" cellpadding="0" cellspacing="0" style="border:2px double #C0C0C0; border-collapse: collapse" bordercolor="#111111" width="625" id="AutoNumber1">
+<tr>
+    	<td width="16" style="border: 2px double #C0C0C0"><font face="Times New Roman">1.</font>
+    	</td>
+    	<td width="606" style="border: 2px double #C0C0C0">
+	<font face="Times New Roman">An identifier is a sequence of letters and digits; the first character must 
+	be a letter. All identifiers are returned as the same token type. The string of each identifier is 
+	returned as the attribute value of the token.</font>
+    	</td>
+</tr>
+<tr>
+	<td width="16" style="border: 2px double #C0C0C0"><font face="Times New Roman">2.</font>
+	</td>
+    	<td width="606" style="border: 2px double #C0C0C0">
+    	<font face="Times New Roman">The following identifiers are reserved for use as keywords, and may not be 
+	used otherwise:
+	<br>
+	else exit int if read return while write<br>
+	Each keyword is returned as a different token. No attribute value is returned 
+	with a keyword.</font></td>
+</tr>
+<tr>
+    	<td width="16" style="border: 2px double #C0C0C0"><font face="Times New Roman">3.</font></td>
+    	<td width="606" style="border: 2px double #C0C0C0">
+	<font face="Times New Roman">An integer constant consists of a sequence of digits. All integer constants are 
+    	returned as the same token type. The integer value of each integer constant 
+    	is returned as the attribute value of the token.</font></td>
+</tr>
+<tr>
+    	<td width="16" style="border: 2px double #C0C0C0"><font face="Times New Roman">4.</font>
+    	</td>
+    	<td width="606" style="border: 2px double #C0C0C0">
+    	<font face="Times New Roman">Operators include 
+    	<br>
+	+ - * / % == != &gt; &gt;= &lt; &lt;= &amp;&amp; || ! = ; , ( ) { }
+	<br>
+	Each operator is returned as a different token. No attribute value is returned 
+	with an operator.
+	</font>
+	</td>
+</tr>
+<tr>
+	<td width="16" style="border: 2px double #C0C0C0"><font face="Times New Roman">5.</font>
+	</td>
+    	<td width="606" style="border: 2px double #C0C0C0">
+    	<font face="Times New Roman">White spaces. Blanks, tabs, and newlines are ignored except as they serve to 
+	separate tokens.</font>
+	</td>
+</tr>
+<tr>
+    	<td width="16" style="border: 2px double #C0C0C0"><font face="Times New Roman">6.</font>
+    	</td>
+    	<td width="606" style="border: 2px double #C0C0C0">
+    	<font face="Times New Roman">Comments. A comment starts with the characters -- and ends with a newline. 
+	Comments are ignored except as they serve to separate tokens.</font>
+	</td>
+</tr>
+</table>
+
+<br>
+<br>
+<font face="Times New Roman">
+<b>Output format:</b>
+<br>
+<br>
+Identifiers: print &quot;Identifier:&quot;, a space, then the string of the identifier.<br>
+Keywords: print &quot;Keyword:&quot;, a space, then the string of the keyword.<br>
+Integer constants: print &quot;Integer:&quot;, a space, then the value of the integer 
+constant.<br>
+Operators: print &quot;Operator:&quot;, a space, then the string of the operator.<br>
+</font>
+
+<br>
+<font face="Times New Roman">Also,
+The lexical analyzer handles lexical errors and prints error messages.
+<br>
+</font>
+<br>
+<br>
+<font face="Times New Roman"><b>A sample program:</b>
+<br>
+<br>
+</font>
+
+<font face="Verdana">-- A program to sum 1 to n</font>
+<br>
+
+<font face="Verdana">
+int main( )
+</font>
+
+<font face="Verdana">
+{<br>
+&nbsp;&nbsp;&nbsp; int n;<br>
+&nbsp;&nbsp;&nbsp; int s;<br>
+<br>
+&nbsp;&nbsp;&nbsp; read n;<br>
+&nbsp;&nbsp;&nbsp; if (n &lt; 0) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; write -1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; exit 0;<br>
+&nbsp;&nbsp;&nbsp; } </font>
+
+<font face="Verdana">&nbsp;&nbsp;&nbsp; else {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; s = 0;<br>
+&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; while (n &gt; 0) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; s = s + n;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; n = n ¡V 1;<br>
+&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; write s;<br>
+&nbsp;&nbsp;&nbsp; return 0;
+</font>
+
+<br>
+<font face="Verdana">}</font>
+
+
+</body>
+
+</html>

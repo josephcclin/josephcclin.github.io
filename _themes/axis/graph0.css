@@ -1,0 +1,71 @@
+.mstheme
+{
+	nav-banner-image: url(axibanr.gif);
+	separator-image: url(axirule.gif);
+	list-image-1: url(axibul1.gif);
+	list-image-2: url(axibul2.gif);
+	list-image-3: url(axibul3.gif);
+	navbutton-horiz-pushed: url(axihsel.gif);
+	navbutton-horiz-normal: url(axihbtn.gif);
+	navbutton-vert-pushed: url(axivsel.gif);
+	navbutton-vert-normal: url(axivbtn.gif);
+	navbutton-home-normal: url(axihom.gif);
+	navbutton-up-normal: url(axiup.gif);
+	navbutton-prev-normal: url(axibck.gif);
+	navbutton-next-normal: url(axinxt.gif);
+}
+.mstheme-bannertxt
+{
+	font-family: trebuchet ms, Arial, Helvetica;
+	font-size: 6;
+	font-weight: bold;
+	color: rgb(0,0,0);
+}
+.mstheme-horiz-navtxt
+{
+	font-family: Trebuchet MS, Arial, Helvetica;
+	font-size: 1;
+	color: rgb(0,0,0);
+}
+.mstheme-vert-navtxt
+{
+	font-family: Trebuchet MS, Arial, Helvetica;
+	font-size: 1;
+	color: rgb(0,0,0);
+}
+.mstheme-navtxthome
+{
+	font-family: trebuchet ms, Arial, Helvetica;
+	font-size: 1;
+	color: rgb(0,0,0);
+}
+.mstheme-navtxtup
+{
+	font-family: trebuchet ms, Arial, Helvetica;
+	font-size: 1;
+	color: rgb(0,0,0);
+}
+.mstheme-navtxtprev
+{
+	font-family: trebuchet ms, Arial, Helvetica;
+	font-size: 1;
+	color: rgb(0,0,0);
+}
+.mstheme-navtxtnext
+{
+	font-family: trebuchet ms, Arial, Helvetica;
+	font-size: 1;
+	color: rgb(0,0,0);
+}
+UL
+{
+	list-style-image: url(axibul1.gif);
+}
+UL UL
+{
+	list-style-image: url(axibul2.gif);
+}
+UL UL UL
+{
+	list-style-image: url(axibul3.gif);
+}

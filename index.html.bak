@@ -1,0 +1,654 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Joseph Chuang-Chieh Lin</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="verify-v1" content="yzZXVHtXCVXbtTBNejrVmcm8qaVMjsKQmVKrW/XJUXI=">
+<link type="text/css" rel="stylesheet" href="joseph.css">
+<link rel="shortcut icon" href="http://www.genomics.sinica.edu.tw/favicon.ico">
+<base target="_blank">
+</head>
+<body background="_themes/edge/bkgnd.gif">
+<a name="TOP"></a>
+&nbsp;
+<h1>
+Joseph Chuang-Chieh Lin
+</h1>
+<br>
+
+<!-- Short introduction -->
+
+<div class="intro">
+<table border="0" cellspacing="0">
+<tbody><tr>
+<td>
+Assistant Professor 
+<br>
+<br>
+<a href="http://www.csie.tku.edu.tw">
+Department of Computer Science and Information Engineering</a> 
+<br>
+<a href="http://www.tku.edu.tw">
+Tamkang University</a> 
+<br>
+Tamsui Dist., 
+<br>
+New Taipei City, Taiwan
+<br>
+<br>
+Tel: +886-2-2621-5656#3520<br>
+Fax: +886-2-2620-9749<br>
+Email: 
+<a href="mailto:158778@mail.tku.edu.tw">
+158778_AT_mail_tku_edu_tw 
+</a>&nbsp;
+<!-- 
+<a href="mailto:josephcclin@gmail.com">
+josephcclin AT_gmail_com
+</a>
+-->
+&nbsp;&nbsp;
+
+<!-- My advisors -->
+
+<!-- 
+<br>
+My dear dissertation supervisors: 
+<br>
+
+<a href="http://www.cs.ccu.edu.tw/~mschang">
+Professor Maw-Shang Chang
+</a> (Ph.D. dissertation supervisor),
+<br>
+
+<a href="http://tcs.rwth-aachen.de/~rossmani/">
+Professor Peter Rossmanith
+</a> (Ph.D. dissertation supervisor), 
+<br>
+
+<a href="http://www.csie.ncnu.edu.tw/~rctlee">
+Professor Richard Chia-Tung Lee
+</a> (Master thesis supervisor)
+<br>
+<br>
+My <a href="http://www.genealogy.math.ndsu.nodak.edu/id.php?id=156886">
+information page</a> at 
+<a href="http://www.genealogy.math.ndsu.nodak.edu">
+<img src="http://www.genealogy.math.ndsu.nodak.edu/img/treebutton.gif"
+width="30" height="25" alt="The Mathematics Genealogy Project">
+</a> 
+-->
+
+</td>
+
+<!-- Short introduction finished -->
+
+<td width="40%">
+
+<!-- Adding my personal photo here --> 
+
+<br>
+<div align="center">
+<a href="images/portrait_Xizhi.jpg">
+<img src="images/portrait_Xizhi.jpg" style="border:3px ridge #FFCC99" width="154" height="200" alt="Me">
+</a>
+<i>
+<br>
+<span style="font-size: 16px">Me @ Xizhi, New Taipei City, 2021.</span>
+</i>
+</div>
+</td>
+</tr>
+</table>
+</div>
+
+
+<!-- Begin index -->
+
+
+<div class="paragraph">
+<img border="0" src="images/index.gif" width="45" height="25" alt=""> 
+&nbsp;
+<span style="font-size: 22px; font-weight: bold; color: #800000">Index</span>
+<br>
+<br>
+<table style="margin-left: 32px"> 
+    
+    <tr>
+      <td class="index">
+      <a target="_self" style="font-weight: 500" href="#Background">
+      Background
+      </a>
+      </td>
+      
+      <td class="index">
+      <a target="_self" style="font-weight: 500" href="#Research">
+      Research
+      </a>
+      </td>
+      
+      <td class="index">
+      <a href="cv.pdf" style="font-weight: 500">
+      Curriculum Vitae
+      </a>
+      </td>
+      
+      <td class="index">
+      <a style="font-weight: 500" href="TF/index.htm">
+      Running
+      </a>
+      </td>
+    </tr>
+    
+    <tr>
+      <td class="index">
+      <a style="font-weight: 500" href="https://www.mathgenealogy.org/id.php?id=156886">
+      Mathe Genealogy
+      </a>
+      </td>
+      
+      <td class="index">
+      <a target="_self" style="font-weight: 500" href="#Teaching">
+      Teaching
+      </a>
+      </td>
+      
+      <td class="index">
+      <a target="_self" style="font-weight: 500" href="#Publications">
+      Publications
+      </a>
+      </td>
+      
+      <td class="index">
+      <a target="_self" href="#Interests" style="font-weight: 500">
+      Interest
+      </a>
+      </td>
+    </tr>
+</table> 
+</div>
+
+
+<hr size="5" width="92%" align="center">
+
+
+<!-- Begin background -->
+
+
+<div class="paragraph">
+<img border="0" src="images/work.svg" width="40" height="33" alt="">
+&nbsp;
+<span style="font-size: 22px; font-weight: bold; color: #800000">
+<a name="Background" style="color: #800000">Work Experience</a></span>
+<br>
+<br>
+
+<ul class="list1">
+	<li class="school">Assistant Professor at:&nbsp; <a href="http://www.seth-tech.com/">Dept. Comuter Science and Information Engineering</a>, 
+	<br>Tamkang University, <br>
+  	February 2021 &#8211; Present.
+  	</li> 
+	<li class="school">Quantitative Analyst at:&nbsp; <a href="http://www.seth-tech.com/">Seth Technologies Inc.</a>, <br>
+  	January 2020 &#8211; January 2021.
+  	</li> 
+	<li class="school">Quantitative Analyst (Intern) at:&nbsp; <a href="https://www.point72.com/cubist/">Point72/Cubist Systematic Strategies (Taipei)</a>, <br>
+  	March 2018 &#8211; December 2019.
+  	</li> 
+	<li class="school">Postdoctoral Research Fellow at:&nbsp; <a href="https://www.iis.sinica.edu.tw/en/index.html">Institute of Information Science</a>, 
+	<br>Academia Sinica, <br>
+  	September 2014 &#8211; February 2018.
+  	</li> 
+	<li class="school">Postdoctoral Research Fellow (Alternative Military Service) at:&nbsp; <a href="https://www.genomics.sinica.edu.tw/index.php">Genomics Research Center</a>, 
+	<br>Academia Sinica, <br>
+  	October 2011 &#8211; August 2014.
+  	</li> 
+</ul>
+</ul>
+</div>
+
+<div class="paragraph">
+<img border="0" src="images/education.gif" width="40" height="33" alt="">
+&nbsp;
+<span style="font-size: 22px; font-weight: bold; color: #800000">
+<a name="Background" style="color: #800000">Education Background</a></span>
+<br>
+<br>
+
+<ul class="list1">
+	<li class="school">Doctor of Philosophy:&nbsp; <a href="http://www.cs.ccu.edu.tw/">Computer Science and Information Engineering</a>, <br>
+  	<a href="http://www.ccu.edu.tw/">National Chung Cheng University</a>, <br>
+  	September 2004 &#8211; July 2011.
+  	</li> 
+  	<li class="school">Master of Science:&nbsp; <a href="http://www.csie.ncnu.edu.tw">Computer Science and Information Engineering</a>, <br> 
+  	<a href="http://www.ncnu.edu.tw">National Chi Nan University</a>, <br>
+  	September 2002 &#8211; June 2004. 
+	</li> 
+  	<li class="school">Bachelor of Science:&nbsp; <a href="http://www.math.ncku.edu.tw/">Mathematics</a>, <br>
+	<a href="http://www.ncku.edu.tw">National Cheng Kung University</a>, <br>
+	September 1998 &#8211; June 2002.
+    	</li>
+	<li class="school">Senior High School:<br>
+	<a href="http://www.tnfsh.tn.edu.tw/">National Tainan First Senior High School</a>, <br>
+	September 1995 &#8211; June 1998.
+	</li>
+	<li class="school">Junior High School:<br>
+	<a href="http://www.hhjh.tn.edu.tw/">Tainan Municipal Sinsing Junior High School</a>, <br>
+	September 1992 &#8211; June 1995.
+  	</li>
+	<li class="school">Elementary School:<br>
+	<a href="http://w3.sses.tn.edu.tw/">Tainan Municipal Sinsing Elementary School</a>, <br> 
+	September 1986 &#8211; June 1992.
+	</li>
+</ul>
+</div>
+
+<p align="right">
+<a href="#TOP" target="_self">
+<span style="color: #999900; font-size: 12px">- Back to top - </span>
+</a>
+</p>
+
+
+<hr size="5" width="92%" align="center">
+
+
+<!-- Begin "Research" -->
+
+
+<div class="paragraph">
+<img border="0" src="images/research.gif" width="49" height="31" alt="">
+&nbsp;
+<span style="font-size: 22px; font-weight: bold; color: #800000">
+<a name="Research" style="color: #800000">Research</a>
+</span>
+<br>
+<br>
+
+<ul class="list1">
+<li>&nbsp;
+<span style="font-size: 18px; color: #999999">Research interests</span>
+</li>
+</ul>
+
+<ul class="list2">
+	<li class="research">Game Theory</li>
+	<li class="research">Machine Learning</li>
+	<li class="research">Quantitative Finance</li>
+  	<li class="research"><a href="research/randalg.htm">Randomized Algorithms</a></li>
+	<li class="research">Fixed-Parameter Algorithms</li>
+  	<li class="research">Graph Theories &amp; Algorithms</li>
+	<li class="research">Bioinformatics</li>
+</ul>
+
+
+<ul class="list1">
+<li>&nbsp;
+<span style="font-size: 18px; color: #999999">Research Projects</span>
+</li>
+</ul>
+
+<ul class="list2">
+<li class="research"><b>A Study on Property Testing</b>. (DAAD-NSC Sandwich Project). Grant No. NSC 96-2911-I-194-008-2. September 2007 &#8211; August 2008. </li>
+<li class="research"><b>Game Theoretical Aspects in Modeling and Analyzing Party Election Campaign</b>. Grant No. MOST 110-2222-E-032-002-MY2. April 2021 &#8211; March 2023.</li>
+</ul>
+
+
+<ul class="list1">
+<li>&nbsp;
+<span style="font-size: 18px; color: #999999">Research resources</span>
+</li>
+</ul>
+
+ 
+<ul class="list2">
+    <!-- <li class="research"><a href="research/bioinformatics.htm">Bioinformatics Links</a></li> -->
+    <li class="research"><a href="research/journals.htm">Journals, Conferences, &amp; Literatures</a></li>
+<!--<li class="research"><a href="http://garden.irmacs.sfu.ca/">Open Problem Garden</a></li>-->
+    <!--<li class="research"><a href="http://www.isinet.com/cgi-bin/jrnlst/jloptions.cgi?PC=K">Science Citation Index (SCI)</a></li>
+    <li class="research"><a href="http://www.isinet.com/cgi-bin/jrnlst/jloptions.cgi?PC=D">Science Citation Index Expanded (SCI Expanded)</a></li>
+	<li class="research"><a href="http://admin-apps.isiknowledge.com/JCR/JCR?RQ=HOME">Journal Citation Report (ISI Web of Knowledge)</a></li>
+	<li class="research"><a href="http://dblp.l3s.de/?q=&amp;newQuery=yes&amp;resTableName=query_resultxoYpgP">Faceted DBLP (Searching the Digital Bibliography &amp; Library Project)</a></li> -->
+    <!-- <li class="research"><a href="http://alg.csie.ncnu.edu.tw/">NCNU Biocomputing and Algorithm Laboratory</a></li> -->
+    <!-- <li class="research"><a href="http://ufo.cs.ccu.edu.tw/">CCU Computation Theory Laboratory</a></li> -->
+    <li class="research"><a href="Notes/index.htm">Personal Research Notes</a></li>
+	<!-- <li class="research"><a href="Notes/journal-ranks.pdf">Ranks of Interested Journals (according to CSIE, CCU)</a></li> -->
+</ul>
+
+
+<!--
+
+<ul class="list1">
+<li>&nbsp;
+<span style="font-size: 18px; color: #999999">Professional services</span>
+</li>
+</ul>
+
+<ul class="list2">
+	<li class="research">Reviewer for <i>International Computer Symposium</i> (ICS 2016).</li>   
+	<li class="research">Reviewer for <i>Information and Computation</i>, 2013.</li>   
+	<li class="research">Reviewer for <i>Annual International Computing and Combinatorics Conference</i> (COCOON 2012).</li>
+	<li class="research">Reviewer for <i>Information Processing Letters</i>, 2011.</li>	  
+</ul>
+-->
+
+<ul class="list1">
+<li>&nbsp;
+<span style="font-size: 18px; color: #999999">Scholarship &amp; awards</span>
+</li>
+</ul>   
+
+<ul class="list2">
+<li class="research">Scholarship Holder of <i>DAAD-NSC Sandwich Program</i>, September 2007 &#8211; August 2008.
+</li>
+</ul> 
+
+<ul class="list1">
+<li>&nbsp;
+<span style="font-size: 18px; color: #999999">Invited Talks</span>
+</li>
+</ul>   
+
+<ul class="list2">
+<li class="research">Topic: <b>How Good Is A Two-Party Election Game?</b>.<br>
+<a href="http://www.ie.nthu.edu.tw/p/404-1310-208720.php?Lang=en">2021 Summer School on Operations Research and Applications (Online).</a><br> 
+Time: 19th August 2021.
+</li>
+<li class="research">Topic: <b>How Good Is A Two-Party Election Game?</b>.<br>
+Institute: Institute of Information and Decision Sciences, National Taipei University of Business (Online).<br> 
+Time: 17th June 2021.
+</li>
+<li class="research">Topic: <b>Network Creation Games: Foundations and Ongoing Work</b>.<br>
+Institute: Institute of Information Management, National Yang Ming Chiao Tung University.<br> 
+Time: 7th December 2015.
+</li>
+</ul> 
+
+
+<ul class="list1">
+<li>&nbsp;
+<span style="font-size: 18px">
+<a name="Publications" style="color: #999999; font-weight: 100">Publications</a></span>
+</li>
+</ul>
+
+<div style="color: #808000; font-weight: bold; margin-left: 50px; margin-top: 32px">
+[Journal papers]
+</div>
+
+<ul class="list-paper">
+<li class="paper"><u>Chuang-Chieh Lin</u>, Chi-Jen Lu, and Po-An Chen:<br>
+<b>How good is a two-party election game?</b>
+<br> 
+<i>Theoretical Computer Science</i> <b>871</b> (2021) 79&#8211;93. 
+<a href="http://dx.doi.org/10.1016/j.tcs.2021.04.013">[DOI]</a>
+</li>
+<li class="paper">Trees-Juen Chuang, Min-Yu Yang, <u>Chuang-Chieh Lin</u>, Ping-Hung Hsieh, and Li-Yuan Hung:<br>
+<b>Comparative genomics of grass EST libraries reveals previously uncharacterized splicing events in crop plants.</b>
+<br>
+<i>BMC Plant Biology</i> <b>15</b>:39 (2015). <a href="http://dx.doi.org/10.1186/s12870-015-0431-7">[DOI]</a> 
+</li>
+<li class="paper">Maw-Shang Chang, <u>Chuang-Chieh Lin</u>, and Peter Rossmanith:<br>
+<b>Testing consistency of quartet topologies: a parameterized approach.</b>
+<br>
+<i>Information Processing Letters</i> <b>113</b> (2013) 852&#8211;857. 
+<a href="http://dx.doi.org/10.1016/j.ipl.2013.08.006">[DOI]</a>
+</li>
+<li class="paper">Maw-Shang Chang, <u>Chuang-Chieh Lin</u>, and Peter Rossmanith:<br>
+<b>A property tester for tree-likeness of quartet topologies.</b> 
+<br>
+<i>Theory of Computing Systems</i> <b>49</b> (2011) 576&#8211;587. 
+<a href="http://dx.doi.org/10.1007/s00224-010-9276-5">[DOI]</a>
+</li>
+<li class="paper">Maw-Shang Chang, Hsiao-Han Chung, and <u>Chuang-Chieh Lin</u>:<br>
+<b>An improved algorithm for the red-blue hitting set problem with the consecutive ones property.</b> 
+<br>
+<i>Information Processing Letters</i> <b>110</b> (2010) 845&#8211;848.
+<a href="http://dx.doi.org/10.1016/j.ipl.2010.07.010">[DOI]</a>
+</li>
+<li class="paper">Maw-Shang Chang, <u>Chuang-Chieh Lin</u>, and Peter Rossmanith:<br>
+<b>New fixed-parameter algorithms for the minimum quartet inconsistency problem.</b>
+<br>
+<i>Theory of Computing Systems</i> <b>47</b> (2010) 342&#8211;367. 
+<a href="http://dx.doi.org/10.1007/s00224-009-9165-y">[DOI]</a>
+</li>
+</ul>
+
+
+<div style="color: #808000; font-weight: bold; margin-left: 50px">
+[International conference papers and posters]
+</div>
+
+
+<ul class="list-paper">
+	<li class="paper"><u>Chuang-Chieh Lin</u>, Chi-Jen Lu, Po-An Chen:<br>
+<b>How good is a two-party election game?</b> 
+<br>
+<a href="https://ec20.sigecom.org/program/posters/">EC'20 Main Poster Session</a> (S3W3).
+</li>
+
+<li class="paper"><u>Chuang-Chieh Lin</u> and Chi-Jen Lu:<br>
+<b>Efficient mechanisms for peer grading and dueling bandits.</b>
+<br>
+<i>Proceedings of the 10th Asian Conference on Machine Learning</i>
+(<a href="http://www.acml-conf.org/2018/">ACML 2018</a>, Beijing, China; 14&#8211;16 November),
+<br>
+Proceedings of Machine Learning Research (PMLR), Vol. 95, pp. 740&#8211;755. <a href="http://proceedings.mlr.press/v95/lin18a.html">[abstract]</a>
+</li>
+<li class="paper">Maw-Shang Chang, <u>Chuang-Chieh Lin</u>, and Peter Rossmanith:<br>
+<b>Testing consistency of quartet topologies: a parameterized approach.</b>
+<br>
+Program of <i>the International Conference on Computing and Security</i> 
+(ICCS 2012, Ulaanbaatar, Mongolia, 9&#8211;12, July).
+</li>
+<li class="paper">Maw-Shang Chang, <u>Chuang-Chieh Lin</u>, and Peter Rossmanith:<br>
+<b>New fixed-parameter algorithms for the minimum quartet inconsistency problem.</b>
+<br>
+<i>Proceedings of the 3rd International Workshop on Exact and Parameterized Computation</i>
+(<a href="http://www.informatik.uni-trier.de/~ley/db/conf/iwpec/iwpec2008.html">IWPEC 2008</a>, Victoria B.C., Canada; 14&#8211;16 May),
+<br>
+Lecture Notes in Computer Science, Vol. 5018, Springer-Verlag, pp. 66&#8211;77.
+<a href="paper/Slides-FMQI.pdf">[slides]</a>
+<a href="http://dx.doi.org/10.1007/978-3-540-79723-4_8">[DOI]</a>
+</li>
+</ul>
+
+
+<div style="color: #808000; font-weight: bold; margin-left: 50px">
+[Domestic conference papers]
+</div>
+
+
+<ul class="list-paper">
+<li class="paper"><u>Chuang-Chieh Lin</u>:<br>
+<b>Testing tree-consistency with <i>k</i> missing quartets.</b>
+<br>
+<i>Proceedings of the 28th Workshop on Combinatorial Mathematics and Computation Theory</i>
+(Penghu, Taiwan,  27&#8211;28 May, 2011), pp. 280&#8211;285.
+</li>
+<li class="paper">Maw-Shang Chang, Hsiao-Han Chung, and <u>Chuang-Chieh Lin</u>:<br>
+<b>An improved algorithm for the red-blue hitting set problem with the consecutive ones property.</b>
+<br>
+<i>Proceedings of the 26th Workshop on Combinatorial Mathematics and Computation Theory</i>
+(Chiayi, Taiwan,  24&#8211;25 April, 2009), pp. 15&#8211;20. <br>
+Best Paper Award.
+</li>
+</ul>
+
+<!--
+<div style="color: #808000; font-weight: bold; margin-left: 50px">
+[Paper in-preparation]
+</div>
+
+<ul class="list-paper">
+<li class="paper"><u>Chuang-Chieh Lin, Chi-Jen Lu, Po-An Chen</u>: <br>
+<b>How good is a two-party election game?</b> 
+<br>
+Submitted on 16 Jan 2020. 
+<a href="https://arxiv.org/abs/2001.05692">[arXiv]</a>
+<br>
+To appear in EC'20 Posters.
+</li>
+</ul>
+-->
+
+
+<div style="color: #808000; font-weight: bold; margin-left: 50px; margin-top: 32px">
+[Dissertation]
+</div>
+<ul class="list-paper">
+<li class="paper"><u>Chuang-Chieh Lin</u>: <br>
+<b>A Study on Fixed-Parameter Algorithms and Property Testing.</b> 
+<br>
+Ph.D. Dissertation. Department of Computer Science and Information Engineering, 
+National Chung Cheng University, Taiwan, 2011. 
+</li>
+</ul>
+</div>
+
+<p align="right">
+<a href="#TOP" target="_self">
+<font color="#999900" size="2">- Back to top - </font></a>
+</p>
+
+
+<hr size="5" width="92%" align="center">
+
+
+<!-- Begin "Teaching"-->
+
+
+<div class="paragraph">
+<img border="0" src="images/TA.gif" width="32" height="31" alt="">
+&nbsp;
+<span style="font-size: 22px; font-weight: bold; color: #800000">
+<a name="Teaching" style="color: #800000">Teaching courses</a>
+</span>
+
+<div style="color: #808000; font-weight: bold; margin-left: 50px; margin-top: 32px">
+[In 2020&#8211;2021]
+</div>
+
+<ul class="list1">
+<li class="course"><u>Linear Algebra</u>, 
+given in the Dept. Comuter Science and Information Engineering (undergraduate students), 
+Tamkang University (Spring 2021).
+</li>
+<li class="course"><u>Randomized Algorithms</u>, 
+given in the Dept. Comuter Science and Information Engineering (master students), 
+Tamkang University (Spring 2021).
+</li>
+<li class="course"><u>Big Data Analytic Techniques</u>, 
+given in the Dept. Comuter Science and Information Engineering (master students), 
+Tamkang University (Spring 2021).
+</li>
+<li class="course"><u>Research Methodology</u>, 
+given in the Dept. Comuter Science and Information Engineering (master students), 
+Tamkang University (Spring 2021).
+</li>
+<li class="course"><u>The Theory and Practical Applications of Data Science</u>, 
+given in the Dept. Comuter Science and Information Engineering (master students), 
+Tamkang University (Fall 2021).
+</li>
+<li class="course"><u>Algorithmic Game Theory</u>, 
+given in the Dept. Comuter Science and Information Engineering (master students), 
+Tamkang University (Fall 2021).
+</li>
+<li class="course"><u>Computer Programming Language</u>, 
+given in the Dept. Comuter Science and Information Engineering (undergraduate students), 
+Tamkang University (Fall 2021).
+</li>
+</ul>
+
+<div style="color: #808000; font-weight: bold; margin-left: 50px; margin-top: 32px">
+[In 2010&#8211;2011]
+</div>
+
+<ul class="list1">
+<li class="course"><u>Introduction to Information Security</u>, 
+given in the Center of General Education, National Chung Cheng University (Fall 2010 &amp; Spring 2011).
+</li>
+</ul>
+
+<br>
+
+<div style="color: #808000; font-weight: bold; margin-left: 50px">
+[In 2006&#8211;2007]
+</div>
+
+<ul class="list1">
+<li class="course"><a href="courses/discrete-math.htm" style="text-decoration: underline">
+Discrete Mathematics</a>, given in Department of Management Information System, 
+National Chung Cheng University (Spring 2007).
+</li>
+<li class="course"><u>Introduction to Computers</u>, 
+given in Department of Finance, National Chung Cheng University (Fall 2006).
+</li>
+</ul>
+
+<p align="right">
+<a href="#TOP" target="_self">
+<span style="color: #999900; font-size: 12px">- Back to top - </span>
+</a>
+</p>
+</div>
+
+<hr size="5" width="92%" align="center">
+
+
+<!-- Begin "Interests" -->
+
+
+<div class="paragraph">
+<img border="0" src="images/interest.gif" width="45" height="28" alt="">
+&nbsp;
+<span style="font-size: 22px; font-weight: bold; color: #800000">
+<a name="Interests" style="color: #800000">Interests</a>
+</span>
+<br>
+
+<ul class="list1">
+    <!-- <li class="hobby">Writing in my <a href="http://ccucclin.blogspot.com">blog</a></li> -->
+	<li class="hobby"><a href="TF/index.htm">Running</a></li>
+	<li class="hobby">Studying and reading</li>
+	<li class="hobby"><a href="programming.htm">Programming</a></li>
+	<!-- <li class="hobby"><a href="http://picasaweb.google.com/JosephCCLin">My photo album</a></li> -->
+	
+    <li class="hobby">Swimming</li>
+    <li class="hobby">Table tennis</li>
+    <li class="hobby">Basketball</li>
+    <li class="hobby">Traveling</li>
+    <li class="hobby">Seeing movies</li>
+    <li class="hobby">Music (R&amp;B, Soul)</li>
+    <!--<li class="hobby">My wife's blog: <a href="http://maggiedonut.pixnet.net/blog"> (Maggie Kuo) </a></li>-->
+    <!--<li class="hobby">Christianity<a href="http://mychinesebible.com/"> (Online English Bible)</a></li>-->
+</ul>
+
+
+<p align="right">
+<a href="#TOP" target="_self">
+<span style="color: #999900; font-size: 12px">- Back to top - </span>
+</a>
+</p>
+</div>
+
+
+<hr size="5" width="92%" align="center">
+
+<div class="paragraph">
+<p>
+<a href="http://tinyurl.com/le8ncbh">
+<img src="http://www.w3.org/Icons/valid-html401-blue" alt="Valid HTML 4.01 Transitional" height="31" width="88"></a>
+<a href="http://tinyurl.com/od8gtgw">
+<img style="border:0;width:88px;height:31px"
+src="http://jigsaw.w3.org/css-validator/images/vcss"
+alt="Valid CSS!"></a>
+</p>
+Latest updated on 18th August 2021.
+</div>
+
+<p style="text-align: center; font-size:12px; color: #669999; ">
+<!-- Copyright -->&#169; 2004 Joseph Chuang-Chieh Lin <!--, CSIE National Chung Cheng University, ALL RIGHTS RESERVED -->
+</p>
+<br>
+</body>                                                                                                        
+</html>

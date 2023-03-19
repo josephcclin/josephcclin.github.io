@@ -1,0 +1,1087 @@
+\documentclass[xcolor=dvipsnames,envcountsect]{beamer}
+%\documentclass[xcolor=dvipsnames]{beamer}
+\usecolortheme[named=MidnightBlue]{structure}
+%\usecolortheme{seahorse}
+%\usetheme[height=8mm]{Rochester}
+\usetheme{Madrid}
+\useoutertheme{smoothtree} 
+\setbeamertemplate{bibliography item}[text]
+%\setbeamertemplate{navigation symbols}{} 
+\setbeamertemplate{theorems}[numbered]
+%\usepackage{beamerthemeshadow}
+%\setbeamertemplate{footline}[frame number]{}
+\setbeamertemplate{blocks}[rounded][shadow=true] 
+%\def\urltilde{\kern -.15em\lower .7ex\hbox{\~{}}\kern .04em}
+%\pgfdeclareimage[height=0.9cm]{institution-logo}{aslogo_w} 
+%\logo{\pgfuseimage{institution-logo}}
+%"ccu-logo" can be substituted by "ccu-tcs-logo"
+\usepackage{amsmath,bm}
+\usepackage{latexsym}
+\usepackage{amssymb,bm}
+\usepackage{graphicx}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{boxedminipage}
+\usepackage{mathrsfs}
+\usepackage{hyperref}
+\usepackage{comment}
+\usepackage{marvosym}
+\newtheorem{claim}{Claim}
+\newtheorem*{question}{Question}
+\newtheorem*{observation}{Observation}
+\newtheorem*{theory}{Theorem}
+\newtheorem*{Euler}{Euler's formula}
+\newtheorem*{prop}{Proposition}
+\newtheorem*{property}{Property} 
+\newtheorem*{defn}{Definition}
+\newtheorem*{lemm}{Lemma}
+\newtheorem*{conj}{Conjecture}
+%\newcommand{\dotcup}{\ensuremath{\mathaccent\cdot\cup}}
+\renewcommand{\figurename}{\textbf{Fig.}}
+
+
+\title[Two Party Election Game]{How Good is a Two-Party Election Game?}
+\author[Lin, Lu, Chen]{
+Speaker: Chuang-Chieh Lin\vspace{9pt}\\
+Joint work with \vspace{9pt}\\
+Chi-Jen Lu and Po-An Chen
+} 
+
+\institute[TKU, IIS AS, NCYU]{
+}
+\date[17 Jun 2021]{
+{\footnotesize Invited Talk in National Taipei University of Business}\vspace{7pt}\\
+{\small 17th June 2021}}
+
+
+\begin{document}
+\maketitle
+%\beamertemplatetransparentcovereddynamic
+
+\begin{frame}
+\vspace{12pt}
+\begin{figure}
+	\begin{center}
+		\includegraphics[scale=0.45]{eps/authors.eps}
+	\end{center}
+\end{figure}	
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Outline}
+\tableofcontents%[pausesections]
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction and Motivations}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{frame}
+\frametitle{Outline}
+\tableofcontents[currentsection,currentsubsection]
+\end{frame}
+
+
+\begin{frame}
+\frametitle{The Inspiration}
+\begin{figure}
+	\begin{center}
+		\includegraphics[scale=0.23]{eps/Lincoln.eps}
+	\end{center}
+\end{figure}
+\begin{quotation}
+\noindent {\small ``[\ldots] and that government of the people, by the people, for the people, shall not perish from the earth." \\
+	\hfill--- Abraham Lincoln, 1863.}
+\end{quotation}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Motivations (I): Why The Two-Party System?}
+\vspace{-6pt}
+\begin{figure}
+	\begin{center}
+		\includegraphics[scale=0.30]{eps/Duverger.eps}
+	\end{center}
+\end{figure}
+\begin{quotation}
+\noindent {\small ``The simple-majority single-ballot system favours the two-party system."
+\hfill--- Maurice Duverger, 1964.}
+\end{quotation}
+\end{frame}
+
+
+\begin{frame}{Motivations (II): Social Choice Rules}
+\quad Example: 
+\begin{itemize}
+	\item Each voter provides an ordinal ranking of the candidates, 
+	\item Aggregate these rankings to produce either a single winner or a consensus ranking of all (or some) candidates. 
+\end{itemize}
+\pause
+	\begin{block}{Gibbard--Satterthwaite Theorem (1973)}
+	Given a deterministic electoral system that choose a single winner. For every voting rule, one of the following three things must hold:
+	\begin{itemize}
+		\item The rule is dictatorial. 
+		\item The rule limits the possible outcomes to two alternatives only. 
+		\item The rule is susceptible to tactical voting. 
+	\end{itemize}
+	\end{block}
+\end{frame}
+
+
+\begin{frame}{Motivations (III): Distortion of Social Choice Rules}
+\begin{figure}
+	\begin{center}
+		\includegraphics[scale=0.33]{eps/OfThePeopleDistortion_01.eps}
+	\end{center}
+\end{figure}
+\pause
+\begin{itemize}
+	\item The average distance from the population to candidate L: $\approx 0.5$.  
+	\vspace{3pt}
+	\item The average distance from the population to candidate R: $\approx 1.5$. 
+	\vspace{3pt}
+	\item But R will be elected as the winner in the election. 
+\end{itemize}    
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Issues of Previous Studies}
+\begin{itemize}
+    \item Voters' behavior on a \textcolor{OliveGreen}{micro-level}. 
+    \begin{itemize}
+        \item Voters are strategic; 
+        \item Voters have different preferences for the candidates.
+        \item Various election rules result in different winner(s).
+        \pause
+        \item [] $\vdots$
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Our Focus}
+\begin{itemize}
+    \item We consider an intuitive \textcolor{blue}{macro} perspective instead. 
+    \begin{itemize}
+        \item Parties are players; 
+        \item The strategies can be their nominated candidates (or policies); 
+        \pause
+        \item The point is: \pause 
+            \begin{itemize}
+                \item Who is \alert{more likely to win} the election campaign and \alert{how likely} is it?
+                \pause
+                \item Is the game \alert{stable} in some sense?
+                \pause
+                \item What's the \alert{price for stability} which resembles ``the distortion"?
+            \end{itemize}
+    \end{itemize}
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+\begin{figure}
+	\begin{center}
+		\includegraphics<1>[scale=0.45]{eps/2party_candidates.eps}
+		\includegraphics<2>[scale=0.45]{eps/2party_social_utilities.eps}
+	\end{center}
+\end{figure}
+\end{frame}
+
+
+\iffalse
+\begin{frame}
+\begin{figure}
+	\begin{center}
+		\includegraphics<2>[scale=0.45]{eps/2party_social_utilities.eps}
+	\end{center}
+\end{figure}
+\end{frame}
+\fi
+
+
+\begin{frame}
+\begin{figure}
+	\begin{center}
+		\includegraphics<1>[scale=0.45]{eps/2party_social_utilities_deviate12.eps}
+		\includegraphics<2>[scale=0.45]{eps/2party_social_utilities_deviate22.eps}
+		\includegraphics<3>[scale=0.45]{eps/2party_social_utilities_deviate21.eps}
+		\includegraphics<4>[scale=0.45]{eps/2party_social_utilities_deviate11.eps}
+	\end{center}
+\end{figure}
+\end{frame}
+
+
+\iffalse
+\begin{frame}
+\begin{figure}
+	\begin{center}
+		\includegraphics[scale=0.45]{eps/2party_social_utilities_deviate22.eps}
+	\end{center}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}
+\begin{figure}
+	\begin{center}
+		\includegraphics[scale=0.45]{eps/2party_social_utilities_deviate21.eps}
+	\end{center}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}
+\begin{figure}
+	\begin{center}
+		\includegraphics[scale=0.45]{eps/2party_social_utilities_deviate11.eps}
+	\end{center}
+\end{figure}
+\end{frame}
+\fi
+
+
+\begin{frame}{Concept of Stability: Pure Nash Equilibrium}
+\begin{itemize}
+	\item Each party's strategy: candidate nomination.
+	\item \alert{Pure Nash equilibrium (PNE)}: Neither party $A$ nor $B$ wants to deviate (i.e., change) from their strategy (i.e., nomination) unilaterally.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+	\quad {\small An instance with a PNE.}
+	\begin{figure}
+		\begin{center}
+			\includegraphics[scale=0.37]{eps/2party_deviation_NE_01.eps}
+		\end{center}
+	\end{figure}
+\end{frame}
+
+
+\begin{frame}
+	\quad {\small An instance with a PNE (expected social utility: $8.55$).}
+	\begin{figure}
+		\begin{center}
+			\includegraphics[scale=0.37]{eps/2party_deviation_NE_02.eps}
+		\end{center}
+	\end{figure}
+\end{frame}
+
+
+\begin{frame}{A Kind of Inefficiency Measure: The Price of Anarchy}
+	\quad {\small An instance with a PNE (expected social utility: $8.55$, optimum: $9$).}
+	\begin{figure}
+		\begin{center}
+			\includegraphics[scale=0.37]{eps/2party_deviation_NE_03.eps}
+		\end{center}
+	\end{figure}
+\vspace{-7pt}
+\begin{itemize}
+	\begin{small}
+	\item The \alert{price of anarchy (POA)}: $\frac{9}{8.55} \approx 1.05$. 
+	\end{small}
+\end{itemize}
+\end{frame}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{The Formal Setting}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{frame}
+\frametitle{Outline}
+\tableofcontents[currentsection,currentsubsection]
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Two-Party Election Game: Formal Setting}
+\begin{itemize}
+\item Party $A$: $m$ candidates $A_1,A_2,\ldots,A_m$. \\Party $B$: $n$ candidates $B_1,B_2,\ldots,B_n$.
+\vspace{8pt}
+\item $A_i$: brings utility $u(A_i) = u_A(A_i) + u_B(A_i) \in [0,b]$, \\$B_j$: brings utility $u(B_j) = u_A(B_j) + u_B(B_j) \in [0,b]$, for some $b\geq 1$. 
+	\begin{itemize}
+		\item $u_A(A_1)\geq u_A(A_2)\geq \ldots \geq u_A(A_m)$,  $u_B(B_1)\geq u_B(B_2)\geq \ldots \geq u_B(B_n)$
+	\end{itemize}
+\vspace{5pt}
+\item $p_{i,j}$: $\Pr[A_i \mbox{ wins over } B_j]$. 
+\vspace{5pt}
+\item Expected utilities:
+\vspace{-7pt}
+\begin{eqnarray*}
+	a_{i,j} &=& p_{i,j}u_A(A_i) + (1-p_{i,j})u_A(B_j)\\
+	b_{i,j} &=& (1-p_{i,j})u_B(B_j) + p_{i,j}u_B(A_i).
+\end{eqnarray*} 
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Egoism (Selfishness)}
+	\begin{figure}
+		\begin{center}
+			\includegraphics[scale=0.45]{eps/2party_egoism.eps}
+		\end{center}
+	\end{figure}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Two-Party Election Game: Formal Setting (contd.)}
+	\begin{itemize}
+		\item Party $A$: $m$ candidates $A_1,A_2,\ldots,A_m$. \\Party $B$: $n$ candidates $B_1,B_2,\ldots,B_n$.
+		\vspace{8pt}
+		\item $A_i$: brings utility $u(A_i) = u_A(A_i) + u_B(A_i) \in [0,b]$,  \\$B_j$: brings utility $u(B_j) = u_A(B_j) + u_B(B_j) \in [0,b]$, for some $b\geq 1$. 
+		\begin{itemize}
+			\item $u_A(A_1)\geq u_A(A_2)\geq \ldots \geq u_A(A_m)$,  $u_B(B_1)\geq u_B(B_2)\geq \ldots \geq u_B(B_n)$
+		\end{itemize}
+		\vspace{5pt}
+		\item $p_{i,j}$: $\Pr[A_i \mbox{ wins over } B_j]$. 
+		\vspace{5pt}
+		\item Expected utilities:
+		\vspace{-7pt}
+		\begin{eqnarray*}
+			a_{i,j} &=& p_{i,j}u_A(A_i) + (1-p_{i,j})u_A(B_j)\\
+			b_{i,j} &=& (1-p_{i,j})u_B(B_j) + p_{i,j}u_B(A_i).
+		\end{eqnarray*} 
+		\item \structure{egoistic}: $u_A(A_i)> u_A(B_j)$ and $u_B(B_j)> u_B(A_i)$ for all $i\in [m], j\in [n]$.
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Two-Party Election Game: Formal Setting (contd.)}
+	\begin{itemize}
+		\item Three models on $p_{i,j}$: 
+		\vspace{5pt}
+		\begin{itemize}
+			\item \alert{Bradley-Terry (Na\"{i}ve)}: $p_{i,j} := u(A_i)/(u(A_i) + u(B_j))$
+			\begin{itemize}
+				\item \textcolor{blue}{Linear} dependency on the two social utilities.
+				\item Intuitive. 
+			\end{itemize}
+			\vspace{3pt}
+			\item \alert{Linear link}: $p_{i,j} := (1 + (u(A_i) - u(B_j))/b)/2$.
+			\begin{itemize}
+				\item \textcolor{blue}{Linear} on the  \textcolor{blue}{difference} between the two social utilities.
+				\item Dueling bandit setting.
+			\end{itemize}
+			\vspace{3pt}
+			\item \alert{Softmax}: $p_{i,j} := e^{u(A_i)/b}/(e^{u(A_i)/b} + e^{u(B_j)/b})$
+			\begin{itemize}
+				\item Bivariate \textcolor{blue}{nonlinear} rational function of the two social utilities. 
+				\item Extensively used in machine learning. 
+			\end{itemize}
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}
+	\frametitle{Two-Party Election Game: Formal Setting (contd.)}
+	\begin{itemize}
+		\item The \structure{social welfare} of state $(i,j)$: 
+		\begin{itemize}
+			\item [] $SU_{i,j} = a_{i,j} + b_{i,j}$.
+		\end{itemize}
+		\vspace{6pt}
+		\item $(i,j)$ is a \structure{PNE} if $a_{i',j}\leq a_{i,j}$ for any $i'\neq i$ 
+		and $b_{i,j'} \leq b_{i,j}$ for any $j'\neq j$.
+		\pause
+		\vspace{6pt}
+		\item The \structure{PoA} of the game: 
+			\[
+			\frac{SU_{i^*,j^*}}{SU_{\hat{i},\hat{j}}} = 
+			\frac{a_{i^*,j^*} + b_{i^*,j^*}}{a_{\hat{i},\hat{j}}+b_{\hat{i},\hat{j}}},
+			\]
+		\begin{itemize}
+			\item $(i^*,j^*) = \arg\max_{(i,j)\in [m]\times [n]}(a_{i,j}+b_{i,j})$: {\bf the optimal state}.
+			\item $(\hat{i},\hat{j}) = \arg\min_{(i,j)\in [m]\times [n]\atop (i,j)\mbox{\scriptsize \;is a PNE}}(a_{i,j}+b_{i,j})$: the PNE with {\bf the worst} social welfare.
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{The First Equilibrium Existence Results}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{frame}
+	\frametitle{Outline}
+	\tableofcontents[currentsection,currentsubsection]
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Preliminary Inspections for the PNE}
+\quad Focus on $m=n=2$ first.
+\vspace{8pt}
+	\begin{itemize}
+		\item First try: by human brains and human eyes. 
+		\pause
+		\begin{itemize}
+			\item Difficult. \Frowny
+		\end{itemize}
+		\vspace{7pt}
+		\pause
+		\item Random sampling: \Smiley
+		\begin{itemize}
+			\item Sampling the values of~$u_A(A_i), u_B(A_i), u_A(B_j), u_B(B_j)$ for each $i, j$ and the constant $b$ for hundreds of millions times.
+			\item Experiments for the three winning probability models.
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Example: No PNE in the Bradley-Terry Model}
+	\quad $m = n = 2$, $b=100$ (left: egoistic, right: non-egoistic).
+	\begin{footnotesize}
+	\begin{table}[ht]
+		\begin{center}
+			\begin{tabular}[c]{ l l | l l }
+				%\centering
+				\multicolumn{4}{ c }{}\\
+				$A$ & \multicolumn{1}{c}{}& $B$ & \\
+				\hline
+				$u_A(A_i)$ & $u_B(A_i)$ & $u_B(B_j)$ & $u_A(B_j)$\\
+				\hline
+				91  &  0  &  11  &  1\\
+				90  &  8  &  10  &  20\\
+				\hline
+			\end{tabular} \;\;\;\;
+			\begin{tabular}[c]{ l l | l l }
+				%\centering
+				\multicolumn{4}{ c }{}\\
+				$A$ & \multicolumn{1}{c}{}& $B$ & \\
+				\hline
+				$u_A(A_i)$ & $u_B(A_i)$ & $u_B(B_j)$ & $u_A(B_j)$\\
+				\hline
+				44  &  10  &  37  &  17\\
+				39  &  55  &  10  &  5\\
+				\hline
+			\end{tabular}
+			\vspace{7pt}\\
+			\begin{tabular}[c]{  l | l | l }
+				%\multicolumn{2}{c}{} \vspace{7pt}\\
+				\centering
+				% & \\
+				%\hline
+				&$B_1$  &  $B_2$\\
+				\hline
+				$A_1$&80.51, 1.28  &  73.84, 2.17\\
+				\hline
+				$A_2$&80.29, 8.32  &  74.02, 8.23\\
+				%\hline
+			\end{tabular}
+			\;\;
+			\begin{tabular}[c]{  l | l | l }
+				%\multicolumn{2}{c}{} \vspace{7pt}\\
+				\centering
+				% & \\
+				%\hline
+				&$B_1$  &  $B_2$\\
+				\hline
+				$A_1$&30.50, 23.50  &  35.52, 10.00\\
+				\hline
+				$A_2$&30.97, 48.43  &  34.32, 48.81\\
+				%\hline
+			\end{tabular}
+		\end{center}
+	\end{table}
+	\end{footnotesize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{\large Example: No PNE in the Linear-Link Model (Non-Egoism)}
+\quad $m = n = 2$, $b=100$.
+\begin{table}[ht]
+	\begin{small}
+	\begin{center}
+		\begin{tabular}[c]{ l l | l l }
+			%\centering
+			\multicolumn{4}{ c }{}\\
+			$A$ & \multicolumn{1}{c}{}& $B$ & \\
+			\hline
+			$u_A(A_i)$ & $u_B(A_i)$ & $u_B(B_j)$ & $u_A(B_j)$\\
+			\hline
+			50  &  10  &  10  &  90\\
+			5   &  20  &  5   &  20\\
+			\hline
+		\end{tabular}
+		\vspace{7pt}\\
+		\begin{tabular}[c]{ l | l l | l l }
+			%\multicolumn{2}{c}{} \vspace{7pt}\\
+			\centering
+			% & \\
+			%\hline
+			&$B_1$&&$B_2$\\
+			\hline
+			$A_1$&78, & 10  &  40.25, & 8.375\\
+			\hline
+			$A_2$&79.375, & 11.25  &  12.5, & 12.5\\
+			%\hline
+		\end{tabular}
+	\end{center}
+	\end{small}
+\end{table}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Non-Egoistic Games Seem to Be Bad \Frowny}
+	\begin{itemize}
+		\item [$\star$] In our experiments, {\bf EVERY} \alert{egoistic} game instance in the \alert{linear-link/softmax} model has a PNE! 
+		\vspace{8pt}
+		\pause
+		\item The following discussions on equilibrium existence consider only egoistic games. 
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{The Dominating-Strategy Equilibrium}
+	\begin{lemm}[The Dominating-Strategy Equilibrium]
+		\begin{itemize}
+		\item If $u(A_1) > u(A_i)$ for each $i\in [n]\setminus\{1\}$, then $(1,j^{\#})$ is a PNE for $j^{\#} = \arg\max_{j\in [m]} b_{1,j}$. 
+		\item If $u(B_1) > u(B_j)$ for each $j\in [m]\setminus \{1\}$, then $(i^{\#}, 1)$ is a PNE for $i^{\#} = \arg\max_{i\in [n]} a_{i,1}$. 
+		\end{itemize}
+	\end{lemm}
+	\pause
+\begin{itemize}
+	\item Hence, the puzzles come from the other cases...
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{No PNE $\Leftrightarrow$ Cycles of Deviations}
+\begin{figure}
+	\begin{center}
+		\includegraphics[scale=0.40]{eps/deviation_NoPNE.eps}
+	\end{center}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Deviations $\rightarrow$ Inequalities}
+\begin{columns}
+\begin{column}[t]{6cm}
+\begin{scriptsize}
+\begin{eqnarray*}
+	\Delta(D_1) &=& -\Delta(D'_1) = a_{2,1}-a_{1,1}\\
+	&=&p_{2,1}u_A(A_2)+(1-p_{2,1})u_A(B_1)\\
+	&&-(p_{1,1}u_A(A_1)+(1-p_{1,1})u_A(B_1))\\
+	&=& -p_{1,1}(u_A(A_1)-u_A(A_2))\\ 
+	&&+ (p_{2,1}-p_{1,1})(u_A(A_2)-u_A(B_1)).
+\end{eqnarray*}
+\begin{eqnarray*}
+	\Delta(D_2) &=& -\Delta(D'_2) = b_{2,2}-b_{2,1}\\
+	&=&(1-p_{2,2})u_B(B_2)+p_{2,2}u_B(A_2)\\ 
+	&&- ((1-p_{2,1})u_B(B_1)+p_{2,1}u_B(A_2))\\
+	&=& -(1-p_{2,1})(u_B(B_1)-u_B(B_2))\\
+	&&+(p_{2,1}-p_{2,2})(u_B(B_2) - u_B(A_2)).
+\end{eqnarray*}
+\end{scriptsize}
+\end{column}
+\begin{column}[t]{6cm}
+\begin{scriptsize}
+\begin{eqnarray*}
+	\Delta(D_3) &=& -\Delta(D'_3) = a_{1,2}-a_{2,2}\\ &=&p_{1,2}u_A(A_1)+(1-p_{1,2})u_A(B_2)\\
+	&&-(p_{2,2}u_A(A_2)+(1-p_{2,2})u_A(B_2))\\
+	&=& p_{1,2}(u_A(A_1)-u_A(A_2))\\ 
+	&&+ (p_{1,2}-p_{2,2})(u_A(A_2)-u_A(B_2)).
+\end{eqnarray*}
+\begin{eqnarray*}
+	\Delta(D_4) &=& -\Delta(D'_4) = b_{1,1}-b_{1,2}\\ &=&(1-p_{1,1})u_B(B_1)+p_{1,1}u_B(A_1)\\ 
+	&&- ((1-p_{1,2})u_B(B_2)+p_{1,2}u_B(A_1))\\
+	&=& (1-p_{1,1})(u_B(B_1)-u_B(B_2))\\
+	&&+(p_{1,2}-p_{1,1})(u_B(B_2) - u_B(A_1)).
+\end{eqnarray*}
+\end{scriptsize}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{The Crucial Lemma}
+	\vspace{-7pt}
+	\begin{figure}
+		\begin{center}
+			\includegraphics[scale=0.36]{eps/deviation_lemma.eps}
+		\end{center}
+	\end{figure}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{The Crucial Lemma}
+	\vspace{-5pt}
+	\begin{lemm}[Main Lemma for the Linear-Link \& Softmax Models]
+	\label{lem:devConf_LL}
+	Consider the two-party election game in the linear-link/softmax model. 
+	\begin{itemize}
+	 \item If $u(A_2) > u(A_1)$, then 
+	 	\begin{itemize}
+	 		\item $\Delta(D_2) > 0\Rightarrow \Delta(D_4) < 0$ 
+	 		\item $\Delta(D_4) > 0\Rightarrow \Delta(D_2) < 0$. 
+	 	\end{itemize}
+ 	\item If $u(B_2) > u(B_1)$, then 
+ 		\begin{itemize}
+ 			\item $\Delta(D'_1) > 0 \Rightarrow \Delta(D'_3) < 0$.
+ 			\item $\Delta(D'_3) > 0 \Rightarrow \Delta(D'_1) < 0$.
+ 		\end{itemize}
+ 	\end{itemize}
+	\end{lemm}
+\pause
+\begin{theory}[First Equilibrium Existence Result for $m=n=2$]
+	In the linear-link/softmax model with $m = n = 2$, the two-party election game always has a PNE.  \Smiley
+\end{theory}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Generalization: $\geq 2$ Candidates for Each Party}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{frame}
+\frametitle{Outline}
+\tableofcontents[currentsection,currentsubsection]
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{What if a party has three or more candidates?}
+\begin{figure}
+	\begin{center}
+		\includegraphics[scale=0.40]{eps/generalNE.eps}
+	\end{center}
+\end{figure}
+\pause
+\begin{theory}[Equilibrium Existence Result for $m,n\geq 2$]
+	The two-party election game with $m\geq 2$ and $n\geq 2$ always has a PNE in the linear-link/softmax model. \Smiley
+\end{theory}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Summary of Our Results}
+\begin{table}[ht]
+\begin{center}
+	\renewcommand{\arraystretch}{1.25}
+	\begin{tabular}{ r|c|c|c| }
+		 \multicolumn{1}{r}{}
+		&  \multicolumn{1}{r}{Linear Link}
+		&  \multicolumn{1}{r}{Bradley-Terry}
+		&  \multicolumn{1}{r}{Softmax}\\
+		\cline{2-4}
+		PNE w/ egoism & \checkmark & $\times$ & \checkmark \\
+		%\cline{2-4}
+		PNE w/o egoism & $\times$ & $\times$ & ?$^{\#}$  \\
+		\cline{2-4}
+		%\hline
+		%\hline
+		%Worst PoA w/ egoism & $\leq 2^*$ & $\leq 2$ & $\leq 1+e$ \\
+		%Worst PoA w/o egoism & $\infty$ & $\infty$ & $\infty$ \\
+		%\cline{2-4}
+	\end{tabular}
+	\vspace{7pt}
+\label{tab:summary}
+\end{center}
+\end{table}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{The Price of Anarchy Bounds}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{frame}
+\frametitle{Outline}
+\tableofcontents[currentsection,currentsubsection]
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Relating PNE to OPT}
+\begin{itemize}
+	\item $i$ dominates $i'$:  $i < i'$ and $u(A_i) > u(A_{i'})$.
+\end{itemize}
+\begin{lemm}[Property I: PNE and Domination]
+	\begin{itemize}
+		\item \exists $i'$, \; $i'$\; dominates \; $i$ \; $\Rightarrow$ $(i,j)$ is not a PNE for any $j\in [n]$.
+		\item \exists $j'$, \; $j'$\; dominates \; $j$ \; $\Rightarrow$ $(i,j)$ is not a PNE for any $i\in [m]$.
+	\end{itemize}
+\end{lemm}	
+	
+\begin{prop}[Property II: Relating a PNE to the OPT State]
+	Let's say we have  
+	\begin{itemize}
+		\item $(i,j)$: a PNE 
+		\item $(i^*,j^*)$: the optimal state. 
+	\end{itemize}
+	Then, $u(A_i)+u(B_j)\geq \max\{u(A_{i^*}), u(B_{j^*})\}$.
+\end{prop}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Illustrating Example: In the Linear-Link Model}
+For $i\in [m]$, $j\in [n]$,
+\begin{small}
+\begin{eqnarray*}
+	SU_{i,j} &=& p_{i,j}\cdot u(A_i) + (1-p_{i,j})\cdot u(B_j)\\
+	&=&\frac{1+(u(A_i)-u(B_j))/b}{2} \cdot u(A_i)
+	+ \frac{1-(u(A_i)-u(B_j))/b}{2}\cdot u(B_j)\\
+	&=& \frac{1}{2}(u(A_i)+u(B_j)) + \frac{1}{2b}(u(A_i)-u(B_j))^2\\
+	&\geq& \frac{1}{2}(u(A_i)+u(B_j)).
+\end{eqnarray*}
+\end{small}
+and 
+\begin{small}
+\begin{eqnarray*}
+	SU_{i,j} &=& p_{i,j}\cdot u(A_i) + (1-p_{i,j})\cdot u(B_j)\leq \max\{u(A_i), u(B_j)\}.
+\end{eqnarray*}
+\end{small}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Illustrating Example: In the Linear-Link Model (contd.)}
+\begin{theory}[PoA Bound for Linear-Link]
+	The two-party election game in the linear link model 
+	has PoA $\leq~2$. 
+\end{theory}
+\begin{proof}
+	$(i,j)$: a PNE; $(i^*,j^*)$: OPT. By the previous Lemma: 
+	\[
+	\left\{\begin{array}{l}
+		i \mbox{ is not dominated by } i^*\\
+		j \mbox{ is not dominated by } j^*
+	\end{array}
+	\right.
+	\Rightarrow
+	\left\{\begin{array}{l}
+		i\leq i^*\mbox{ or } u(A_{i^*})\leq u(A_i)\\
+		j\leq j^*\mbox{ or } u(B_{j^*})\leq u(B_j)
+	\end{array}
+	\right.
+	\]
+	\vspace{-7pt}
+	\begin{itemize}
+	\item $SU_{i^*,j^*}\leq \max\{u(A_{i^*}), u(B_{j^*})\}$,  $\max\{u(A_{i^*}), u(B_{j^*})\}\leq u(A_i)+u(B_j)$.
+	\item $2\cdot SU_{i,j}\geq u(A_i)+u(B_j)$.
+	\end{itemize} 
+	Thus, $SU_{i,j}\geq SU_{i^*,j^*}/2$. 
+	\qed
+\end{proof}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{\large Illustrating Example: In the Linear-Link Model (Lower Bound)}
+\begin{itemize}
+	\item A tight example (PoA $\approx 2$; $\delta \ll \epsilon\ll b$).
+\end{itemize}
+\begin{table}[ht]
+	\begin{center}
+		\begin{tabular}[c]{ l l | l l }
+			%\centering
+			\multicolumn{4}{ c }{}\\
+			$A$ & \multicolumn{1}{c}{}& $B$ & \\
+			\hline
+			$u_A(A_i)$ & $u_B(A_i)$ & $u_B(B_j)$ & $u_A(B_j)$\\
+			\hline
+			$\epsilon$  &  0 &  $\epsilon$  &  0\\
+			$\epsilon-\delta$   &  $\epsilon-\delta$  &  $\epsilon-\delta$   &  $\epsilon-\delta$\\
+			\hline
+		\end{tabular}
+		\vspace{12pt}\\
+		\begin{tabular}[c]{  l  | l l | l l}
+			\centering
+			% & \\
+			%\hline
+			&$B_1$&&$B_2$\\
+			\hline 
+			$A_1$&$\frac{\epsilon}{2}$, & $\frac{\epsilon}{2}$  &  
+			$\epsilon-\frac{\delta}{2}$, & $\frac{\epsilon}{2}-\frac{\delta}{2}$\\[2pt]
+			\hline 
+			$A_2$&$\frac{\epsilon}{2}-\frac{\delta}{2}$, &  $\epsilon-\frac{\delta}{2}$  &  
+			$\epsilon-\delta$, & $\epsilon-\delta$\\
+			%\hline
+		\end{tabular}
+	\end{center}
+\end{table}
+
+\end{frame}
+
+
+\begin{frame}
+\begin{center}
+	{\Large The PoA of non-egoistic games can be really bad...}
+\end{center}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Unbounded PoA for Non-Egoistic Games}
+	\quad Linear-Link Model:
+	\begin{table}[ht]
+		\begin{center}
+			\begin{tabular}[c]{ l l | l l }
+				%\centering
+				\multicolumn{4}{ c }{}\\
+				$A$ & \multicolumn{1}{c}{}& $B$ & \\
+				\hline
+				$u_A(A_i)$ & $u_B(A_i)$ & $u_B(B_j)$ & $u_A(B_j)$\\
+				\hline
+				$\epsilon$  &  0  &  $\epsilon$  &  0\\
+				0  &  $b$  &  0  &  $b$\\
+				\hline
+			\end{tabular}
+			\vspace{10pt}\\
+			\begin{tabular}[c]{c | c c | c c }
+				%\multicolumn{2}{c}{} \vspace{7pt}\\
+				\centering
+				% & \\
+				%\hline
+				&$B_1$&&$B_2$\\
+				\hline
+				$A_1$&$\frac{\epsilon}{2}$, & $\frac{\epsilon}{2}$  &  
+				$b-\frac{\epsilon(b-\epsilon)}{2b}$, & 0\\[2pt]
+				\hline
+				$A_2$&0, & $b-\frac{\epsilon(b-\epsilon)}{2b}$  &  $\frac{b}{2}$, & $\frac{b}{2}$\\[3pt]
+				%\hline
+			\end{tabular}
+		\end{center}	
+	\end{table}
+	\begin{itemize}
+		\item PoA $= \frac{b}{\epsilon}$.
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Unbounded PoA for Non-Egoistic Games}
+	\quad Softmax Model:
+	\begin{table}[ht]
+		\begin{center}
+			\begin{tabular}[c]{ l l | l l }
+				%\centering
+				\multicolumn{4}{ c }{}\\
+				$A$ & \multicolumn{1}{c}{}& $B$ & \\
+				\hline
+				$u_A(A_i)$ & $u_B(A_i)$ & $u_B(B_j)$ & $u_A(B_j)$\\
+				\hline
+				$\epsilon$  &  0  &  $\epsilon$  &  0\\
+				0  &  $b$  &  0  &  $b$\\
+				\hline
+			\end{tabular}
+			\vspace{10pt}\\
+			\begin{tabular}[c]{c | c c | c c }
+				%\multicolumn{2}{c}{} \vspace{7pt}\\
+				\centering
+				% & \\
+				%\hline
+				&$B_1$&&$B_2$\\
+				\hline
+				$A_1$&$\frac{\epsilon e^{\epsilon}}{e^{\epsilon}+1}$, & $\frac{\epsilon e^{\epsilon}}{e^{\epsilon}+1}$  &  
+				$\frac{\epsilon e^{\epsilon}+eb}{e^{\epsilon}+1}$, & 0\\[2pt]
+				\hline
+				$A_2$&0, & $\frac{\epsilon e^{\epsilon}+eb}{e^{\epsilon}+1}$  &  $\frac{b}{2}$, & $\frac{b}{2}$\\[3pt]
+				%\hline
+			\end{tabular}
+		\end{center}	
+	\end{table}
+	\begin{itemize}
+		\item PoA $= \frac{b}{2\epsilon e^{\epsilon}/(e^{\epsilon}+1)}$.
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Unbounded PoA for Non-Egoistic Games}
+	\quad Bradley-Terry Model:
+	\begin{table}[ht]
+		\begin{center}
+			\begin{tabular}[c]{ l l | l l }
+				%\centering
+				\multicolumn{4}{ c }{}\\
+				$A$ & \multicolumn{1}{c}{}& $B$ & \\
+				\hline
+				$u_A(A_i)$ & $u_B(A_i)$ & $u_B(B_j)$ & $u_A(B_j)$\\
+				\hline
+				$\epsilon$  &  0  &  $\epsilon$  &  0\\
+				0  &  $b$  &  0  &  $b$\\
+				\hline
+			\end{tabular}
+			\vspace{10pt}\\
+			\begin{tabular}[c]{c | c c | c c }
+				%\multicolumn{2}{c}{} \vspace{7pt}\\
+				\centering
+				% & \\
+				%\hline
+				&$B_1$&&$B_2$\\
+				\hline
+				$A_1$&$\frac{\epsilon}{2}$, & $\frac{\epsilon}{2}$  &  
+				$\frac{\epsilon^2 + b^2}{b+\epsilon}$, & 0\\[2pt]
+				\hline
+				$A_2$&0, & $\frac{\epsilon^2 + b^2}{b+\epsilon}$  &  $\frac{b}{2}$, & $\frac{b}{2}$\\[3pt]
+				%\hline
+			\end{tabular}
+		\end{center}	
+	\end{table}
+	\begin{itemize}
+		\item PoA $= \frac{b}{\epsilon}$.
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Summary of Our Results +(PoA)}
+	\begin{table}[ht]
+		\begin{center}
+			\renewcommand{\arraystretch}{1.25}
+			\begin{tabular}{ r|c|c|c| }
+				\multicolumn{1}{r}{}
+				&  \multicolumn{1}{r}{Linear Link}
+				&  \multicolumn{1}{r}{Bradley-Terry}
+				&  \multicolumn{1}{r}{Softmax}\\
+				\cline{2-4}
+				PNE w/ egoism & \checkmark & $\times$ & \checkmark \\
+				%\cline{2-4}
+				PNE w/o egoism & $\times$ & $\times$ & ?$^{\#}$  \\
+				\cline{2-4}
+				\hline
+				\hline
+				PoA upper bound w/ egoism & $2$ & $2$ & $1+e$ \\
+				PoA lower bound w/ egoism & $2$ & $6/5$ & $2$ \\
+				Worst PoA w/o egoism & $\infty$ & $\infty$ & $\infty$ \\
+				\cline{2-4}
+			\end{tabular}
+		\end{center}
+	\end{table}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Concluding Remarks}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Outline}
+\tableofcontents[currentsection,currentsubsection]
+\end{frame}
+
+
+\begin{frame}{Future Work}
+	\begin{table}[ht]
+		\begin{center}
+			\begin{tabular}{ r|c|c|c| }
+				\multicolumn{1}{r}{}
+				&  \multicolumn{1}{r}{Linear Link}
+				&  \multicolumn{1}{r}{Bradley-Terry}
+				&  \multicolumn{1}{r}{Softmax}\\
+				\cline{2-4}
+				PNE w/ egoism & \checkmark & $\times$ & \checkmark \\
+				%\cline{2-4}
+				PNE w/o egoism & $\times$ & $\times$ & \alert{?$^{\#}$}  \\
+				\cline{2-4}
+				\hline
+				\hline
+				PoA upper bound w/ egoism & $2$ & $2$ & \alert{$1+e$} \\
+				PoA lower bound w/ egoism & $2$ & \alert{$6/5$} & \alert{$2$} \\
+				Worst PoA w/o egoism & $\infty$ & $\infty$ & $\infty$ \\
+				\cline{2-4}
+			\end{tabular}
+		\end{center}
+	\end{table}
+\end{frame}
+
+
+\begin{frame}{Future Work (contd.)}
+\begin{itemize}
+	\item Three or more parties.
+		\begin{itemize}
+			\item How to define the winning probabilities?
+		\end{itemize}
+	\vspace{6pt}
+	\pause
+	\item The correspondence between macro and micro settings.
+	\vspace{6pt}
+	\pause
+	\item More general models.
+	\begin{itemize}
+		\item Extension to monotone game.
+	\end{itemize}
+	\vspace{5pt}
+	\item PoA w.r.t. NE.
+\end{itemize}	
+\end{frame}
+
+
+\begin{frame}{Future Work (contd.)}
+	\begin{itemize}
+		\item Election campaign $\rightarrow$ Project proposal. 
+		\vspace{6pt}
+		\item Winner-takes-all $\rightarrow$ Budget or prize shared in proportion. 
+	\end{itemize}	
+\end{frame}
+
+
+\iffalse
+\begin{frame}
+\begin{figure}
+	\begin{center}
+		\includegraphics[scale=0.45]{eps/handwritten.eps}
+	\end{center}
+\end{figure}
+\end{frame}    
+\fi
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{frame}
+\frametitle{}
+\vspace{1.8cm}
+\begin{center}
+{\Huge Thank you.}
+\end{center}
+\vspace{1.0cm}
+\begin{scriptsize}
+\begin{center}
+\begin{itemize}
+\item [] *Special Acknowledgment: Inserted Pictures Were Designed by Freepik.
+\end{itemize}
+\end{center}
+\end{scriptsize}
+\end{frame}
+
+
+
+
+\end{document}
+
+

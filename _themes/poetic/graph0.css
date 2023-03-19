@@ -1,0 +1,97 @@
+.mstheme
+{
+	separator-image: url(poehorsd.gif);
+	list-image-1: url(poebul1d.gif);
+	list-image-2: url(poebul2d.gif);
+	list-image-3: url(poebul3d.gif);
+
+	nav-banner-image: url(poebannd.gif);
+
+	navbutton-horiz-normal: url(poehbudd.gif);
+	navbutton-horiz-pushed: url(poehbusd.gif);
+
+	navbutton-vert-normal: url(poevbudd.gif);
+	navbutton-vert-pushed: url(poevbusd.gif);
+
+	navbutton-home-normal: url(poehombd.gif);
+
+	navbutton-next-normal: url(poenexbd.gif);
+
+	navbutton-prev-normal: url(poeprebd.gif);
+
+	navbutton-up-normal: url(poeupbd.gif);
+
+}
+
+.mstheme-bannertxt
+{
+	font-family: "Book Antiqua", "Times New Roman", Times;
+	color: rgb(102,51,102);
+	text-align: center;
+	vertical-align: middle;
+}
+.mstheme-horiz-navtxt
+{
+	font-family: "Book Antiqua", "Times New Roman", Times;
+
+	color: rgb(153,51,102);
+	text-align: center;
+	vertical-align: middle;
+}
+
+.mstheme-vert-navtxt
+{
+	font-family: "Book Antiqua", "Times New Roman", Times;
+
+	color: rgb(153,51,102);
+	text-align: center;
+	vertical-align: middle;
+}
+
+.mstheme-navtxthome
+{
+	font-family: "Book Antiqua", "Times New Roman", Times;
+
+	color: rgb(255,255,255);
+	text-align: center;
+	vertical-align: middle;
+}
+
+.mstheme-navtxtnext
+{
+	font-family: "Book Antiqua", "Times New Roman", Times;
+
+	color: rgb(255,255,255);
+	text-align: center;
+	vertical-align: middle;
+}
+
+.mstheme-navtxtprev
+{
+	font-family: "Book Antiqua", "Times New Roman", Times;
+
+	color: rgb(255,255,255);
+	text-align: center;
+	vertical-align: middle;
+}
+
+.mstheme-navtxtup
+{
+	font-family: "Book Antiqua", "Times New Roman", Times;
+
+	color: rgb(255,255,255);
+	text-align: center;
+	vertical-align: middle;
+}
+UL
+{ 
+	list-style-image: url(poebul1d.gif);
+}
+UL UL
+{
+	list-style-image: url(poebul2d.gif);
+}
+UL UL UL
+{
+	list-style-image: url(poebul3d.gif);
+}

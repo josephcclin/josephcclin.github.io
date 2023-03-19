@@ -1,0 +1,107 @@
+.mstheme
+{
+	nav-banner-image: url(rombanna.gif);
+	separator-image: url(romhorsa.gif);
+	list-image-1: url(rombul1a.gif);
+	list-image-2: url(rombul2a.gif);
+	list-image-3: url(rombul3a.gif);
+
+
+	navbutton-horiz-normal: url(romhbuda.gif);
+	navbutton-horiz-hovered: url(romhbuha.gif);
+	navbutton-horiz-pushed: url(romhbusa.gif);
+
+	navbutton-vert-normal: url(romvbuda.gif);
+	navbutton-vert-pushed: url(romvbusa.gif);
+	navbutton-vert-hovered: url(romvbuha.gif);
+
+	navbutton-home-normal: url(romhomda.gif);
+	navbutton-home-hovered: url(romhomha.gif);
+	navbutton-home-pushed: url(romhomsa.gif);
+
+	navbutton-next-normal: url(romnexda.gif);
+	navbutton-next-hovered: url(romnexha.gif);
+	navbutton-next-pushed: url(romnexsa.gif);
+
+	navbutton-prev-normal: url(rompreda.gif);
+	navbutton-prev-hovered: url(rompreha.gif);
+	navbutton-prev-pushed: url(rompresa.gif);
+
+	navbutton-up-normal: url(romupda.gif);
+	navbutton-up-hovered: url(romupha.gif);
+	navbutton-up-pushed: url(romupsa.gif);
+
+}
+
+.mstheme-bannertxt
+{
+	font-family: "Book Antiqua", "Times New Roman", Times;
+	color: rgb(102, 0, 0);
+	text-align: center;
+	vertical-align: middle;
+}
+.mstheme-horiz-navtxt
+{
+	font-family: "Times New Roman", Times;
+
+	color: rgb(102,0,0);
+	text-align: center;
+	vertical-align: middle;
+}
+
+.mstheme-vert-navtxt
+{
+	font-family: "Times New Roman", Times;
+
+	color: rgb(102,0,0);
+	text-align: center;
+	vertical-align: middle;
+}
+
+.mstheme-navtxthome
+{
+	font-family: "Times New Roman", Times;
+
+	color: rgb(102,0,0);
+	text-align: center;
+	vertical-align: middle;
+}
+
+.mstheme-navtxtnext
+{
+	font-family: "Times New Roman", Times;
+
+	color: rgb(102,0,0);
+	text-align: center;
+	vertical-align: middle;
+}
+
+.mstheme-navtxtprev
+{
+	font-family: "Times New Roman", Times;
+
+	color: rgb(102,0,0);
+	text-align: center;
+	vertical-align: middle;
+}
+
+.mstheme-navtxtup
+{
+	font-family: "Times New Roman", Times;
+
+	color: rgb(102,0,102);
+	text-align: center;
+	vertical-align: middle;
+}
+UL
+{ 
+	list-style-image: url(rombul1a.gif);
+}
+UL UL
+{
+	list-style-image: url(rombul2a.gif);
+}
+UL UL UL
+{
+	list-style-image: url(rombul3a.gif);
+}

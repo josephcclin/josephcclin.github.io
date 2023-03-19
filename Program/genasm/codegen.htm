@@ -1,0 +1,146 @@
+<html>
+
+<head>
+<title>Simple Code Generator for Lotus Language</title>
+</head>
+
+<body>
+
+<b><font face="Times New Roman" size="5">A code generator for Lotus</font></b>
+<br>
+<br>
+<font face="Times New Roman" size="3">Generate a Lotus program to an assembly code.
+<br>This project will use the lexical analyzer, the parser, the type checker.
+</font>
+<br>
+<br>
+
+<b><font face="Times New Roman" size="4">Description</font></b>
+<br>
+<br>
+<font face="Times New Roman" size="3">The code generator shall read input from stdin, 
+writes output to stdout, and writes errors to stderr.</font>
+<font face="Times New Roman">The frame of this program is shown in the following figure.</font>
+<br>
+<br>
+<br>
+<center>
+<img border="0" src="../../images/frame_all.jpg" width="595" height="949">
+</center>
+<font face="Courier New">-- A program to sum 1 to n<br>
+int sum(int n)<br>
+{<br>
+&nbsp;&nbsp;&nbsp; int s;<br>
+<br>
+&nbsp;&nbsp;&nbsp; s = 0;<br>
+&nbsp;&nbsp;&nbsp; while (n &gt; 0) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; s = s + n;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; n = n - 1;<br>
+&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; return s;<br>
+}<br>
+<br>
+int main( )<br>
+{<br>
+&nbsp;&nbsp;&nbsp; int n;<br>
+&nbsp;&nbsp;&nbsp; int s;<br>
+<br>
+&nbsp;&nbsp;&nbsp; read n;<br>
+&nbsp;&nbsp;&nbsp; if (n &lt; 0) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; write -1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; exit;<br>
+&nbsp;&nbsp;&nbsp; } else {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; s = sum(n);<br>
+&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; write s;<br>
+&nbsp;&nbsp;&nbsp; return 0;<br>
+}</font><font face="Times New Roman"><br>
+</font>
+<br>
+<br>
+<b><font size="4" face="Times New Roman">The output for this sample</font></b>
+<br>
+<br>
+<font face="Courier New">	.text<br>
+sum:<br>
+&nbsp;&nbsp;&nbsp; li $t0, 32<br>
+&nbsp;&nbsp;&nbsp; sub $sp, $sp, $t0<br>
+&nbsp;&nbsp;&nbsp; sw $ra, 12($sp)<br>
+&nbsp;&nbsp;&nbsp; sw $fp, 8($sp)<br>
+&nbsp;&nbsp;&nbsp; li $t0, 28<br>
+&nbsp;&nbsp;&nbsp; add $fp, $sp, $t0<br>
+&nbsp;&nbsp;&nbsp; li $t0, 0<br>
+&nbsp;&nbsp;&nbsp; sw $t0, -24($fp)<br>
+L1:<br>
+&nbsp;&nbsp;&nbsp; lw $t0, -12($fp)<br>
+&nbsp;&nbsp;&nbsp; li $t1, 0<br>
+&nbsp;&nbsp;&nbsp; bgt $t0, $t1, L3<br>
+&nbsp;&nbsp;&nbsp; b L2<br>
+L3:<br>
+&nbsp;&nbsp;&nbsp; lw $t0, -24($fp)<br>
+&nbsp;&nbsp;&nbsp; lw $t1, -12($fp)<br>
+&nbsp;&nbsp;&nbsp; add $t0, $t0, $t1<br>
+&nbsp;&nbsp;&nbsp; sw $t0, -24($fp)<br>
+&nbsp;&nbsp;&nbsp; lw $t0, -12($fp)<br>
+&nbsp;&nbsp;&nbsp; li $t1, 1<br>
+&nbsp;&nbsp;&nbsp; sub $t0, $t0, $t1<br>
+&nbsp;&nbsp;&nbsp; sw $t0, -12($fp)<br>
+&nbsp;&nbsp;&nbsp; b L1<br>
+L2:<br>
+&nbsp;&nbsp;&nbsp; lw $t0, -24($fp)<br>
+&nbsp;&nbsp;&nbsp; move $v0, $t0<br>
+&nbsp;&nbsp;&nbsp; b __sum_EXIT<br>
+__sum_EXIT:<br>
+&nbsp;&nbsp;&nbsp; lw $ra, 12($sp)<br>
+&nbsp;&nbsp;&nbsp; lw $fp, 8($sp)<br>
+&nbsp;&nbsp;&nbsp; li $t0, 32<br>
+&nbsp;&nbsp;&nbsp; add $sp, $sp, $t0<br>
+&nbsp;&nbsp;&nbsp; jr $ra<br>
+main:<br>
+&nbsp;&nbsp;&nbsp; li $t0, 32<br>
+&nbsp;&nbsp;&nbsp; sub $sp, $sp, $t0<br>
+&nbsp;&nbsp;&nbsp; sw $ra, 12($sp)<br>
+&nbsp;&nbsp;&nbsp; sw $fp, 8($sp)<br>
+&nbsp;&nbsp;&nbsp; li $t0, 28<br>
+&nbsp;&nbsp;&nbsp; add $fp, $sp, $t0<br>
+&nbsp;&nbsp;&nbsp; li $v0, 5<br>
+&nbsp;&nbsp;&nbsp; syscall<br>
+&nbsp;&nbsp;&nbsp; sw $v0, -24($fp)<br>
+&nbsp;&nbsp;&nbsp; lw $t0, -24($fp)<br>
+&nbsp;&nbsp;&nbsp; li $t1, 0<br>
+&nbsp;&nbsp;&nbsp; blt $t0, $t1, L4<br>
+&nbsp;&nbsp;&nbsp; b L5<br>
+L4:<br>
+&nbsp;&nbsp;&nbsp; li $t0, 1<br>
+&nbsp;&nbsp;&nbsp; neg $t0, $t0<br>
+&nbsp;&nbsp;&nbsp; move $a0, $t0<br>
+&nbsp;&nbsp;&nbsp; li $v0, 1<br>
+&nbsp;&nbsp;&nbsp; syscall<br>
+&nbsp;&nbsp;&nbsp; li $v0, 10<br>
+&nbsp;&nbsp;&nbsp; syscall<br>
+&nbsp;&nbsp;&nbsp; b L6<br>
+L5:<br>
+&nbsp;&nbsp;&nbsp; lw $t0, -24($fp)<br>
+&nbsp;&nbsp;&nbsp; sw $t0, -16($sp)<br>
+&nbsp;&nbsp;&nbsp; jal sum<br>
+&nbsp;&nbsp;&nbsp; move $t0, $v0<br>
+&nbsp;&nbsp;&nbsp; sw $t0, -28($fp)<br>
+L6:<br>
+&nbsp;&nbsp;&nbsp; lw $t0, -28($fp)<br>
+&nbsp;&nbsp;&nbsp; move $a0, $t0<br>
+&nbsp;&nbsp;&nbsp; li $v0, 1<br>
+&nbsp;&nbsp;&nbsp; syscall<br>
+&nbsp;&nbsp;&nbsp; li $t0, 0<br>
+&nbsp;&nbsp;&nbsp; move $v0, $t0<br>
+&nbsp;&nbsp;&nbsp; b __main_EXIT<br>
+__main_EXIT:<br>
+&nbsp;&nbsp;&nbsp; lw $ra, 12($sp)<br>
+&nbsp;&nbsp;&nbsp; lw $fp, 8($sp)<br>
+&nbsp;&nbsp;&nbsp; li $t0, 32<br>
+&nbsp;&nbsp;&nbsp; add $sp, $sp, $t0<br>
+&nbsp;&nbsp;&nbsp; jr $ra<br>
+</font>
+
+</body>
+
+</html>

@@ -1,0 +1,220 @@
+\documentclass[10pt,a4paper]{article}
+\textheight=25.0cm \textwidth=16.0cm \voffset=-2.8cm \hoffset=-1.0cm
+\usepackage{fontspec}
+\usepackage[boldfont]{xeCJK} 
+\setCJKmainfont[BoldFont=AR PL UKai TW]{AR PL UMing TW MBE} 
+\XeTeXlinebreaklocale "zh"  
+\XeTeXlinebreakskip = 0pt plus 1pt %這兩行一定要加，中文才能自動換行
+\evensidemargin=1.0cm \oddsidemargin=1.0cm
+\usepackage{booktabs,amssymb,parskip}
+\usepackage{natbib}
+\usepackage{setspace}
+\usepackage{amsthm,bm}
+%\usepackage{multirow}
+\usepackage{enumerate}
+\usepackage{varioref}
+%\usepackage{charter,eulervm}
+%\usepackage{euler}
+\usepackage{amsmath}
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{amsthm}
+\usepackage{comment}
+\usepackage{boxedminipage}
+\usepackage[small]{titlesec}
+\usepackage{fancyhdr,array,tabularx,latexsym,psfrag}
+\usepackage{titlesec}
+\usepackage{booktabs}
+\newcommand{\myparbox}[2]{\hangafter=1 \settowidth{\hangindent}{{#1} }{#1} #2}
+\newcommand{\DNA}{\mathsf{D}\mspace{-2mu}\mathsf{N}\mspace{-2mu}\mathsf{A}}
+\newcommand{\ora}[1]{\ensuremath{\overrightarrow{#1}}}
+\newcommand{\ola}[1]{\ensuremath{\overleftarrow{#1}}}
+\newcommand{\orla}[1]{\ensuremath{\overleftrightarrow{#1}}}
+
+
+\begin{document}
+%\linespread{1.5}
+\onehalfspacing
+
+\title{\bf 自傳}
+\author{\large {\bf 林莊傑} (Joseph Chuang-Chieh Lin, 2014)}
+\date{}
+
+\maketitle
+
+%\tableofcontents
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{\bf\large 一、家庭背景與求學歷程}
+\label{sec:personal-information}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+
+我的家鄉在台南市，家中排行老大，有一個弟弟。結婚將滿八年，育有兩女。
+目前一家四口居住於新北市汐止區。妻子為全職家庭主婦；
+我則是在中央研究院資訊科學研究所擔任博士後研究人員。
+感謝上帝，我們一家人的生活幸福美滿，和樂融融。
+
+
+從小我對數學就特別有興趣，非常喜歡專心思考一些數學問題，
+而且可以長時間專注在一個問題上。
+小學時代，記得有一次老師出了一道數學題目，要我們算出 $1+2+3+\ldots + 
+99 + 100$ 的答案，我直覺有一個方法可以快速得到答案，
+而非土法煉鋼地使用 99 次加法運算求解，於是在思索了兩個小時之後，
+總算找到一個正確又有效率的方法將作業完成。
+過了好幾年以後我才知道，原來大數學家高斯 (Gauss, Carl Friedrich) 
+小時候曾經也用過同樣的方法解決這個問題，不過他所花費的時間當然遠小於兩個小時。
+
+
+國中畢業前，我通過保送甄試進入台南一中的數理資優班就讀，
+一個學期過後又回到普通班就讀。到了高三面臨聯考之際，
+突然發現自己真正的興趣是計算機科學相關科系，
+可惜大學聯考的成績不甚理想，再加上父母希望我能夠就讀家鄉的成功大學，
+於是選擇進入成功大學數學系就讀。大學四年級時，
+我下定決心繼續升學，全力準備計算機科學相關科系的研究所考試。
+除了離散數學與線性代數以外，我自修資料結構、演算法、作業系統、計算機組織這些科目。
+在準備考試的過程中，我對演算法設計產生濃厚的興趣，
+同時發現李家同教授曾經著有演算法設計與分析的英文教科書。
+於是在考取暨南國際大學的資訊工程系碩士班之後，便立刻寫信給李家同教授，
+之後順利地成為他的碩士班學生。
+
+
+就讀研究所碩士班的日子裡，我修習許多關於計算理論與演算法的課，
+也曾上過黃光璿教授開設的生物計算 (computational biology)。
+在研究所的高等演算法這門課當中，
+因為我在這門課的學期成績高達 99 分，在李教授的鼓勵之下，
+繼續升學的決定便悄悄地在內心萌芽。
+李教授是符號邏輯 (symbolic logic) 的專家，曾著有專書介紹這個研究主題。
+在他的指導下，我把符號邏輯應用在基因調控系統的觀察與分析，以此為題撰寫碩士論文。
+經由李教授的推薦，在拿到碩士學位後繼續到中正大學資訊工程系進修博士班，
+由張貿翔教授指導，進行演算法相關領域的研究。
+
+
+博士班的第一年，我順利通過系上的資格考試，成為博士候選人。
+之後花了兩年左右的時間找尋適合自己的研究題目，後來聚焦在隨機演算法 
+(randomized algorithms) 相關領域上。
+2007 年，張教授在國際研討會認識了一位德國學者 Prof. Peter Rossmanith， 
+因 Prof. Rossmanith 對隨機演算法與固定參數演算法 
+(fixed-parameter algorithms) 的設計與分析十分在行，
+張教授遂邀請他到我們系上訪問。直到現在，我們雙方仍保持非常密切的合作，
+我也因此獲益良多。在 2008 年，我獲得台德三明治計畫獎學金，
+前往德國與 Prof. Rossmanith 的研究團隊進行為期一年的合作研究。
+在這一年當中，我的研究工作有很大的進展，博士論文的內容也有了基本構想。
+此外，因為接受了豐富的文化刺激，我對整個世界的觀感徹底改變。
+現在，我對於「世界公民」這四個字，有了更深的體會。
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{\bf\large 二、研究專長與得獎}
+\label{sec:personal-background}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+隨機演算法與固定參數演算法的設計與分析是我主要的研究專長。
+我在隨機演算法領域當中特別探討性質測試 (property testing) 這門學問，
+性質測試的工作要求只從輸入資料中抽樣一小部份來觀察，
+就要能夠回答該筆輸入資料是否具有特定性質，或者必須修改相當大的比例才會擁有這個性質。
+在實際應用上的問題，輸入的資料量經常是很龐大的，性質測試是一個不錯的切入點。
+
+
+我的博士論文主要針對四元樹一致性 (tree-likeness of quartet topologies) 
+這個與演化樹重建有關的生物計算問題進行探討，
+分別提出了有效率的固定參數演算法與次線性時間 (sublinear time) 的隨機演算法。
+除此之外，我也探討結合隨機演算法與固定參數演算法這兩種研究方法的可能性。
+猶記得某日早晨幫女兒沖泡配方奶、洗奶瓶時，突然靈光乍現，
+想出了拓展先前研究成果的方法，便振筆疾書，在一週內完成草稿準備投往期刊發表，
+後來這結果也順利被 Information Processing Letters 接受刊登。
+
+
+基本上，我的研究專長涵蓋以下領域：
+\begin{itemize}
+\item 賽局理論
+\vspace{-3pt}
+\item 演算法設計分析 (隨機演算法、固定參數演算法)
+\vspace{-3pt}
+\item 圖論
+\vspace{-3pt}
+\item 生物資訊
+\end{itemize}
+我的發表著作有五篇 SCI 期刊論文，兩篇國際研討會與兩篇國內研討會論文，
+這些論文題目與出處可以參考我的個人簡歷。
+
+
+除了自己本身的研究以外，我亦幫忙張教授指導學弟妹的碩士論文。
+其中，在 2009 年指導碩士班學妹鍾曉函的碩士論文，
+該論文經編寫後投稿至嘉義大學舉辦的組合數學與計算理論研討會，
+榮獲大會的最佳論文獎 (Best Paper Award)。
+
+
+博士畢業後，我在中央研究院基因體研究中心服研發替代役。
+役期結束後，因對計算機理論科學的熱忱不減，
+我轉至資訊所服務，加入了呂及人老師的實驗室。
+目前正積極投入賽局理論 (game theory) 的領域中，特別對投票賽局 (voting games) 
+與意見形成賽局 (opinion formation games) 的最壞均衡比 (price of anarchy) 
+感興趣。相關研究工作正如火如荼展開中。
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{\bf\large 三、興趣嗜好}
+\label{sec:hobbies}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+剛進入大學的我，慢慢養成運動的習慣。喜歡打籃球和慢跑。後來田徑代表隊招募新生，
+受學長邀請進入學校的田徑代表校隊一起跑步。
+因為跑不快、跳不高，弱不禁風的我更沒辦法碰鉛球鐵餅，於是選定中長距離項目來練習。
+大學三年級時，我擔任成大田徑代表校隊的中長部長，負責監督隊上中長距離項目的學弟妹練習並給予指導。
+個人的主要參賽項目為 800 公尺與 1500 公尺徑賽，
+曾在 2001 年全國大專運動會乙組的 800 公尺徑賽項目獲得第五名。
+在我就讀過的三間大專院校 (成功大學、暨南大學、中正大學) 我都拿過校園越野賽的第一名。
+
+
+就讀研究所以後，我開始接觸長跑運動，挑戰 42.195 公里的全程馬拉松。
+在德國的一年生活中，也曾和德國好友交換穿上印有國旗的衣服完成杜塞朵夫全程馬拉松 
+(D\"{u}sseldorf Marathon)，利用跑步來作國民外交。
+在 2009 年的台南古都馬拉松與 2014 年的國道馬拉松，我兩度跑進三小時大關，
+完成業餘跑者的夢想。2010 年，我成功打破了兩項中正大學校運紀錄 
+(1500 公尺與 5000公尺；5000 公尺原紀錄保持人為超馬好手林義傑)。 
+
+
+中學時代我是弱不禁風的書生，利用慢跑鍛鍊自己的身體，
+之後竟能在徑賽跑道上為學校爭光，在異國的土地上讓世界看見台灣；
+甚至在我邁入 30 歲後，仍舊創造出許多看似不可能達成的紀錄。
+``Impossible Is Nothing," 跑步不僅是興趣，也激勵著我與我周遭的親人朋友們，
+只要堅持下去，沒有不可能的事情。
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{\bf\large 四、結語}
+\label{sec:prospection}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+``Impossible Is Nothing." 不管在研究上或是在跑步競賽上，我總是這樣勉勵著自己。
+秉持著「件件工作反映自我，凡經我手必為佳作」的精神，我極力把事情做到最好。
+期盼未來能在學術界獲得更豐碩的成果。
+
+
+
+
+\begin{comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{參考文獻}
+\label{sec:references}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vspace{-1.0cm}
+\begin{thebibliography}{50}
+
+
+\end{thebibliography}
+\end{comment}
+
+\end{document}

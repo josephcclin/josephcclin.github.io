@@ -1,0 +1,71 @@
+.mstheme
+{
+	nav-banner-image: url(watbanr.gif);
+	separator-image: url(watrule.gif);
+	list-image-1: url(watbul1.gif);
+	list-image-2: url(watbul2.gif);
+	list-image-3: url(watbul3.gif);
+	navbutton-horiz-pushed: url(wathsel.gif);
+	navbutton-horiz-normal: url(wathbtn.gif);
+	navbutton-vert-pushed: url(watvsel.gif);
+	navbutton-vert-normal: url(watvbtn.gif);
+	navbutton-home-normal: url(wathom.gif);
+	navbutton-up-normal: url(watup.gif);
+	navbutton-prev-normal: url(watbck.gif);
+	navbutton-next-normal: url(watnxt.gif);
+}
+.mstheme-bannertxt
+{
+	font-family: arial, Arial, Helvetica;
+	font-size: 6;
+	font-weight: bold;
+	color: rgb(0,0,0);
+}
+.mstheme-horiz-navtxt
+{
+	font-family: Arial, Arial, Helvetica;
+	font-size: 1;
+	color: rgb(0,0,0);
+}
+.mstheme-vert-navtxt
+{
+	font-family: Arial, Arial, Helvetica;
+	font-size: 1;
+	color: rgb(0,0,0);
+}
+.mstheme-navtxthome
+{
+	font-family: arial, Arial, Helvetica;
+	font-size: 1;
+	color: rgb(51,51,204);
+}
+.mstheme-navtxtup
+{
+	font-family: arial, Arial, Helvetica;
+	font-size: 1;
+	color: rgb(51,51,204);
+}
+.mstheme-navtxtprev
+{
+	font-family: arial, Arial, Helvetica;
+	font-size: 1;
+	color: rgb(51,51,204);
+}
+.mstheme-navtxtnext
+{
+	font-family: arial, Arial, Helvetica;
+	font-size: 1;
+	color: rgb(51,51,204);
+}
+UL
+{
+	list-style-image: url(watbul1.gif);
+}
+UL UL
+{
+	list-style-image: url(watbul2.gif);
+}
+UL UL UL
+{
+	list-style-image: url(watbul3.gif);
+}
