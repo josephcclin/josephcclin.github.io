@@ -205,9 +205,9 @@ img.MathJax_strut {border: 0!important; padding: 0!important; margin: 0!importan
 	of members in group \(G_i\). The reward function of agent \(i\) is 
 		$$r(z_i) = \sum_{j=1}^m p_j\langle s_i, \bar{g}_j\rangle,$$
 	where \(\bar{g}_j = \sum_{v\in G_j}z_i/|n_j|\) and $$p_j = 
-		e^{n_j\langle\bar{g}_j, \sum_{v\in V} 
-		s_v\rangle}/\sum_{i\in V; n_i>0} e^{n_i\langle\bar{g}_i, 
-		\sum_{v\in V} s_v\rangle}.$$
+		\frac{e^{n_j\langle\bar{g}_j, \sum_{v\in V} 
+		s_v\rangle}}{\sum_{i\in V; n_i>0} e^{n_i\langle\bar{g}_i, 
+		\sum_{v\in V} s_v\rangle}}.$$
 	We will consider the following strategic behaviors of an agent in such a game:
 	</p>
 	      
