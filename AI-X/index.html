@@ -197,18 +197,22 @@ img.MathJax_strut {border: 0!important; padding: 0!important; margin: 0!importan
 	belief. Each agent is initially regarded as a group. Each group's preference vector is 
 	the average of the public preference vectors of the members. Like monotone setting in 
 	[<a href="#ref_2">2</a>], a group wins with higher odds if its preference vector brings 
-	more utility to all of the agents than the other groups. Here the utility of a group is 
+		more utility to all of the agents than the other groups. We call such a property 
+		<i>monotone</i>. Here the utility of a group is 
 	calculated as the sum of inner products between the group's preference vector and all 
 	the agents' private preference vectors. Hence, the reward (i.e., payoff) of an agent 
 	is the expected utility of this group. Specifically, assume that we have currently 
 	\(m\leq n\) groups \(G_1,G_2,\ldots,G_m\), and denote by \(|G_i| = n_i\) the number 
 	of members in group \(G_i\). The reward function of agent \(i\) is 
 		$$r(z_i) = \sum_{j=1}^m p_j\langle s_i, \bar{g}_j\rangle,$$
-	where \(\bar{g}_j = \sum_{v\in G_j}z_i/|n_j|\) and $$p_j = 
+	where \(\bar{g}_j = \sum_{v\in G_j}z_i/|n_j|\) and the winning probability of
+	group \(j\) is defined as $$p_j = 
 		\frac{e^{n_j\langle\bar{g}_j, \sum_{v\in V} 
 		s_v\rangle}}{\sum_{i\in V; n_i>0} e^{n_i\langle\bar{g}_i, 
-		\sum_{v\in V} s_v\rangle}}.$$
-	We will consider the following strategic behaviors of an agent in such a game:
+		\sum_{v\in V} s_v\rangle}}.$$ Namely, \(p_j\) is the softmax function which 
+		is widely used to impose a probability distribution over the possible outcomes. 
+		Moreover, \(p_j\) increases either the size of group \(G_j\) gets larger or it 
+		can bring more total utility for all the agents. We will consider the following strategic behaviors of an agent in such a game:
 	</p>
 	      
         <ul>
