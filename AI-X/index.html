@@ -194,7 +194,17 @@ img.MathJax_strut {border: 0!important; padding: 0!important; margin: 0!importan
 	is represented as a public preference vector \(z_i\in\mathbb{R}^k\) and a private 
 	preference vector \(s_i\in\mathbb{R}^k\), such that the former corresponds to 
 	the preference revealed to all the agents while the latter corresponds to its true 
-	belief. We will consider 
+	belief. Each agent is initially regarded as a group. Each group's preference vector is 
+	the average of the public preference vectors of the members. Like monotone setting in 
+	[<a href="#ref_2">2</a>], a group wins with higher odds if its preference vector brings 
+	more utility to all of the agents than the other groups. Here the utility of a group is 
+	calculated as the sum of inner products between the group's preference vector and all 
+	the agents' private preference vectors. Hence, the reward (i.e., payoff) of an agent 
+	is the expected utility of this group. Specifically, assume that we have currently 
+	\(m\leq n\) groups \(G_1,G_2,\ldots,G_m\), the reward function of agent \(i\) is 
+		$$r(z_i) = \sum_{j=1}^m p_{j}\langle s_i, \bar{g}_j\rangle,$$
+	
+	We will consider 
 	the following strategic behaviors of an agent in such a game:
 	</p>
 	      
