@@ -1,0 +1,650 @@
+/*  Centering an element within its parent element
+*
+*   @param {Axis} $axis - x: centers horizontally, y: centers vertically, null: centers both axis
+*
+*   Example Usage:
+*
+*   // Center on both x and y axis
+*   .container {
+*     .link {
+*       @include centered;
+*     }
+*   }
+*
+*   // Center on the X axis
+*   .container {
+*     .link {
+*       @include centered(x);
+*     }
+*   }
+*
+*   // Center on the Y axis
+*   .container {
+*     .link {
+*       @include centered(y);
+*     }
+*   }
+*
+*/
+/*  Centering within an flex container
+*
+*   @param {Display} $display - inline: display set to inline-flex, else display set to flex
+*
+*
+*   Example Usage:
+*
+*   .container {
+*     @include vertical-align-flex;
+*   }
+*
+*/
+/* Chevron mixin for creating chevrons
+*
+*  @param {Size} $size - the size of the chevron
+*  @param {Thickness} $thickness - thickness
+*  @param {Color} $color - color
+*  @param {Direction} $direction - direction chevron faces
+*
+*  Example Usage:
+*
+*     .chevron {
+*       @include chevron(12px, 12px, #000, 'down');
+*     }
+*
+*/
+/*  Clearfix for clearing floats within a container
+*
+*   No Params
+*
+*   Example Usage:
+*
+*     .container {
+*       @include clearfix;
+*
+*       .link {
+*          float: left;
+*       }
+*     }
+*
+*/
+/*  Set font-size and optionally leading
+*
+*   @param {Font Size} $fontSize - Unit-less font size
+*   @param {Leading}   $leading  - (default: null) - Optional- Unit-less leading from Photoshop or Sketch
+*
+*   Example Usage:
+*
+*     p {
+*       @include font-size(12,14);
+*     }
+*
+*/
+/**
+* Hide Text
+*/
+/* Hover mixin for hover states
+*
+*  Note: This mixin has a dependency on what-intent plugin which detects the current input method
+*        https://github.com/ten1seven/what-input
+*
+*  @param {Transition Duration} $transition-duration - the duration of transitions on hover states
+*
+*  Example Usage:
+*
+*     a {
+*       @include hover() {
+*         background-color: red
+*       }
+*     }
+*
+*/
+/**
+ * Returns a percentage width based on the number and total number of columns
+ *
+ * @param int $num Number of columns (e.g. 4)
+ * @param int $total Total number of columns (e.g. 24)
+ * @return float  Total width (%)
+ */
+/*  Unitless line-height
+*
+*   @param {Font Size} $fontSize - Unit-less font size
+*   @param {Leading}   $leading  - Unit-less leading from Photoshop or Sketch
+*
+*   Example Usage:
+*
+*     @include line-height(16, 20);
+*
+*/
+/*  Remove List Styles
+*
+*   No Params
+*
+*   Example Usage:
+*
+*     ul {
+*       @include no-bullet;
+*     }
+*
+*/
+/*
+  Maintain ratio mixin.
+  @param {List} [$ratio] Ratio the element needs to maintain. A 16:9 ratio would look like this:
+    .element { @include maintain-ratio(16 9); }
+*/
+/*  Media Query Mixin
+*
+*   @param {Media Query} $mq - Media query in single quotes: eg. 'screen and (min-width: 480px)'
+*
+*   Example Usage:
+*
+*     .selector {
+*       property: value;
+*
+*       @include mq($bp768) {
+*         property: value;
+*       }
+*     }
+*
+*/
+/*  Overflow Scroll
+*   Allows you to set overflow scrolling on the x and y axis
+*
+*   @param {axix} $axis - the axis on which to set scroll
+*/
+/*  Placeholder Mixin
+*
+*   No Params
+*
+*   Example Usage:
+*
+*     input[placeholder] {
+*       @include placeholder {
+*         color: red;
+*       }
+*     }
+*
+*/
+/*  PX to REM Conversion
+*
+*   @param {Pixel} $px - Unitless pixel value to be converted into rems.
+*
+*   Example Usage:
+*
+*     margin-bottom: rem(20);
+*
+*/
+/*  Triangle helper mixin
+*
+*   @param {Direction} $direction - Triangle direction, either `top`, `right`, `bottom` or `left`
+*   @param {Color} $color [currentcolor] - Triangle color
+*   @param {Length} $size [1em] - Triangle size
+*
+*/
+/*  Visually hide text within an element
+*   Used mostly for accessibility reasonse
+*
+*   No Params
+*
+*   Example Usage:
+*
+*     button {
+*       span {
+*         @include visuallyhidden;
+*       }
+*     }
+*
+*/
+/*  Color Theme Mixin
+*
+*   @param {Name} $name - class name for theme pattern
+*   @param {Colors} $colors - key/value pair with name for color and hex value
+*
+*   Example Usage:
+*
+*     .@include color-theme(
+*       $name: 'theme-a',
+*       $colors: (
+*         'silver': #C0C0C0,
+*         'red': #FF0000,
+*         'yellow': #FFFF00,
+*         'olive': #808000,
+*         'lime': #00FF00
+*         'blue': #0000FF
+*       )
+*     );
+*
+*/
+html {
+  scroll-behavior: smooth; }
+
+html,
+body {
+  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #000;
+  padding: 0;
+  margin: 0; }
+  html *,
+  body * {
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box; }
+
+table {
+  border-collapse: collapse; }
+
+i,
+em {
+  font-family: inherit;
+  font-weight: inherit;
+  font-size: inherit; }
+
+b,
+strong {
+  font-family: inherit;
+  font-weight: bold;
+  font-size: inherit; }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+  font-weight: bold; }
+
+a {
+  text-decoration: none;
+  color: #11679a;
+  -webkit-transition: color 0.2s ease;
+  transition: color 0.2s ease;
+  font-size: inherit; }
+  a:hover {
+    text-decoration: underline;
+    color: rgba(17, 103, 154, 0.8); }
+
+.container {
+  max-width: 1140px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px; }
+  @media only screen and (max-width: 1169px) {
+    .container {
+      padding-left: 20px;
+      padding-right: 20px; } }
+
+img {
+  max-width: 100%;
+  height: auto; }
+
+h1 {
+  font-size: 2rem; }
+
+h2 {
+  line-height: 1.25em;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #000;
+   /* 
+  text-transform: uppercase;
+  */
+  font-size: 1.625rem;
+  margin-top: 3rem; }
+
+h3 {
+  font-size: 1.5rem;
+  margin-top: 3rem; }
+
+p {
+  line-height: 1.4;
+  font-size: 1.125rem;
+  margin-bottom: 1.75rem; }
+  p:last-child {
+    margin-bottom: 0; }
+
+ol,
+ul {
+  padding-left: 1rem;
+  margin-top: 0;
+  margin-bottom: 1.5rem; }
+  ol li,
+  ul li {
+    font-size: 1.125rem;
+    margin-bottom: 0.75rem; }
+    ol li:last-child,
+    ul li:last-child {
+      margin-bottom: 0; }
+
+figure {
+  text-align: center;
+  margin-bottom: 1.5rem; }
+  figure figcaption {
+    margin-top: 1rem;
+    font-size: 0.875rem; }
+
+.visually-hidden {
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+          clip-path: inset(50%);
+  margin: -1px; }
+
+[class*='notation-'] {
+  line-height: 1.75rem; }
+
+.caption {
+  margin-top: 1rem;
+  font-size: 1rem;
+  color: rgba(0, 0, 0, 0.6); }
+  .caption b,
+  .caption strong {
+    color: #000; }
+
+.subhead {
+  font-size: 1.375rem; }
+
+.box {
+  background: #eaeaea;
+  padding: 1rem; }
+  @media only screen and (max-width: 767px) {
+    .box .separator {
+      display: none; } }
+  .box h2 {
+    border-bottom: 0;
+    font-size: 1rem;
+    text-transform: none;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0;
+    margin-top: 0; }
+  .box p,
+  .box ul {
+    margin-top: 0;
+    margin-bottom: 1rem; }
+    @media only screen and (max-width: 767px) {
+      .box p,
+      .box ul {
+        font-size: 1rem; } }
+    .box p:last-child,
+    .box ul:last-child {
+      margin-bottom: 0; }
+  .box ul {
+    list-style-type: none;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style-position: inside; }
+    @media only screen and (max-width: 767px) {
+      .box ul {
+        display: block; } }
+    @media only screen and (max-width: 767px) {
+      .box ul li {
+        font-size: 1rem; } }
+    .box ul li a {
+    text-transform: none; }
+      @media only screen and (max-width: 767px) {
+        .box ul li a {
+          font-size: 1rem; } }
+
+.mt-sm {
+  margin-top: 1rem; }
+
+.mt-md {
+  margin-top: 2rem; }
+
+.mt-lg {
+  margin-top: 3.5rem; }
+
+.mb-sm {
+  margin-bottom: 1rem; }
+
+.mb-md {
+  margin-bottom: 2rem; }
+
+.mb-lg {
+  margin-bottom: 3.5rem; }
+
+.contents ul {
+  list-style-type: upper-roman; }
+
+.header-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 1rem; }
+  @media only screen and (max-width: 767px) {
+    .header-info {
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap; } }
+
+.header-left {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 1rem;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 0%;
+          flex: 1 0 0%; }
+  @media only screen and (max-width: 767px) {
+    .header-left {
+      -webkit-box-flex: 1;
+          -ms-flex: 1 0 100%;
+              flex: 1 0 100%;
+      width: 100%; } }
+
+.header-authors {
+  width: 60%;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 60%;
+          flex: 0 0 60%;
+  padding-right: 15px; }
+  @media only screen and (min-width: 768px) {
+    .header-authors:first-child {
+      width: 70%;
+      -webkit-box-flex: 0;
+          -ms-flex: 0 0 70%;
+              flex: 0 0 70%; } }
+  @media only screen and (max-width: 767px) {
+    .header-authors li {
+      font-size: 1rem; } }
+  .header-authors ul {
+    display: block; }
+
+.header-published {
+  width: 40%;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 40%;
+          flex: 0 0 40%; }
+  @media only screen and (min-width: 768px) {
+    .header-published:last-child {
+      width: 30%;
+      -webkit-box-flex: 0;
+          -ms-flex: 0 0 30%;
+              flex: 0 0 30%; } }
+  @media only screen and (max-width: 767px) {
+    .header-published p {
+      font-size: 1rem; } }
+
+.header-legend {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 0.875rem;
+  padding: 0.5rem;
+  border-radius: 0.7rem;
+  border: 2px solid #11679a;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 100%;
+          flex: 1 0 100%;
+  width: 100%;
+  margin-top: 15px; }
+  @media only screen and (min-width: 768px) {
+    .header-legend {
+      -webkit-box-flex: 0;
+          -ms-flex: 0 0 270px;
+              flex: 0 0 270px;
+      width: 270px;
+      margin-left: 2rem;
+      margin-top: 0; } }
+  .header-legend svg {
+    margin-right: 0.3rem; }
+  .header-legend p {
+    margin: 0;
+    position: relative;
+    top: 1px;
+    font-size: 1rem; }
+
+.click-icon {
+  width: 1.625rem;
+  height: auto; }
+
+.references span {
+  color: rgba(0, 0, 0, 0.6);
+  display: block;
+  margin-top: 0.4rem; }
+
+@media only screen and (max-width: 767px) {
+  .static {
+    max-width: 100%;
+    overflow: auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex; } }
+
+.framed {
+  border: 1px solid #11679a;
+  border-radius: 0.75rem;
+  padding: 1rem 1.75rem; }
+  @media only screen and (max-width: 767px) {
+    .framed {
+      max-width: 100%;
+      overflow: auto;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex; } }
+  .framed .eyebrow {
+    font-size: 1.125rem;
+    color: #11679a;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    margin-bottom: 2rem;
+    min-height: 2.375rem;
+    background: url("../img/icons/click-icon.svg") no-repeat top left/1.5625rem auto; }
+    @media only screen and (max-width: 767px) {
+      .framed .eyebrow {
+        padding-right: 0; } }
+  .framed .caption {
+    text-align: left;
+    color: #11679a;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    font-size: 1rem; }
+    @media only screen and (max-width: 767px) {
+      .framed .caption {
+        padding-right: 0;
+        padding-left: 0; } }
+    .framed .caption b,
+    .framed .caption strong {
+      display: block;
+      color: #11679a; }
+    .framed .caption-top {
+      background: #b3cddb;
+      padding: 0.15rem 1rem;
+      border-radius: 0.25rem;
+      margin-bottom: 1.5rem;
+      display: inline-block;
+      font-size: 0.875rem; }
+      .framed .caption-top.default {
+        padding: 0.15rem 0;
+        margin-bottom: 0; }
+      .framed .caption-top-wrapper {
+        text-align: center; }
+
+@media only screen and (max-width: 767px) {
+  .formula-wrapper {
+    display: block;
+    max-width: 100%;
+    overflow: auto;
+    padding-bottom: 20px; } }
+
+.formula tbody tr {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2); }
+  .formula tbody tr:last-child, .formula tbody tr:first-child {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.6); }
+
+.formula tbody th,
+.formula tbody td {
+  padding: 0.5rem;
+  font-size: 1.125rem; }
+
+.formula tbody td {
+  color: rgba(0, 0, 0, 0.6); }
+
+.inline-math .MathJax_Display,
+.inline-math .MJXc-display {
+  display: inline !important; }
+
+.math-left .mjx-chtml {
+  text-align: left !important; }
+
+.math-right .mjx-chtml {
+  text-align: right !important; }
+
+.cite {
+  color: #11679a;
+  cursor: pointer; }
+  .cite:not(.show) {
+    display: none; }
+  .cite-parent {
+    position: relative; }
+  .cite-content {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #11679a;
+    background: #fff;
+    color: #000; }
+  .cite:focus .cite-content, .cite:hover .cite-content {
+    display: block; }
+
+.scroll-top {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #11679a;
+  width: 40px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 40px; }
+  @media only screen and (max-width: 767px) {
+    .scroll-top {
+      right: 10px;
+      bottom: 10px; } }
+  .scroll-top svg {
+    width: 30px; }
+
+/*# sourceMappingURL=maps/style.css.map */
