@@ -181,35 +181,37 @@ img.MathJax_strut {border: 0!important; padding: 0!important; margin: 0!importan
 	composed of strategies of all agents such that none of the agents wants to change its 
 	own strategy to the other one unilaterally. Hence, such a state is possibly achievable 
 	because no one wants to change its mind when the other ones hold on their current strategies. 
-        </p>
-	<p>Yet, how to achieve a Nash equilibrium in a game may not be quite straightforward, 
-	especially agents behave in a ``decentralized" way. 
+        Yet, how to achieve a Nash equilibrium in a game may not be quite straightforward, 
+	especially agents behave in a "decentralized" way. Indeed, while an agent's reward functions 
+	has dependency on strategies of the other agents, a maximizer of one agent's reward function 
+	is not necessarily a maximizer for any of the other ones.
 	</p>
 
+	<p>In this article, we consider group formation of strategic agents as an illustrating 
+	example for demostrating the strategic behaviors of the agents and also delve into the 
+	eventual outcome of the game to study the group formation of a society. In this game 
+	setting, we are given \(n\) agents, each agent \(v_i\)
+	is represented as a public preference vector \(z_i\in\mathbb{R}^k\) and a private 
+	preference vector \(s_i\in\mathbb{R}^k\), such that the former corresponds to 
+	the preference revealed to all the agents while the latter corresponds to its true 
+	belief. We will consider 
+	the following strategic behaviors of an agent in such a game:
+	</p>
+	      
         <ul>
-          <li><strong>Representation:</strong> identification and encoding of
-            decision variables as an individual that represents a candidate
-            solution to the given optimization problem.
+          <li><strong>Group-Joining:</strong> Seeking for a specific group which 
+	     hopefully maximizes the agent's reward and join the group. 
           </li>
-          <li><strong>Population:</strong>
-            a set of candidate solutions. Each iteration of the
-            algorithm will produce a new generation of the population.
+          <li><strong>Opinion Updating Without Regularization:</strong>
+            Each agent in a certain group tries to maiximize its reward through 
+	    changing its public preference vector. 
           </li>
-          <li><strong>Fitness Evaluation:</strong>
-            a function measuring the quality of any candidate solution for the
-            given optimization problem.
-          </li>
-          <li><strong>Selection:</strong> a method for selecting well-performing
-            candidate solutions as the input for genetic operators. Selected
-            candidate solutions are called parents.</li>
-          <li><strong>Genetic Operators:</strong> methods that produce a new
-            candidate solution by either modifying an existing candidate
-            solution (mutation) or combining elements from multiple candidate
-            solutions (crossover), thereby producing a population of children.
-          </li>
-          <li><strong>Reproduction:</strong> a method that creates a new
-            population of individuals given the previous population and the
-            children population created by the genetic operators.
+          <li><strong>Opinion Updating With Regularization:</strong>
+            Each agent in a certain group tries to maiximize its reward through 
+	    changing its public preference vector, while the reward substracts 
+	    the distance \(\|s_i-z_i\|_2^2\) which serves as a regularizer. Adding 
+	    such a regularizer hopefully limits how strategic an agent can be by 
+	    preventing it from moving too far from its own belief.  
           </li>
         </ul>
 
