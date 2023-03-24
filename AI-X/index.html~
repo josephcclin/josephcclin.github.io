@@ -217,13 +217,11 @@ The reward function of agent \(i\) is
 $$r_i(\tau) = \sum_{j=1}^m p_j(\tau)\langle s_i, \bar{g}_j\rangle,$$ 
 where \(\bar{g}_j = \sum_{v\in G_j}z_i/|n_j|\) and the winning probability of
 group \(j\) is defined as 
-$$p_j(\tau) = \frac{e^{n_j\langle\bar{g}_j, \sum_{v\in V} s_v\rangle}}{\sum_{i\in V; n_i>0} e^{n_i\langle\bar{g}_i, 
-\sum_{v\in V} s_v\rangle}}.$$ Namely, \(p_j(\tau)\) is the softmax function which 
+$$p_j(\mathbf{z}) = \frac{e^{n_j\langle\bar{g}_j, \sum_{v\in V} s_v\rangle}}{\sum_{i\in V; n_i>0} e^{n_i\langle\bar{g}_i, 
+\sum_{v\in V} s_v\rangle}}.$$ Namely, \(p_j\) is the softmax function which 
 is widely used to impose a probability distribution over the possible outcomes. 
-Moreover, \(p_j(\tau)\) increases either when the size of group \(G_j\) gets larger 
-or it can bring more total utility for all the agents in terms of larger sum of 
-inner products of the group average public preference and each private preference vector. 
-We will consider the following strategic behaviors of an agent in such a game:
+Moreover, \(p_j\) increases either the size of group \(G_j\) gets larger or it 
+can bring more total utility for all the agents. We will consider the following strategic behaviors of an agent in such a game:
 </p>
 	      
 <ul>
