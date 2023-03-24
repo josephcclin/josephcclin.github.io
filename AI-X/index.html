@@ -141,6 +141,10 @@ img.MathJax_strut {border: 0!important; padding: 0!important; margin: 0!importan
               <span class="separator">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
             </li>
 	    <li>
+              <a href="#probs_reward">Winning Probabilities and Rewards</a>
+              <span class="separator">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+	   </li>
+	    <li>
 	      <a href="#group_formation">Group and Opinion Formation</a>
               <span class="separator">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
             <li>
@@ -151,10 +155,6 @@ img.MathJax_strut {border: 0!important; padding: 0!important; margin: 0!importan
               <a href="#online_learning">Opinion Updates by Online Learning</a>
               <span class="separator">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
             </li>
-           <!-- <li>
-              <a href="#gda_regularizer">Gradient Ascent with Regularizer</a>
-              <span class="separator">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
-	   </li> -->
             <li><a href="#conclusion">Conclusion</a></li>
           </ul>
         </div>
@@ -193,10 +193,6 @@ learning algorithms with and without regularizers.
 </p>
 
 
-
-<section id="group_formation">
-<!-- Section title -->
-<h2>Group Formation and Opinion Updates</h2>
 <p>
 In this game setting, we are given \(n\) agents, each agent \(v_i\)
 is represented as a public preference vector \(z_i\) and a private 
@@ -263,6 +259,12 @@ preventing it from moving too far from its own belief.
 <img src="./FlowchartOnlineLearningUpdate.svg" alt="Algorithm" width="511" height="441">
 <figcaption><strong>Figure 2:</strong> Flowchart of Opinion Updating.</figcaption>
 </figure>
+
+
+
+<section id="probs_reward">
+<!-- Section title -->
+<h2>Winning Probabilities and Rewards</h2>
 
 
 <p>One of the key tasks in the algorithm design process is the choice of
