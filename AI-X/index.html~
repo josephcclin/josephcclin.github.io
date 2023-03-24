@@ -140,6 +140,9 @@ img.MathJax_strut {border: 0!important; padding: 0!important; margin: 0!importan
               <a href="#introduction">Introduction and Prerequisites</a>
               <span class="separator">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
             </li>
+	    <li>
+	      <a href="#group_formation">Group Formation</a>
+              <span class="separator">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
             <li>
               <a href="#representation">1D &amp; 2D Representations</a>
               <span class="separator">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
@@ -178,17 +181,28 @@ A game consists of strategic agents, each of which acts rationally to maximize i
 own reward (or utility) or minimize its cost. A Nash equilibrium is a stable state 
 composed of strategies of all agents such that none of the agents wants to change its 
 own strategy to the other one unilaterally. Hence, such a state is possibly achievable 
-because no one wants to change its mind when the other ones hold on their current strategies. 
-Yet, how to achieve a Nash equilibrium in a game may not be quite straightforward, 
-especially when agents behave in a "decentralized" way. Indeed, while an agent's reward functions 
-has dependency on strategies of the other agents, a maximizer of one agent's reward function 
-is not necessarily a maximizer for any of the other ones.
+because no one wants to change its mind when the other ones hold on their current 
+strategies. Yet, how to achieve a Nash equilibrium in a game may not be quite 
+straightforward, especially when agents behave in a "decentralized" way. 
+Indeed, while an agent's reward functions has dependency on strategies of the 
+other agents, a maximizer of one agent's reward function is not necessarily a 
+maximizer for any other agent.
 </p>
 
 <p>In this article, we consider group formation of strategic agents as an illustrating 
 example for demonstrating the strategic behaviors of the agents and also delve into the 
-eventual outcome of the game to study the group formation of a society. In this game 
-setting, we are given \(n\) agents, each agent \(v_i\)
+eventual outcome of the game to study the group formation of a society. 
+The theoretical techniques include identification of a pure Nash equilibrium and online 
+learning algorithms with and without regularizers.
+</p>
+
+
+
+<section id="group_formation">
+<!-- Section title -->
+<h2>Group Formation</h2>
+<p>
+In this game setting, we are given \(n\) agents, each agent \(v_i\)
 is represented as a public preference vector \(z_i\) and a private 
 preference vector \(s_i\), such that the former corresponds to 
 the preference revealed to all the agents while the latter corresponds to its true 
@@ -210,18 +224,20 @@ calculated as the sum of inner products between the group's preference vector an
 the agents' private preference vectors. Hence, the reward (i.e., payoff) of an agent 
 is the expected utility of this group. Specifically, assume that we have currently 
 \(m\leq n\) groups \(G_1,G_2,\ldots,G_m\), and denote by \(|G_i| = n_i\) the number 
-of members in group \(G_i\). Let $\mathcal{G} = (G_1,G_2,\ldots,G_m)$ to denote the 
+of members in group \(G_i\). Let \(\mathcal{G} = (G_1,G_2,\ldots,G_m)\) to denote the 
 profile of groups. To ease the notation, we denote by 
 \(\tau = (\mathbf{z}, \mathbf{s}, \mathcal{G})\) the <i>state</i> of the game. 
 The reward function of agent \(i\) is 
 $$r_i(\tau) = \sum_{j=1}^m p_j(\tau)\langle s_i, \bar{g}_j\rangle,$$ 
 where \(\bar{g}_j = \sum_{v\in G_j}z_i/|n_j|\) and the winning probability of
 group \(j\) is defined as 
-$$p_j(\mathbf{z}) = \frac{e^{n_j\langle\bar{g}_j, \sum_{v\in V} s_v\rangle}}{\sum_{i\in V; n_i>0} e^{n_i\langle\bar{g}_i, 
-\sum_{v\in V} s_v\rangle}}.$$ Namely, \(p_j\) is the softmax function which 
+$$p_j(\tau) = \frac{e^{n_j\langle\bar{g}_j, \sum_{v\in V} s_v\rangle}}{\sum_{i\in V; n_i>0} e^{n_i\langle\bar{g}_i, 
+\sum_{v\in V} s_v\rangle}}.$$ Namely, \(p_j(\tau)\) is the softmax function which 
 is widely used to impose a probability distribution over the possible outcomes. 
-Moreover, \(p_j\) increases either the size of group \(G_j\) gets larger or it 
-can bring more total utility for all the agents. We will consider the following strategic behaviors of an agent in such a game:
+Moreover, \(p_j(\tau)\) increases either when the size of group \(G_j\) gets larger 
+or it can bring more total utility for all the agents in terms of larger sum of 
+inner products of the group average public preference and each private preference vector. 
+We will consider the following strategic behaviors of an agent in such a game:
 </p>
 	      
 <ul>
@@ -242,10 +258,16 @@ preventing it from moving too far from its own belief.
 </ul>
 
 <figure class="text-center">
-<img src="./EvolutionaryAlgorithm.svg" alt="Algorithm" width="511" height="441">
-<figcaption><strong>Figure 1:</strong> Components and exemplary
-flowchart of a generic GA.</figcaption>
+<img src="./FlowchartGroupJoining.svg" alt="Algorithm" width="511" height="441">
+<figcaption><strong>Figure 1:</strong> Flowchart of Group-Joining.</figcaption>
 </figure>
+
+
+<figure class="text-center">
+<img src="./FlowchartOnlineLearningUpdate.svg" alt="Algorithm" width="511" height="441">
+<figcaption><strong>Figure 2:</strong> Flowchart of Opinion Updating.</figcaption>
+</figure>
+
 
 <p>One of the key tasks in the algorithm design process is the choice of
 representation for a candidate solution. Given an optimization task,
@@ -348,10 +370,25 @@ problem.</div>
 <h2>II. Representations</h2>
 
 <p>
-When the public and private preference vectors are assume to be in \(\mathbb{R}\), 
-we can illustrate these vectors as well as the dynamics of changes on a real line. 
+When the public and private preference vectors are assume to be in \(\mathbb{R}\), we can 
+illustrate these vectors as well as the dynamics of changes on a real line. The constraint 
+that \(z_i,s_i\in [-1, 1]\) has 2-norm bounded by 1 for each \(i\) clearly holds.
 </p>
 
+<p>
+For example, in the example we have five agents \(v_1,v_2,v_3,v_4,v_5\). By assuming 
+\(v_1,v_2,v_3\), and \(v_4\) to have their public preference vectors \(z_1,z_2,z_3,z_4\) 
+fixed, we can observe the changes of winning probability of \(v_5\) by moving \(z_5\) from 
+\(-1\) to \(1\). With the winning probabilities are computed, we can derive the reward. 
+</p>
+
+<p>
+A pure Nash equilibrium is a state in which none of the agent wants to unilaterally change 
+its current public preference vector to another one since its reward cannot be improved 
+by doing so.  
+</p>
+
+<!--
 <ol>
 <li class="inline-math">a chessboard offers 64 fields arranged in an
 <span class="MathJax_Preview" style="display: none;"></span><div class="MathJax_Display" style="text-align: center;"><span class="MathJax" id="MathJax-Element-3-Frame" tabindex="0" style="text-align: center;"><nobr><span class="math" id="MathJax-Span-19" style="display: inline-block; width: 2.734em;"><span style="display: inline-block; position: relative; width: 2.271em; height: 0px; font-size: 120%;"><span style="position: absolute; clip: rect(1.391em, 1002.23em, 2.363em, -999.998em); top: -2.22em; left: 0em;"><span class="mrow" id="MathJax-Span-20" style="display: inline-block;"><span class="mn" id="MathJax-Span-21" style="display: inline-block;"><img src="./0038.png" style="width: 10px; height: 15px; vertical-align: 0px; margin-right: 0.049em;"></span><span class="mo" id="MathJax-Span-22" style="display: inline-block; padding-left: 0.234em;"><img src="./00D7.png" style="width: 14px; height: 11px; vertical-align: 0px; margin-right: 0.141em;"></span><span class="mn" id="MathJax-Span-23" style="display: inline-block; padding-left: 0.234em;"><img src="./0038.png" style="width: 10px; height: 15px; vertical-align: 0px; margin-right: 0.049em;"></span></span><span style="display: inline-block; width: 0px; height: 2.225em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.053em; border-left: 0px solid; width: 0px; height: 0.947em;"></span></span></nobr></span></div><script type="math/tex; mode=display" id="MathJax-Element-3">8\times8</script> grid.</li>
@@ -365,7 +402,9 @@ threaten each other.</li>
 <li>each diagonal can include only one queen; otherwise, they would
 threaten each other.</li>
 </ol>
+-->
 
+<!--
         <p>
           Such requirements can be used to further constrain the optimization
           task. Each added constraint will make some of the unconstrained
@@ -379,8 +418,10 @@ threaten each other.</li>
           solving the 8-Queens problem, which allows their comparison with each
           other.
         </p>
+-->
+        <h3>1D & 2D Representations</h3>
 
-        <h3>1D Representation</h3>
+<!--
         <p class="inline-math">
           Based on the requirements, we are ready to start defining our first
           representation.
@@ -390,6 +431,8 @@ threaten each other.</li>
           with a queen on it.
           You can test this encoding below.
         </p>
+
+-->
         <div class="framed">
           <div class="inside">
             <div class="eyebrow">
@@ -491,13 +534,16 @@ threaten each other.</li>
           that the resulting individual is similar to its parent.
         </p>
 
-        <h3>Bit Mutation</h3>
+        <h3>Group Deviation: Myopic Best-Responses</h3>
+
+<!--
         <p>
           A simple mutation operator is the <em>bit mutation</em>.
           For any individual that is represented by a collection of bits, bit
           mutation randomly flips one of them, i.e., turning a 1 to a 0 or
           vice versa.
         </p>
+-->
         <div class="framed">
           <div class="inside">
             <div class="eyebrow">
@@ -629,6 +675,8 @@ threaten each other.</li>
         </p>
 
         <h3>Transposition and Swap Mutations</h3>
+
+<!--
         <p>
           Binary and value mutation operators do not work for the
           constrained matrix representation.
@@ -645,7 +693,7 @@ threaten each other.</li>
           Below, you can try out a swap mutation for the constrained
           matrix representation already featured above.
         </p>
-
+-->
         <div class="framed" style="margin-bottom: 20px">
           <div class="inside">
             <div class="eyebrow">
