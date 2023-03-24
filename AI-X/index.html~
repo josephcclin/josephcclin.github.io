@@ -137,28 +137,24 @@ img.MathJax_strut {border: 0!important; padding: 0!important; margin: 0!importan
           <h2>Contents:</h2>
           <ul>
             <li>
-              <a href="#introduction">Introduction and Prerequisites</a>
+              <a href="#introduction">Introduction</a>
               <span class="separator">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
             </li>
 	    <li>
-	      <a href="#group_formation">Group Formation</a>
+	      <a href="#group_formation">Group Formation and Opinion Updates</a>
               <span class="separator">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
             <li>
-              <a href="#representation">1D &amp; 2D Representations</a>
-              <span class="separator">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
-            </li>
-            <li>
-              <a href="#group_deviation">Group Deviation</a>
+              <a href="#group_join">Group Joining</a>
               <span class="separator">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
             </li>
             <li>
-              <a href="#gradient_ascent">Gradient Ascent</a>
+              <a href="#online_learning">Opinion Updates by Online Learning</a>
               <span class="separator">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
             </li>
-            <li>
+           <!-- <li>
               <a href="#gda_regularizer">Gradient Ascent with Regularizer</a>
               <span class="separator">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
-            </li>
+	   </li> -->
             <li><a href="#conclusion">Conclusion</a></li>
           </ul>
         </div>
@@ -180,7 +176,7 @@ adversarial network models [<a href="#ref_1">1</a>].
 A game consists of strategic agents, each of which acts rationally to maximize its 
 own reward (or utility) or minimize its cost. A Nash equilibrium is a stable state 
 composed of strategies of all agents such that none of the agents wants to change its 
-own strategy to the other one unilaterally. Hence, such a state is possibly achievable 
+own strategy to the other one unilatersally. Hence, such a state is possibly achievable 
 because no one wants to change its mind when the other ones hold on their current 
 strategies. Yet, how to achieve a Nash equilibrium in a game may not be quite 
 straightforward, especially when agents behave in a "decentralized" way. 
@@ -200,7 +196,7 @@ learning algorithms with and without regularizers.
 
 <section id="group_formation">
 <!-- Section title -->
-<h2>Group Formation</h2>
+<h2>Group Formation and Opinion Updates</h2>
 <p>
 In this game setting, we are given \(n\) agents, each agent \(v_i\)
 is represented as a public preference vector \(z_i\) and a private 
@@ -366,8 +362,8 @@ problem.</div>
 </div>
 </section>
 
-<section id="representation">
-<h2>II. Representations</h2>
+<section id="group_join">
+<h2>III. Group-Joining and Pure Nash Equilibria</h2>
 
 <p>
 When the public and private preference vectors are assume to be in \(\mathbb{R}\), we can 
@@ -419,7 +415,7 @@ threaten each other.</li>
           other.
         </p>
 -->
-        <h3>1D & 2D Representations</h3>
+        <h3>1D Representations</h3>
 
 <!--
         <p class="inline-math">
@@ -472,7 +468,7 @@ threaten each other.</li>
           <span class="MathJax_Preview" style="display: none;"></span><div class="MathJax_Display" style="text-align: center;"><span class="MathJax" id="MathJax-Element-5-Frame" tabindex="0" style="text-align: center;"><nobr><span class="math" id="MathJax-Span-29" style="display: inline-block; width: 16.947em;"><span style="display: inline-block; position: relative; width: 14.123em; height: 0px; font-size: 120%;"><span style="position: absolute; clip: rect(1.16em, 1014.08em, 2.363em, -999.998em); top: -2.22em; left: 0em;"><span class="mrow" id="MathJax-Span-30" style="display: inline-block;"><span class="msubsup" id="MathJax-Span-31" style="display: inline-block;"><span style="display: inline-block; position: relative; width: 1.299em; height: 0px;"><span style="position: absolute; clip: rect(3.15em, 1000.47em, 4.123em, -999.998em); top: -3.979em; left: 0em;"><span class="mn" id="MathJax-Span-32" style="display: inline-block;"><img src="./0032.png" style="width: 10px; height: 15px; margin-right: 0.049em;"></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span><span style="position: absolute; top: -4.396em; left: 0.512em;"><span class="texatom" id="MathJax-Span-33" style="display: inline-block;"><span class="mrow" id="MathJax-Span-34" style="display: inline-block;"><span class="mn" id="MathJax-Span-35" style="display: inline-block; font-size: 70.7%;"><img src="./0036.png" style="width: 7px; height: 11px; vertical-align: -1px; margin-right: 0.049em;"><img src="./0034.png" style="width: 7px; height: 11px; margin-right: 0.049em;"></span></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span></span></span><span class="mo" id="MathJax-Span-36" style="display: inline-block; padding-left: 0.28em;"><img src="./003D.png" style="width: 16px; height: 5px; vertical-align: 3px; margin-right: 0.049em;"></span><span class="mn" id="MathJax-Span-37" style="display: inline-block; padding-left: 0.28em;"><img src="./0031.png" style="width: 10px; height: 15px; margin-right: 0.095em;"><img src="./0038.png" style="width: 10px; height: 15px; vertical-align: 0px; margin-right: 0.049em;"></span><span class="mspace" id="MathJax-Span-38" style="display: inline-block; height: 0em; vertical-align: 0em; width: 0.188em; overflow: hidden;"></span><span class="mn" id="MathJax-Span-39" style="display: inline-block;"><img src="./0034(1).png" style="width: 10px; height: 15px; margin-right: 0.049em;"><img src="./0034(1).png" style="width: 10px; height: 15px; margin-right: 0.049em;"><img src="./0036(1).png" style="width: 10px; height: 15px; vertical-align: 0px; margin-right: 0.049em;"></span><span class="mspace" id="MathJax-Span-40" style="display: inline-block; height: 0em; vertical-align: 0em; width: 0.188em; overflow: hidden;"></span><span class="mn" id="MathJax-Span-41" style="display: inline-block;"><img src="./0037.png" style="width: 11px; height: 16px; vertical-align: 0px; margin-right: 0.002em;"><img src="./0034(1).png" style="width: 10px; height: 15px; margin-right: 0.049em;"><img src="./0034(1).png" style="width: 10px; height: 15px; margin-right: 0.049em;"></span><span class="mspace" id="MathJax-Span-42" style="display: inline-block; height: 0em; vertical-align: 0em; width: 0.188em; overflow: hidden;"></span><span class="mn" id="MathJax-Span-43" style="display: inline-block;"><img src="./0030.png" style="width: 10px; height: 15px; vertical-align: 0px; margin-right: 0.049em;"><img src="./0037.png" style="width: 11px; height: 16px; vertical-align: 0px; margin-right: 0.002em;"><img src="./0033.png" style="width: 10px; height: 15px; margin-right: 0.049em;"></span><span class="mspace" id="MathJax-Span-44" style="display: inline-block; height: 0em; vertical-align: 0em; width: 0.188em; overflow: hidden;"></span><span class="mn" id="MathJax-Span-45" style="display: inline-block;"><img src="./0037.png" style="width: 11px; height: 16px; vertical-align: 0px; margin-right: 0.002em;"><img src="./0030.png" style="width: 10px; height: 15px; vertical-align: 0px; margin-right: 0.049em;"><img src="./0039.png" style="width: 10px; height: 15px; vertical-align: 0px; margin-right: 0.049em;"></span><span class="mspace" id="MathJax-Span-46" style="display: inline-block; height: 0em; vertical-align: 0em; width: 0.188em; overflow: hidden;"></span><span class="mn" id="MathJax-Span-47" style="display: inline-block;"><img src="./0035.png" style="width: 10px; height: 16px; vertical-align: -1px; margin-right: 0.049em;"><img src="./0035.png" style="width: 10px; height: 16px; vertical-align: -1px; margin-right: 0.049em;"><img src="./0031.png" style="width: 10px; height: 15px; margin-right: 0.095em;"></span><span class="mspace" id="MathJax-Span-48" style="display: inline-block; height: 0em; vertical-align: 0em; width: 0.188em; overflow: hidden;"></span><span class="mn" id="MathJax-Span-49" style="display: inline-block;"><img src="./0036(1).png" style="width: 10px; height: 15px; vertical-align: 0px; margin-right: 0.049em;"><img src="./0031.png" style="width: 10px; height: 15px; margin-right: 0.095em;"><img src="./0036(1).png" style="width: 10px; height: 15px; vertical-align: 0px; margin-right: 0.049em;"></span></span><span style="display: inline-block; width: 0px; height: 2.225em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.053em; border-left: 0px solid; width: 0px; height: 1.225em;"></span></span></nobr></span></div><script type="math/tex; mode=display" id="MathJax-Element-5">2^{64} = 18\,446\,744\,073\,709\,551\,616</script>
         </p>
 
-        <h3>2D Representation</h3>
+	<h3>Group Joining: Myopic Best-Responses</h3>
         <p>
           This might be a bit much to find one of the 92 solutions (including
           12
@@ -523,16 +519,16 @@ threaten each other.</li>
         
       </section>
 
-      <section id="mutation">
-        <h2>III. Mutation</h2>
-        <p>
+<section id="group_join">
+<h2>III. Group Joining</h2>
+<p>
           Mutation is an evolutionary operator that modifies a single individual
           of the population.
           It is often used for a local exploration of the search space to
           further exploit a promising solution.
           This is achieved by making small changes to a candidate solution so
-          that the resulting individual is similar to its parent.
-        </p>
+	  that the resulting individual is similar to its parent.
+</p>
 
         <h3>Group Deviation: Myopic Best-Responses</h3>
 
@@ -875,8 +871,8 @@ threaten each other.</li>
         </p>
       </section>
 
-      <section id="crossover">
-        <h2>IV. Crossover</h2>
+      <section id="online_learning">
+        <h2>Opinion Updates by Online Learning</h2>
         <p>
           Crossover is an evolutionary operator that uses two or more candidate
           solutions to create a new one.
@@ -1323,7 +1319,7 @@ threaten each other.</li>
       </section>
 
       <section id="fttp">
-        <h2>V. From Theory to Practice</h2>
+        <h2>V. Conclusion</h2>
         <p>
           In the following, we will set up a complete genetic algorithm to solve
           the 8-Queens problem using the reviewed
@@ -1509,7 +1505,7 @@ threaten each other.</li>
       </section>
 
       <section id="conclusion">
-        <h2>VI. Conclusion</h2>
+        <h2>V. Conclusion</h2>
         <p>
           This paper introduced several representations and their respective
           mutation and crossover operators for solving the 8-Queens Puzzle. It
