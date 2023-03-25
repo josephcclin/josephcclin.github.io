@@ -15,6 +15,14 @@
   width: 432px;
   height: 288px;
   background-size: cover;
+  display: inline-block;
+}
+#gif1 {
+  background-image: url("experiments/party_formation_demo_+Groups_+regularizers_learning_rate=0.1.gif");
+}
+
+#gif2 {
+  background-image: url("experiments/party_formation_demo_+Groups_learning_rate=0.1.gif");
 }
 </style>
 	
@@ -84,35 +92,30 @@ F. Orabona (in progress). arXiv.
 <li class="research"><b>Game Theoretical Aspects in Modeling and Analyzing Party Election Campaign</b>. Grant No. NSTC 110-2222-E-032-002-MY2. April 2021&#8211;March 2023.
 <li class="research">Group Formation with Strategic Coalition and Gradient Ascient.
 <br><br>
-<div id="gif"></div>
+<div class="gif" id="gif1"></div>
+<input type="range" min="0" max="100" value="0" id="range1">
+
+<div class="gif" id="gif2"></div>
+<input type="range" min="0" max="100" value="0" id="range2">
 	
 <input type="range" min="0" max="100" value="0" id="range">
 
 <script>
-var gif = document.getElementById("gif");
-var range = document.getElementById("range");
+var gif1 = document.getElementById("gif1");
+var range1 = document.getElementById("range1");
 
-// 定義 GIF 圖片的路徑陣列
-var images = [
-  "experiments/party_formation_demo_+Groups_+regularizers_learning_rate=0.1.gif",
-  "experiments/party_formation_demo_+Groups_learning_rate=0.1.gif"
-];
+var gif2 = document.getElementById("gif2");
+var range2 = document.getElementById("range2");
 
-range.oninput = function() {
+range1.oninput = function() {
   var value = this.value;
-  var index = Math.floor(value / (100 / images.length));
-  var imagePath = images[index];
-  gif.style.backgroundImage = "url('" + imagePath + "')";
+  gif1.style.backgroundPosition = value + "% 0%";
 };
 
-setInterval(function() {
-  var value = range.value;
-  value = (parseInt(value) + 1) % 101;
-  range.value = value;
-  var index = Math.floor(value / (100 / images.length));
-  var imagePath = images[index];
-  gif.style.backgroundImage = "url('" + imagePath + "')";
-}, 100);
+range2.oninput = function() {
+  var value = this.value;
+  gif2.style.backgroundPosition = value + "% 0%";
+};
 </script>
 	
 <figure>
@@ -124,8 +127,8 @@ setInterval(function() {
 <figcaption>Grouped Muti-agent Learning without Regularizers</figcaption>
 </figure>
 
-<button onclick="document.getElementById('gif').classList.add('animated')">play</button>
-<button onclick="document.getElementById('gif').classList.remove('animated')">pause</button>
+<!-- <button onclick="document.getElementById('gif').classList.add('animated')">play</button> 
+<button onclick="document.getElementById('gif').classList.remove('animated')">pause</button> -->
 <br>
 </UL>
 </div>
