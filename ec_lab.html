@@ -116,6 +116,19 @@ range2.oninput = function() {
   var value = this.value;
   gif2.style.backgroundPosition = value + "% 0%";
 };
+
+setInterval(function() {
+  var value1 = range1.value;
+  value1 = (parseInt(value1) + 1) % 101;
+  range1.value = value1;
+  gif1.style.backgroundPosition = value1 + "% 0%";
+
+  var value2 = range2.value;
+  value2 = (parseInt(value2) + 2) % 101;
+  range2.value = value2;
+  gif2.style.backgroundPosition = value2 + "% 0%";
+}, 100);
+	
 </script>
 	
 <figure>
