@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="en">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <!-- Required meta tags for IEEE Xplore immersive article -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="An interactive article on using game theoretic approach and gradient ascent algorithms to demostrate strategic behaviors of group formation. Learn how the choices of coaltion of agents lead to a pure Nash equilibrium and how updating revealed preferences eventually affects group formation.">
@@ -84,7 +85,8 @@ img.MathJax_strut {border: 0!important; padding: 0!important; margin: 0!importan
 #MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
 #MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
 #MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
-</style></head>
+</style>
+</head>
 
 <body marginwidth="0" marginheight="0"><div style="visibility: hidden; overflow: hidden; position: absolute; top: 0px; height: 1px; width: auto; padding: 0px; border: 0px; margin: 0px; text-align: left; text-indent: 0px; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal;"><div id="MathJax_Hidden"></div></div><div id="MathJax_Message" style="display: none;"></div>
   <!-- Article with large top spacing -->
@@ -98,7 +100,9 @@ img.MathJax_strut {border: 0!important; padding: 0!important; margin: 0!importan
         </h1>
         <!-- Subheading -->
         <p class="subhead">
-          An interactive article on illustrating group-joinging strategies and updating opinions via online learning algorithms to analyze the group formation phenomenon. Learn how the choices of coaltion of agents lead to a pure Nash equilibrium and how updating revealed preferences eventually affects group formation.
+          An interactive article on illustrating group-joinging strategies and updating opinions via gradient ascent algorithms to analyze the group formation 
+	  phenomenon. Learn how the choices of coaltion of agents lead to a pure Nash equilibrium and how updating revealed preferences eventually affects group 
+	  formation.
         </p>
         <!-- Header info general wrapper -->
         <div class="header-info">
@@ -153,7 +157,7 @@ img.MathJax_strut {border: 0!important; padding: 0!important; margin: 0!importan
               <span class="separator">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
             </li>
             <li>
-              <a href="#online_learning">Opinion Updates by Online Learning</a>
+              <a href="#online_learning">Opinion Updates by Gradient Ascent</a>
               <span class="separator">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
             </li>
             <li><a href="#conclusion">Conclusion</a></li>
@@ -189,10 +193,9 @@ maximizer for any other agent.
 <p>In this article, we consider group formation of strategic agents as an illustrating 
 example for demonstrating the strategic behaviors of the agents and also delve into the 
 eventual outcome of the game to study the group formation of a society. 
-The theoretical techniques include identification of a pure Nash equilibrium and online 
-learning algorithms with and without regularizers.
+The theoretical techniques include identification of a pure Nash equilibrium and gradient 
+ascent algorithms with and without regularizers.
 </p>
-
 
 <p>
 In this game setting, we are given \(n\) agents, each agent \(v_i\)
@@ -251,13 +254,13 @@ preventing it from moving too far from its own belief.
 </ul>
 
 <figure class="text-center">
-<img src="./FlowchartGroupJoining.svg" alt="Algorithm" width="511" height="441">
+<img src="img/FlowchartGroupJoining.svg" alt="Algorithm1" width="511" height="441">
 <figcaption><strong>Figure 1:</strong> Flowchart of Group-Joining.</figcaption>
 </figure>
 
 
 <figure class="text-center">
-<img src="./FlowchartOnlineLearningUpdate.svg" alt="Algorithm" width="511" height="441">
+<img src="img/FlowchartGAA.svg" alt="Algorithm2" width="511" height="441">
 <figcaption><strong>Figure 2:</strong> Flowchart of Opinion Updating.</figcaption>
 </figure>
 
@@ -634,7 +637,7 @@ threaten each other.</li>
       </section>
 
 <section id="online_learning">
-<h2>IV. Opinion Updates by Online Learning</h2>
+<h2>IV. Opinion Updates by Gradient Ascent</h2>
         <p>
         Online learning algorithms can lead to convergence with respect to the hindsight optimum.  
         </p>
