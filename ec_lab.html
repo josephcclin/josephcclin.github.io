@@ -10,6 +10,31 @@
     #head { font-weight: bold; font-size:28px; text-align:left; margin-left:0px; }
     #sect { font-weight: bold; font-size:20px; }
 </style>
+<style>
+/* define a GIF figure displaying area */
+#gif {
+  width: 200px;
+  height: 200px;
+  background-image: url("nabkgnd.jpg");
+  background-size: cover;
+}
+
+/* define the animation rule */
+@keyframes gif-animation {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: -100% 0%;
+  }
+}
+
+/* setting up the animation */
+#gif.animated {
+  animation: gif-animation 5s linear infinite;
+}
+</style>
+	
 <link rel="icon" href="EC.png">
 
 
@@ -86,6 +111,10 @@ F. Orabona (in progress). arXiv.
 </figure>
 <br>
 </UL>
+<div id="gif">
+</div>
+<button onclick="document.getElementById('gif').classList.add('animated')">play</button>
+<button onclick="document.getElementById('gif').classList.remove('animated')">pause</button>
 <hr>
 <br>
 <b><span style="font-size: 18px">Lab Members</span></b>
