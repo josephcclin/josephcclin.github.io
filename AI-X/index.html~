@@ -2,9 +2,9 @@
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <!-- Required meta tags for IEEE Xplore immersive article -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="An interactive article on using game theoretic approach and online learning algorithms to demostrate strategic behaviors of group formation. Learn how the choices of coaltion of agents lead to a pure Nash equilibrium and how updating revealed preferences eventually affects group formation.">
+  <meta name="description" content="An interactive article on using game theoretic approach and gradient ascent algorithms to demostrate strategic behaviors of group formation. Learn how the choices of coaltion of agents lead to a pure Nash equilibrium and how updating revealed preferences eventually affects group formation.">
   
-  <title>Group Formation by Strategic Group-Joining and Opinion Updates via Online Learning
+  <title>Group Formation by Strategic Group-Joining and Opinion Updates via Gradient Ascent
   </title>
 
   <!-- Stylesheet for IEEE Xplore immersive article -->
@@ -94,7 +94,7 @@ img.MathJax_strut {border: 0!important; padding: 0!important; margin: 0!importan
       <div class="container">
         <!-- Page title -->
         <h1>
-          Group Formation by Strategic Group-Joining and Opinion Updates via Online Learning
+        Group Formation by Strategic Group-Joining and Opinion Updates via Gradient Ascent
         </h1>
         <!-- Subheading -->
         <p class="subhead">
@@ -1149,13 +1149,12 @@ Ozair, S., Courville, A. and Bengio, Y., 2020. Communications of the ACM, Vol 63
             </span>
           </li>
           <li id="ref_3">
-            Computational Intelligence
+            A Modern Introduction to Online Learning
             <br>
             <span>
-              Kruse, R., Borgelt, C., Braune, C., Mostaghim, S. and
-              Steinbrecher, M., 2016. Springer London. DOI:
-              <a href="https://link.springer.com/book/10.1007/978-1-4471-7296-3" target="_blank">
-			  10.1007/978-1-4471-7296-3</a>
+              Orabona, F., 2022. arXiv:1912.13213. DOI:
+              <a href="https://doi.org/10.48550/arXiv.1912.13213" target="_blank">
+			  10.48550/arXiv.1912.13213</a>
             </span>
           </li>
          </ol>
