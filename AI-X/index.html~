@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" type="text/css" href="css/style_Vic.css">
   <link rel="stylesheet" type="text/css" href="css/all.min.css"> 
-  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> 
   <link rel="preconnect" href="https://fonts.googleapis.com">
     <script defer src="js/fontawesome.min.js"></script>
     <script defer src="js/all.min.js"></script>
@@ -620,6 +620,74 @@ that a solution to the puzzle is found.
 Do you think you are up to the task of solving the puzzle on your own?
 Go ahead and try it yourself to find a solution:
 </p>
+
+<!-- Page title -->
+    <!-- Group box -->
+    <div class="d-flex w-100">
+      <h4 class="ps-5 pt-3 text-start">Policy Dimenson = 1</h4>
+      <span class="pe-5 pb-2 ms-auto mt-auto h-25"><button id="reset" class="btn btn-secondary py-1">RESET</button></span>
+    </div>
+    <div class="Group-box pb-3">
+      <div class="d-flex flex-column px-3 justify-content-center">
+        <div id="box1" class="d-flex mx-auto position-relative" style="width: 1000px">
+          <div id="t01" class="tip" style="background-color: #d04a5c23;">
+            <p id="wp1" class="mb-0">win prob.</p>
+            <p id="r1">reward</p>
+          </div>
+          <div id="t02" class="tip" style="background-color: #02798c33;">
+            <p id="wp2" class="mb-0">win prob.</p>
+            <p id="r2">reward</p>
+          </div>
+          <div id="t03" class="tip" style="background-color: #ffc1073b;">
+            <p id="wp3" class="mb-0">win prob.</p>
+            <p id="r3">reward</p>
+          </div>
+          <div id="t04" class="tip" style="background-color: #4a6bd023;">
+            <p id="wp4" class="mb-0">win prob.</p>
+            <p id="r4">reward</p>
+          </div>
+          <div id="t05" class="tip" style="background-color: #bababa69;">
+            <p id="wp5" class="mb-0">win prob.</p>
+            <p id="r5">reward</p>
+          </div>
+          <!-- Doll 1 -->
+          <span id="s01" class="position-absolute">
+            <img src="./images/aix_doll-01.svg" height="100" style="transition:'left .3s ease-in';" />
+          </span>
+          <!-- Doll 2 -->
+          <span id="s02" class="position-absolute">
+            <img src="./images/aix_doll-02.svg" height="100" style="transition:'left .3s ease-in';" />
+          </span>
+          <!-- Doll 3 -->
+          <span id="s03" class="position-absolute">
+            <img src="./images/aix_doll-03.svg" height="100" style="transition:'left .3s ease-in';" />
+          </span>
+          <!-- Doll 4 -->
+          <span id="s04" class="position-absolute">
+            <img src="./images/aix_doll-04.svg" height="100" style="transition:'left .3s ease-in';" />
+          </span>
+          <!-- Doll 5 -->
+          <span id="s05" class="position-absolute" style="cursor: grab;">
+            <span
+              class="position-absolute badge rounded-pill bg-secondary"
+              style="bottom:-80%"
+            >
+              Drag Me
+            </span>
+            <img src="./images/aix_doll-05.svg" height="100" />
+          </span>
+          <!-- Line-chart -->
+          <svg class="pt-6 w-100 overflow-visible" id="Viz_area" height="180" width="250"></svg>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex px-5">
+      <Card class="w-100 bg-grey rounded py-3 px-4 h5 lh-lg">
+        <Img src="./images/aix_doll-05.svg" height="50" class="ps-3" />
+        &emsp; V5 is considering join one of the currently existing groups or stay alone.
+      </Card>
+    </div>
+
 
 <!-- Interactive frame -->
 <div class="framed" style="margin-bottom: 20px">
