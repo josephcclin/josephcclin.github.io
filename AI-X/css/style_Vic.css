@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit&display=swap');
+
+/*body {
+  font-family: 'Outfit', sans-serif !important;
+}*/
+
+.Group-box {
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+
+.Group-box > div {
+  border: 4px solid #ddd;
+  border-radius: 1rem;
+  height: 55vh;
+}
+
+.bg-ieee {
+  background-color: #19003b;
+}
+
+.btn-ieee {
+  background-color: #4c0da4 !important;
+  color: #fff !important;
+}
+
+.bg-grey {
+  background-color: #f0f0f0 !important;
+  color: #848484 !important;
+}
+
+.form-check-input:checked {
+  background-color: #4c0da4 !important;
+  border-color: #4c0da4 !important;
+}
+
+.btn-ieee:hover, .btn-ieee:focus, .btn-ieee:active {
+  background-color: #6a4999 !important;
+  color: #fff !important;
+}
+
+.text-doll-red, .text-doll-green, .text-doll-yellow, .text-doll-blue {
+  color: #babababd;
+}
+
+.text-doll-red:hover {
+  color: #d04a5b;
+}
+
+.text-doll-green:hover {
+  color: #00798c;
+}
+
+.text-doll-yellow:hover {
+  color: #edae49;;
+}
+
+.text-doll-blue:hover {
+  color: #30638e;
+}
+
+.pt-6 {
+  padding-top: 10rem;
+}
+
+.tip {
+  border: 0px solid transparent;
+  border-radius: .5rem;
+  position: absolute;
+  height: auto;
+  width: 205px;
+  background-color: #31348520;
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  top: -5rem;
+  left: -6rem;
+  padding: .5rem;
+}
+
+.tick-label {
+  font-size: 20px;
+}
