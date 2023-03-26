@@ -274,7 +274,7 @@ a {
       padding-right: 20px; } }
 
 img {
-  max-width: 100%;
+  max-width: auto;
   height: auto; }
 
 h1 {
@@ -285,9 +285,7 @@ h2 {
   margin-bottom: 1.5rem;
   padding-bottom: 1rem;
   border-bottom: 1px solid #000;
-   /* 
   text-transform: uppercase;
-  */
   font-size: 1.625rem;
   margin-top: 3rem; }
 
@@ -390,7 +388,7 @@ figure {
       .box ul li {
         font-size: 1rem; } }
     .box ul li a {
-    text-transform: none; }
+      text-transform: uppercase; }
       @media only screen and (max-width: 767px) {
         .box ul li a {
           font-size: 1rem; } }
@@ -529,7 +527,7 @@ figure {
 .framed {
   border: 1px solid #11679a;
   border-radius: 0.75rem;
-  padding: 1rem 1.75rem; }
+  padding: .75rem .75rem; }
   @media only screen and (max-width: 767px) {
     .framed {
       max-width: 100%;
@@ -647,17 +645,36 @@ figure {
   .scroll-top svg {
     width: 30px; }
 
+input[type='range'],
+.ui-slider,
+div.ui-slider .ui-slider-handle,
+.framed .matrixsmall,
+#run-ea-button,
+select,
+input[type='button']:not(:disabled),
+.framed [class*='chessboard'] {
+  cursor: pointer; }
+
+.no-pointer,
+.no-pointer * {
+  cursor: default !important; }
+
+.ui-state-error {
+  padding: 1rem !important; }
+  .ui-state-error p {
+    margin-top: 0; }
+
 /*# sourceMappingURL=maps/style.css.map */
 
-@import url('https://fonts.googleapis.com/css2?family=Outfit&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Outfit&display=swap');
 
-/*body {
+body {
   font-family: 'Outfit', sans-serif !important;
-}*/
+} */
 
 .Group-box {
-  padding-left: 3rem;
-  padding-right: 3rem;
+  padding-left: .75rem;
+  padding-right: .75rem;
 }
 
 .Group-box > div {
@@ -690,8 +707,40 @@ figure {
   color: #fff !important;
 }
 
+.plus-defalut, .plus-red, .plus-green, .plus-yellow, .plus-blue {
+  background-image: url('/img/circle-plus-defalut.png');
+  height: 20px;
+  cursor: pointer;
+}
+
+.plus-red:hover{
+  background-image: url('/img/circle-plus-red.png');
+  height: 20px;
+  cursor: pointer;
+}
+
+.plus-green:hover {
+  background-image: url('/img/circle-plus-green.png');
+  height: 20px;
+  cursor: pointer;
+}
+
+
+.plus-yellow:hover{
+  background-image: url('/img/circle-plus-yellow.png');
+  height: 20px;
+  cursor: pointer;
+}
+
+.plus-blue:hover{
+  background-image: url('/img/circle-plus-blue.png');
+  height: 20px;
+  cursor: pointer;
+}
+
 .text-doll-red, .text-doll-green, .text-doll-yellow, .text-doll-blue {
-  color: #babababd;
+  color: #babababd !important;
+  fill: #babababd !important;
 }
 
 .text-doll-red:hover {
@@ -703,7 +752,7 @@ figure {
 }
 
 .text-doll-yellow:hover {
-  color: #edae49;;
+  color: #edae49;
 }
 
 .text-doll-blue:hover {
@@ -719,7 +768,7 @@ figure {
   border-radius: .5rem;
   position: absolute;
   height: auto;
-  width: 205px;
+  width: auto;
   background-color: #31348520;
   color: #000;
   display: flex;
@@ -727,8 +776,13 @@ figure {
   top: -5rem;
   left: -6rem;
   padding: .5rem;
+  white-space: nowrap;
 }
 
 .tick-label {
   font-size: 20px;
+}
+
+#wp1, #wp2, #wp3, #wp4, #wp5, #wp6, #wp7, #wp8, #wp9, #wp10, #r1, #r2, #r3, #r4, #r5, #r6, #r7, #r8, #r9, #r10, .small {
+  font-size: .9rem !important;
 }
