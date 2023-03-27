@@ -582,588 +582,728 @@
         visualizations, but do not let your own creativity be limited by these recommendations.
       </p>
 
-	<!-- HERE -->
-      <div class="framed">
-        <div class="inside">
-          <!-- <div class="eyebrow">
-            You can add an introductory text for interactive elements to motivate users to check out the following block.
-          </div>
-          <div id="board-letsplay" style="width: 320px; margin: auto auto 10px;"></div>
-          <div class="caption"><b>Figure 2:</b><br> Example of an interactive figure: Introducing the 8-Queens problem. Drag and drop queens to change their position. Try to position all queens
-            such that no two queens share the same row, column, or diagonal. Queens that threaten each other
-            will be highlighted in red. In case you found a solution all queens will be highlighted in green.</div>
-          <script type="module" src="chessboard/chessboard_lets_play.js"></script> -->
+      <!-- D3.js -->
+      <script src="https://d3js.org/d3.v4.js"></script>
+      <script type="module">
+          const line = d3.select("#Viz_area")
+          const svg1 = d3.select("#s01")
+          const svg2 = d3.select("#s02")
+          const svg3 = d3.select("#s03")
+          const svg4 = d3.select("#s04")
+          const svg5 = d3.select("#s05")
+          svg1.style("left", `${500 * (-0.8 + 1) - 57.59 / 2}px`).style("bottom", '20%')
+          svg2.style("left", `${500 * (1 + 1) - 57.59 / 2}px`).style("bottom", '20%')
+          svg3.style("left", `${500 * (0.1 + 1) - 57.59 / 2}px`).style("bottom", '20%')
+          svg4.style("left", `${500 * (-0.1 + 1) - 57.59 / 2}px`).style("bottom", '20%')
+          svg5.style("left", `${500 * (0.2 + 1) - 57.59 / 2}px`).style("bottom", '20%')
+          d3.select(`#t01`)
+              .style("left", `${500 * (-0.8 + 1) - tipWidth / 2}px`)
+              .attr("transform", `translate(${500 * (-0.8 + 1)}, 0)`)
+          d3.select(`#t02`)
+              .style("left", `${500 * (1.1 + 1) - tipWidth / 2}px`)
+              .attr("transform", `translate(${500 * (1 + 1)}, 0)`)
+          d3.select(`#t03`)
+              .style("left", `${500 * (0.3 + 1) - tipWidth / 2}px`)
+              .attr("transform", `translate(${500 * (0.1 + 1)}, 0)`)
+          d3.select(`#t04`)
+              .style("left", `${500 * (-0.1 + 1) - tipWidth / 2}px`)
+              .attr("transform", `translate(${500 * (-0.1 + 1)}, 0)`)
 
-          <div style="height: 265vh;">
-            <!-- Page title -->
-            <!-- <div class="d-flex bg-ieee text-dark mb-4 py-1">
-              <h1 class="mx-auto text-center text-light">IEEE AIX</h1>
-            </div> -->
-        
-            <!-- Group box -->
-            <div class="d-flex w-100">
-              <h4 class="ps-3 pt-3 text-start">Policy Dimenson = 1</h4>
-              <span class="pe-3 pb-2 ms-auto mt-auto h-25">
-                <button id="reset" class="btn btn-secondary py-1">RESET</button>
-              </span>
-            </div>
-            <div class="Group-box pb-3">
-              <div class="d-flex flex-column px-3 justify-content-center">
-                <div id="box1" class="d-flex mx-auto position-relative" style="width: 1000px">
-                  <div id="t01" class="tip" style="background-color: #d04a5c23;">
-                    <p id="wp1" class="mb-0">win prob.</p>
-                    <p id="r1">reward</p>
-                  </div>
-                  <div id="t02" class="tip" style="background-color: #02798c33;">
-                    <p id="wp2" class="mb-0">win prob.</p>
-                    <p id="r2">reward</p>
-                  </div>
-                  <div id="t03" class="tip" style="background-color: #ffc1073b;">
-                    <p id="wp3" class="mb-0">win prob.</p>
-                    <p id="r3">reward</p>
-                  </div>
-                  <div id="t04" class="tip" style="background-color: #4a6bd023;">
-                    <p id="wp4" class="mb-0">win prob.</p>
-                    <p id="r4">reward</p>
-                  </div>
-                  <div id="t05" class="tip" style="background-color: #bababa69;">
-                    <p id="wp5" class="mb-0">win prob.</p>
-                    <p id="r5">reward</p>
-                  </div>
-                  <!-- Doll 1 -->
-                  <span id="s01" class="position-absolute">
-                    <img src="./img/aix_doll-01.svg" style="transition:'left .3s ease-in'; height: 100px;" />
-                  </span>
-                  <!-- Doll 2 -->
-                  <span id="s02" class="position-absolute">
-                    <img src="./img/aix_doll-02.svg" style="transition:'left .3s ease-in'; height: 100px;" />
-                  </span>
-                  <!-- Doll 3 -->
-                  <span id="s03" class="position-absolute">
-                    <img src="./img/aix_doll-03.svg" style="transition:'left .3s ease-in'; height: 100px;" />
-                  </span>
-                  <!-- Doll 4 -->
-                  <span id="s04" class="position-absolute">
-                    <img src="./img/aix_doll-04.svg" style="transition:'left .3s ease-in'; height: 100px;" />
-                  </span>
-                  <!-- Doll 5 -->
-                  <span id="s05" class="position-absolute" style="cursor: grab; height: 100px;">
-                    <span
-                      class="position-absolute badge rounded-pill bg-secondary"
-                      style="bottom:-80%"
-                    >
-                      Drag Me
-                    </span>
-                    <img src="./img/aix_doll-05.svg" style="height: 100px" />
-                  </span>
-                  <!-- Line-chart -->
-                  <svg class="pt-6 w-100 overflow-visible" id="Viz_area" style="height:180px; width:250px;"></svg>
-                </div>
-              </div>
-            </div>
-            <div class="d-flex px-3">
-              <Card class="w-100 bg-grey rounded py-3 px-4 h5 lh-lg">
-                <Img src="./img/aix_doll-05.svg" style="height: 50px" class="ps-3" />
-                &emsp; V5 is considering join one of the currently existing groups or stay alone.
-              </Card>
-            </div>
-        
-            <!-- Group box 2 -->
-            <div class="d-flex w-100 pt-4">
-              <h4 class="ps-3 pt-3 text-start">The Best Responses / Manual Join</h4>
-              <span class="pe-2 pb-2 ms-auto mt-auto h-25">
-                <button id="best" class="btn btn-ieee py-1">
-                  Best Responses for all
-                </button>
-              </span>
-              <span class="pe-3 pb-2 mt-auto h-25">
-                <button id="reset2" class="btn btn-secondary py-1">
-                  RESET
-                </button>
-              </span>
-            </div>
-        
-            <div class="Group-box pb-3">
-              <div class="d-flex flex-column px-3 justify-content-center">
-                <div id="box2" class="d-flex mx-auto position-relative" style="width: 1000px">
-                  <div id="t06" class="tip" style="background-color: #d04a5c23;">
-                    <p id="wp6" class="mb-0">win prob.</p>
-                    <p id="r6">reward</p>
-                  </div>
-                  <div id="t07" class="tip" style="background-color: #02798c33;">
-                    <p id="wp7" class="mb-0">win prob.</p>
-                    <p id="r7">reward</p>
-                  </div>
-                  <div id="t08" class="tip" style="background-color: #ffc1073b;">
-                    <p id="wp8" class="mb-0">win prob.</p>
-                    <p id="r8">reward</p>
-                  </div>
-                  <div id="t09" class="tip" style="background-color: #4a6bd023;">
-                    <p id="wp9" class="mb-0">win prob.</p>
-                    <p id="r9">reward</p>
-                  </div>
-                  <div id="t010" class="tip" style="background-color: #bababa69;">
-                    <p id="wp10" class="mb-0">win prob.</p>
-                    <p id="r10">reward</p>
-                  </div>
+          const wp1 = d3.select("#wp1")
+          const wp2 = d3.select("#wp2")
+          const wp3 = d3.select("#wp3")
+          const wp4 = d3.select("#wp4")
+          const wp5 = d3.select("#wp5")
+          const r1 = d3.select("#r1")
+          const r2 = d3.select("#r2")
+          const r3 = d3.select("#r3")
+          const r4 = d3.select("#r4")
+          const r5 = d3.select("#r5")
 
-                  <div id="s06" class="position-absolute">
-                    <div id="i01" class="plus w-100 pb-2" style="display: none">
-                      <i
-                        class="fa-solid fa-circle-plus mx-auto text-doll-red"
-                        style="cursor: pointer;"
-                        title="Join"
-                      >
-                      </i>
-                    </div>
-                    <img src="./img/aix_doll-01.svg" style="transition:'left .3s ease-in'; height: 100px" />
-                  </div>
+          const setPosition = (arr, target) => {
+            const mid = findClosest(positions, target)
+            wp1.node().innerHTML = `win. prob. ${data[1][mid]}`
+            wp2.node().innerHTML = `win. prob. ${data[2][mid]}`
+            wp3.node().innerHTML = `win. prob. ${data[3][mid]}`
+            wp4.node().innerHTML = `win. prob. ${data[4][mid]}`
+            wp5.node().innerHTML = `win. prob. ${data[5][mid]}`
+            r1.node().innerHTML = `reward ${rs[1][mid]}`
+            r2.node().innerHTML = `reward ${rs[2][mid]}`
+            r3.node().innerHTML = `reward ${rs[3][mid]}`
+            r4.node().innerHTML = `reward ${rs[4][mid]}`
+            r5.node().innerHTML = `reward ${rs[5][mid]}`
 
-                  <div id="s07" class="position-absolute">
-                    <div id="i02" class="plus w-100 pb-2" style="display: none">
-                      <i
-                        class="fa-solid fa-circle-plus mx-auto text-doll-green"
-                        style="cursor: pointer;"
-                        title="Join"
-                      >
-                    </i>
-                    </div>
-                    <img src="./img/aix_doll-02.svg" style="transition:'left .3s ease-in'; height: 100px" />
-                  </div>
+          let tp = [0, 0, 0, 0, 0]
+          if (positions[mid] < -0.8) tp = [-0.48, 0.9, 0.3, -0.1, -0.8]
+          else if (positions[mid] < -0.1) tp = [-0.8, 0.9, 0.34, -0.08, -0.48]
+          else if (positions[mid] < 0.1) tp = [-0.8, 0.9, 0.4, -0.4, 0]
+          else tp = [-0.8, 0.9, 0.13, -0.3, 0.55]
 
-                  <div id="s08" class="position-absolute">
-                    <div id="i03" class="plus w-100 pb-2" style="display: none">
-                      <i
-                        class="fa-solid fa-circle-plus mx-auto text-doll-yellow"
-                        style="cursor: pointer;"
-                        title="Join"
-                      >
-                      </i>
-                    </div>
-                    <img src="./img/aix_doll-03.svg" style="transition:'left .3s ease-in'; height: 100px" />
-                  </div>
+            const range = [1, 2, 3, 4, 5]
+            range.forEach((i) => {
+              d3.select(`#t0${i}`)
+                .style("left", `${500 * (tp[i - 1] + 1) - tipWidth / 2}px`)
+                .attr("transform", `translate(${500 * (tp[i - 1] + 1)}, 0)`)
+            })
+            svg5.transition()
+                .duration(1000)
+                .style("left", `${500 * (positions[mid] + 1) - 57.59 / 2}px`)
+                .style("bottom", `20%`)
+            d3.select('#v5').remove()
+            line.append("circle")
+              .attr("id", "v5")
+              .attr("r", 10).attr("style", `left:${500 * (positions[mid] + 1) - 57.59 / 2}px;`)
+              .attr("transform", `translate(${500 * (positions[mid] + 1)}, 0)`)
+              .attr("fill", "#bababa")
+            d3.select('#l05').remove()
+            line.append("text")
+              .attr("id", "l05")
+              .attr("class", "tick-label")
+              .attr("style", `left:${500 * (positions[mid] + 1) - 57.59 / 2}px;`)
+              .attr("transform", `translate(${500 * (positions[mid] + 1)}, 0)`)
+              .attr("y", 30)
+              .attr("dy", ".35em")
+              .text(positions[mid])
+              .attr("fill", "#bababa")
+            return mid
+          }
 
-                  <div id="s09" class="position-absolute">
-                    <div id="i04" class="plus w-100 pb-2" style="display: none">
-                      <i
-                        class="fa-solid fa-circle-plus mx-auto text-doll-blue"
-                        style="cursor: pointer;"
-                        title="Join"
-                      >
-                    </i>
-                    </div>
-                    <img src="./img/aix_doll-04.svg" style="transition:'left .3s ease-in'; height: 100px;" />
-                  </div>
+          const drag = d3.drag()
+            .on('start', function(){
+              d3.select(this)
+                .select('img')
+                  .attr("src", `./img/aix-doll5-ani.gif`)
+              })
+            .on('drag', function(){
+              d3.select(this)
+                .attr("style",
+                  `left:${d3.event.x-25}px;bottom:${-d3.event.y+100}px;cursor: grab;`
+                )
+              })
+            .on('end', function(){
+              const target = (d3.event.x-25 - 500) / 500
+              const pivot = setPosition(positions, (d3.event.x-25) / 500 - 1)
+              
+              d3.select(this)
+                .select('img')
+                .attr("src", `./img/aix_doll-05.svg`)
+            })
+          svg5.call(drag)
+          const reset = () => setPosition(positions, 0.2)
+          d3.select('#reset').on("click", reset)
 
-                  <span id="s010" class="position-absolute" style="cursor: grab;">
-                    <span class="position-absolute badge rounded-pill bg-secondary" style="bottom:-80%">Drag Me</span>
-                    <img src="./img/aix_doll-05.svg" style="height: 100px;" />
-                  </span>
-                  <svg class="pt-6 w-100 overflow-visible" id="Viz_area2" style="height: 180px; width: 250xp"></svg>
-                </div>
-              </div>
-            </div>
-            <div class="d-flex px-3">
-              <Card class="d-flex w-100 bg-grey rounded py-3 px-4 h5 lh-lg">
-                <i class="fa-solid fa-lightbulb text-secondary my-auto h2"></i>
-                <div class="ps-4">
-                  No one wants to deviate from his / her current group to the other group since the expected gain cannot be the better-off.<br />
-                  Here comes a Nash Equilibrium of the "game".
-                </div>
-              </Card>
-            </div>
-        
-        
-            
-            <!-- D3.js -->
-            <script src="https://d3js.org/d3.v4.js"></script>
-            <script type="module">
-                const line = d3.select("#Viz_area")
-                const svg1 = d3.select("#s01")
-                const svg2 = d3.select("#s02")
-                const svg3 = d3.select("#s03")
-                const svg4 = d3.select("#s04")
-                const svg5 = d3.select("#s05")
-                svg1.style("left", `${500 * (-0.8 + 1) - 57.59 / 2}px`).style("bottom", '20%')
-                svg2.style("left", `${500 * (1 + 1) - 57.59 / 2}px`).style("bottom", '20%')
-                svg3.style("left", `${500 * (0.1 + 1) - 57.59 / 2}px`).style("bottom", '20%')
-                svg4.style("left", `${500 * (-0.1 + 1) - 57.59 / 2}px`).style("bottom", '20%')
-                svg5.style("left", `${500 * (0.2 + 1) - 57.59 / 2}px`).style("bottom", '20%')
-                d3.select(`#t01`)
-                    .style("left", `${500 * (-0.8 + 1) - tipWidth / 2}px`)
-                    .attr("transform", `translate(${500 * (-0.8 + 1)}, 0)`)
-                d3.select(`#t02`)
-                    .style("left", `${500 * (1.1 + 1) - tipWidth / 2}px`)
-                    .attr("transform", `translate(${500 * (1 + 1)}, 0)`)
-                d3.select(`#t03`)
-                    .style("left", `${500 * (0.3 + 1) - tipWidth / 2}px`)
-                    .attr("transform", `translate(${500 * (0.1 + 1)}, 0)`)
-                d3.select(`#t04`)
-                    .style("left", `${500 * (-0.1 + 1) - tipWidth / 2}px`)
-                    .attr("transform", `translate(${500 * (-0.1 + 1)}, 0)`)
+          reset()
+          const x = d3.scaleLinear()
+              .domain([-1, 1])
+              .range([0, 1000])
+          const axis = line.call(d3.axisBottom(x))
+          const ticks = axis.selectAll(".tick").style("font-size",".85rem")
+          console.log(ticks)
+          ticks.each(function() { d3.select(this).append("circle").attr("r", 5).attr("fill", "black"); })
+          ticks.selectAll("line").remove()
+          const ps = [-0.8, 1, 0.1, -0.1]
+          const pcolor = ["#d04a5b", "#00798c", "#edae49", "#30638e"]
+          ps.forEach((p, i) => {
+            line.append("circle")
+              .attr("id", `v${i + 1}`)
+              .attr("r", 10).attr("style", `left:${500 * (p + 1) - 57.59 / 2}px;position: relative;`)
+              .attr("transform", `translate(${500 * (p + 1)}, 0)`)
+              .attr("fill", pcolor[i])
+            line.append("text")
+              .attr("id", `l0${i + 1}`)
+              .attr("class", "tick-label")
+              .attr("style", `left:${500 * (p + 1) - 57.59 / 2}px;`)
+              .attr("transform", `translate(${500 * (p + 1)}, 0)`)
+              .attr("y", 30)
+              .attr("dy", ".35em")
+              .text(p)
+              .attr("fill", pcolor[i])
+          })
+          justifyTips()
+      </script>
 
-                const wp1 = d3.select("#wp1")
-                const wp2 = d3.select("#wp2")
-                const wp3 = d3.select("#wp3")
-                const wp4 = d3.select("#wp4")
-                const wp5 = d3.select("#wp5")
-                const r1 = d3.select("#r1")
-                const r2 = d3.select("#r2")
-                const r3 = d3.select("#r3")
-                const r4 = d3.select("#r4")
-                const r5 = d3.select("#r5")
+      <script type="module">
+        const line2 = d3.select("#Viz_area2")
+        const svg6 = d3.select("#s06")
+        const svg7 = d3.select("#s07")
+        const svg8 = d3.select("#s08")
+        const svg9 = d3.select("#s09")
+        const svg10 = d3.select("#s010")
+        svg6.transition().attr("style", `left:${500 * (-0.8 + 1) - 57.59 / 2}px;bottom: 20%;`)
+        svg7.transition().attr("style", `left:${500 * (1 + 1) - 57.59 / 2}px;bottom: 20%;`)
+        svg8.transition().attr("style", `left:${500 * (0.1 + 1) - 57.59 / 2}px;bottom: 20%;`)
+        svg9.transition().attr("style", `left:${500 * (-0.1 + 1) - 57.59 / 2}px;bottom: 20%;`)
+        svg10.transition().attr("style", `left:${500 * (0.2 + 1) - 57.59 / 2}px;bottom: 20%;cursor: grab;`)
 
-                const setPosition = (arr, target) => {
-                  const mid = findClosest(positions, target)
-                  wp1.node().innerHTML = `win. prob. ${data[1][mid]}`
-                  wp2.node().innerHTML = `win. prob. ${data[2][mid]}`
-                  wp3.node().innerHTML = `win. prob. ${data[3][mid]}`
-                  wp4.node().innerHTML = `win. prob. ${data[4][mid]}`
-                  wp5.node().innerHTML = `win. prob. ${data[5][mid]}`
-                  r1.node().innerHTML = `reward ${rs[1][mid]}`
-                  r2.node().innerHTML = `reward ${rs[2][mid]}`
-                  r3.node().innerHTML = `reward ${rs[3][mid]}`
-                  r4.node().innerHTML = `reward ${rs[4][mid]}`
-                  r5.node().innerHTML = `reward ${rs[5][mid]}`
-
-                let tp = [0, 0, 0, 0, 0]
-                if (positions[mid] < -0.8) tp = [-0.48, 0.9, 0.3, -0.1, -0.8]
-                else if (positions[mid] < -0.1) tp = [-0.8, 0.9, 0.34, -0.08, -0.48]
-                else if (positions[mid] < 0.1) tp = [-0.8, 0.9, 0.4, -0.4, 0]
-                else tp = [-0.8, 0.9, 0.13, -0.3, 0.55]
-
-                  const range = [1, 2, 3, 4, 5]
-                  range.forEach((i) => {
-                    d3.select(`#t0${i}`)
-                      .style("left", `${500 * (tp[i - 1] + 1) - tipWidth / 2}px`)
-                      .attr("transform", `translate(${500 * (tp[i - 1] + 1)}, 0)`)
-                  })
-                  svg5.transition()
-                      .duration(1000)
-                      .style("left", `${500 * (positions[mid] + 1) - 57.59 / 2}px`)
-                      .style("bottom", `20%`)
-                  d3.select('#v5').remove()
-                  line.append("circle")
-                    .attr("id", "v5")
-                    .attr("r", 10).attr("style", `left:${500 * (positions[mid] + 1) - 57.59 / 2}px;`)
-                    .attr("transform", `translate(${500 * (positions[mid] + 1)}, 0)`)
-                    .attr("fill", "#bababa")
-                  d3.select('#l05').remove()
-                  line.append("text")
-                    .attr("id", "l05")
-                    .attr("class", "tick-label")
-                    .attr("style", `left:${500 * (positions[mid] + 1) - 57.59 / 2}px;`)
-                    .attr("transform", `translate(${500 * (positions[mid] + 1)}, 0)`)
-                    .attr("y", 30)
-                    .attr("dy", ".35em")
-                    .text(positions[mid])
-                    .attr("fill", "#bababa")
-                  return mid
-                }
-
-                const drag = d3.drag()
-                  .on('start', function(){
-                    d3.select(this)
-                      .select('img')
-                        .attr("src", `./img/aix-doll5-ani.gif`)
-                    })
-                  .on('drag', function(){
-                    d3.select(this)
-                      .attr("style",
-                        `left:${d3.event.x-25}px;bottom:${-d3.event.y+100}px;cursor: grab;`
-                      )
-                    })
-                  .on('end', function(){
-                    const target = (d3.event.x-25 - 500) / 500
-                    const pivot = setPosition(positions, (d3.event.x-25) / 500 - 1)
-                    
-                    d3.select(this)
-                      .select('img')
-                      .attr("src", `./img/aix_doll-05.svg`)
-                  })
-                svg5.call(drag)
-                const reset = () => setPosition(positions, 0.2)
-                d3.select('#reset').on("click", reset)
-
-                reset()
-                const x = d3.scaleLinear()
-                    .domain([-1, 1])
-                    .range([0, 1000])
-                const axis = line.call(d3.axisBottom(x))
-                const ticks = axis.selectAll(".tick").style("font-size",".85rem")
-                console.log(ticks)
-                ticks.each(function() { d3.select(this).append("circle").attr("r", 5).attr("fill", "black"); })
-                ticks.selectAll("line").remove()
-                const ps = [-0.8, 1, 0.1, -0.1]
-                const pcolor = ["#d04a5b", "#00798c", "#edae49", "#30638e"]
-                ps.forEach((p, i) => {
-                  line.append("circle")
-                    .attr("id", `v${i + 1}`)
-                    .attr("r", 10).attr("style", `left:${500 * (p + 1) - 57.59 / 2}px;position: relative;`)
-                    .attr("transform", `translate(${500 * (p + 1)}, 0)`)
-                    .attr("fill", pcolor[i])
-                  line.append("text")
-                    .attr("id", `l0${i + 1}`)
-                    .attr("class", "tick-label")
-                    .attr("style", `left:${500 * (p + 1) - 57.59 / 2}px;`)
-                    .attr("transform", `translate(${500 * (p + 1)}, 0)`)
-                    .attr("y", 30)
-                    .attr("dy", ".35em")
-                    .text(p)
-                    .attr("fill", pcolor[i])
-                })
-                justifyTips()
-            </script>
-
-            <script type="module">
-              const line2 = d3.select("#Viz_area2")
-              const svg6 = d3.select("#s06")
-              const svg7 = d3.select("#s07")
-              const svg8 = d3.select("#s08")
-              const svg9 = d3.select("#s09")
-              const svg10 = d3.select("#s010")
-              svg6.transition().attr("style", `left:${500 * (-0.8 + 1) - 57.59 / 2}px;bottom: 20%;`)
-              svg7.transition().attr("style", `left:${500 * (1 + 1) - 57.59 / 2}px;bottom: 20%;`)
-              svg8.transition().attr("style", `left:${500 * (0.1 + 1) - 57.59 / 2}px;bottom: 20%;`)
-              svg9.transition().attr("style", `left:${500 * (-0.1 + 1) - 57.59 / 2}px;bottom: 20%;`)
-              svg10.transition().attr("style", `left:${500 * (0.2 + 1) - 57.59 / 2}px;bottom: 20%;cursor: grab;`)
-
-              const wp6 = d3.select("#wp6")
-              const wp7 = d3.select("#wp7")
-              const wp8 = d3.select("#wp8")
-              const wp9 = d3.select("#wp9")
-              const wp10 = d3.select("#wp10")
-              const r6 = d3.select("#r6")
-              const r7 = d3.select("#r7")
-              const r8 = d3.select("#r8")
-              const r9 = d3.select("#r9")
-              const r10 = d3.select("#r10")
+        const wp6 = d3.select("#wp6")
+        const wp7 = d3.select("#wp7")
+        const wp8 = d3.select("#wp8")
+        const wp9 = d3.select("#wp9")
+        const wp10 = d3.select("#wp10")
+        const r6 = d3.select("#r6")
+        const r7 = d3.select("#r7")
+        const r8 = d3.select("#r8")
+        const r9 = d3.select("#r9")
+        const r10 = d3.select("#r10")
 
 
-              const setPointAndLabel = (ps, pcolor) => {
-                ps.forEach((p, i) => {
-                  d3.select(`v${i + 6}`).remove()
-                  d3.select(`l0${i + 6}`).remove()
-                  line2.append("circle")
-                    .attr("id", `v${i + 6}`)
-                    .attr("r", 10).attr("style", `left:${500 * (p + 1) - 57.59 / 2}px;position: relative;`)
-                    .attr("transform", `translate(${500 * (p + 1)}, 0)`)
-                    .attr("fill", pcolor[i])
-                  line2.append("text")
-                    .attr("id", `l0${i + 6}`)
-                    .attr("class", "tick-label")
-                    .attr("style", `left:${500 * (p + 1) - 57.59 / 2}px;`)
-                    .attr("transform", `translate(${500 * (p + 1)}, 0)`)
-                    .attr("y", 30)
-                    .attr("dy", ".35em")
-                    .text(p)
-                    .attr("fill", pcolor[i])
-                })
+        const setPointAndLabel = (ps, pcolor) => {
+          ps.forEach((p, i) => {
+            d3.select(`v${i + 6}`).remove()
+            d3.select(`l0${i + 6}`).remove()
+            line2.append("circle")
+              .attr("id", `v${i + 6}`)
+              .attr("r", 10).attr("style", `left:${500 * (p + 1) - 57.59 / 2}px;position: relative;`)
+              .attr("transform", `translate(${500 * (p + 1)}, 0)`)
+              .attr("fill", pcolor[i])
+            line2.append("text")
+              .attr("id", `l0${i + 6}`)
+              .attr("class", "tick-label")
+              .attr("style", `left:${500 * (p + 1) - 57.59 / 2}px;`)
+              .attr("transform", `translate(${500 * (p + 1)}, 0)`)
+              .attr("y", 30)
+              .attr("dy", ".35em")
+              .text(p)
+              .attr("fill", pcolor[i])
+          })
+        }
+
+        const setPosition2 = (arr, target) => {
+          d3.selectAll('.extratip').remove()
+          d3.selectAll('.extraPoint').remove()
+          d3.selectAll('.extraLabel').remove()
+          d3.selectAll(`.tip`).style('display', 'flex')
+          d3.select('#l010').remove()
+
+          const mid = findClosest(positions, target)
+          svg6.transition().attr("style", `left:${500 * (-0.8 + 1) - 57.59 / 2}px;bottom: 20%;`)
+          svg7.transition().attr("style", `left:${500 * (1 + 1) - 57.59 / 2}px;bottom: 20%;`)
+          svg8.transition().attr("style", `left:${500 * (0.1 + 1) - 57.59 / 2}px;bottom: 20%;`)
+          svg9.transition().attr("style", `left:${500 * (-0.1 + 1) - 57.59 / 2}px;bottom: 20%;`)
+          svg8
+              .select('img')
+              .attr("src", `./img/aix_doll-03.svg`)
+          svg9
+            .select('img')
+            .attr("src", `./img/aix_doll-04.svg`)
+          d3.select('#i01').attr("style", `display: ${Math.abs(-0.8 - target) < 0.2 ? 'flex' : 'none'};`)
+          d3.select('#i02').attr("style", `display: ${Math.abs(1 - target) < 0.2 ? 'flex' : 'none'};`)
+          d3.select('#i03').attr("style", `display: ${Math.abs(0.1 - target) < 0.2 ? 'flex' : 'none'};`)
+          d3.select('#i04').attr("style", `display: ${Math.abs(-0.1 - target) < 0.2 ? 'flex' : 'none'};`)
+          wp6.node().innerHTML = `win. prob. ${data[1][mid]}`
+          wp7.node().innerHTML = `win. prob. ${data[2][mid]}`
+          wp8.node().innerHTML = `win. prob. ${data[3][mid]}`
+          wp9.node().innerHTML = `win. prob. ${data[4][mid]}`
+          wp10.node().innerHTML = `win. prob. ${data[5][mid]}`
+          r6.node().innerHTML = `reward ${rs[1][mid]}`
+          r7.node().innerHTML = `reward ${rs[2][mid]}`
+          r8.node().innerHTML = `reward ${rs[3][mid]}`
+          r9.node().innerHTML = `reward ${rs[4][mid]}`
+          r10.node().innerHTML = `reward ${rs[5][mid]}`
+
+          let tp = [0, 0, 0, 0, 0]
+          if (positions[mid] < -0.8) tp = [-0.48, 0.9, 0.3, -0.1, -0.8]
+          else if (positions[mid] < -0.1) tp = [-0.8, 0.9, 0.34, -0.08, -0.48]
+          else if (positions[mid] < 0.1) tp = [-0.8, 0.9, 0.4, -0.4, 0]
+          else tp = [-0.8, 0.9, 0.13, -0.3, 0.55]
+
+          const range = [6, 7, 8, 9, 10]
+          range.forEach((i) => {
+            console.log(i)
+            d3.select(`#t0${i}`)
+              .style("left", `${500 * (tp[i - 6] + 1) - tipWidth / 2}px`)
+              .attr("transform", `translate(${500 * (tp[i - 6] + 1)}, 0)`)
+          })
+          svg10.transition()
+              .duration(1000)
+              .attr("style", 
+                `left:${500 * (positions[mid] + 1) - 57.59 / 2}px;bottom: 20%;;cursor: grab;`
+              )
+          svg10
+            .select('img')
+            .attr("src", `./img/aix_doll-05.svg`)
+          d3.select('#v10').remove()
+          line2.append("circle")
+            .attr("id", "v10")
+            .attr("r", 10).attr("style", `left:${500 * (positions[mid] + 1) - 57.59 / 2}px;`)
+            .attr("transform", `translate(${500 * (positions[mid] + 1)}, 0)`)
+            .attr("fill", "#bababa")
+          setPointAndLabel([-0.8, 1, 0.1, -0.1], ["#d04a5b", "#00798c", "#edae49", "#30638e"])
+          line2.append("text")
+              .attr("id", "l010")
+              .attr("class", "tick-label")
+              .attr("style", `left:${500 * (positions[mid] + 1) - 57.59 / 2}px;`)
+              .attr("transform", `translate(${500 * (positions[mid] + 1)}, 0)`)
+              .attr("y", 30)
+              .attr("dy", ".35em")
+              .text(positions[mid])
+              .attr("fill", "#bababa")
+          return mid
+        }
+
+        const setGroups = (number) => {
+          d3.selectAll('.extratip').remove()
+          d3.selectAll(`.tip`).style('display', 'flex')
+          const target = combinations[number]
+          const { group, position, tp, wp, r } = target
+          d3.select('#i01').attr("style", `display: none;`)
+          d3.select('#i02').attr("style", `display: none;`)
+          d3.select('#i03').attr("style", `display: none;`)
+          d3.select('#i04').attr("style", `display: none;`)
+          d3.selectAll('.extraPoint').remove()
+          d3.selectAll('.extraLabel').remove()
+          group.forEach((g, i) => {
+            g.forEach((e, j) => {
+              console.log(`#s0${e + 5}`)
+              d3.select(`#s0${e + 5}`)
+                .transition()
+                .duration(1000)
+                .style("left",
+                  `${500 * (position[i] + 1) - 57.59 * (g.length / 2 - j)}px`
+                )
+              d3.select(`#t0${e + 5}`)
+                .style("left", `${500 * (tp[i] + 1) - tipWidth / 2}px`)
+                .attr("transform", `translate(${500 * (tp[i] + 1)}, 0)`)
+              d3.select(`#wp${e + 5}`).node().innerHTML = `win. prob. ${wp[i]}`
+              d3.select(`#r${e + 5}`).node().innerHTML = `reward ${r[i]}`
+            })
+            if (g.length > 1) {
+              const tcolor = ['#d04a5c23', '#02798c33', '#ffc1073b', '#4a6bd023', '#bababa69']
+              const extrabox = d3.select('#box2')
+                .append("div")
+                .attr('class', 'tip extratip')
+                .style('background-color', tcolor[g[0] - 1])
+                .style('left', `${500 * (tp[i] + 1) - 90}px`)
+              extrabox.append("p")
+                .attr('class', "mb-0 small")
+                .node()
+                .innerHTML = `win. prob. ${wp[i]}`
+              g.forEach((n) => {
+                d3.selectAll(`#v${n + 5}`).remove()
+                d3.selectAll(`#l0${n + 5}`).remove()
+                extrabox.append("p")
+                  .attr('class', "mb-0 small")
+                  .node()
+                  .innerHTML = `reward of ${n}. ${r[n - 1]}`
+                console.log(n + 5)
+                d3.select(`#t0${n + 5}`).style('display', 'none')
+              })
+              const colors = {
+                1: "#d04a5b",
+                2: "#00798c",
+                3: "#edae49",
+                4: "#30638e",
               }
+              line2.append("circle")
+                .attr("class", "extraPoint")
+                .attr("r", 10).attr("style", `left:${500 * (position[i] + 1)}px;`)
+                .attr("transform", `translate(${500 * (position[i] + 1)}, 0)`)
+                .attr("fill", colors[g[0]])
+              line2.append("text")
+                .attr("id", `l0${i + 6}`)
+                .attr("class", "extraLabel tick-label")
+                .attr("style", `left:${500 * (position[i] + 1)}px;`)
+                .attr("transform", `translate(${500 * (position[i] + 1)}, 0)`)
+                .attr("y", 30)
+                .attr("dy", ".35em")
+                .text(position[i])
+                .attr("fill", ["#d04a5b", "#00798c", "#edae49", "#30638e"][g[0] - 1])
+            }
+          })
+          svg10
+            .select('img')
+            .attr("src", `./img/aix_doll-05-${number === 5 ? '2' : number}.svg`)
+          if (number === 5) {
+            svg8
+              .select('img')
+              .attr("src", `./img/aix_doll-03-best.svg`)
+            svg9
+              .select('img')
+              .attr("src", `./img/aix_doll-04-best.svg`)
+          } else {
+            svg8
+              .select('img')
+              .attr("src", `./img/aix_doll-03.svg`)
+            svg9
+              .select('img')
+              .attr("src", `./img/aix_doll-04.svg`)
+          }
+          justifyTips()
+        }
 
-              const setPosition2 = (arr, target) => {
-                d3.selectAll('.extratip').remove()
-                d3.selectAll('.extraPoint').remove()
-                d3.selectAll('.extraLabel').remove()
-                d3.selectAll(`.tip`).style('display', 'flex')
-                d3.select('#l010').remove()
+        const drag2 = d3.drag()
+          .on('start', function(){
+            d3.select(this)
+              .select('img')
+                .attr("src", `./img/aix-doll5-ani.gif`)
+            })
+          .on('drag', function(){
+            d3.select(this)
+              .attr("style",
+                `left:${d3.event.x-25}px;bottom:${-d3.event.y+100}px;cursor: grab;`
+              )
+            })
+          .on('end', function(){
+            const target = (d3.event.x-25 - 500) / 500
+            const pivot = setPosition2(positions, (d3.event.x-25) / 500 - 1)
+            d3.select(this)
+              .select('img')
+              .attr("src", `./img/aix_doll-05.svg`)
+          })
+        svg10.call(drag2)
+        const reset2 = () => setPosition2(positions, 0.2)
+        d3.select('#i01').on("click", () => setGroups(1))
+        d3.select('#i02').on("click", () => setGroups(2))
+        d3.select('#i03').on("click", () => setGroups(3))
+        d3.select('#i04').on("click", () => setGroups(4))
+        d3.select('#best').on("click", () => setGroups(5))
+        d3.select('#reset2').on("click", reset2)
 
-                const mid = findClosest(positions, target)
-                svg6.transition().attr("style", `left:${500 * (-0.8 + 1) - 57.59 / 2}px;bottom: 20%;`)
-                svg7.transition().attr("style", `left:${500 * (1 + 1) - 57.59 / 2}px;bottom: 20%;`)
-                svg8.transition().attr("style", `left:${500 * (0.1 + 1) - 57.59 / 2}px;bottom: 20%;`)
-                svg9.transition().attr("style", `left:${500 * (-0.1 + 1) - 57.59 / 2}px;bottom: 20%;`)
-                svg8
-                    .select('img')
-                    .attr("src", `./img/aix_doll-03.svg`)
-                svg9
-                  .select('img')
-                  .attr("src", `./img/aix_doll-04.svg`)
-                d3.select('#i01').attr("style", `display: ${Math.abs(-0.8 - target) < 0.2 ? 'flex' : 'none'};`)
-                d3.select('#i02').attr("style", `display: ${Math.abs(1 - target) < 0.2 ? 'flex' : 'none'};`)
-                d3.select('#i03').attr("style", `display: ${Math.abs(0.1 - target) < 0.2 ? 'flex' : 'none'};`)
-                d3.select('#i04').attr("style", `display: ${Math.abs(-0.1 - target) < 0.2 ? 'flex' : 'none'};`)
-                wp6.node().innerHTML = `win. prob. ${data[1][mid]}`
-                wp7.node().innerHTML = `win. prob. ${data[2][mid]}`
-                wp8.node().innerHTML = `win. prob. ${data[3][mid]}`
-                wp9.node().innerHTML = `win. prob. ${data[4][mid]}`
-                wp10.node().innerHTML = `win. prob. ${data[5][mid]}`
-                r6.node().innerHTML = `reward ${rs[1][mid]}`
-                r7.node().innerHTML = `reward ${rs[2][mid]}`
-                r8.node().innerHTML = `reward ${rs[3][mid]}`
-                r9.node().innerHTML = `reward ${rs[4][mid]}`
-                r10.node().innerHTML = `reward ${rs[5][mid]}`
+        reset2()
+        const x2 = d3.scaleLinear()
+            .domain([-1, 1])
+            .range([0, 1000])
+        const axis2 = line2.call(d3.axisBottom(x2))
+        const ticks2 = axis2.selectAll(".tick")
+        ticks2.each(function() { d3.select(this).append("circle").attr("r", 5).attr("fill", "black"); })
+        ticks2.selectAll("line").remove()
+      </script>
 
-                let tp = [0, 0, 0, 0, 0]
-                if (positions[mid] < -0.8) tp = [-0.48, 0.9, 0.3, -0.1, -0.8]
-                else if (positions[mid] < -0.1) tp = [-0.8, 0.9, 0.34, -0.08, -0.48]
-                else if (positions[mid] < 0.1) tp = [-0.8, 0.9, 0.4, -0.4, 0]
-                else tp = [-0.8, 0.9, 0.13, -0.3, 0.55]
+      <script type="module">
+        const line3 = d3.select("#Viz_area3")
+        const svg11 = d3.select("#s011")
+        const svg12 = d3.select("#s012")
+        const svg13 = d3.select("#s013")
+        const svg14 = d3.select("#s014")
+        const svg15 = d3.select("#s015")
+        svg11.transition().attr("style", `left:${500 * (-0.8 + 1) - 57.59 / 2}px;bottom: 20%;`)
+        svg12.transition().attr("style", `left:${500 * (1 + 1) - 57.59 / 2}px;bottom: 20%;`)
+        svg13.transition().attr("style", `left:${500 * (0.1 + 1) - 57.59 / 2}px;bottom: 20%;`)
+        svg14.transition().attr("style", `left:${500 * (-0.1 + 1) - 57.59 / 2}px;bottom: 20%;`)
+        svg15.transition().attr("style", `left:${500 * (0.2 + 1) - 57.59 / 2}px;bottom: 20%;cursor: grab;`)
 
-                const range = [6, 7, 8, 9, 10]
-                range.forEach((i) => {
-                  console.log(i)
-                  d3.select(`#t0${i}`)
-                    .style("left", `${500 * (tp[i - 6] + 1) - tipWidth / 2}px`)
-                    .attr("transform", `translate(${500 * (tp[i - 6] + 1)}, 0)`)
-                })
-                svg10.transition()
-                    .duration(1000)
-                    .attr("style", 
-                      `left:${500 * (positions[mid] + 1) - 57.59 / 2}px;bottom: 20%;;cursor: grab;`
-                    )
-                svg10
-                  .select('img')
-                  .attr("src", `./img/aix_doll-05.svg`)
-                d3.select('#v10').remove()
-                line2.append("circle")
-                  .attr("id", "v10")
-                  .attr("r", 10).attr("style", `left:${500 * (positions[mid] + 1) - 57.59 / 2}px;`)
-                  .attr("transform", `translate(${500 * (positions[mid] + 1)}, 0)`)
-                  .attr("fill", "#bababa")
-                setPointAndLabel([-0.8, 1, 0.1, -0.1], ["#d04a5b", "#00798c", "#edae49", "#30638e"])
-                line2.append("text")
-                    .attr("id", "l010")
-                    .attr("class", "tick-label")
-                    .attr("style", `left:${500 * (positions[mid] + 1) - 57.59 / 2}px;`)
-                    .attr("transform", `translate(${500 * (positions[mid] + 1)}, 0)`)
-                    .attr("y", 30)
-                    .attr("dy", ".35em")
-                    .text(positions[mid])
-                    .attr("fill", "#bababa")
-                return mid
+        const wp11 = d3.select("#wp11")
+        const wp12 = d3.select("#wp12")
+        const wp13 = d3.select("#wp13")
+        const wp14 = d3.select("#wp14")
+        const wp15 = d3.select("#wp15")
+        const r11 = d3.select("#r11")
+        const r12 = d3.select("#r12")
+        const r13 = d3.select("#r13")
+        const r14 = d3.select("#r14")
+        const r15 = d3.select("#r15")
+
+
+        const setPointAndLabel2 = (ps, pcolor) => {
+          ps.forEach((p, i) => {
+            d3.select(`v${i + 11}`).remove()
+            d3.select(`l0${i + 11}`).remove()
+            line2.append("circle")
+              .attr("id", `v${i + 11}`)
+              .attr("r", 10).attr("style", `left:${500 * (p + 1) - 57.59 / 2}px;position: relative;`)
+              .attr("transform", `translate(${500 * (p + 1)}, 0)`)
+              .attr("fill", pcolor[i])
+            line2.append("text")
+              .attr("id", `l0${i + 11}`)
+              .attr("class", "tick-label")
+              .attr("style", `left:${500 * (p + 1) - 57.59 / 2}px;`)
+              .attr("transform", `translate(${500 * (p + 1)}, 0)`)
+              .attr("y", 30)
+              .attr("dy", ".35em")
+              .text(p)
+              .attr("fill", pcolor[i])
+          })
+        }
+
+        svg11.select('img')
+            .attr('data-bs-toggle', "tooltip")
+            .attr('data-bs-placement', "bottom")
+            .attr('data-bs-custom-class', "bg-doll1")
+            .attr('title', `myopic reward of 1: 0.1056`)
+        svg12.select('img')
+            .attr('data-bs-toggle', "tooltip")
+            .attr('data-bs-placement', "bottom")
+            .attr('data-bs-custom-class', "bg-doll2")
+            .attr('title', `myopic reward of 2: 0.3062`)
+        svg13.select('img')
+            .attr('data-bs-toggle', "tooltip")
+            .attr('data-bs-placement', "bottom")
+            .attr('data-bs-custom-class', "bg-doll3")
+            .attr('title', `myopic reward of 3: 0.0306`)
+        svg14.select('img')
+            .attr('data-bs-toggle', "tooltip")
+            .attr('data-bs-placement', "bottom")
+            .attr('data-bs-custom-class', "bg-doll4")
+            .attr('title', `myopic reward of 4: 0.0132`)
+        svg15.select('img')
+            .attr('data-bs-toggle', "tooltip")
+            .attr('data-bs-placement', "bottom")
+            .attr('data-bs-custom-class', "bg-doll5")
+            .attr('title', `myopic reward of 5: 0.0613`)
+
+        const tipcolor = ['#f8e6e8', '#d3e5e9', '#fff0d1', '#e5ebf9', '#e3e3e3']
+        const tipDelay = 300
+        svg11.on('mouseover', () => {
+          setTimeout(function() {
+            d3.select('.tooltip').select('.tooltip-inner').style('background-color', tipcolor[0]).style('color', 'black')
+            const styleElem = document.head.appendChild(document.createElement("style"))
+            styleElem.innerHTML = `.tooltip-arrow::before {
+              border-bottom-color: ${tipcolor[0]} !important;
+            }`
+            d3.select('.tooltip').style('display', 'block')
+          }, tipDelay)
+        })
+        svg12.on('mouseover', () => {
+          setTimeout(function() {
+            d3.select('.tooltip').select('.tooltip-inner').style('background-color', tipcolor[1]).style('color', 'black')
+            const styleElem = document.head.appendChild(document.createElement("style"))
+            styleElem.innerHTML = `.tooltip-arrow::before {
+              border-bottom-color: ${tipcolor[1]} !important;
+            }`
+            d3.select('.tooltip').style('display', 'block')
+          }, tipDelay)
+        })
+        svg13.on('mouseover', () => {
+          setTimeout(function() {
+            d3.select('.tooltip').select('.tooltip-inner').style('background-color', tipcolor[2]).style('color', 'black')
+            const styleElem = document.head.appendChild(document.createElement("style"))
+            styleElem.innerHTML = `.tooltip-arrow::before {
+              border-bottom-color: ${tipcolor[2]} !important;
+            }`
+            d3.select('.tooltip').style('display', 'block')
+          }, tipDelay)
+        })
+        svg14.on('mouseover', () => {
+          setTimeout(function() {
+            d3.select('.tooltip').select('.tooltip-inner').style('background-color', tipcolor[3]).style('color', 'black')
+            const styleElem = document.head.appendChild(document.createElement("style"))
+            styleElem.innerHTML = `.tooltip-arrow::before {
+              border-bottom-color: ${tipcolor[3]} !important;
+            }`
+            d3.select('.tooltip').style('display', 'block')
+          }, tipDelay)
+        })
+        svg15.on('mouseover', () => {
+          setTimeout(function() {
+            d3.select('.tooltip').select('.tooltip-inner').style('background-color', tipcolor[4]).style('color', 'black')
+            const styleElem = document.head.appendChild(document.createElement("style"))
+            styleElem.innerHTML = `.tooltip-arrow::before {
+              border-bottom-color: ${tipcolor[4]} !important;
+            }`
+            d3.select('.tooltip').style('display', 'block')
+          }, tipDelay)
+        })
+        const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        const tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            const tooltip = new bootstrap.Tooltip(tooltipTriggerEl)
+            return tooltip
+        })
+
+        const setPosition3 = (arr, target) => {
+          d3.selectAll('.extratip').remove()
+          d3.selectAll('.extraPoint').remove()
+          d3.selectAll('.extraLabel').remove()
+          d3.selectAll(`.tip`).style('display', 'flex')
+          d3.select('#l015').remove()
+
+          const mid = findClosest(positions, target)
+          svg11.transition().attr("style", `left:${500 * (-0.8 + 1) - 57.59 / 2}px;bottom: 20%;`)
+          svg12.transition().attr("style", `left:${500 * (1 + 1) - 57.59 / 2}px;bottom: 20%;`)
+          svg13.transition().attr("style", `left:${500 * (0.1 + 1) - 57.59 / 2}px;bottom: 20%;`)
+          svg14.transition().attr("style", `left:${500 * (-0.1 + 1) - 57.59 / 2}px;bottom: 20%;`)
+          svg13
+              .select('img')
+              .attr("src", `./img/aix_doll-03.svg`)
+          svg14
+            .select('img')
+            .attr("src", `./img/aix_doll-04.svg`)
+          // d3.select('#i06').attr("style", `display: ${Math.abs(-0.8 - target) < 0.2 ? 'flex' : 'none'};`)
+          // d3.select('#i07').attr("style", `display: ${Math.abs(1 - target) < 0.2 ? 'flex' : 'none'};`)
+          // d3.select('#i08').attr("style", `display: ${Math.abs(0.1 - target) < 0.2 ? 'flex' : 'none'};`)
+          // d3.select('#i09').attr("style", `display: ${Math.abs(-0.1 - target) < 0.2 ? 'flex' : 'none'};`)
+          wp11.node().innerHTML = `win. prob. ${data[1][mid]}`
+          wp12.node().innerHTML = `win. prob. ${data[2][mid]}`
+          wp13.node().innerHTML = `win. prob. ${data[3][mid]}`
+          wp14.node().innerHTML = `win. prob. ${data[4][mid]}`
+          wp15.node().innerHTML = `win. prob. ${data[5][mid]}`
+          r11.node().innerHTML = `reward ${rs[1][mid]}`
+          r12.node().innerHTML = `reward ${rs[2][mid]}`
+          r13.node().innerHTML = `reward ${rs[3][mid]}`
+          r14.node().innerHTML = `reward ${rs[4][mid]}`
+          r15.node().innerHTML = `reward ${rs[5][mid]}`
+
+          let tp = [0, 0, 0, 0, 0]
+          if (positions[mid] < -0.8) tp = [-0.48, 0.9, 0.3, -0.1, -0.8]
+          else if (positions[mid] < -0.1) tp = [-0.8, 0.9, 0.34, -0.08, -0.48]
+          else if (positions[mid] < 0.1) tp = [-0.8, 0.9, 0.4, -0.4, 0]
+          else tp = [-0.8, 0.9, 0.13, -0.3, 0.55]
+
+          const range = [11, 12, 13, 14, 15]
+          range.forEach((i) => {
+            console.log(i)
+            d3.select(`#t0${i}`)
+              .style("left", `${500 * (tp[i - 11] + 1) - tipWidth / 2}px`)
+              .attr("transform", `translate(${500 * (tp[i - 11] + 1)}, 0)`)
+          })
+          svg15.transition()
+              .duration(1000)
+              .attr("style", 
+                `left:${500 * (positions[mid] + 1) - 57.59 / 2}px;bottom: 20%;;cursor: grab;`
+              )
+          svg15
+            .select('img')
+            .attr("src", `./img/aix_doll-05.svg`)
+          d3.select('#v15').remove()
+          line2.append("circle")
+            .attr("id", "v15")
+            .attr("r", 10).attr("style", `left:${500 * (positions[mid] + 1) - 57.59 / 2}px;`)
+            .attr("transform", `translate(${500 * (positions[mid] + 1)}, 0)`)
+            .attr("fill", "#bababa")
+          setPointAndLabel2([-0.8, 1, 0.1, -0.1], ["#d04a5b", "#00798c", "#edae49", "#30638e"])
+          line3.append("text")
+              .attr("id", "l010")
+              .attr("class", "tick-label")
+              .attr("style", `left:${500 * (positions[mid] + 1) - 57.59 / 2}px;`)
+              .attr("transform", `translate(${500 * (positions[mid] + 1)}, 0)`)
+              .attr("y", 30)
+              .attr("dy", ".35em")
+              .text(positions[mid])
+              .attr("fill", "#bababa")
+          return mid
+        }
+
+        const setGroups2 = (number) => {
+          d3.selectAll('.extratip').remove()
+          d3.selectAll(`.tip`).style('display', 'flex')
+          const target = combinations[number]
+          const { group, position, tp, wp, r } = target
+          // d3.select('#i06').attr("style", `display: none;`)
+          // d3.select('#i07').attr("style", `display: none;`)
+          // d3.select('#i08').attr("style", `display: none;`)
+          // d3.select('#i09').attr("style", `display: none;`)
+          d3.selectAll('.extraPoint').remove()
+          d3.selectAll('.extraLabel').remove()
+          group.forEach((g, i) => {
+            g.forEach((e, j) => {
+              console.log(`#s0${e + 10}`)
+              d3.select(`#s0${e + 10}`)
+                .transition()
+                .duration(1000)
+                .style("left",
+                  `${500 * (position[i] + 1) - 57.59 * (g.length / 2 - j)}px`
+                )
+                .style("bottom",
+                  '20%'
+                )
+              d3.select(`#t0${e + 10}`)
+                .style("left", `${500 * (tp[i] + 1) - tipWidth / 2}px`)
+                .attr("transform", `translate(${500 * (tp[i] + 1)}, 0)`)
+              d3.select(`#wp${e + 10}`).node().innerHTML = `win. prob. ${wp[i]}`
+              d3.select(`#r${e + 10}`).node().innerHTML = `reward ${r[i]}`
+            })
+            if (g.length > 1) {
+              const tcolor = ['#d04a5c23', '#02798c33', '#ffc1073b', '#4a6bd023', '#bababa69']
+              const extrabox = d3.select('#box3')
+                .append("div")
+                .attr('class', 'tip extratip')
+                .style('background-color', tcolor[g[0] - 1])
+                .style('left', `${500 * (tp[i] + 1) - 90}px`)
+              extrabox.append("p")
+                .attr('class', "mb-0 small")
+                .node()
+                .innerHTML = `win. prob. ${wp[i]}`
+              g.forEach((n) => {
+                d3.selectAll(`#v${n + 10}`).remove()
+                d3.selectAll(`#l0${n + 10}`).remove()
+                extrabox.append("p")
+                  .attr('class', "mb-0 small")
+                  .node()
+                  .innerHTML = `reward of ${n}. ${r[n - 1]}`
+                d3.select(`#t0${n + 10}`).style('display', 'none')
+              })
+              const colors = {
+                1: "#d04a5b",
+                2: "#00798c",
+                3: "#edae49",
+                4: "#30638e",
               }
+              line3.append("circle")
+                .attr("class", "extraPoint")
+                .attr("r", 10).attr("style", `left:${500 * (position[i] + 1)}px;`)
+                .attr("transform", `translate(${500 * (position[i] + 1)}, 0)`)
+                .attr("fill", colors[g[0]])
+              line3.append("text")
+                .attr("id", `l0${i + 6}`)
+                .attr("class", "extraLabel tick-label")
+                .attr("style", `left:${500 * (position[i] + 1)}px;`)
+                .attr("transform", `translate(${500 * (position[i] + 1)}, 0)`)
+                .attr("y", 30)
+                .attr("dy", ".35em")
+                .text(position[i])
+                .attr("fill", ["#d04a5b", "#00798c", "#edae49", "#30638e"][g[0] - 1])
+            }
+          })
+          svg15
+            .select('img')
+            .attr("src", `./img/aix_doll-05-${number === 5 ? '2' : number}.svg`)
+          if (number === 5) {
+            svg13
+              .select('img')
+              .attr("src", `./img/aix_doll-03-best.svg`)
+            svg14
+              .select('img')
+              .attr("src", `./img/aix_doll-04-best.svg`)
+          } else {
+            svg13
+              .select('img')
+              .attr("src", `./img/aix_doll-03.svg`)
+            svg14
+              .select('img')
+              .attr("src", `./img/aix_doll-04.svg`)
+          }
+          justifyTips()
+        }
 
-              const setGroups = (number) => {
-                d3.selectAll('.extratip').remove()
-                d3.selectAll(`.tip`).style('display', 'flex')
-                const target = combinations[number]
-                const { group, position, tp, wp, r } = target
-                d3.select('#i01').attr("style", `display: none;`)
-                d3.select('#i02').attr("style", `display: none;`)
-                d3.select('#i03').attr("style", `display: none;`)
-                d3.select('#i04').attr("style", `display: none;`)
-                d3.selectAll('.extraPoint').remove()
-                d3.selectAll('.extraLabel').remove()
-                group.forEach((g, i) => {
-                  g.forEach((e, j) => {
-                    console.log(`#s0${e + 5}`)
-                    d3.select(`#s0${e + 5}`)
-                      .transition()
-                      .duration(1000)
-                      .attr("style",
-                        `left:${500 * (position[i] + 1) - 57.59 * (g.length / 2 - j)}px;bottom: 20%;;cursor: grab;`
-                      )
-                    d3.select(`#t0${e + 5}`)
-                      .style("left", `${500 * (tp[i] + 1) - tipWidth / 2}px`)
-                      .attr("transform", `translate(${500 * (tp[i] + 1)}, 0)`)
-                    d3.select(`#wp${e + 5}`).node().innerHTML = `win. prob. ${wp[i]}`
-                    d3.select(`#r${e + 5}`).node().innerHTML = `reward ${r[i]}`
-                  })
-                  if (g.length > 1) {
-                    const tcolor = ['#d04a5c23', '#02798c33', '#ffc1073b', '#4a6bd023', '#bababa69']
-                    const extrabox = d3.select('#box2')
-                      .append("div")
-                      .attr('class', 'tip extratip')
-                      .style('background-color', tcolor[g[0] - 1])
-                      .style('left', `${500 * (tp[i] + 1) - 90}px`)
-                    extrabox.append("p")
-                      .attr('class', "mb-0 small")
-                      .node()
-                      .innerHTML = `win. prob. ${wp[i]}`
-                    g.forEach((n) => {
-                      d3.selectAll(`#v${n + 5}`).remove()
-                      d3.selectAll(`#l0${n + 5}`).remove()
-                      extrabox.append("p")
-                        .attr('class', "mb-0 small")
-                        .node()
-                        .innerHTML = `reward of ${n}. ${r[n - 1]}`
-                      console.log(n + 5)
-                      d3.select(`#t0${n + 5}`).style('display', 'none')
-                    })
-                    const colors = {
-                      1: "#d04a5b",
-                      2: "#00798c",
-                      3: "#edae49",
-                      4: "#30638e",
-                    }
-                    line2.append("circle")
-                      .attr("class", "extraPoint")
-                      .attr("r", 10).attr("style", `left:${500 * (position[i] + 1)}px;`)
-                      .attr("transform", `translate(${500 * (position[i] + 1)}, 0)`)
-                      .attr("fill", colors[g[0]])
-                    line2.append("text")
-                      .attr("id", `l0${i + 6}`)
-                      .attr("class", "extraLabel tick-label")
-                      .attr("style", `left:${500 * (position[i] + 1)}px;`)
-                      .attr("transform", `translate(${500 * (position[i] + 1)}, 0)`)
-                      .attr("y", 30)
-                      .attr("dy", ".35em")
-                      .text(position[i])
-                      .attr("fill", ["#d04a5b", "#00798c", "#edae49", "#30638e"][g[0] - 1])
-                  }
-                })
-                svg10
-                  .select('img')
-                  .attr("src", `./img/aix_doll-05-${number === 5 ? '2' : number}.svg`)
-                if (number === 5) {
-                  svg8
-                    .select('img')
-                    .attr("src", `./img/aix_doll-03-best.svg`)
-                  svg9
-                    .select('img')
-                    .attr("src", `./img/aix_doll-04-best.svg`)
-                } else {
-                  svg8
-                    .select('img')
-                    .attr("src", `./img/aix_doll-03.svg`)
-                  svg9
-                    .select('img')
-                    .attr("src", `./img/aix_doll-04.svg`)
-                }
-                justifyTips()
-              }
+        const drag3 = d3.drag()
+          .on('start', function(){
+            d3.select(this)
+              .select('img')
+                .attr("src", `./img/aix-doll5-ani.gif`)
+            })
+          .on('drag', function(){
+            d3.select(this)
+              .attr("style",
+                `left:${d3.event.x-25}px;bottom:${-d3.event.y+100}px;cursor: grab;`
+              )
+            })
+          .on('end', function(){
+            // const target = (d3.event.x-25 - 500) / 500
+            // const pivot = setPosition3(positions, (d3.event.x-25) / 500 - 1)
+            // d3.select(this)
+            //   .select('img')
+            //   .attr("src", `./img/aix_doll-05.svg`)
+            setGroups2(5)
+          })
+        svg15.call(drag3)
+        const reset3 = () => setPosition3(positions, 0.2)
+        // d3.select('#i01').on("click", () => setGroups(1))
+        // d3.select('#i02').on("click", () => setGroups(2))
+        // d3.select('#i03').on("click", () => setGroups(3))
+        // d3.select('#i04').on("click", () => setGroups(4))
+        // d3.select('#best').on("click", () => setGroups(5))
+        // d3.select('#reset2').on("click", reset2)
 
-              const drag2 = d3.drag()
-                .on('start', function(){
-                  d3.select(this)
-                    .select('img')
-                      .attr("src", `./img/aix-doll5-ani.gif`)
-                  })
-                .on('drag', function(){
-                  d3.select(this)
-                    .attr("style",
-                      `left:${d3.event.x-25}px;bottom:${-d3.event.y+100}px;cursor: grab;`
-                    )
-                  })
-                .on('end', function(){
-                  const target = (d3.event.x-25 - 500) / 500
-                  const pivot = setPosition2(positions, (d3.event.x-25) / 500 - 1)
-                  d3.select(this)
-                    .select('img')
-                    .attr("src", `./img/aix_doll-05.svg`)
-                })
-              svg10.call(drag2)
-              const reset2 = () => setPosition2(positions, 0.2)
-              d3.select('#i01').on("click", () => setGroups(1))
-              d3.select('#i02').on("click", () => setGroups(2))
-              d3.select('#i03').on("click", () => setGroups(3))
-              d3.select('#i04').on("click", () => setGroups(4))
-              d3.select('#best').on("click", () => setGroups(5))
-              d3.select('#reset2').on("click", reset2)
+        // reset2()
+        setGroups2(5)
+        const x3 = d3.scaleLinear()
+            .domain([-1, 1])
+            .range([0, 1000])
+        const axis3 = line3.call(d3.axisBottom(x3))
+        const ticks3 = axis3.selectAll(".tick")
+        ticks3.each(function() { d3.select(this).append("circle").attr("r", 5).attr("fill", "black"); })
+        ticks3.selectAll("line").remove()
+      </script>
 
-              reset2()
-              const x2 = d3.scaleLinear()
-                  .domain([-1, 1])
-                  .range([0, 1000])
-              const axis2 = line2.call(d3.axisBottom(x2))
-              const ticks2 = axis2.selectAll(".tick")
-              ticks2.each(function() { d3.select(this).append("circle").attr("r", 5).attr("fill", "black"); })
-              ticks2.selectAll("line").remove()
-            </script>
-          </div>
-        </div>
-      
       <p>
         Note, that we recommend to place the script import just behind the corresponding interactive figure,
         such that we can easily match them later on.
@@ -1173,32 +1313,315 @@
 
 
 <div class="container mt-lg">
-      <!-- Anchor ID -->
-      <section id="group_join">
-      <h2>III. Group-Joining</h2>
-	  
-	  <p> 
-	  TBD
-	  </p>
-	  
-	  <h3>1D Representation</h3>
-        <p id="1D_representation">
-          Let us consider the case that the feasible space \(\mathcal{K} = [-1, 1]\).
-        </p>
-		
-		
-		
-	  <h3>Group Joining: Myopic Best-Responses</h3>
-        <p id="best_response">
-          We consider the myopic best-response for each agent. 
-        </p>
-		
-		
-		<p id="best_response">
-          Eventually the dynamics of group-joining actions of all the agents lead to a pure-strategy Nash equilibrium.  
-        </p>
-		
-	</section>
+  <section id="group_join">
+  <!-- Group box 1 -->  
+    <h2>III. Group-Joining</h2>
+    <h3>1D Representation</h3>
+    <p id="1D_representation">
+      Let us consider the case that the feasible space \(\mathcal{K} = [-1, 1]\).
+    </p>
+    <div class="framed mb-5" style="height: 80vh;">
+      <div class="inside">
+        <div style="height: 42vh;">
+          <div class="d-flex w-100">
+            <h4 class="ps-3 pt-3 text-start">Policy Dimenson = 1</h4>
+            <span class="pe-3 pb-2 ms-auto mt-auto h-25">
+              <button id="reset" class="btn btn-secondary py-1">RESET</button>
+            </span>
+          </div>
+          <div class="Group-box pb-3">
+            <div class="d-flex flex-column px-3 justify-content-center">
+              <div id="box1" class="d-flex mx-auto position-relative" style="width: 1000px">
+                <div id="t01" class="tip" style="background-color: #d04a5c23;">
+                  <p id="wp1" class="mb-0">win prob.</p>
+                  <p id="r1">reward</p>
+                </div>
+                <div id="t02" class="tip" style="background-color: #02798c33;">
+                  <p id="wp2" class="mb-0">win prob.</p>
+                  <p id="r2">reward</p>
+                </div>
+                <div id="t03" class="tip" style="background-color: #ffc1073b;">
+                  <p id="wp3" class="mb-0">win prob.</p>
+                  <p id="r3">reward</p>
+                </div>
+                <div id="t04" class="tip" style="background-color: #4a6bd023;">
+                  <p id="wp4" class="mb-0">win prob.</p>
+                  <p id="r4">reward</p>
+                </div>
+                <div id="t05" class="tip" style="background-color: #bababa69;">
+                  <p id="wp5" class="mb-0">win prob.</p>
+                  <p id="r5">reward</p>
+                </div>
+                <!-- Doll 1 -->
+                <span id="s01" class="position-absolute">
+                  <img src="./img/aix_doll-01.svg" style="transition:'left .3s ease-in'; height: 100px;" />
+                </span>
+                <!-- Doll 2 -->
+                <span id="s02" class="position-absolute">
+                  <img src="./img/aix_doll-02.svg" style="transition:'left .3s ease-in'; height: 100px;" />
+                </span>
+                <!-- Doll 3 -->
+                <span id="s03" class="position-absolute">
+                  <img src="./img/aix_doll-03.svg" style="transition:'left .3s ease-in'; height: 100px;" />
+                </span>
+                <!-- Doll 4 -->
+                <span id="s04" class="position-absolute">
+                  <img src="./img/aix_doll-04.svg" style="transition:'left .3s ease-in'; height: 100px;" />
+                </span>
+                <!-- Doll 5 -->
+                <span id="s05" class="position-absolute" style="cursor: grab; height: 100px;">
+                  <span
+                    class="position-absolute badge rounded-pill bg-secondary"
+                    style="bottom:-80%"
+                  >
+                    Drag Me
+                  </span>
+                  <img src="./img/aix_doll-05.svg" style="height: 100px" />
+                </span>
+                <!-- Line-chart -->
+                <svg class="pt-6 w-100 overflow-visible" id="Viz_area" style="height:180px; width:250px;"></svg>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex px-3">
+            <Card class="w-100 bg-grey rounded py-3 px-4 h5 lh-lg">
+              <Img src="./img/aix_doll-05.svg" style="height: 50px" class="ps-3" />
+              &emsp; V5 is considering join one of the currently existing groups or stay alone.
+            </Card>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <!-- Group box 2 -->
+    <h3>Group Joining: Myopic Best-Responses</h3>
+    <p id="best_response">
+      We consider the myopic best-response for each agent.
+    </p>
+    <div class="framed mb-5" style="height: 87vh;">
+      <div class="inside">
+        <div style="height: 42vh;">
+          <div class="d-flex w-100 pt-4">
+            <h4 class="ps-3 pt-3 text-start">The Best Responses / Manual Join</h4>
+            <span class="pe-2 pb-2 ms-auto mt-auto h-25">
+              <button id="best" class="btn btn-ieee py-1">
+                Best Responses for all
+              </button>
+            </span>
+            <span class="pe-3 pb-2 mt-auto h-25">
+              <button id="reset2" class="btn btn-secondary py-1">
+                RESET
+              </button>
+            </span>
+          </div>
+
+          <div class="Group-box pb-3">
+            <div class="d-flex flex-column px-3 justify-content-center">
+              <div id="box2" class="d-flex mx-auto position-relative" style="width: 1000px">
+                <div id="t06" class="tip" style="background-color: #d04a5c23;">
+                  <p id="wp6" class="mb-0">win prob.</p>
+                  <p id="r6">reward</p>
+                </div>
+                <div id="t07" class="tip" style="background-color: #02798c33;">
+                  <p id="wp7" class="mb-0">win prob.</p>
+                  <p id="r7">reward</p>
+                </div>
+                <div id="t08" class="tip" style="background-color: #ffc1073b;">
+                  <p id="wp8" class="mb-0">win prob.</p>
+                  <p id="r8">reward</p>
+                </div>
+                <div id="t09" class="tip" style="background-color: #4a6bd023;">
+                  <p id="wp9" class="mb-0">win prob.</p>
+                  <p id="r9">reward</p>
+                </div>
+                <div id="t010" class="tip" style="background-color: #bababa69;">
+                  <p id="wp10" class="mb-0">win prob.</p>
+                  <p id="r10">reward</p>
+                </div>
+
+                <div id="s06" class="position-absolute">
+                  <div id="i01" class="plus w-100 pb-2" style="display: none">
+                    <i
+                      class="fa-solid fa-circle-plus mx-auto text-doll-red"
+                      style="cursor: pointer;"
+                      title="Join"
+                    >
+                    </i>
+                  </div>
+                  <img src="./img/aix_doll-01.svg" style="transition:'left .3s ease-in'; height: 100px" />
+                </div>
+
+                <div id="s07" class="position-absolute">
+                  <div id="i02" class="plus w-100 pb-2" style="display: none">
+                    <i
+                      class="fa-solid fa-circle-plus mx-auto text-doll-green"
+                      style="cursor: pointer;"
+                      title="Join"
+                    >
+                  </i>
+                  </div>
+                  <img src="./img/aix_doll-02.svg" style="transition:'left .3s ease-in'; height: 100px" />
+                </div>
+
+                <div id="s08" class="position-absolute">
+                  <div id="i03" class="plus w-100 pb-2" style="display: none">
+                    <i
+                      class="fa-solid fa-circle-plus mx-auto text-doll-yellow"
+                      style="cursor: pointer;"
+                      title="Join"
+                    >
+                    </i>
+                  </div>
+                  <img src="./img/aix_doll-03.svg" style="transition:'left .3s ease-in'; height: 100px" />
+                </div>
+
+                <div id="s09" class="position-absolute">
+                  <div id="i04" class="plus w-100 pb-2" style="display: none">
+                    <i
+                      class="fa-solid fa-circle-plus mx-auto text-doll-blue"
+                      style="cursor: pointer;"
+                      title="Join"
+                    >
+                  </i>
+                  </div>
+                  <img src="./img/aix_doll-04.svg" style="transition:'left .3s ease-in'; height: 100px;" />
+                </div>
+
+                <span id="s010" class="position-absolute" style="cursor: grab;">
+                  <span class="position-absolute badge rounded-pill bg-secondary" style="bottom:-80%">Drag Me</span>
+                  <img src="./img/aix_doll-05.svg" style="height: 100px;" />
+                </span>
+                <svg class="pt-6 w-100 overflow-visible" id="Viz_area2" style="height: 180px; width: 250xp"></svg>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex px-3">
+            <Card class="d-flex w-100 bg-grey rounded py-3 px-4 h5 lh-lg">
+              <i class="fa-solid fa-lightbulb text-secondary my-auto h2"></i>
+              <div class="ps-4 lh-md">
+                No one wants to deviate from his / her current group to the other group since the expected gain cannot be the better-off. 
+                Here comes a Nash Equilibrium of the "game".
+              </div>
+            </Card>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Group box 3 -->
+    <p id="best_response">
+      We consider the myopic best-response for each agent.
+      Eventually the dynamics of group-joining actions of all the agents lead to a pure-strategy Nash equilibrium.  
+    </p>
+    <div class="framed mb-5" style="height: 73vh;">
+      <div class="inside">
+        <div style="height: 42vh;">
+          <div class="d-flex w-100 pt-4">
+            <h4 class="ps-3 pt-3 text-start">The Best Responses / Manual Join</h4>
+            <!-- <span class="pe-2 pb-2 ms-auto mt-auto h-25">
+              <button id="best" class="btn btn-ieee py-1">
+                Best Responses for all
+              </button>
+            </span>
+            <span class="pe-3 pb-2 mt-auto h-25">
+              <button id="reset3" class="btn btn-secondary py-1">
+                RESET
+              </button>
+            </span> -->
+          </div>
+
+          <div class="Group-box pb-3">
+            <div class="d-flex flex-column px-3 justify-content-center">
+              <div id="box3" class="d-flex mx-auto position-relative" style="width: 1000px">
+                <div id="t011" class="tip" style="background-color: #d04a5c23;">
+                  <p id="wp11" class="mb-0">win prob.</p>
+                  <p id="r11">reward</p>
+                </div>
+                <div id="t012" class="tip" style="background-color: #02798c33;">
+                  <p id="wp12" class="mb-0">win prob.</p>
+                  <p id="r12">reward</p>
+                </div>
+                <div id="t013" class="tip" style="background-color: #ffc1073b;">
+                  <p id="wp13" class="mb-0">win prob.</p>
+                  <p id="r13">reward</p>
+                </div>
+                <div id="t014" class="tip" style="background-color: #4a6bd023;">
+                  <p id="wp14" class="mb-0">win prob.</p>
+                  <p id="r14">reward</p>
+                </div>
+                <div id="t015" class="tip" style="background-color: #bababa69;">
+                  <p id="wp15" class="mb-0">win prob.</p>
+                  <p id="r15">reward</p>
+                </div>
+
+                <div id="s011" class="position-absolute">
+                  <div id="i06" class="plus w-100 pb-2" style="display: none">
+                    <i
+                      class="fa-solid fa-circle-plus mx-auto text-doll-red"
+                      style="cursor: pointer;"
+                      title="Join"
+                    >
+                    </i>
+                  </div>
+                  <img src="./img/aix_doll-01.svg" style="transition:'left .3s ease-in'; height: 100px" />
+                </div>
+
+                <div id="s012" class="position-absolute">
+                  <div id="i07" class="plus w-100 pb-2" style="display: none">
+                    <i
+                      class="fa-solid fa-circle-plus mx-auto text-doll-green"
+                      style="cursor: pointer;"
+                      title="Join"
+                    >
+                  </i>
+                  </div>
+                  <img src="./img/aix_doll-02.svg" style="transition:'left .3s ease-in'; height: 100px" />
+                </div>
+
+                <div id="s013" class="position-absolute">
+                  <div id="i08" class="plus w-100 pb-2" style="display: none">
+                    <i
+                      class="fa-solid fa-circle-plus mx-auto text-doll-yellow"
+                      style="cursor: pointer;"
+                      title="Join"
+                    >
+                    </i>
+                  </div>
+                  <img src="./img/aix_doll-03.svg" style="transition:'left .3s ease-in'; height: 100px" />
+                </div>
+
+                <div id="s014" class="position-absolute">
+                  <div id="i09" class="plus w-100 pb-2" style="display: none">
+                    <i
+                      class="fa-solid fa-circle-plus mx-auto text-doll-blue"
+                      style="cursor: pointer;"
+                      title="Join"
+                    >
+                  </i>
+                  </div>
+                  <img src="./img/aix_doll-04.svg" style="transition:'left .3s ease-in'; height: 100px;" />
+                </div>
+
+                <span id="s015" class="position-absolute" style="cursor: grab;">
+                  <span class="position-absolute badge rounded-pill bg-secondary" style="bottom:-80%">Drag Me</span>
+                  <img src="./img/aix_doll-05.svg" style="height: 100px;" />
+                </span>
+                <svg class="pt-6 w-100 overflow-visible" id="Viz_area3" style="height: 180px; width: 250xp"></svg>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="d-flex px-3">
+            <Card class="d-flex w-100 bg-grey rounded py-3 px-4 h5 lh-lg">
+              <i class="fa-solid fa-lightbulb text-secondary my-auto h2"></i>
+              <div class="ps-4 lh-md">
+                text...
+              </div>
+            </Card>
+          </div> -->
+        </div>
+      </div>
+    </div>
+  </section>
 </div>
 
 
@@ -1232,7 +1655,7 @@
                       controls
                       id="video3"
                       class="mx-auto"
-                      style="transition:'left .3s ease-in'; height: 270px; width: 390px;"
+                      style="transition:'left .3s ease-in'; height: 230px; width: 350px;"
                       src="img/v5.mp4"
                       type="video/mp4"
                     >
@@ -1247,7 +1670,7 @@
                           onchange="replaceVideo('#video3', 'v5')"
                           checked
                         >
-                        <label class="form-check-label h5" for="flexRadioDefault5">
+                        <label class="form-check-label h6 text-end" for="flexRadioDefault5">
                           Learning rate 0.1
                         </label>
                       </div>
@@ -1259,7 +1682,7 @@
                           id="flexRadioDefault6"
                           onchange="replaceVideo('#video3', 'v6')"
                         >
-                        <label class="form-check-label h5" for="flexRadioDefault6">
+                        <label class="form-check-label h6 text-end" for="flexRadioDefault6">
                           Learning rate 0.01
                         </label>
                       </div>
@@ -1272,7 +1695,7 @@
                       controls
                       id="video4"
                       class="mx-auto"
-                      style="transition:'left .3s ease-in'; height: 270px; width: 390px;"
+                      style="transition:'left .3s ease-in'; height: 230px; width: 350px;"
                       src="img/v7.mp4"
                       type="video/mp4"
                     >
@@ -1287,7 +1710,7 @@
                           onchange="replaceVideo('#video4', 'v7')"
                           checked
                         >
-                        <label class="form-check-label h5" for="flexRadioDefault7">
+                        <label class="form-check-label h6 text-end" for="flexRadioDefault7">
                           Learning rate 0.1
                         </label>
                       </div>
@@ -1299,7 +1722,7 @@
                           id="flexRadioDefault8"
                           onchange="replaceVideo('#video4', 'v8')"
                         >
-                        <label class="form-check-label h5" for="flexRadioDefault8">
+                        <label class="form-check-label h6 text-end" for="flexRadioDefault8">
                           Learning rate 0.01
                         </label>
                       </div>
@@ -1332,7 +1755,7 @@
                       controls
                       id="video1"
                       class="mx-auto"
-                      style="transition:'left .3s ease-in'; height: 270px; width: 390px;"
+                      style="transition:'left .3s ease-in'; height: 230px; width: 350px;"
                       src="img/v1.mp4"
                       type="video/mp4"
                     >
@@ -1347,7 +1770,7 @@
                           onchange="replaceVideo('#video1', 'v1')"
                           checked
                         >
-                        <label class="form-check-label h5" for="flexRadioDefault1">
+                        <label class="form-check-label h6 text-end" for="flexRadioDefault1">
                           Learning rate 0.1
                         </label>
                       </div>
@@ -1359,7 +1782,7 @@
                           id="flexRadioDefault2"
                           onchange="replaceVideo('#video1', 'v2')"
                         >
-                        <label class="form-check-label h5" for="flexRadioDefault2">
+                        <label class="form-check-label h6 text-end" for="flexRadioDefault2">
                           Learning rate 0.01
                         </label>
                       </div>
@@ -1372,7 +1795,7 @@
                       controls
                       id="video2"
                       class="mx-auto"
-                      style="transition:'left .3s ease-in'; height: 270px; width: 390px;"
+                      style="transition:'left .3s ease-in'; height: 230px; width: 350px;"
                       src="img/v3.mp4"
                       type="video/mp4"
                     >
@@ -1386,7 +1809,7 @@
                           onchange="replaceVideo('#video2', 'v3')"
                           checked
                         >
-                        <label class="form-check-label h5" for="flexRadioDefault3">
+                        <label class="form-check-label h6 text-end" for="flexRadioDefault3">
                           Learning rate 0.1
                         </label>
                       </div>
@@ -1398,7 +1821,7 @@
                           id="flexRadioDefault2"
                           onchange="replaceVideo('#video2', 'v4')"
                         >
-                        <label class="form-check-label h5" for="flexRadioDefault4">
+                        <label class="form-check-label h6 text-end" for="flexRadioDefault4">
                           Learning rate 0.01
                         </label>
                       </div>

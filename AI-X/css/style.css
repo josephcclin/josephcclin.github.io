@@ -786,3 +786,24 @@ body {
 #wp1, #wp2, #wp3, #wp4, #wp5, #wp6, #wp7, #wp8, #wp9, #wp10, #r1, #r2, #r3, #r4, #r5, #r6, #r7, #r8, #r9, #r10, .small {
   font-size: .9rem !important;
 }
+
+.tooltip {
+  display: none;
+}
+
+.tooltip.show {
+  opacity: 1 !important;
+}
+
+.tooltip-inner{
+  /* position: absolute;
+  top: 80px;
+  white-space: nowrap;
+  width: auto; */
+  opacity:1 !important;
+  z-index: 99999;
+}
+
+.bg-doll1 {
+  opacity: 1 !important;
+}
