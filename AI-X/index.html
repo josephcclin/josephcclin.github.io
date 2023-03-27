@@ -1167,11 +1167,23 @@
   <!-- Group box 1 -->  
     <h2>III. Group Joining</h2>
     <h3>1D Representation</h3>
-    <p id="1D_representation">
-      Let us consider the case that the feasible space \(\mathcal{K} = [-1, 1]\).
+    <p id="1D_representation" class="inline-math">
+      When the opinions and beliefs are assumed to be in \(\mathbb{R}\), we can illustrate these vectors as well 
+	  as the dynamics of changes on a real line. The constraint that \(z_i,s_i\in [-1, 1]\) has 2-norm bounded 
+	  by 1 for each \(i\) clearly holds.
+	</p>
+	<p class="inline-math">
+		For example, in the example we have five agents \(v_1,v_2,v_3,v_4,v_5\). By assuming \(v_1,v_2,v_3\), 
+		and \(v_4\) to have their opinions \(z_1,z_2,z_3,z_4\) fixed, we can observe the changes of winning 
+		probability of \(v_5\) by moving \(z_5\) from \(-1\) to \(1\). After getting the winning probabilities, 
+		we can derive the rewards as well. 
     </p>
     <div class="framed mb-5" style="height: 80vh;">
       <div class="inside">
+	  <div class="eyebrow">
+		Drag \(v_5\) (the agent of No. 5) to see the changes of the winning probabilities 
+		of each agent. Also observe the changes of the reward of each agent. 
+	  </div>
         <div style="height: 42vh;">
           <div class="d-flex w-100">
             <h4 class="ps-3 pt-3 text-start">Policy Dimenson = 1</h4>
@@ -1236,7 +1248,7 @@
           <div class="d-flex px-3">
             <Card class="w-100 bg-grey rounded py-3 px-4 h5 lh-lg">
               <Img src="./img/aix_doll-05.svg" style="height: 50px" class="ps-3" />
-              &emsp; V5 is considering join one of the currently existing groups or stay alone.
+              &emsp; \(v_5\) is considering join one of the currently existing groups or stay alone.
             </Card>
           </div>
         </div>
@@ -1350,7 +1362,7 @@
               <i class="fa-solid fa-lightbulb text-secondary my-auto h2"></i>
               <div class="ps-4 lh-md">
                 No one wants to deviate from his / her current group to the other group since the expected gain cannot be the better-off. 
-                Here comes a Nash Equilibrium of the "game".
+                Here comes a Nash Equilibrium of the &ldquo;game&rdquo;.
               </div>
             </Card>
           </div>
