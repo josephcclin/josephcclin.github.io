@@ -8,7 +8,7 @@
     content="An interactive article on using game theoretic approach and gradient ascent algorithms to demostrate strategic behaviors of group formation. 
 	Learn how the choices of coaltion of agents lead to a pure Nash equilibrium and how updating revealed preferences eventually affects group formation.">
   <meta charset="utf8">
-  <title>Group Formation by Strategic Group-Joining and Opinion Updates via Gradient Ascent
+  <title>Group Formation by Strategic Group Joining and Opinion Updates via Gradient Ascent
   </title>
 
   <!-- Stylesheet for IEEE Xplore immersive article -->
@@ -276,11 +276,11 @@
       <div class="container">
         <!-- Page title -->
         <h1>
-          Group Formation by Strategic Group-Joining and Opinion Updates via Gradient Ascent
+          Group Formation by Strategic Group Joining and Opinion Updates via Gradient Ascent
         </h1>
         <!-- Subheading -->
         <p class="subhead">
-		  An interactive article on illustrating group-joinging strategies and updating opinions via gradient ascent algorithms to analyze the group formation 
+		  An interactive article on illustrating group joinging strategies and updating opinions via gradient ascent algorithms to analyze the group formation 
 		  phenomenon. Learn how the choices of coaltion of agents lead to a pure Nash equilibrium and how updating revealed preferences eventually affects group 
 		  formation.
         </p>
@@ -324,11 +324,11 @@
               <span class="separator">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
             </li>
             <li>
-              <a href="#probs_reward">Winning Probabilities and Rewards</a>
+              <a href="#game_setting">The Game Setting</a>
               <span class="separator">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
             </li>
             <li>
-              <a href="#group_join">Group-Joining</a>
+              <a href="#group_join">Group Joining</a>
               <span class="separator">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
             </li>
             <li>
@@ -360,7 +360,7 @@
 			own strategy to the other one unilatersally. Hence, such a state is possibly achievable 
 			because no one wants to change its mind when the other ones hold on their current 
 			strategies. Yet, how to achieve a Nash equilibrium in a game may not be quite 
-			straightforward, especially when agents behave in a "decentralized" way. 
+			straightforward, especially when agents behave in a &ldquo;decentralized&rdquo; way. 
 			Indeed, while an agent's reward functions has dependency on strategies of the 
 			other agents, a maximizer of one agent's reward function is not necessarily a 
 			maximizer for any other agent.
@@ -372,50 +372,64 @@
 			eventual outcome of the game to study the group formation of a society. 
 			The theoretical techniques include identification of a pure Nash equilibrium and gradient 
 			ascent algorithms with and without regularizers.
+			
+			In this article, we study the group formation of a system of strategic agents as an 
+			illustrating example. A strategic agent can either join a group or change its opinion to 
+			maximize its reward. The eventual equilibrium of the game hopefully suggests predictable 
+			outcomes of the whole society. For the case that agents apply group joining strategies, 
+			we consider <i>pure-strategy Nash equilibria</i> as the solution concept, where a pure 
+			strategy means a strategy played with probability 1. For the case that agents change their 
+			opinions, we assume that each agent plays a <i>gradient ascent algorithm</i>, which 
+			guarantees the time-average convergence to a hindsight optimum for a single agent (e.g., 
+			see [<a href="#ref_3">3</a>] for the cost-minimization case), in a decentralized way and 
+			then we look into the convergent state of the system. 
 		</p>
-
+	<!-- Content container with large top spacing -->
+		<div class="container mt-lg">
+		<!-- Anchor ID -->
+		<section id="game_setting">
+        <!-- Section title -->
+        <h2>II. The Game Setting</h2>
 		<p class="inline-math">
-			In this game setting, we are given \(n\) agents, each agent \(v_i\)
-			is represented as a public preference vector \(z_i\) and a private 
-			preference vector \(s_i\), such that the former corresponds to 
-			the preference revealed to all the agents while the latter corresponds to its true 
-			belief. We consider \(s_i,z_i\in\mathcal{K}\) such that \(\mathcal{K}:=\{x\in [-1,1]^k: 
-			\|x\|_2\leq 1\}\subset\mathbb{R}^k\) is the feasible set. 
+			In this game setting, we are given a set \(V\) of \(n\) agents \(v_1,v_2,\ldots,v_n\), each 
+			agent \(v_i\) is represented as a <i>public preference vector</i> \(z_i\) and a <i>private 
+			preference vector</i> \(s_i\), such that the former (we call it an <i>opinion</i>) 
+			corresponds to the preference revealed to all the agents while the latter corresponds 
+			to its <i>belief</i> which is unchangeable. We consider \(s_i,z_i\in\mathcal{K}\) such 
+			that \(\mathcal{K}:=\{x\in [-1,1]^k: \|x\|_2\leq 1\}\subset\mathbb{R}^k\) is the feasible set. 
 			One can realize that each dimension of the domain stands for a certain social issue such 
 			that \(-1\) maps to the far-left politics while \(1\) maps to the far-right politics. 
 			The bounded 2-norm constraint is in line with the bounded rationality of a person, or 
 			bounded budget for a group.
 			We use \(\mathbf{z} = (z_1,z_2,\ldots,z_n)\) and \(\mathbf{s} = (s_1,s_2,\ldots,s_n)\) to 
-			denote two profiles which include each agent's public preference vector and private
-			preference vector, respectively. 
-			Each agent is initially regarded as a group. Each group's preference vector is 
-			the average of the public preference vectors of the members. Like the setting in 
-			[<a href="#ref_2">2</a>], a group wins with higher odds if its preference vector brings 
-			more utility to all of the agents than the other groups. We call such a property 
-			<i>monotone</i>. Here the utility of a group is 
-			calculated as the sum of inner products between the group's preference vector and all 
-			the agents' private preference vectors. Hence, the reward (i.e., payoff) of an agent 
-			is the expected utility of this group. Specifically, assume that we have currently 
+			denote two profiles which include each agent's opinion and belief, respectively. 
+			Each agent is initially regarded as a group. The <i>opinion of a group</i> is the average 
+			of the opinions of its members. Like the <i>monotone</i> setting in 
+			[<a href="#ref_2">2</a>], a group wins with higher odds if its opinion brings 
+			more utility to all of the agents. The <i>reward</i> (i.e., payoff) of an agent is the 
+			expected utility it can get from all the groups. Specifically, assume that we have currently 
 			\(m\leq n\) groups \(G_1,G_2,\ldots,G_m\), and denote by \(|G_i| = n_i\) the number 
-			of members in group \(G_i\). Let \(\mathcal{G} = (G_1,G_2,\ldots,G_m)\) to denote the 
+			of members in group \(G_i\). Let \(\mathcal{G} = (G_1,G_2,\ldots,G_m)\) denote the 
 			profile of groups. To ease the notation, we denote by 
 			\(\tau = (\mathbf{z}, \mathbf{s}, \mathcal{G})\) the <i>state</i> of the game. 
 			The reward function of agent \(i\) is 
 			$$r_i(\tau) = \sum_{j=1}^m p_j(\tau)\langle s_i, \bar{g}_j\rangle,$$ 
-			where \(\bar{g}_j = \sum_{v\in G_j}z_i/|n_j|\) and the winning probability of
+			where \(\bar{g}_j = \sum_{v\in G_j}z_i/|n_j|\) and \(\langle x, y\rangle\) denote the 
+			inner product of two vectors \(x\) and \(y\). The winning probability of
 			group \(j\) is defined as 
-			$$p_j(\tau) = \frac{e^{n_j\langle\bar{g}_j, \sum_{v\in V} s_v\rangle}}{\sum_{i\in V; n_i>0} e^{n_i\langle\bar{g}_i, 
-			\sum_{v\in V} s_v\rangle}}.$$ Namely, \(p_j(\tau)\) is the softmax function which 
+			$$p_j(\tau) = \frac{e^{n_j\langle\bar{g}_j, \sum_{v\in V} s_v\rangle}}{\sum_{i\in [m]; n_i>0} e^{n_i\langle\bar{g}_i, 
+			\sum_{v\in V} s_v\rangle}},$$ where \([m]\) denotes the set \(\{1,2,\ldots, m\}\). 
+			Namely, \(p_j(\tau)\) is the softmax function which 
 			is widely used to impose a probability distribution over the possible outcomes. 
 			Moreover, \(p_j(\tau)\) increases either when the size of group \(G_j\) gets larger 
 			or it can bring more total utility for all the agents in terms of larger sum of 
-			inner products of the group average public preference and each private preference vector. 
+			inner products of the group opinion and each agent's belief. 
 		</p>
 		
 		<p> 
 			We will consider the following strategic behaviors of an agent in such a game:
 			<ul>
-			<li><strong>Group-Joining:</strong> Seeking for a specific group which 
+			<li><strong>Group Joining:</strong> Seeking for a specific group which 
 			hopefully maximizes the agent's reward and join the group (See Fig. 1).
 			</li>
 			<li><strong>Opinion Updating Without Regularization:</strong>
@@ -432,7 +446,7 @@
 			</ul>
 		<figure class="text-center">
 		<img src="img/FlowchartGroupJoining.svg" alt="Algorithm1" width="562" height="485">
-		<figcaption><strong>Figure 1:</strong> Flowchart of Group-Joining.</figcaption>
+		<figcaption><strong>Figure 1:</strong> Flowchart of Group Joining.</figcaption>
 		</figure>
 
 		<figure class="text-center">
@@ -445,143 +459,6 @@
 </div>
 
 <div class="container mt-lg">
-      <!-- Anchor ID -->
-      <section id="probs_reward">
-      <h2>II. Winning Probabilities and Rewards</h2>
-
-        <h3>Maintaining the Integrity of the Specifications</h3>
-        <p id="maintainingintegrity">
-          The index.html file is used to format your interactive paper and style the text. All margins,
-          column widths, line spaces, and text fonts are prescribed; please do not
-          alter them. You may note peculiarities. For example, the limited width of the article. This measurement
-          and others are deliberate, using specifications that anticipate your paper
-          as one part of the entire computational intelligence magazine and its online pendant on IEEE Xplore,
-          and not as an independent document. Please do not revise any of the current designations.
-        </p>
-
-		<div class="static">
-        <img src="img/fig1.png" alt="Introducing winning probabilities and reward through 1D opinions" style="margin: auto auto; width: max-content; display: block"/>
-        <div class="caption"><b>Figure 3:</b> Illustration of winning probability and rewards.</div>
-		</div>
-
-        <h3>Prepare Your Paper Before Styling</h3>
-        <p id="Prepare">
-          Before you begin to format your paper, first write and save the content as a
-          separate text file. Complete all content and organizational editing before
-          formatting. Please note subsections <a href="#Abbreviations">Abbrevations and Acronyms</a> to
-          <a href="#SCM">Some Common Mistakes</a> below for more information on
-          proofreading, spelling and grammar.
-        </p>
-
-        <p>
-          Keep your text and graphic files separate until after the text has been
-          formatted and styled. Do not number text heads, this will be done during the
-          transfer to IEEEXplore for you.
-        </p>
-
-
-      <h3>Abbreviations and Acronyms</h3>
-      <p id="Abbreviations">
-        Define abbreviations and acronyms the first time they are used in the text,
-        even after they have been defined in the abstract. Abbreviations such as
-        IEEE, SI, MKS, CGS, ac, dc, and rms do not have to be defined. Do not use
-        abbreviations in the title or heads unless they are unavoidable.
-      </p>
-
-      <h3>Units</h3>
-      <ul id="Units">
-        <li> Use either SI (MKS) or CGS as primary units. (SI units are encouraged.) English units may be used as secondary units (in parentheses). An exception would be the use of English units as identifiers in trade, such as "3.5-inch disk drive".</li>
-        <li> Avoid combining SI and CGS units, such as current in amperes and magnetic field in oersteds. This often leads to confusion because equations do not balance dimensionally. If you must use mixed units, clearly state the units for each quantity that you use in an equation.</li>
-        <li class="inline-math"> Do not mix complete spellings and abbreviations of units: $$Wb/m^2$$ or "webers per square meter", not $$webers/m^2$$. Spell out units when they appear in text: ". . . a few henries", not ". . . a few H".</li>
-        <li> Use a zero before decimal points: "0.25", not ".25". </li>
-        <li class="inline-math"> Use $$cm^3$$, not $$cc$$.</li>
-      </ul>
-
-      <h3>Equations</h3>
-      <p id="Equations" class="inline-math">
-        The interactive article does not require to number equations, however they can be
-        linked using the tag &lta href="#id"&gt &lt/a&gt and a corresponding id of the element to be linked.
-        To make your equations more compact, you may use the solidus (~/~), the exp function, or
-        appropriate exponents. Italicize Roman symbols for quantities and variables,
-        but not Greek symbols. Use a long dash rather than a hyphen for a minus
-        sign. Punctuate equations with commas or periods when they are part of a
-        sentence, as in: $$a+b=\gamma$$.
-      </p>
-
-      <p class="inline-math tex2jax_ignore">
-        Be sure that the symbols in your equation have been defined before or immediately following
-        the equation. To define inline equations you can surround them with double-$ symbol as in $$1+1=2$$
-        and add the 'class="inline-math' to the surrounding tags.
-      </p>
-
-
-      <h3>Figures and Tables</h3>
-      <p id="FiguresTables">
-        Place figures and tables close to the paragraph in which they are discussed.
-        Captions should be below the figures and tables.
-        Insert figures and tables after they are cited in the text.
-        Use the abbreviation "Fig. 1", even at the beginning of a sentence.
-      </p>
-
-
-      <div class="formula-wrapper">
-        <table class="formula" style="margin: auto auto">
-          <tbody>
-          <tr>
-            <th style="width: 150px">Column 1</th>
-            <th style="width: 250px; text-align: center">Column 2 of fixed width</th>
-            <th style="width: 250px; text-align: left">Column 3 aligned left</th>
-          </tr>
-          <tr>
-            <td>Data 1,1</td>
-            <td style="text-align:center">Data 1,2</td>
-            <td style="text-align:center">a very very very very very long centered text</td>
-          </tr>
-          <tr>
-            <td>$$1\times 1 = 1$$</td>
-            <td style="text-align:center">$$\pi$$</td>
-            <td style="text-align:right">$$\binom{n}{k} =\prod _{j=1}^{k}{\frac {n+1-j}{j}}$$</td>
-          </tr>
-          </tbody>
-        </table>
-        <div class="caption">
-          <b>Table 1:</b> This is an example of a table caption.
-        </div>
-      </div>
-
-      <div class="static">
-        <img src="img/fig1.png" alt="Alternative text in case the image cannot be loaded." style="margin: auto auto; width: max-content; display: block"/>
-        <div class="caption"><b>Figure 1:</b> Example of a figure caption.</div>
-      </div>
-
-      <p class="inline-math">
-        <b>Figure Labels:</b> Use words rather than symbols or abbreviations
-        when writing Figure axis labels to avoid confusing the reader. As an example, write the quantity
-        "Magnetization", or "Magnetization, $$M$$", not just "$$M$$". If including
-        units in the label, present them within parentheses. Do not label axes only
-        with units. In the example, write "Magnetization ($$A/m$$)" or "Magnetization
-        $$\{A[m(1)]\}$$", not just "$$A/m$$". Do not label axes with a ratio of
-        quantities and units. For example, write "Temperature ($$K$$)", not
-        "Temperature/$$K$$".
-      </p>
-
-      <h3>Interactive Figures and Code</h3>
-      <p id="InteractiveCode">
-        Note, that in contrast to classical papers,
-        the web article can include animations, videos, sounds, etc..
-        Due to technical constraints, it will not be possible to embed iframes!
-      </p>
-
-      <p>
-        Finally, you can freely use javascript libraries as long as they can
-        be included self-contained in the files you submit. Meaning, scripts cannot be
-        imported using an url. This should ensure a consistent presentation of the
-        article. Interactive components can be embedded as figure. and should be formatted as such.
-        Libraries such as d3.js [<a href="#ref_1">1</a>] and three.js[<a href="#ref_2">2</a>]
-        may be helpful in producing interactive
-        visualizations, but do not let your own creativity be limited by these recommendations.
-      </p>
-
       <!-- D3.js -->
       <script src="https://d3js.org/d3.v4.js"></script>
       <script type="module">
@@ -1282,19 +1159,13 @@
         ticks3.each(function() { d3.select(this).append("circle").attr("r", 5).attr("fill", "black"); })
         ticks3.selectAll("line").remove()
       </script>
-
-      <p>
-        Note, that we recommend to place the script import just behind the corresponding interactive figure,
-        such that we can easily match them later on.
-      </p>
-    </section>
 </div>
 
 
 <div class="container mt-lg">
   <section id="group_join">
   <!-- Group box 1 -->  
-    <h2>III. Group-Joining</h2>
+    <h2>III. Group Joining</h2>
     <h3>1D Representation</h3>
     <p id="1D_representation">
       Let us consider the case that the feasible space \(\mathcal{K} = [-1, 1]\).
@@ -1490,7 +1361,7 @@
     <!-- Group box 3 -->
     <p id="best_response">
       We consider the myopic best-response for each agent.
-      Eventually the dynamics of group-joining actions of all the agents lead to a pure-strategy Nash equilibrium.  
+      Eventually the dynamics of group joining actions of all the agents lead to a pure-strategy Nash equilibrium.  
     </p>
     <div class="framed mb-5" style="height: 73vh;">
       <div class="inside">
@@ -1608,6 +1479,10 @@
 	  <p> 
 	  TBD
 	  </p>
+	  <figure class="text-center">
+		<img src="img/gradient_ascent_algo.svg" alt="AlgorithmGA" width="506" height="436">
+		<figcaption><strong>Figure 5:</strong> Pseudo-code of the Gradient Ascent Algorithm.</figcaption>
+	  </figure>
 
 		<h3>Initially Ungrouped Agents - Reward with and without Regularizers</h3>
         <p id="gaa_no_regularizers">
