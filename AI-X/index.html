@@ -1015,88 +1015,67 @@
           })
         }
 
-        svg11.select('img')
-            .attr('data-bs-toggle', "tooltip")
-            .attr('data-bs-placement', "bottom")
-            .attr('data-bs-custom-class', "bg-doll1")
-            .attr('title', `myopic reward of 1: 0.1056`)
-        svg12.select('img')
-            .attr('data-bs-toggle', "tooltip")
-            .attr('data-bs-placement', "bottom")
-            .attr('data-bs-custom-class', "bg-doll2")
-            .attr('title', `myopic reward of 2: 0.3062`)
-        svg13.select('img')
-            .attr('data-bs-toggle', "tooltip")
-            .attr('data-bs-placement', "bottom")
-            .attr('data-bs-custom-class', "bg-doll3")
-            .attr('title', `myopic reward of 3: 0.0306`)
-        svg14.select('img')
-            .attr('data-bs-toggle', "tooltip")
-            .attr('data-bs-placement', "bottom")
-            .attr('data-bs-custom-class', "bg-doll4")
-            .attr('title', `myopic reward of 4: 0.0132`)
-        svg15.select('img')
-            .attr('data-bs-toggle', "tooltip")
-            .attr('data-bs-placement', "bottom")
-            .attr('data-bs-custom-class', "bg-doll5")
-            .attr('title', `myopic reward of 5: 0.0613`)
-
         const tipcolor = ['#f8e6e8', '#d3e5e9', '#fff0d1', '#e5ebf9', '#e3e3e3']
         const tipDelay = 300
         svg11.on('mouseover', () => {
           setTimeout(function() {
-            d3.select('.tooltip').select('.tooltip-inner').style('background-color', tipcolor[0]).style('color', 'black')
-            const styleElem = document.head.appendChild(document.createElement("style"))
-            styleElem.innerHTML = `.tooltip-arrow::before {
-              border-bottom-color: ${tipcolor[0]} !important;
-            }`
-            d3.select('.tooltip').style('display', 'block')
+            d3.select("#myopic").transition().duration(300).style("opacity", 1)
+            d3.select("#leftTip").style("background-color", tipcolor[0]).node().innerHTML = 'myopic reward of 1: 0.1056'
+            d3.select("#rightTip").style("background-color", tipcolor[0]).node().innerHTML = 'myopic reward of 1: -0.2450'
+          }, tipDelay)
+        })
+        svg11.on('mouseleave', () => {
+          setTimeout(function() {
+            d3.select("#myopic").transition().duration(300).style("opacity", 0)
           }, tipDelay)
         })
         svg12.on('mouseover', () => {
           setTimeout(function() {
-            d3.select('.tooltip').select('.tooltip-inner').style('background-color', tipcolor[1]).style('color', 'black')
-            const styleElem = document.head.appendChild(document.createElement("style"))
-            styleElem.innerHTML = `.tooltip-arrow::before {
-              border-bottom-color: ${tipcolor[1]} !important;
-            }`
-            d3.select('.tooltip').style('display', 'block')
+            d3.select("#myopic").transition().duration(300).style("opacity", 1)
+            d3.select("#leftTip").style("background-color", tipcolor[1]).node().innerHTML = 'myopic reward of 2: -0.1319'
+            d3.select("#rightTip").style("background-color", tipcolor[1]).node().innerHTML = 'myopic reward of 2: 0.3062'
+          }, tipDelay)
+        })
+        svg12.on('mouseleave', () => {
+          setTimeout(function() {
+            d3.select("#myopic").transition().duration(300).style("opacity", 0)
           }, tipDelay)
         })
         svg13.on('mouseover', () => {
           setTimeout(function() {
-            d3.select('.tooltip').select('.tooltip-inner').style('background-color', tipcolor[2]).style('color', 'black')
-            const styleElem = document.head.appendChild(document.createElement("style"))
-            styleElem.innerHTML = `.tooltip-arrow::before {
-              border-bottom-color: ${tipcolor[2]} !important;
-            }`
-            d3.select('.tooltip').style('display', 'block')
+            d3.select("#myopic").transition().duration(300).style("opacity", 1)
+            d3.select("#leftTip").style("background-color", tipcolor[2]).node().innerHTML = 'myopic reward of 3: 0.0132'
+            d3.select("#rightTip").style("background-color", tipcolor[2]).node().innerHTML = 'myopic reward of 3: 0.0306'
+          }, tipDelay)
+        })
+        svg13.on('mouseleave', () => {
+          setTimeout(function() {
+            d3.select("#myopic").transition().duration(300).style("opacity", 0)
           }, tipDelay)
         })
         svg14.on('mouseover', () => {
           setTimeout(function() {
-            d3.select('.tooltip').select('.tooltip-inner').style('background-color', tipcolor[3]).style('color', 'black')
-            const styleElem = document.head.appendChild(document.createElement("style"))
-            styleElem.innerHTML = `.tooltip-arrow::before {
-              border-bottom-color: ${tipcolor[3]} !important;
-            }`
-            d3.select('.tooltip').style('display', 'block')
+            d3.select("#myopic").transition().duration(300).style("opacity", 1)
+            d3.select("#leftTip").style("background-color", tipcolor[3]).node().innerHTML = 'myopic reward of 4: 0.0132'
+            d3.select("#rightTip").style("background-color", tipcolor[3]).node().innerHTML = 'myopic reward of 4: -0.0306'
+          }, tipDelay)
+        })
+        svg14.on('mouseleave', () => {
+          setTimeout(function() {
+            d3.select("#myopic").transition().duration(300).style("opacity", 0)
           }, tipDelay)
         })
         svg15.on('mouseover', () => {
           setTimeout(function() {
-            d3.select('.tooltip').select('.tooltip-inner').style('background-color', tipcolor[4]).style('color', 'black')
-            const styleElem = document.head.appendChild(document.createElement("style"))
-            styleElem.innerHTML = `.tooltip-arrow::before {
-              border-bottom-color: ${tipcolor[4]} !important;
-            }`
-            d3.select('.tooltip').style('display', 'block')
+            d3.select("#myopic").transition().duration(300).style("opacity", 1)
+            d3.select("#leftTip").style("background-color", tipcolor[4]).node().innerHTML = 'myopic reward of 5: -0.0264'
+            d3.select("#rightTip").style("background-color", tipcolor[4]).node().innerHTML = 'myopic reward of 5: 0.0613'
           }, tipDelay)
         })
-        const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-        const tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-            const tooltip = new bootstrap.Tooltip(tooltipTriggerEl)
-            return tooltip
+        svg15.on('mouseleave', () => {
+          setTimeout(function() {
+            d3.select("#myopic").transition().duration(300).style("opacity", 0)
+          }, tipDelay)
         })
 
         const setPosition3 = (arr, target) => {
@@ -1517,7 +1496,7 @@
       <div class="inside">
         <div style="height: 42vh;">
           <div class="d-flex w-100 pt-4">
-            <h4 class="ps-3 pt-3 text-start">The Best Responses / Manual Join</h4>
+            <h4 class="ps-3 pt-3 text-start">The Best Responses</h4>
             <!-- <span class="pe-2 pb-2 ms-auto mt-auto h-25">
               <button id="best" class="btn btn-ieee py-1">
                 Best Responses for all
@@ -1533,6 +1512,12 @@
           <div class="Group-box pb-3">
             <div class="d-flex flex-column px-3 justify-content-center">
               <div id="box3" class="d-flex mx-auto position-relative" style="width: 1000px">
+                <div id="myopic" class="d-flex position-absolute" style="width: 1000px; top: 230px;">
+                  <div class="mx-auto d-flex" style="width: 600px">
+                    <span id="leftTip" class="p-3 small rounded"></span>
+                    <span id="rightTip" class="ms-auto p-3 small rounded"></span>
+                  </div>
+                </div>
                 <div id="t011" class="tip" style="background-color: #d04a5c23;">
                   <p id="wp11" class="mb-0">win prob.</p>
                   <p id="r11">reward</p>
