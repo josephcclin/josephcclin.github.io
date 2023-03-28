@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.2" viewBox="4414 2075 18587 11265" preserveAspectRatio="xMidYMid" fill-rule="evenodd" stroke-width="28.222" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" xmlns:ooo="http://xml.openoffice.org/svg/export" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:presentation="http://sun.com/xmlns/staroffice/presentation" xmlns:smil="http://www.w3.org/2001/SMIL20/" xmlns:anim="urn:oasis:names:tc:opendocument:xmlns:animation:1.0" xml:space="preserve">
+<svg version="1.2" viewBox="2314 2075 22787 11622" preserveAspectRatio="xMidYMid" fill-rule="evenodd" stroke-width="28.222" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" xmlns:ooo="http://xml.openoffice.org/svg/export" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:presentation="http://sun.com/xmlns/staroffice/presentation" xmlns:smil="http://www.w3.org/2001/SMIL20/" xmlns:anim="urn:oasis:names:tc:opendocument:xmlns:animation:1.0" xml:space="preserve">
  <defs>
   <font id="EmbeddedFont_1" horiz-adv-x="2048">
    <font-face font-family="Liberation Serif embedded" units-per-em="2048" font-weight="normal" font-style="normal" ascent="1826" descent="450"/>
@@ -86,84 +86,91 @@
  <g ooo:name="page1" class="Page">
   <g class="com.sun.star.drawing.CustomShape">
    <g id="id3">
-    <rect class="BoundingBox" stroke="none" fill="none" x="4475" y="2075" width="6852" height="2552"/>
-    <path fill="none" stroke="rgb(0,0,0)" stroke-width="50" stroke-linejoin="round" d="M 4916,2100 L 4917,2100 C 4844,2100 4772,2119 4708,2156 4645,2192 4592,2245 4556,2308 4519,2372 4500,2444 4500,2517 L 4500,4184 4500,4184 C 4500,4257 4519,4329 4556,4393 4592,4456 4645,4509 4708,4545 4772,4582 4844,4601 4917,4601 L 10884,4601 10884,4601 C 10957,4601 11029,4582 11093,4545 11156,4509 11209,4456 11245,4393 11282,4329 11301,4257 11301,4184 L 11301,2516 11301,2517 11301,2517 C 11301,2444 11282,2372 11245,2308 11209,2245 11156,2192 11093,2156 11029,2119 10957,2100 10884,2100 L 4916,2100 Z"/>
-    <text class="SVGTextShape"><tspan class="TextParagraph" font-family="Liberation Serif, serif" font-size="493px" font-weight="400"><tspan class="TextPosition" x="4977" y="3244"><tspan fill="rgb(0,0,0)" stroke="none">Initially </tspan><tspan font-style="italic" fill="rgb(0,0,0)" stroke="none">n</tspan><tspan fill="rgb(0,0,0)" stroke="none"> agents are </tspan><tspan fill="rgb(0,0,0)" stroke="none">regarded </tspan></tspan><tspan class="TextPosition" x="6721" y="3786"><tspan fill="rgb(0,0,0)" stroke="none">as </tspan><tspan font-style="italic" fill="rgb(0,0,0)" stroke="none">n</tspan><tspan fill="rgb(0,0,0)" stroke="none"> groups</tspan><tspan fill="rgb(0,0,0)" stroke="none"> </tspan></tspan></tspan></text>
+    <rect class="BoundingBox" stroke="none" fill="none" x="2375" y="2075" width="9053" height="3052"/>
+    <path fill="none" stroke="rgb(0,0,0)" stroke-width="50" stroke-linejoin="round" d="M 2900,2100 L 2900,2100 C 2812,2100 2726,2123 2650,2167 2574,2211 2511,2274 2467,2350 2423,2426 2400,2512 2400,2600 L 2400,4600 2400,4601 C 2400,4689 2423,4775 2467,4851 2511,4927 2574,4990 2650,5034 2726,5078 2812,5101 2900,5101 L 10900,5101 10901,5101 C 10989,5101 11075,5078 11151,5034 11227,4990 11290,4927 11334,4851 11378,4775 11401,4689 11401,4601 L 11401,2600 11401,2600 11401,2600 C 11401,2512 11378,2426 11334,2350 11290,2274 11227,2211 11151,2167 11075,2123 10989,2100 10901,2100 L 2900,2100 Z"/>
+    <text class="SVGTextShape"><tspan class="TextParagraph" font-family="Liberation Serif, serif" font-size="564px" font-weight="400"><tspan class="TextPosition" x="3018" y="3477"><tspan fill="rgb(0,0,0)" stroke="none">Initially </tspan><tspan font-style="italic" fill="rgb(0,0,0)" stroke="none">n</tspan><tspan fill="rgb(0,0,0)" stroke="none"> agents are </tspan><tspan fill="rgb(0,0,0)" stroke="none">regarded as </tspan><tspan font-style="italic" fill="rgb(0,0,0)" stroke="none">n</tspan><tspan fill="rgb(0,0,0)" stroke="none"> </tspan></tspan><tspan class="TextPosition" x="6060" y="4104"><tspan fill="rgb(0,0,0)" stroke="none">groups </tspan></tspan></tspan></text>
    </g>
   </g>
   <g class="com.sun.star.drawing.CustomShape">
    <g id="id4">
-    <rect class="BoundingBox" stroke="none" fill="none" x="4414" y="10536" width="6853" height="2552"/>
-    <path fill="none" stroke="rgb(0,0,0)" stroke-width="50" stroke-linejoin="round" d="M 4855,10561 L 4856,10561 C 4783,10561 4711,10580 4647,10617 4584,10653 4531,10706 4495,10769 4458,10833 4439,10905 4439,10978 L 4439,12645 4439,12645 C 4439,12718 4458,12790 4495,12854 4531,12917 4584,12970 4647,13006 4711,13043 4783,13062 4856,13062 L 10823,13062 10823,13062 C 10896,13062 10968,13043 11032,13006 11095,12970 11148,12917 11184,12854 11221,12790 11240,12718 11240,12645 L 11240,10977 11240,10978 11240,10978 C 11240,10905 11221,10833 11184,10769 11148,10706 11095,10653 11032,10617 10968,10580 10896,10561 10823,10561 L 4855,10561 Z"/>
-    <text class="SVGTextShape"><tspan class="TextParagraph" font-family="Liberation Serif, serif" font-size="493px" font-weight="400"><tspan class="TextPosition" x="5756" y="11705"><tspan fill="rgb(0,0,0)" stroke="none">A pure-strategy Nash </tspan></tspan><tspan class="TextPosition" x="5792" y="12247"><tspan fill="rgb(0,0,0)" stroke="none">equilibrium obtained</tspan></tspan></tspan></text>
+    <rect class="BoundingBox" stroke="none" fill="none" x="2314" y="10636" width="9052" height="3052"/>
+    <path fill="none" stroke="rgb(0,0,0)" stroke-width="50" stroke-linejoin="round" d="M 2839,10661 L 2839,10661 C 2751,10661 2665,10684 2589,10728 2513,10772 2450,10835 2406,10911 2362,10987 2339,11073 2339,11161 L 2339,13161 2339,13162 C 2339,13250 2362,13336 2406,13412 2450,13488 2513,13551 2589,13595 2665,13639 2751,13662 2839,13662 L 10839,13662 10840,13662 C 10928,13662 11014,13639 11090,13595 11166,13551 11229,13488 11273,13412 11317,13336 11340,13250 11340,13162 L 11340,11161 11340,11161 11340,11161 C 11340,11073 11317,10987 11273,10911 11229,10835 11166,10772 11090,10728 11014,10684 10928,10661 10840,10661 L 2839,10661 Z"/>
+    <text class="SVGTextShape"><tspan class="TextParagraph" font-family="Liberation Serif, serif" font-size="564px" font-weight="400"><tspan class="TextPosition" x="3057" y="12352"><tspan fill="rgb(0,0,0)" stroke="none">A pure-strategy Nash equilibrium</tspan></tspan></tspan></text>
    </g>
   </g>
   <g class="com.sun.star.drawing.CustomShape">
    <g id="id5">
-    <rect class="BoundingBox" stroke="none" fill="none" x="12977" y="2077" width="6853" height="2552"/>
-    <path fill="none" stroke="rgb(0,0,0)" stroke-width="50" stroke-linejoin="round" d="M 13418,2102 L 13419,2102 C 13346,2102 13274,2121 13210,2158 13147,2194 13094,2247 13058,2310 13021,2374 13002,2446 13002,2519 L 13002,4186 13002,4186 C 13002,4259 13021,4331 13058,4395 13094,4458 13147,4511 13210,4547 13274,4584 13346,4603 13419,4603 L 19386,4603 19386,4603 C 19459,4603 19531,4584 19595,4547 19658,4511 19711,4458 19747,4395 19784,4331 19803,4259 19803,4186 L 19803,2518 19803,2519 19803,2519 C 19803,2446 19784,2374 19747,2310 19711,2247 19658,2194 19595,2158 19531,2121 19459,2102 19386,2102 L 13418,2102 Z"/>
-    <text class="SVGTextShape"><tspan class="TextParagraph" font-family="Liberation Serif, serif" font-size="493px" font-weight="400"><tspan class="TextPosition" x="13513" y="2975"><tspan fill="rgb(0,0,0)" stroke="none">Compute the average opinion </tspan></tspan><tspan class="TextPosition" x="13534" y="3517"><tspan fill="rgb(0,0,0)" stroke="none">and winning probability (win </tspan></tspan><tspan class="TextPosition" x="14315" y="4059"><tspan fill="rgb(0,0,0)" stroke="none">prob.) for each group</tspan></tspan></tspan></text>
+    <rect class="BoundingBox" stroke="none" fill="none" x="12977" y="2077" width="9052" height="3052"/>
+    <path fill="none" stroke="rgb(0,0,0)" stroke-width="50" stroke-linejoin="round" d="M 13502,2102 L 13502,2102 C 13414,2102 13328,2125 13252,2169 13176,2213 13113,2276 13069,2352 13025,2428 13002,2514 13002,2602 L 13002,4602 13002,4603 C 13002,4691 13025,4777 13069,4853 13113,4929 13176,4992 13252,5036 13328,5080 13414,5103 13502,5103 L 21502,5103 21503,5103 C 21591,5103 21677,5080 21753,5036 21829,4992 21892,4929 21936,4853 21980,4777 22003,4691 22003,4603 L 22003,2602 22003,2602 22003,2602 C 22003,2514 21980,2428 21936,2352 21892,2276 21829,2213 21753,2169 21677,2125 21591,2102 21503,2102 L 13502,2102 Z"/>
+    <text class="SVGTextShape"><tspan class="TextParagraph" font-family="Liberation Serif, serif" font-size="564px" font-weight="400"><tspan class="TextPosition" x="13692" y="3166"><tspan fill="rgb(0,0,0)" stroke="none">Compute the average opinion and </tspan></tspan><tspan class="TextPosition" x="13459" y="3793"><tspan fill="rgb(0,0,0)" stroke="none">winning probability (win. prob.) for </tspan></tspan><tspan class="TextPosition" x="16256" y="4420"><tspan fill="rgb(0,0,0)" stroke="none">each group</tspan></tspan></tspan></text>
    </g>
   </g>
   <g class="com.sun.star.drawing.CustomShape">
    <g id="id6">
-    <rect class="BoundingBox" stroke="none" fill="none" x="12988" y="6075" width="6853" height="2552"/>
-    <path fill="none" stroke="rgb(0,0,0)" stroke-width="50" stroke-linejoin="round" d="M 13429,6100 L 13430,6100 C 13357,6100 13285,6119 13221,6156 13158,6192 13105,6245 13069,6308 13032,6372 13013,6444 13013,6517 L 13013,8184 13013,8184 C 13013,8257 13032,8329 13069,8393 13105,8456 13158,8509 13221,8545 13285,8582 13357,8601 13430,8601 L 19397,8601 19397,8601 C 19470,8601 19542,8582 19606,8545 19669,8509 19722,8456 19758,8393 19795,8329 19814,8257 19814,8184 L 19814,6516 19814,6517 19814,6517 C 19814,6444 19795,6372 19758,6308 19722,6245 19669,6192 19606,6156 19542,6119 19470,6100 19397,6100 L 13429,6100 Z"/>
-    <text class="SVGTextShape"><tspan class="TextParagraph" font-family="Liberation Serif, serif" font-size="494px" font-weight="400"><tspan class="TextPosition" x="13429" y="6698"><tspan fill="rgb(0,0,0)" stroke="none">For each agent, join the group </tspan></tspan><tspan class="TextPosition" x="13888" y="7244"><tspan fill="rgb(0,0,0)" stroke="none">with maximum win prob. </tspan></tspan><tspan class="TextPosition" x="13837" y="7790"><tspan fill="rgb(0,0,0)" stroke="none">times the utility the group </tspan></tspan><tspan class="TextPosition" x="15270" y="8336"><tspan fill="rgb(0,0,0)" stroke="none">brings to it </tspan></tspan></tspan></text>
-   </g>
-  </g>
-  <g class="com.sun.star.drawing.CustomShape">
-   <g id="id7">
-    <rect class="BoundingBox" stroke="none" fill="none" x="13014" y="10288" width="6852" height="3052"/>
-    <path fill="none" stroke="rgb(0,0,0)" stroke-width="50" stroke-linejoin="round" d="M 16439,10313 L 19840,11813 16439,13314 13039,11813 16439,10313 16439,10313 Z"/>
-    <text class="SVGTextShape"><tspan class="TextParagraph" font-family="Liberation Serif, serif" font-size="493px" font-weight="400"><tspan class="TextPosition" x="15356" y="11165"><tspan fill="rgb(0,0,0)" stroke="none">Groups are </tspan></tspan><tspan class="TextPosition" x="15313" y="11707"><tspan fill="rgb(0,0,0)" stroke="none">the same as </tspan></tspan><tspan class="TextPosition" x="15235" y="12249"><tspan fill="rgb(0,0,0)" stroke="none">the previous </tspan></tspan><tspan class="TextPosition" x="15516" y="12791"><tspan fill="rgb(0,0,0)" stroke="none">iteration?</tspan></tspan></tspan></text>
+    <rect class="BoundingBox" stroke="none" fill="none" x="12988" y="6275" width="9052" height="3052"/>
+    <path fill="none" stroke="rgb(0,0,0)" stroke-width="50" stroke-linejoin="round" d="M 13513,6300 L 13513,6300 C 13425,6300 13339,6323 13263,6367 13187,6411 13124,6474 13080,6550 13036,6626 13013,6712 13013,6800 L 13013,8800 13013,8801 C 13013,8889 13036,8975 13080,9051 13124,9127 13187,9190 13263,9234 13339,9278 13425,9301 13513,9301 L 21513,9301 21514,9301 C 21602,9301 21688,9278 21764,9234 21840,9190 21903,9127 21947,9051 21991,8975 22014,8889 22014,8801 L 22014,6800 22014,6800 22014,6800 C 22014,6712 21991,6626 21947,6550 21903,6474 21840,6411 21764,6367 21688,6323 21602,6300 21514,6300 L 13513,6300 Z"/>
+    <text class="SVGTextShape"><tspan class="TextParagraph" font-family="Liberation Serif, serif" font-size="564px" font-weight="400"><tspan class="TextPosition" x="13557" y="7364"><tspan fill="rgb(0,0,0)" stroke="none">For each agent, join the group with </tspan></tspan><tspan class="TextPosition" x="14127" y="7991"><tspan fill="rgb(0,0,0)" stroke="none">maximum win prob. times the </tspan></tspan><tspan class="TextPosition" x="14330" y="8618"><tspan fill="rgb(0,0,0)" stroke="none">utility the group brings to it </tspan></tspan></tspan></text>
    </g>
   </g>
   <g class="com.sun.star.drawing.ConnectorShape">
-   <g id="id8">
-    <rect class="BoundingBox" stroke="none" fill="none" x="11239" y="11621" width="1826" height="382"/>
-    <path fill="none" stroke="rgb(0,0,0)" stroke-width="50" stroke-linejoin="round" d="M 13039,11813 L 11594,11811"/>
-    <path fill="rgb(0,0,0)" stroke="none" d="M 11619,12001 L 11239,11811 11619,11621 11619,12001 Z"/>
+   <g id="id7">
+    <rect class="BoundingBox" stroke="none" fill="none" x="11339" y="11972" width="1713" height="382"/>
+    <path fill="none" stroke="rgb(0,0,0)" stroke-width="50" stroke-linejoin="round" d="M 13026,12169 L 11694,12163"/>
+    <path fill="rgb(0,0,0)" stroke="none" d="M 11718,12353 L 11339,12161 11720,11973 11718,12353 Z"/>
    </g>
   </g>
   <g ooo:text-adjust="center" class="TextShape">
+   <g id="id8">
+    <rect class="BoundingBox" stroke="none" fill="none" x="11600" y="11107" width="1501" height="879"/>
+    <text class="SVGTextShape"><tspan class="TextParagraph" font-family="Liberation Serif, serif" font-size="564px" font-weight="400"><tspan class="TextPosition" x="11973" y="11736"><tspan fill="rgb(0,0,0)" stroke="none">yes</tspan></tspan></tspan></text>
+   </g>
+  </g>
+  <g class="com.sun.star.drawing.ConnectorShape">
    <g id="id9">
-    <rect class="BoundingBox" stroke="none" fill="none" x="11500" y="10807" width="1501" height="794"/>
-    <text class="SVGTextShape"><tspan class="TextParagraph" font-family="Liberation Serif, serif" font-size="493px" font-weight="400"><tspan class="TextPosition" x="11924" y="11368"><tspan fill="rgb(0,0,0)" stroke="none">yes</tspan></tspan></tspan></text>
+    <rect class="BoundingBox" stroke="none" fill="none" x="11375" y="3411" width="1628" height="382"/>
+    <path fill="none" stroke="rgb(0,0,0)" stroke-width="50" stroke-linejoin="round" d="M 11400,3600 L 12647,3602"/>
+    <path fill="rgb(0,0,0)" stroke="none" d="M 12622,3412 L 13002,3602 12622,3792 12622,3412 Z"/>
    </g>
   </g>
   <g class="com.sun.star.drawing.ConnectorShape">
    <g id="id10">
-    <rect class="BoundingBox" stroke="none" fill="none" x="11275" y="3161" width="1728" height="382"/>
-    <path fill="none" stroke="rgb(0,0,0)" stroke-width="50" stroke-linejoin="round" d="M 11300,3350 L 12647,3352"/>
-    <path fill="rgb(0,0,0)" stroke="none" d="M 12622,3162 L 13002,3352 12622,3542 12622,3162 Z"/>
+    <rect class="BoundingBox" stroke="none" fill="none" x="17319" y="5077" width="382" height="1224"/>
+    <path fill="none" stroke="rgb(0,0,0)" stroke-width="50" stroke-linejoin="round" d="M 17502,5102 L 17510,5945"/>
+    <path fill="rgb(0,0,0)" stroke="none" d="M 17700,5918 L 17513,6300 17320,5922 17700,5918 Z"/>
    </g>
   </g>
   <g class="com.sun.star.drawing.ConnectorShape">
    <g id="id11">
-    <rect class="BoundingBox" stroke="none" fill="none" x="16220" y="4577" width="382" height="1524"/>
-    <path fill="none" stroke="rgb(0,0,0)" stroke-width="50" stroke-linejoin="round" d="M 16402,4602 L 16410,5745"/>
-    <path fill="rgb(0,0,0)" stroke="none" d="M 16600,5719 L 16413,6100 16220,5721 16600,5719 Z"/>
+    <rect class="BoundingBox" stroke="none" fill="none" x="17332" y="9275" width="382" height="1395"/>
+    <path fill="none" stroke="rgb(0,0,0)" stroke-width="50" stroke-linejoin="round" d="M 17513,9300 L 17523,10314"/>
+    <path fill="rgb(0,0,0)" stroke="none" d="M 17712,10287 L 17526,10669 17332,10291 17712,10287 Z"/>
    </g>
   </g>
   <g class="com.sun.star.drawing.ConnectorShape">
    <g id="id12">
-    <rect class="BoundingBox" stroke="none" fill="none" x="16243" y="8575" width="382" height="1739"/>
-    <path fill="none" stroke="rgb(0,0,0)" stroke-width="50" stroke-linejoin="round" d="M 16413,8600 L 16434,9958"/>
-    <path fill="rgb(0,0,0)" stroke="none" d="M 16623,9930 L 16439,10313 16243,9936 16623,9930 Z"/>
-   </g>
-  </g>
-  <g class="com.sun.star.drawing.ConnectorShape">
-   <g id="id13">
-    <rect class="BoundingBox" stroke="none" fill="none" x="19802" y="3162" width="1724" height="8677"/>
-    <path fill="none" stroke="rgb(0,0,0)" stroke-width="50" stroke-linejoin="round" d="M 19839,11813 L 21500,11813 21500,3352 20157,3352"/>
-    <path fill="rgb(0,0,0)" stroke="none" d="M 20182,3542 L 19802,3352 20182,3162 20182,3542 Z"/>
+    <rect class="BoundingBox" stroke="none" fill="none" x="22001" y="3412" width="1724" height="8783"/>
+    <path fill="none" stroke="rgb(0,0,0)" stroke-width="50" stroke-linejoin="round" d="M 22026,12169 L 23687,12169 23699,3602 22357,3602"/>
+    <path fill="rgb(0,0,0)" stroke="none" d="M 22382,3792 L 22002,3602 22382,3412 22382,3792 Z"/>
    </g>
   </g>
   <g ooo:text-adjust="center" class="TextShape">
-   <g id="id14">
-    <rect class="BoundingBox" stroke="none" fill="none" x="21600" y="6807" width="1401" height="794"/>
-    <text class="SVGTextShape"><tspan class="TextParagraph" font-family="Liberation Serif, serif" font-size="493px" font-weight="400"><tspan class="TextPosition" x="22055" y="7368"><tspan fill="rgb(0,0,0)" stroke="none">no</tspan></tspan></tspan></text>
+   <g id="id13">
+    <rect class="BoundingBox" stroke="none" fill="none" x="23700" y="7307" width="1401" height="879"/>
+    <text class="SVGTextShape"><tspan class="TextParagraph" font-family="Liberation Serif, serif" font-size="564px" font-weight="400"><tspan class="TextPosition" x="24117" y="7936"><tspan fill="rgb(0,0,0)" stroke="none">no</tspan></tspan></tspan></text>
+   </g>
+  </g>
+  <g class="Group">
+   <g class="com.sun.star.drawing.CustomShape">
+    <g id="id14">
+     <rect class="BoundingBox" stroke="none" fill="none" x="13001" y="10644" width="9052" height="3053"/>
+     <path fill="none" stroke="rgb(0,0,0)" stroke-width="50" stroke-linejoin="round" d="M 17526,10669 L 22027,12169 17526,13670 13026,12169 17526,10669 17526,10669 Z"/>
+    </g>
+   </g>
+   <g ooo:text-adjust="center" class="TextShape">
+    <g id="id15">
+     <rect class="BoundingBox" stroke="none" fill="none" x="13587" y="11483" width="8001" height="1506"/>
+     <text class="SVGTextShape"><tspan class="TextParagraph" font-family="Liberation Serif, serif" font-size="564px" font-weight="400"><tspan class="TextPosition" x="14491" y="12112"><tspan fill="rgb(0,0,0)" stroke="none">Groups are the same as the </tspan></tspan></tspan><tspan class="TextParagraph" font-family="Liberation Serif, serif" font-size="564px" font-weight="400"><tspan class="TextPosition" x="15479" y="12739"><tspan fill="rgb(0,0,0)" stroke="none">previous iteration?</tspan></tspan></tspan></text>
+    </g>
    </g>
   </g>
  </g>

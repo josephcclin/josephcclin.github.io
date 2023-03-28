@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description"
     content="An interactive article on using game theoretic approach and gradient ascent algorithms to demostrate strategic behaviors of group formation. 
-	Learn how the choices of coaltion of agents lead to a pure Nash equilibrium and how updating revealed preferences eventually affects group formation.">
+	Learn how the choices of coaltion of agents lead to a pure-strategy Nash equilibrium and how updating revealed preferences eventually affects group formation.">
   <meta charset="utf8">
   <title>Group Formation by Strategic Group Joining and Opinion Updates via Gradient Ascent
   </title>
@@ -280,8 +280,8 @@
         </h1>
         <!-- Subheading -->
         <p class="subhead">
-		  An interactive article on illustrating group joinging strategies and updating opinions via gradient ascent algorithms to analyze the group formation 
-		  phenomenon. Learn how the choices of coaltion of agents lead to a pure Nash equilibrium and how updating revealed preferences eventually affects group 
+		  An interactive article on illustrating group joinging strategies and updating opinions via online gradient ascent algorithms to analyze the group formation 
+		  dynamics. Learn how the choices of coaltion of agents lead to a pure-strategy Nash equilibrium and how updating agents' opinions eventually stablizes group 
 		  formation.
         </p>
         <!-- Header info general wrapper -->
@@ -379,10 +379,10 @@
 			outcomes of the whole society. For the case that agents apply group joining strategies, 
 			we consider <i>pure-strategy Nash equilibria</i> as the solution concept, where a pure 
 			strategy means a strategy played with probability 1. For the case that agents change their 
-			opinions, we assume that each agent plays a <i>gradient ascent algorithm</i>, which 
+			opinions, we assume that each agent plays an <i>online gradient ascent algorithm</i>, which 
 			guarantees the time-average convergence to a hindsight optimum for a single agent (e.g., 
-			see [<a href="#ref_4">3</a>] for the cost-minimization case), in a decentralized way and 
-			then we look into the convergent state of the system. 
+			see [<a href="#ref_4">4</a>, <a href="#ref_5">5</a>] for the cost-minimization case), in a 
+			decentralized way and then we look into the convergent state of the system. 
 		</p>
 	</div>
 	<!-- Content container with large top spacing -->
@@ -1187,9 +1187,9 @@
 		of winning probability of \(v_5\) by moving \(z_5\) from \(-1\) to \(1\), as well as the changes of the winning 
 		probabilities of the other agents. After getting the winning probabilities, we can derive their rewards as well. 
     </p>
-    <div class="framed mb-5" style="height: 95vh;">
+    <!--<div class="framed mb-5" style="height: 95vh;">-->
 	<!-- Interactive frame -->
-	<!--<div class="framed" style="margin-bottom: 20px">-->
+	<div class="framed" style="margin-bottom: 20px">
       <div class="inside">
 	  <div class="eyebrow">
 		Drag \(v_5\) (agent No. 5) to see the changes of the winning probabilities 
@@ -1197,7 +1197,7 @@
 		able to see that moving \(v_5\) to the left is more beneficial to agent \(v_1\), and 
 		moving \(v_5\) to the right is more beneficial to agent \(v_2\).
 	  </div>
-        <div style="height: 42vh;">
+      <!--  <div style="height: 42vh;">-->
           <div class="d-flex w-100">
             <h4 class="ps-3 pt-3 text-start">Policy Dimenson = 1</h4>
             <span class="pe-3 pb-2 ms-auto mt-auto h-25">
@@ -1267,7 +1267,7 @@
 		  <div class="caption"><b>Figure 3:</b> Introducing winning probabilities and rewards of agents in 1D representation. 
 		  </div>
         </div>
-      </div>
+      <!--</div>-->
     </div>
 
   <!-- Group box 2 -->
@@ -1280,7 +1280,7 @@
 	  <div class="eyebrow">
 		Drag \(v_5\) (agent No. 5) to see the changes of the winning probabilities and reward of 
 		each agent. Moreover, try to drag \(v_5\) to be near any agent and then you will find 
-		a circled \(+\) operation above the agent. Click it you can see the two agents are grouped 
+		a circled \(\oplus\) operation above the agent. Click it you can see the two agents are grouped 
 		with a new group opinion and updated winning probabilities and rewards of all groups. 
 		Click the button &ldquo;Myopic Best Responses for All&ldquo; you will see the final outcome 
 		after iterations of parallel group joining actions. 
@@ -1918,6 +1918,13 @@
 			  10.48550/arXiv.1912.13213</a>
             </span>
           </li>
+		  <li id="ref_5">
+		  Introduction to Online Convex Optimization
+		  <br>
+		  <span>
+		  Hazan, E., 2016. Foundations and Trends in Optimization, Vol 2(3-4), pp. 157--325. DOI: 
+		  <a href="https://doi.org/10.1561/2400000013" target="_blank">10.1561/2400000013</a>
+		  </li>
          </ol>
       </section>
     </div>
