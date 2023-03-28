@@ -381,11 +381,12 @@
 			strategy means a strategy played with probability 1. For the case that agents change their 
 			opinions, we assume that each agent plays a <i>gradient ascent algorithm</i>, which 
 			guarantees the time-average convergence to a hindsight optimum for a single agent (e.g., 
-			see [<a href="#ref_3">3</a>] for the cost-minimization case), in a decentralized way and 
+			see [<a href="#ref_4">3</a>] for the cost-minimization case), in a decentralized way and 
 			then we look into the convergent state of the system. 
 		</p>
+	</div>
 	<!-- Content container with large top spacing -->
-		<div class="container mt-lg">
+	<div class="container mt-lg">
 		<!-- Anchor ID -->
 		<section id="game_setting">
         <!-- Section title -->
@@ -405,8 +406,8 @@
 			denote two profiles which include each agent's opinion and belief, respectively. 
 			Each agent is initially regarded as a group. The <i>opinion of a group</i> is the average 
 			of the opinions of its members. Like the <i>monotone</i> setting in 
-			[<a href="#ref_2">2</a>], a group wins with higher odds if its opinion brings 
-			more utility to all of the agents. The <i>reward</i> (i.e., payoff) of an agent is the 
+			[<a href="#ref_2">2</a>, <a href="#ref_3">3</a>], a group wins with higher odds if its opinion 
+			brings more utility to all of the agents. The <i>reward</i> (i.e., payoff) of an agent is the 
 			expected utility it can get from all the groups. Specifically, assume that we have currently 
 			\(m\leq n\) groups \(G_1,G_2,\ldots,G_m\), and denote by \(|G_i| = n_i\) the number 
 			of members in group \(G_i\). Let \(\mathcal{G} = (G_1,G_2,\ldots,G_m)\) denote the 
@@ -455,10 +456,10 @@
 		</figure>
 		</p>
 		
-      </section>
-</div>
+        </section>
+	</div>
 
-<div class="container mt-lg">
+	<div class="container mt-lg">
       <!-- D3.js -->
       <script src="https://d3js.org/d3.v4.js"></script>
       <script type="module">
@@ -1174,16 +1175,27 @@
 	  \(z_i,s_i\in [-1, 1]\) has 2-norm bounded by 1 for each \(i\) clearly holds.
 	</p>
 	<p class="inline-math">
-		For example, in the example we have five agents \(v_1,v_2,v_3,v_4,v_5\). By assuming \(v_1,v_2,v_3\), 
-		and \(v_4\) to have their opinions \(z_1,z_2,z_3,z_4\) fixed, we can observe the changes of winning 
-		probability of \(v_5\) by moving \(z_5\) from \(-1\) to \(1\). After getting the winning probabilities, 
-		we can derive the rewards as well. 
+		We point out that changes of the opinion of an agent affects not only its own winning probability but also 
+		those of the others. This is true intuitively when we consider the competitions in practical world. Indeed, 
+		this observation is captured in our definition of the winning probability. The changes of the opinion of a 
+		single agent will contribute to the denominator of the formula. 
+	</p>
+	<p class="inline-math">
+		For example, consider the following figure. We have five agents \(v_1,v_2,v_3,v_4,v_5\) such that each agent is 
+		regarded as a group individually. We assume that \(z_i = s_i\) for each \(i\) to simplify our discussion. 
+		By assuming \(v_1,v_2,v_3\), and \(v_4\) to have their opinions \(z_1,z_2,z_3,z_4\) fixed, we can observe the changes 
+		of winning probability of \(v_5\) by moving \(z_5\) from \(-1\) to \(1\), as well as the changes of the winning 
+		probabilities of the other agents. After getting the winning probabilities, we can derive their rewards as well. 
     </p>
-    <div class="framed mb-5" style="height: 80vh;">
+    <div class="framed mb-5" style="height: 95vh;">
+	<!-- Interactive frame -->
+	<!--<div class="framed" style="margin-bottom: 20px">-->
       <div class="inside">
 	  <div class="eyebrow">
-		Drag \(v_5\) (the agent of No. 5) to see the changes of the winning probabilities 
-		of each agent. Also observe the changes of the reward of each agent. 
+		Drag \(v_5\) (agent No. 5) to see the changes of the winning probabilities 
+		of each agent. Also observe the changes of the reward of each agent. You should be 
+		able to see that moving \(v_5\) to the left is more beneficial to agent \(v_1\), and 
+		moving \(v_5\) to the right is more beneficial to agent \(v_2\).
 	  </div>
         <div style="height: 42vh;">
           <div class="d-flex w-100">
@@ -1252,6 +1264,8 @@
               &emsp; \(v_5\) is considering join one of the currently existing groups or stay alone.
             </Card>
           </div>
+		  <div class="caption"><b>Figure 3:</b> Introducing winning probabilities and rewards of agents in 1D representation. 
+		  </div>
         </div>
       </div>
     </div>
@@ -1261,14 +1275,22 @@
     <p id="best_response">
       We consider the myopic best-response for each agent.
     </p>
-    <div class="framed mb-5" style="height: 87vh;">
+    <div class="framed" style="margin-bottom: 20px">
       <div class="inside">
-        <div style="height: 42vh;">
+	  <div class="eyebrow">
+		Drag \(v_5\) (agent No. 5) to see the changes of the winning probabilities and reward of 
+		each agent. Moreover, try to drag \(v_5\) to be near any agent and then you will find 
+		a circled \(+\) operation above the agent. Click it you can see the two agents are grouped 
+		with a new group opinion and updated winning probabilities and rewards of all groups. 
+		Click the button &ldquo;Myopic Best Responses for All&ldquo; you will see the final outcome 
+		after iterations of parallel group joining actions. 
+	  </div>
+        <!--<div style="height: 42vh;"> -->
           <div class="d-flex w-100 pt-4">
-            <h4 class="ps-3 pt-3 text-start">The Best Responses / Manual Join</h4>
+            <h4 class="ps-3 pt-3 text-start">The Myopic Best Responses / Manual Join</h4>
             <span class="pe-2 pb-2 ms-auto mt-auto h-25">
               <button id="best" class="btn btn-ieee py-1">
-                Best Responses for all
+                Myopic Best Responses for All
               </button>
             </span>
             <span class="pe-3 pb-2 mt-auto h-25">
@@ -1363,11 +1385,12 @@
               <i class="fa-solid fa-lightbulb text-secondary my-auto h2"></i>
               <div class="ps-4 lh-md">
                 No one wants to deviate from his / her current group to the other group since the expected gain cannot be the better-off. 
-                Here comes a Nash Equilibrium of the &ldquo;game&rdquo;.
+                Here comes a pure-strategy Nash equilibrium of the &ldquo;game&rdquo;.
               </div>
             </Card>
           </div>
-        </div>
+		  <div class="caption"><b>Figure 4:</b> Myopic best-responses and manual join illustration. </div>
+        <!--</div> -->
       </div>
     </div>
 
@@ -1376,11 +1399,16 @@
       We consider the myopic best-response for each agent.
       Eventually the dynamics of group joining actions of all the agents lead to a pure-strategy Nash equilibrium.  
     </p>
-    <div class="framed mb-5" style="height: 73vh;">
+    <div class="framed" style="margin-bottom: 20px">
       <div class="inside">
-        <div style="height: 42vh;">
+        <!--<div style="height: 42vh;"> -->
+		<div class="eyebrow">
+		Hover your mouse over the grouped agents to see the myopic rewards of the two options of group joining. 
+		You may want to drag an agent, for example, \(v_5\) to see if you can make it change its mind. 
+		See whether it will has the incentive the do so or not. 
+	  </div>
           <div class="d-flex w-100 pt-4">
-            <h4 class="ps-3 pt-3 text-start">The Best Responses</h4>
+            <h4 class="ps-3 pt-3 text-start">The pure-strategy Nash equilibrium</h4>
           </div>
 
           <div class="Group-box pb-3">
@@ -1477,7 +1505,8 @@
               </div>
             </Card>
           </div> -->
-        </div>
+		  <div class="caption"><b>Figure 5:</b>Illustration of a pure-strategy Nash equilibrium. </div>
+        <!--</div> -->
       </div>
     </div>
   </section>
@@ -1850,7 +1879,16 @@
 			 10.1016/j.tcs.2021.04.013</a>
             </span>
           </li>
-          <li id="ref_3">
+		  <li id="ref_3">
+            On the Efficiency of An Election Game of Two or More Parties: How Bad Can It Be?
+            <br>
+            <span>
+            Lin, C.C., Chen, P.A. and Lu, C.J., 2023. arXiv:2303.14405. DOI:  
+		    <a href="https://doi.org/10.48550/arXiv.2303.14405" target="_blank">
+			 10.48550/arXiv.2303.14405</a>
+            </span>
+          </li>
+          <li id="ref_4">
             A Modern Introduction to Online Learning
             <br>
             <span>
