@@ -140,29 +140,60 @@ g2 = z6+z7#/2
 g3 = z8+z9#/2
 '''
 
-def reward_z8(z8, z9, s8, s9, g0, g1, g2, s_voters): 
-    g3 = z8+z9
+def reward_z8(z8X, z8Y, z9, s8, s9, g0, g1, g2, s_voters):
+    result = []
+    for i in range(z8X.shape[0]):
+        tmp = []
+        for j in range(z8X.shape[1]):
+            z8 = torch.tensor((torch.tensor(z8X[i][j]), torch.tensor(z8Y[i][j])))
+            g3 = (z8+z9).to(torch.float32)
     
-    gu0 = torch.tensor([0.0])
-    gu1 = torch.tensor([0.0])
-    gu2 = torch.tensor([0.0])
-    gu3 = torch.tensor([0.0])
-    
-    for v in s_voters:
-        gu0 += torch.inner(g0, v)
-        gu1 += torch.inner(g1, v)
-        gu2 += torch.inner(g2, v)
-        gu3 += torch.inner(g3, v)
+            gu0 = torch.tensor([0.0])
+            gu1 = torch.tensor([0.0])
+            gu2 = torch.tensor([0.0])
+            gu3 = torch.tensor([0.0])
+            
+            for v in s_voters:
+                gu0 += torch.inner(g0, v)
+                gu1 += torch.inner(g1, v)
+                gu2 += torch.inner(g2, v)
+                gu3 += torch.inner(g3, v)
+                
+            exp_u_all = torch.exp(torch.tensor([gu0,gu1,gu2,gu3])).sum()    
         
-    exp_u_all = torch.exp(torch.tensor([gu0,gu1,gu2,gu3])).sum()    
+            pg0 = torch.exp(gu0)/exp_u_all
+            pg1 = torch.exp(gu1)/exp_u_all
+            pg2 = torch.exp(gu2)/exp_u_all
+            pg3 = torch.exp(gu3)/exp_u_all
+            r8 = pg0*torch.inner(g0/3,s8) + pg1*torch.inner(g1/3,s8) + pg2*torch.inner(g2/2,s8)+pg3*torch.inner(g3/2,s8)
+            #r9 = pg0*torch.inner(g0/3,s9)+pg1*torch.inner(g1/3,s9)+pg2*torch.inner(g2/2,s9)+pg3*torch.inner(g3/2,s9)
+            tmp.append(r8)
+        result.append(tmp)
+    return torch.tensor(result)
 
-    pg0 = torch.exp(gu0)/exp_u_all
-    pg1 = torch.exp(gu1)/exp_u_all
-    pg2 = torch.exp(gu2)/exp_u_all
-    pg3 = torch.exp(gu3)/exp_u_all
-    r8 = pg0*torch.inner(g0/3,s8)+pg1*torch.inner(g1/3,s8)+pg2*torch.inner(g2/2,s8)+pg3*torch.inner(g3/2,s8)
-    r9 = pg0*torch.inner(g0/3,s9)+pg1*torch.inner(g1/3,s9)+pg2*torch.inner(g2/2,s9)+pg3*torch.inner(g3/2,s9)
-    return r8
+
+trace_X = [z8.detach().numpy()[0]]
+trace_Y = [z8.detach().numpy()[1]]
+x = np.linspace(-1.0, 1.0, 100)
+y = np.linspace(-1.0, 1.0, 100)
+X, Y = np.meshgrid(x, y)
+
+g0 = z0+z1+z2#/3
+g1 = z3+z4+z5#/3
+g2 = z6+z7#/2
+g3 = z8+z9#/2
+Z = reward_z8(X, Y, z9, s8, s9, g0, g1, g2, s_voters)
+fig = plt.figure(figsize = (15,10))
+
+plt.imshow(Z, extent = [-1,1,-1,1], cmap = 'jet', alpha = 1)    
+plt.plot(trace_X, trace_Y)
+plt.plot(trace_X, trace_Y, '*', label = "reward of v8")
+plt.xlabel('x', fontsize=11)
+plt.ylabel('y', fontsize=11)
+plt.colorbar()
+plt.legend(loc = "upper right")
+plt.savefig('tmp_'+str(0)+'_'+label+'.png')
+plt.close()
 
 
 for t in range(steps):
@@ -306,18 +337,28 @@ for t in range(steps):
     z9 = z9.detach().requires_grad_(True)
     voters = [z0, z1, z2, z3, z4, z5, z6, z7, z8, z9]
 
-    fig, ax = plt.subplots()
+    trace_X.append(z8.detach().numpy()[0])
+    trace_Y.append(z8.detach().numpy()[1])
+
+    #fig, ax = plt.subplots()
     #fig.set_figheight(6)
     #fig.set_figwidth(6)
-    plt.xlabel("x-dimension")
-    plt.ylabel("y-dimension")
-    x = np.linspace(-1.0, 1.0, 100)
-    y = np.linspace(-1.0, 1.0, 100)
-    X, Y = np.meshgrid(x, y)
-    Z = reward_z8(torch.tensor([X, Y]), z9, s8, s9, g0, g1, g2, s_voters)
+    #plt.xlabel("x-dimension")
+    #plt.ylabel("y-dimension")
     
+    Z = reward_z8(X, Y, z9, s8, s9, g0, g1, g2, s_voters)
         
-    plt.savefig('tmp_'+str(t)+'_'+label+'.png')
+    fig = plt.figure(figsize = (15,10))
+    plt.imshow(Z, extent = [-1,1,-1,1], cmap = 'jet', alpha = 1)    
+    
+    plt.plot(trace_X, trace_Y)
+    plt.plot(trace_X[-1], trace_Y[-1], '*', label = "reward of v9")
+
+    plt.xlabel('x-dimension', fontsize=11)
+    plt.ylabel('y-dimension', fontsize=11)
+    plt.colorbar()
+    plt.legend(loc = "upper right")
+    plt.savefig('tmp_'+str(t+1)+'_'+label+'.png')
     plt.close()
     #print("\nFinal gradients: ")
     #print(gradient0, gradient1, gradient2, gradient3, gradient4, gradient5, gradient6, gradient7, gradient8, gradient9)
