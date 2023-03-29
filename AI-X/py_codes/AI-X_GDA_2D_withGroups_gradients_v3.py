@@ -140,13 +140,13 @@ g2 = z6+z7#/2
 g3 = z8+z9#/2
 '''
 
-def reward_z8(z8X, z8Y, z9, s8, s9, g0, g1, g2, s_voters):
+def reward_z3(z3X, z3Y, z4, z5, s3, s4, s5, g0, g2, g3, s_voters):
     result = []
-    for i in range(z8X.shape[0]):
+    for i in range(z3X.shape[0]):
         tmp = []
-        for j in range(z8X.shape[1]):
-            z8 = torch.tensor((torch.tensor(z8X[i][j]), torch.tensor(z8Y[i][j])))
-            g3 = (z8+z9).to(torch.float32)
+        for j in range(z3X.shape[1]):
+            z3 = torch.tensor((torch.tensor(z3X[i][j]), torch.tensor(z3Y[i][j])))
+            g1 = (z3+z4+z5).to(torch.float32)
     
             gu0 = torch.tensor([0.0])
             gu1 = torch.tensor([0.0])
@@ -165,15 +165,15 @@ def reward_z8(z8X, z8Y, z9, s8, s9, g0, g1, g2, s_voters):
             pg1 = torch.exp(gu1)/exp_u_all
             pg2 = torch.exp(gu2)/exp_u_all
             pg3 = torch.exp(gu3)/exp_u_all
-            r8 = pg0*torch.inner(g0/3,s8) + pg1*torch.inner(g1/3,s8) + pg2*torch.inner(g2/2,s8)+pg3*torch.inner(g3/2,s8)
+            r3 = pg0*torch.inner(g0/3,s3) + pg1*torch.inner(g1/3,s3) + pg2*torch.inner(g2/2,s3)+pg3*torch.inner(g3/2,s3)
             #r9 = pg0*torch.inner(g0/3,s9)+pg1*torch.inner(g1/3,s9)+pg2*torch.inner(g2/2,s9)+pg3*torch.inner(g3/2,s9)
-            tmp.append(r8)
+            tmp.append(r3)
         result.append(tmp)
     return torch.tensor(result)
 
 
-trace_X = [z8.detach().numpy()[0]]
-trace_Y = [z8.detach().numpy()[1]]
+trace_X = [z3.detach().numpy()[0]]
+trace_Y = [z3.detach().numpy()[1]]
 x = np.linspace(-1.0, 1.0, 100)
 y = np.linspace(-1.0, 1.0, 100)
 X, Y = np.meshgrid(x, y)
@@ -182,14 +182,14 @@ g0 = z0+z1+z2#/3
 g1 = z3+z4+z5#/3
 g2 = z6+z7#/2
 g3 = z8+z9#/2
-Z = reward_z8(X, Y, z9, s8, s9, g0, g1, g2, s_voters)
+Z = reward_z3(X, Y, z4, z5, s3, s4, s5, g0, g2, g3, s_voters)
 fig = plt.figure(figsize = (15,10))
 
 plt.imshow(Z, extent = [-1,1,-1,1], cmap = 'jet', alpha = 1)    
 plt.plot(trace_X, trace_Y)
 plt.plot(trace_X[-1], trace_Y[-1], '*', label = "reward of v8")
-plt.xlabel('x-dimension')
-plt.ylabel('y-dimension')
+plt.xlabel('x', fontsize=11)
+plt.ylabel('y', fontsize=11)
 plt.colorbar()
 plt.legend(loc = "upper right")
 plt.savefig('tmp_'+str(0)+'_'+label+'.png')
@@ -346,16 +346,16 @@ for t in range(steps):
     #plt.xlabel("x-dimension")
     #plt.ylabel("y-dimension")
     
-    Z = reward_z8(X, Y, z9, s8, s9, g0, g1, g2, s_voters)
+    Z = reward_z3(X, Y, z4, z5, s3, s4, s5, g0, g2, g3, s_voters)
         
     fig = plt.figure(figsize = (15,10))
     plt.imshow(Z, extent = [-1,1,-1,1], cmap = 'jet', alpha = 1)    
     
     plt.plot(trace_X, trace_Y)
-    plt.plot(trace_X[-1], trace_Y[-1], '*', label = "reward of v9")
+    plt.plot(trace_X[-1], trace_Y[-1], '*', label = "reward of v4")
 
-    plt.xlabel('x-dimension')
-    plt.ylabel('y-dimension')
+    plt.xlabel('x-dimension', fontsize=11)
+    plt.ylabel('y-dimension', fontsize=11)
     plt.colorbar()
     plt.legend(loc = "upper right")
     plt.savefig('tmp_'+str(t+1)+'_'+label+'.png')
@@ -369,7 +369,7 @@ for t in time:
     image = imageio.v2.imread('tmp_'+str(t)+'_'+label+'.png')
     frames.append(image)
 
-imageio.mimsave('./party_formation_gradient_demo.gif', # output gif
+imageio.mimsave('./party_formation_gradient_demo_v4.gif', # output gif
                 frames,          # array of input frames
                 fps = 5) 
 
