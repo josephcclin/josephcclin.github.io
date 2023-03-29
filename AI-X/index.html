@@ -332,7 +332,7 @@
               <span class="separator">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
             </li>
             <li>
-              <a href="#online_learning">Opinion Updates by Gradient Ascent</a>
+              <a href="#online_learning">Opinion Updates by Online Gradient Ascent</a>
               <span class="separator">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
             </li>
             <li>
@@ -1272,9 +1272,17 @@
 
   <!-- Group box 2 -->
     <h3>Group Joining: Myopic Best-Responses</h3>
-    <p id="best_response">
-      We consider the myopic best-response for each agent.
+    <p id="best_response" class="inline-math">
+      We consider the myopic best-response for each agent. We assume that agent \(v_i\) decides to join \(G_j\) for which 
+	  $$j = \arg\max_{\ell} p_{\ell}(\tau)\cdot \langle g_{\ell}, s_i\rangle.$$ We call this strategy a <i>myopic best-response</i>. 
+	  Namely, an agent joins a group by considering not only its winning probability but also the utility that the agent can get 
+	  from the group before its joining. The agents do not consider the states, such as the changed group opinions, winning 
+	  probabilities, rewards, etc., hence the name &ldquo;myopic&rdquo; best-response.
     </p>
+	<p>
+	In Fig. 4, we can see the changes of the group opinions due to agent \(v_5\)'s group joining strategy. Also, we can 
+	see the final outcome as a stable state after each agent performing their myopic best-responses in parallel iteratively. 
+	</p>
     <div class="framed" style="margin-bottom: 20px">
       <div class="inside">
 	  <div class="eyebrow">
@@ -1396,8 +1404,8 @@
 
     <!-- Group box 3 -->
     <p id="best_response">
-      We consider the myopic best-response for each agent.
-      Eventually the dynamics of group joining actions of all the agents lead to a pure-strategy Nash equilibrium.  
+      In Fig. 5 we can check that the final stable state is a pure-strategy Nash equilibrium. That is, 
+      the dynamics of group joining strategies of all the agents lead to a pure-strategy Nash equilibrium.  
     </p>
     <div class="framed" style="margin-bottom: 20px">
       <div class="inside">
@@ -1516,16 +1524,60 @@
 <div class="container mt-lg">
       <!-- Anchor ID -->
       <section id="online_learning">
-      <h2>IV. Opinion Updates by Gradient Ascent</h2>
+      <h2>IV. Opinion Updates by Online Gradient Ascent</h2>
+	  <h3>2D Representation and the Algorithm</h3>
 	  
-	  <p> 
-	  TBD
+	  <p class="inline-math"> 
+	  In this section, we consider the situation that each agent tries to maximize its own reward by 
+	  &ldquo;changing its opinion&rdquo; without deviating from the group that it belongs to. 
+	  We represent the opinions and beliefs as well as the dynamics of opinion changes in 
+	  \(\mathcal{K}:=[-1, 1]^2\subset\mathbb{R}^2\) to better illustrate the idea. The 2-norm constraint that 
+	  \(\|z_i\|_2, \|s_i\|_2\leq 1\) correlates both the dimensions and projection of the opinion is 
+	  required if the constraint is not satisfied. 
+	  </p>
+	  
+	  <p class="inline-math">
+	  Below we introduce the online gradient ascent algorithm. The pseudo-code is given in Fig. 5. Suppose that 
+	  we would like to have the agent update their opinions in \(T\) iterations. At each iteration, agents update 
+	  their opinion in a decentralized way. In each iteration, each agent first observes the reward resulted from 
+	  the previous iteration, then compute the &ldquo;gradient&rdquo;, which is the first derivate with respect 
+	  to its opinion. Then each agent updates its opinion by adding the gradient multiplied by \(\eta\), which is 
+	  called the learning rate or the step size. Roughly speaking, the gradient shows the direction of improving 
+	  an agent's reward and the learning rate decides how far the updating step should make at such direction. 
 	  </p>
 	  
 	  <figure class="text-center">
 		<img src="img/gradient_ascent_algo.svg" alt="AlgorithmGA" width="506" height="436">
 		<figcaption><strong>Figure 5:</strong> Pseudo-code of the Gradient Ascent Algorithm.</figcaption>
 	  </figure>
+	  
+	  <p class="inline-math">
+	  At line 4 of the algorithm, $$
+		\Pi_{\mathcal{K}}(x) = \left\{
+			\begin{array}{ll}
+			x & \mbox{ if } \|x\|_2\leq 1\\
+			\frac{x}{\|x\|_2} & \mbox{ otherwise}
+			\end{array}
+			\right.$$
+	  is a simple &ldquo;projection&rdquo which projects \(x\) onto the feasible set \(\mathcal{K}\), 
+	  if it is outside \(\mathcal{K}\), by dividing its 2-norm. Note that in this article, we consider constant 
+	  learning rates to simplify our discussion. In fact, learning rates can be set adaptively and decay with time. 	  
+	  </p>
+	  
+	  <h4>Regularization</h4>
+	
+	  <p class="inline-math">
+	  Recall that each agent has its own belief. An agent can be benefited by maximizing its own reward, however, it 
+	  could be as &ldquo;happy&rdquo; as it thought at the beginning. Hence, it is interesting to consider a 
+	  constraint to make it update the opinion in a more controlled way. Here we introduce the concept called 
+	  &ldquo;regularization&rdquo;. 
+	  The reward function for agent \(v_i\) including the regularizer is defined as 
+	  $$r_i(\tau) = \sum_{j=1}^m p_j(\tau)\langle s_i, \bar{g}_j\rangle - \|z_i-s_i\|_2^2.$$
+	  Since \(-\|z_i-s_i\|_2^2\) is always non-positive, an agent will be forced to consider &ldquo;not being too far 
+	  from its private preference&rdquo;. Our experimental illustrations show that such a regularization helps the 
+	  game converge to a stable state where the difference between the opinion and belief of each agent is moderate. 
+	  </p>
+	  
 
 		<h3>Initially Ungrouped Agents - Reward with and without Regularizers</h3>
         <p id="gaa_no_regularizers">
