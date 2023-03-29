@@ -335,6 +335,10 @@
               <a href="#online_learning">Opinion Updates by Online Gradient Ascent</a>
               <span class="separator">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
             </li>
+			<li>
+              <a href="#discussion">Discussion</a>
+			  <span class="separator">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+            </li>
             <li>
               <a href="#conclusion">Conclusion</a>
             </li>
@@ -1589,7 +1593,7 @@
 		<div class="framed" style="margin-bottom: 20px">
         <div class="inside">
 		<div class="eyebrow">
-		Choose how fast you would like to see the gradient descent algorithm updates the agents' opinions. The videos can be paused, 
+		Choose how fast you would like to see the online gradient ascent algorithm updates the agents' opinions. The videos can be paused, 
 		dragged, and resumed mannually.  
 		</div>
 		<!-- VIDEO box -->
@@ -1679,7 +1683,8 @@
                 </Row>
               </div>
             </div>
-			<div class="caption"><b>Figure 6:</b>The dynamics of opinion update by online gradient descent for ungrouped agents. </div>
+			<div class="caption"><b>Figure 6:</b>The dynamics of opinion update by online gradient ascent for ungrouped agents. 
+			The left-hand side considered regularization, while the right-hand side did not. </div>
 		</div>
 		</div>
 		
@@ -1693,7 +1698,7 @@
 		<div class="framed">
         <div class="inside">
 		<div class="eyebrow">
-		Choose how fast you would like to see the gradient descent algorithm updates the agents' opinions. The videos can be paused, 
+		Choose how fast you would like to see the online gradient ascent algorithm updates the agents' opinions. The videos can be paused, 
 		dragged, and resumed mannually. 
 		</div>
 		<!-- VIDEO box -->
@@ -1782,7 +1787,8 @@
                 </Row>
               </div>
             </div>
-			<div class="caption"><b>Figure 7:</b>The dynamics of opinion update by online gradient descent for grouped agents. </div>
+			<div class="caption"><b>Figure 7:</b>The dynamics of opinion update by online gradient ascent for grouped agents. 
+			The left-hand side considered regularization, while the right-hand side did not. </div>
 		</div>
 		</div>
 
@@ -1792,11 +1798,32 @@
 
 <div class="container mt-lg">
       <!-- Anchor ID -->
-      <section id="conclusion">
-      <h2>V. Conclusion</h2>
+      <section id="discussion">
+      <h2>V. Discussion</h2>
 	  
 	  <p> 
 	  IEEE CIM, we can!
+	  </p>
+	</section>
+</div>
+
+
+
+
+<div class="container mt-lg">
+      <!-- Anchor ID -->
+      <section id="conclusion">
+      <h2>VI. Conclusion</h2>
+	  
+	  <p> 
+	  This article presents a preliminary study on the dynamics of group formation. From the illustrations, 
+	  readers can realize what a pure-strategy Nash equilibrium in a system of multi-agents is and also learn 
+	  how online gradient ascent algorithms can help reach its stable states. 
+	  </p>
+	  
+	  <p>
+	  We plan to prove our multi-agent online gradient ascent algorithm will stabilize the system and also 
+	  analyze the speed of convergence in the future. 
 	  </p>
 	</section>
 </div>
@@ -1813,122 +1840,7 @@
 	  </section>
 </div>
 
-<!--
-      <h2 id="commonmistakes">Some Common Mistakes</h2>
 
-      <ul id="SCM">
-        <li>The word "data" is plural, not singular.</li>
-        <li class="inline-math">The subscript for the permeability of vacuum $$\mu_{0}$$, and other common scientific constants, is zero with subscript formatting, not a lowercase letter "o".</li>
-        <li>In American English, commas, semicolons, periods, question and exclamation marks are located within quotation marks only when a complete thought or name is cited, such as a title or full quotation. When quotation marks are used, instead of a bold or italic typeface, to highlight a word or phrase, punctuation should appear outside of the quotation marks. A parenthetical phrase or statement at the end of a sentence is punctuated outside of the closing parenthesis (like this). (A parenthetical sentence is punctuated within the parentheses.)</li>
-        <li>A graph within a graph is an "inset", not an "insert". The word alternatively is preferred to the word "alternately" (unless you really mean something that alternates).</li>
-        <li>Do not use the word "essentially" to mean "approximately" or "effectively".</li>
-        <li>In your paper title, if the words "that uses" can accurately replace the word "using", capitalize the "u"; if not, keep using lower-cased.</li>
-        <li>Be aware of the different meanings of the homophones "affect" and "effect", "complement" and "compliment", "discreet" and "discrete", "principal" and "principle".</li>
-        <li>Do not confuse "imply" and "infer".</li>
-        <li>The prefix "non" is not a word; it should be joined to the word it modifies, usually without a hyphen.</li>
-        <li>There is no period after the "et" in the Latin abbreviation "et al.".</li>
-        <li>The abbreviation "i.e." means "that is", and the abbreviation "e.g." means "for example".</li>
-      </ul>
-      <p>
-        An excellent style manual for science writers is [<a href="#ref_3">3</a>].
-      </p>
-
-      <h2 id="authors">Authors and Affiliations</h2>
-      <p>
-        A minimum of one author is required for all articles. Author names
-        should be listed from top to bottom.
-        This is the author sequence that will be used in future citations
-        and by indexing services. Names should not be listed in groups by
-        affiliation. Please keep your affiliations as succinct as possible (for
-        example, do not differentiate among departments of the same organization).
-      </p>
-
-      <h2 id="hints">Hints and General Advice</h2>
-      <h3>Identify the Headings</h3>
-      <p id="Headings">
-        Headings, or heads, are organizational devices that guide the reader through
-        your paper. There are two types: component heads and text heads.
-      </p>
-
-      <p>
-        Component heads identify the different components of your paper and are not
-        topically subordinate to each other. Examples include Acknowledgments and
-        References and, for these, the correct style has been implemented and
-        this template and is defined by the IEEE. Do not make any adjustments. Use
-        "figure caption" for your Figure captions, and "table head" for your
-        table title. Run-in heads, such as "Abstract", will require you to apply a
-        style (in this case, italic) in addition to the styles provided to differentiate the head from the text.
-      </p>
-
-      <p>
-        Text heads organize the topics on a relational, hierarchical basis. For
-        example, the paper title is the primary text head because all subsequent
-        material relates and elaborates on this one topic. If there are two or more
-        sub-topics, the next level head (uppercase Roman numerals) should be used
-        and, conversely, if there are not at least two sub-topics, then no subheads
-        should be introduced.
-      </p>
-
-      <h3>HTML-Specific Advice</h3>
-
-      <ul>
-        <li> &lt h1&gt  : Page title </li>
-        <li> &lt p class="subhead"&gt  : Subheading </li>
-        <li> &lt div class="header-authors"&gt  : Authors grid </li>
-        <li> &lt div class="header-published"&gt  : Published date information </li>
-        <li> &lt div class="contents box"&gt  : Table of contents </li>
-        <li> &lt section id="introduction"&gt  : Sections from table of contents. Allows for inclusion of in-line references </li>
-        <li> &lt figure class="text-center"&gt  : Tagging for images with caption </li>
-        <li class="tex2jax_ignore"> &lt p class="inline-math"&gt  : Allows for handling of MathJax expressions. Use $$ – some equation here – $$ to add an expression </li>
-        <li> &lt p class="math-left"&gt  and &lt p class="math-right"&gt  : Enables left/right alignment of an expression </li>
-        <li> &lt div class="static"&gt  : Supports static illustrations with caption </li>
-        <li> &lt div class="framed"&gt  : Each interactive element and scripts will be surrounded with this tagging </li>
-        <li> &lt div class="formula-wrapper"&gt  : Allows for adding content into styled and responsive table </li>
-        <li> &lt section class="references"&gt  : Reference list </li>
-      </ul>
-
-      <p>
-        Similar to LaTeX, using the same id multiple times may result
-        in unintended behavior when linking to said id.
-      </p>
-
-
-      <h3>Acknowledgment</h3>
-      <p id="Acknowledgment" class="inline-math">
-        The preferred spelling of the word "acknowledgment" in America is without
-        an "e" after the "g". Avoid the stilted expression "one of us (R. B.
-        G.) thanks $$\ldots$$". Instead, try "R. B. G. thanks $$\ldots$$". Put sponsor
-        acknowledgments in the acknowledgement section in the appendix.
-      </p>
-
-      <h3 id="References">References</h3>
-      <p class="inline-math">
-        Please number citations consecutively within brackets [<a href="#ref_4">4</a>]. The
-        sentence punctuation follows the bracket [<a href="#ref_4">4</a>]. Refer simply to the reference
-        number, as in [<a href="#ref_4">4</a>]---do not use "Ref. [<a href="#ref_4">4</a>]"
-        or "reference [<a href="#ref_4">4</a>]" except at
-        the beginning of a sentence: "Reference [<a href="#ref_4">4</a>] was the first $$\ldots$$"
-      </p>
-
-      <p>
-        Unless there are six authors or more give all authors' names; do not use
-        "et al.". Papers that have not been published, even if they have been
-        submitted for publication, should be cited as "unpublished" [<a href="#ref_5">5</a>]. Papers
-        that have been accepted for publication should be cited as "in press" [<a href="#ref_6">6</a>].
-        Capitalize only the first word in a paper title, except for proper nouns and element symbols.
-      </p>
-
-      <p>
-        For papers published in translation journals, please give the English
-        citation first, followed by the original foreign-language citation [<a href="#ref_7">7</a>].
-      </p>
-
-      <p style="color: red">
-        The IEEE interactive article template contains guidance text for composing and formatting of interactive articles.
-        Please ensure that all template text is removed from your article prior to submission.
-        Failure to remove the template text from your paper may result in your paper not being published.
-      </p>
--->
 	<div class="container mt-lg">
       <section class="references">
         <h2>References</h2>
