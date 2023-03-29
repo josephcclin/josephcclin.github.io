@@ -187,7 +187,7 @@ fig = plt.figure(figsize = (15,10))
 
 plt.imshow(Z, extent = [-1,1,-1,1], cmap = 'jet', alpha = 1)    
 plt.plot(trace_X, trace_Y)
-plt.plot(trace_X[-1], trace_Y[-1], '*', label = "reward of v8")
+plt.plot(trace_X[-1], trace_Y[-1], '*', markersize=14, label = "reward of v8")
 plt.xlabel('x-dimension')
 plt.ylabel('y-dimension')
 plt.colorbar()
@@ -352,7 +352,7 @@ for t in range(steps):
     plt.imshow(Z, extent = [-1,1,-1,1], cmap = 'jet', alpha = 1)    
     
     plt.plot(trace_X, trace_Y)
-    plt.plot(trace_X[-1], trace_Y[-1], '*', label = "reward of v9")
+    plt.plot(trace_X[-1], trace_Y[-1], '*', markersize=14, label = "reward of v9")
 
     plt.xlabel('x-dimension')
     plt.ylabel('y-dimension')
@@ -368,7 +368,7 @@ frames = []
 for t in time:
     image = imageio.v2.imread('tmp_'+str(t)+'_'+label+'.png')
     frames.append(image)
-
+#frames.append('tmp_'+str(steps)+'_'+label+'.png')
 imageio.mimsave('./party_formation_gradient_demo.gif', # output gif
                 frames,          # array of input frames
                 fps = 5) 
