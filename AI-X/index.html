@@ -1563,7 +1563,7 @@
 			\frac{x}{\|x\|_2} & \mbox{ otherwise}
 			\end{array}
 			\right.$$
-	  is a simple &ldquo;projection&rdquo which projects \(x\) onto the feasible set \(\mathcal{K}\), 
+	  is a simple &ldquo;projection&rdquo; which projects \(x\) onto the feasible set \(\mathcal{K}\), 
 	  if it is outside \(\mathcal{K}\), by dividing its 2-norm. Note that in this article, we consider constant 
 	  learning rates to simplify our discussion. In fact, learning rates can be set adaptively and decay with time. 	  
 	  </p>
@@ -1572,21 +1572,21 @@
 	
 	  <p class="inline-math">
 	  Recall that each agent has its own belief. An agent can be benefited by maximizing its own reward, however, it 
-	  could be as &ldquo;happy&rdquo; as it thought at the beginning. Hence, it is interesting to consider a 
+	  could be not as &ldquo;happy&rdquo; as it thought at the beginning. Hence, it is interesting to consider a 
 	  constraint to make it update the opinion in a more controlled way. Here we introduce the concept called 
 	  &ldquo;regularization&rdquo;. 
 	  The reward function for agent \(v_i\) including the regularizer is defined as 
 	  $$r_i(\tau) = \sum_{j=1}^m p_j(\tau)\langle s_i, \bar{g}_j\rangle - \|z_i-s_i\|_2^2.$$
 	  Since \(-\|z_i-s_i\|_2^2\) is always non-positive, an agent will be forced to consider &ldquo;not being too far 
-	  from its private preference&rdquo;. Our experimental illustrations show that such a regularization helps the 
+	  from its belief&rdquo;. Our experimental illustrations show that such a regularization helps the 
 	  game converge to a stable state where the difference between the opinion and belief of each agent is moderate. 
 	  </p>
 	  
 
-		<h3>Initially Ungrouped Agents - Reward with and without Regularizers</h3>
+		<h3>Initially Ungrouped Agents - Reward with and without Regularization</h3>
         <p id="gaa_no_regularizers">
           Suppose that we have 10 agents regarded as 10 individual groups in 10 different colors. 
-		 Let us compare the convergence results of multi-agent gradient ascent with and without regularizers.
+		 Let us compare the convergence results of multi-agent gradient ascent with and without regularization.
         </p>
 		
 		<!-- HERE -->
@@ -1689,10 +1689,10 @@
 		</div>
 		</div>
 		
-		<h3>Initially Grouped Agents - Reward with and without Regularizers</h3>
+		<h3>Initially Grouped Agents - Reward with and without Regularization</h3>
         <p id="gaa_no_regularizers">
          Suppose that we have 10 agents regarded as 4 groups in 4 different colors. 
-		 Let us compare the convergence results of multi-agent gradient ascent with and without regularizers.
+		 Let us compare the convergence results of multi-agent gradient ascent with and without regularization.
         </p>
 		
 		<!-- HERE -->
