@@ -1417,7 +1417,7 @@
 		<div class="eyebrow">
 		Hover your mouse over the grouped agents to see the myopic rewards of the two options of group joining. 
 		You may want to drag an agent, for example, \(v_5\) to see if you can make it change its mind. 
-		See whether it will has the incentive the do so or not. 
+		See whether it will has the incentive to do so or not. 
 		</div>
           <div class="d-flex w-100 pt-4">
             <h4 class="ps-3 pt-3 text-start">The pure-strategy Nash equilibrium</h4>
@@ -1552,7 +1552,7 @@
 	  
 	  <figure class="text-center">
 		<img src="img/gradient_ascent_algo.svg" alt="AlgorithmGA" width="506" height="436">
-		<figcaption><strong>Figure 5:</strong> Pseudo-code of the Gradient Ascent Algorithm.</figcaption>
+		<figcaption><strong>Figure 6:</strong> Pseudo-code of the Gradient Ascent Algorithm.</figcaption>
 	  </figure>
 	  
 	  <p class="inline-math">
@@ -1683,7 +1683,7 @@
                 </Row>
               </div>
             </div>
-			<div class="caption"><b>Figure 6:</b>The dynamics of opinion update by online gradient ascent for ungrouped agents. 
+			<div class="caption"><b>Figure 7:</b>The dynamics of opinion update by online gradient ascent for ungrouped agents. 
 			The left-hand side considered regularization, while the right-hand side did not. With a slight abuse of notation, 
 			the x-dimension and y-dimension in the figures denote the first dimension of opinions and beliefs respectively.</div>
 		</div>
@@ -1788,7 +1788,7 @@
                 </Row>
               </div>
             </div>
-			<div class="caption"><b>Figure 7:</b>The dynamics of opinion update by online gradient ascent for grouped agents. 
+			<div class="caption"><b>Figure 8:</b>The dynamics of opinion update by online gradient ascent for grouped agents. 
 			The left-hand side considered regularization, while the right-hand side did not. With a slight abuse of notation, 
 			the x-dimension and y-dimension in the figures denote the first dimension of opinions and beliefs respectively.</div>
 		</div>
@@ -1799,7 +1799,9 @@
         <p id="gaa_no_regularizers">
          In this paragraph, we look into the changes of the reward function image. Our goal here 
 		 is to stress on the fact that the reward function of each agent actually changes due to 
-		 the updates of the other agents. Due to this reason, each agent is dealing with a time-varying 
+		 the updates of the other agents. Indeed, as we have illustrated in the first section, each 
+		 agent's winning probability is affected not only by its own opinion but also by the other 
+		 agents' opinions. Due to this reason, each agent is dealing with a time-varying 
 		 reward function. 
 		</p> 
 		<p> 
@@ -1908,7 +1910,7 @@
                 </Row>
               </div>
             </div>
-			<div class="caption"><b>Figure 8:</b>The dynamics of the reward function images and the opinion updates by multi-agent 
+			<div class="caption"><b>Figure 9:</b>The dynamics of the reward function images and the opinion updates by multi-agent 
 			online gradient ascent for \(v_4\) and \(v_9\) in two different groups. The reward functions of the two agents can be 
 			either with or without the regularization. 
 			</div>
