@@ -24,6 +24,9 @@ learn_rate = torch.tensor(0.1)
 steps = 100
 time = list(np.arange(steps))
 label = 'gradient'
+isRegularized = False
+if (isRegularized == True):
+    label += '_regularized'
 
 example = torch.tensor([[ 0.3757, -0.8405],
                         [ 0.7536, -0.5736],
@@ -140,7 +143,7 @@ g2 = z6+z7#/2
 g3 = z8+z9#/2
 '''
 
-def reward_z8(z8X, z8Y, z9, s8, s9, g0, g1, g2, s_voters):
+def reward_z8(z8X, z8Y, z9, s8, s9, g0, g1, g2, s_voters, isRegularized):
     result = []
     for i in range(z8X.shape[0]):
         tmp = []
@@ -166,6 +169,9 @@ def reward_z8(z8X, z8Y, z9, s8, s9, g0, g1, g2, s_voters):
             pg2 = torch.exp(gu2)/exp_u_all
             pg3 = torch.exp(gu3)/exp_u_all
             r8 = pg0*torch.inner(g0/3,s8) + pg1*torch.inner(g1/3,s8) + pg2*torch.inner(g2/2,s8)+pg3*torch.inner(g3/2,s8)
+            if (isRegularized == True):
+                r8 = r8-torch.pow((z8-s8).norm(), 2)
+            
             #r9 = pg0*torch.inner(g0/3,s9)+pg1*torch.inner(g1/3,s9)+pg2*torch.inner(g2/2,s9)+pg3*torch.inner(g3/2,s9)
             tmp.append(r8)
         result.append(tmp)
@@ -182,7 +188,7 @@ g0 = z0+z1+z2#/3
 g1 = z3+z4+z5#/3
 g2 = z6+z7#/2
 g3 = z8+z9#/2
-Z = reward_z8(X, Y, z9, s8, s9, g0, g1, g2, s_voters)
+Z = reward_z8(X, Y, z9.detach(), s8, s9, g0.detach(), g1.detach(), g2.detach(), s_voters, isRegularized)
 fig = plt.figure(figsize = (15,10))
 
 plt.imshow(Z, extent = [-1,1,-1,1], cmap = 'jet', alpha = 1)    
@@ -233,16 +239,17 @@ for t in range(steps):
     r9 = pg0*torch.inner(g0/3,s9)+pg1*torch.inner(g1/3,s9)+pg2*torch.inner(g2/2,s9)+pg3*torch.inner(g3/2,s9)
 
     #'''
-    r0 = r0-torch.pow((z0-s0).norm(), 2)
-    r1 = r1-torch.pow((z1-s1).norm(), 2)
-    r2 = r2-torch.pow((z2-s2).norm(), 2)
-    r3 = r3-torch.pow((z3-s3).norm(), 2)
-    r4 = r4-torch.pow((z4-s4).norm(), 2)
-    r5 = r5-torch.pow((z5-s5).norm(), 2)
-    r6 = r6-torch.pow((z6-s6).norm(), 2)
-    r7 = r7-torch.pow((z7-s7).norm(), 2)
-    r8 = r8-torch.pow((z8-s8).norm(), 2)
-    r9 = r9-torch.pow((z9-s9).norm(), 2)
+    if (isRegularized == True):
+        r0 = r0-torch.pow((z0-s0).norm(), 2)
+        r1 = r1-torch.pow((z1-s1).norm(), 2)
+        r2 = r2-torch.pow((z2-s2).norm(), 2)
+        r3 = r3-torch.pow((z3-s3).norm(), 2)
+        r4 = r4-torch.pow((z4-s4).norm(), 2)
+        r5 = r5-torch.pow((z5-s5).norm(), 2)
+        r6 = r6-torch.pow((z6-s6).norm(), 2)
+        r7 = r7-torch.pow((z7-s7).norm(), 2)
+        r8 = r8-torch.pow((z8-s8).norm(), 2)
+        r9 = r9-torch.pow((z9-s9).norm(), 2)
     #'''
     
     r0.backward(retain_graph=True)
@@ -346,7 +353,7 @@ for t in range(steps):
     #plt.xlabel("x-dimension")
     #plt.ylabel("y-dimension")
     
-    Z = reward_z8(X, Y, z9, s8, s9, g0, g1, g2, s_voters)
+    Z = reward_z8(X, Y, z9.detach(), s8, s9, g0.detach(), g1.detach(), g2.detach(), s_voters, isRegularized)
         
     fig = plt.figure(figsize = (15,10))
     plt.imshow(Z, extent = [-1,1,-1,1], cmap = 'jet', alpha = 1)    
@@ -366,10 +373,10 @@ for t in range(steps):
 #plt.show()
 frames = []
 for t in time:
-    image = imageio.v2.imread('tmp_'+str(t)+'_'+label+'.png')
+    image = imageio.imread('tmp_'+str(t)+'_'+label+'.png')
     frames.append(image)
 #frames.append('tmp_'+str(steps)+'_'+label+'.png')
-imageio.mimsave('./party_formation_gradient_demo.gif', # output gif
+imageio.mimsave('./party_formation_gradient_demo_'+label+'.gif', # output gif
                 frames,          # array of input frames
                 fps = 5) 
 

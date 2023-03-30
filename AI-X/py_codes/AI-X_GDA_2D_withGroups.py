@@ -175,7 +175,7 @@ for t in range(steps):
     r8 = pg0*torch.inner(g0/3,s8)+pg1*torch.inner(g1/3,s8)+pg2*torch.inner(g2/2,s8)+pg3*torch.inner(g3/2,s8)
     r9 = pg0*torch.inner(g0/3,s9)+pg1*torch.inner(g1/3,s9)+pg2*torch.inner(g2/2,s9)+pg3*torch.inner(g3/2,s9)
 
-    '''
+    #'''
     r0 = r0-torch.pow((z0-s0).norm(), 2)
     r1 = r1-torch.pow((z1-s1).norm(), 2)
     r2 = r2-torch.pow((z2-s2).norm(), 2)
@@ -186,7 +186,7 @@ for t in range(steps):
     r7 = r7-torch.pow((z7-s7).norm(), 2)
     r8 = r8-torch.pow((z8-s8).norm(), 2)
     r9 = r9-torch.pow((z9-s9).norm(), 2)
-    '''
+    #'''
     
     r0.backward(retain_graph=True)
     gradient0 = torch.clone(z0.grad)
@@ -291,7 +291,7 @@ for t in range(steps):
     colors = ['r', 'r', 'r', 'g', 'g', 'g', 'b', 'b', 'y', 'y']#cm.rainbow(np.linspace(0, 1, len(labels)))
     ax.scatter(X, Y, s=50, c=colors)
     for i, label in enumerate(labels):
-        ax.annotate(label, (X[i], Y[i]), fontsize=10, va="top", ha="left")
+        ax.annotate(label, (X[i], Y[i]), fontsize=11, va="top", ha="left")
         
     plt.savefig('tmp_'+str(t)+'.png')
     plt.close()
@@ -301,7 +301,7 @@ for t in range(steps):
 #plt.show()
 frames = []
 for t in time:
-    image = imageio.v2.imread('tmp_'+str(t)+'.png')
+    image = imageio.imread('tmp_'+str(t)+'.png')
     frames.append(image)
 
 imageio.mimsave('./party_formation_demo.gif', # output gif
