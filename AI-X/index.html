@@ -1545,8 +1545,9 @@
 	  Below we introduce the online gradient ascent algorithm. The pseudo-code is given in the figure below. Suppose that 
 	  we would like to have the agent update their opinions in \(T\) iterations. At each iteration, agents update 
 	  their opinion in a decentralized way. In each iteration, each agent first observes the reward resulted from 
-	  the previous iteration, then compute the &ldquo;gradient&rdquo;, which is the first derivate with respect 
-	  to its opinion. Then each agent updates its opinion by adding the gradient multiplied by \(\eta\), which is 
+	  the previous iteration, then compute the &ldquo;gradient&rdquo; (the symbol \(\nabla\)), which is the first derivate 
+	  with respect to its opinion and can be regarded as &ldquo;slopes&rdquo; in each dimension of the feasible space. 
+	  Then each agent updates its opinion by adding the gradient multiplied by \(\eta\), which is 
 	  called the learning rate or the step size. Roughly speaking, the gradient shows the direction of improving 
 	  an agent's reward and the learning rate decides how far the updating step should make at such direction. 
 	  </p>
@@ -1689,7 +1690,12 @@
 			the x-dimension and y-dimension in the figures denote the first dimension of opinions and beliefs respectively.</div>
 		</div>
 		</div>
-		
+		<p> 
+		We can easily observe that agents, e.g., \(v_1\) moves towards the botton-left direction in the feasible space, though 
+		with regularization it is more conservative (see the figure on the left-hand side). Moreover, the learning rate, either 0.1 
+		or 0.01, seem to result in the final convergence, though the larger learning rate gives the agents faster speed of convergence 
+		in this example. 
+		</p>
 		<h3>Initially Grouped Agents - Reward with and without Regularization</h3>
         <p id="gaa_no_regularizers">
          Suppose that we have 10 agents regarded as 4 groups in 4 different colors. 
@@ -1697,7 +1703,7 @@
         </p>
 		
 		<!-- HERE -->
-		<div class="framed">
+		<div class="framed" style="margin-bottom: 20px">
         <div class="inside">
 		<div class="eyebrow">
 		Choose how fast you would like to see the online gradient ascent algorithm updates the agents' opinions. The videos can be paused, 
@@ -1795,6 +1801,21 @@
 		</div>
 		</div>
 		
+		<p>
+		Like what we have already seen in the previous figures, online gradient ascent for grouped agents still 
+		results in the final convergence in this case. One can observe that agents in the same group update their opinions 
+		roughly in the same direction. The reason is that their grouped opinion matters, which affects their winning probability 
+		as well as the reward. 	
+		</p>
+		
+		<p>
+		Here is an interesting observation. In the figure above on the left-hand side, agents \(v_9--v-{10}\), which 
+		belong to the green group and the yellow group, move downward to maximize their own rewards. Yet, agents 
+		\(v_9\) and \(v_10\) &ldquo;fall back&rdquo; in the upward direction. This phenomenon can be explained 
+		as the green group, which is beneficial to the yellow group, has the higher odds to win and also the updates 
+		of the opinions are constrained by the regularization term. Hence, eventually the agents in the yellow group 
+		try to minimize the loss from deviating their beliefs.
+		</p>
 		
 		<h3>Reward Function Image Changes and Dynamics of the Opinion Updates</h3>
         <p id="gaa_no_regularizers">
@@ -1928,7 +1949,9 @@
       <h2>V. Discussion</h2>
 	  
 	  <p> 
-	  IEEE CIM, we can!
+	  As we can see in the setting of group joining, each agent has a finite number of existing parties to join as a 
+	  pure strategy to play. However, it is not necessary that a pure-strategy Nash equilibrium always exists in 
+	  a non-cooperative game, and finding such an equilibrium can be computationally difficult [<a href="#ref_3">6</a>].
 	  </p>
 	</section>
 </div>
@@ -1991,7 +2014,7 @@
             </span>
           </li>
 		  <li id="ref_3">
-            On the Efficiency of An Election Game of Two or More Parties: How Bad Can It Be?
+            On the efficiency of an Election Game of Two or More Parties: How Bad Can It Be?
             <br>
             <span>
             Lin, C.C., Chen, P.A. and Lu, C.J., 2023. arXiv:2303.14405. DOI:  
@@ -2000,7 +2023,7 @@
             </span>
           </li>
           <li id="ref_4">
-            A Modern Introduction to Online Learning
+            A Modern Introduction to Online Learning.
             <br>
             <span>
               Orabona, F., 2022. arXiv:1912.13213. DOI:
@@ -2009,11 +2032,20 @@
             </span>
           </li>
 		  <li id="ref_5">
-		  Introduction to Online Convex Optimization
+		  Introduction to Online Convex Optimization.
 		  <br>
 		  <span>
 		  Hazan, E., 2016. Foundations and Trends in Optimization, Vol 2(3-4), pp. 157--325. DOI: 
 		  <a href="https://doi.org/10.1561/2400000013" target="_blank">10.1561/2400000013</a>
+		  </span>
+		  </li>
+		  <li id="ref_6">
+		  Equilibria problems on games: Complexity versus succinctness. 
+		  <br>
+		  <span>
+		  &Agrave;lvarez, C., Gabarro, J. and Serna, M., 2011. Journal of Computer and System Sciences, 
+		  Vol 77, pp. 1172--1197. DOI: <a href="http://dx.doi.org/10.1016/j.jcss.2011.01.001" target="_blank">10.1016/j.jcss.2011.01.001</a>
+		  </span>
 		  </li>
          </ol>
       </section>
