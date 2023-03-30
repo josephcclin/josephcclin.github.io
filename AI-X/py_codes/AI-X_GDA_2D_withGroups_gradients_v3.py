@@ -24,7 +24,10 @@ learn_rate = torch.tensor(0.1)
 steps = 100
 time = list(np.arange(steps))
 label = 'gradient'
-
+isRegularized = True
+if (isRegularized == True):
+    label += '_regularized'
+    
 example = torch.tensor([[ 0.3757, -0.8405],
                         [ 0.7536, -0.5736],
                         [ 0.8314, -0.5334],
@@ -166,6 +169,8 @@ def reward_z3(z3X, z3Y, z4, z5, s3, s4, s5, g0, g2, g3, s_voters):
             pg2 = torch.exp(gu2)/exp_u_all
             pg3 = torch.exp(gu3)/exp_u_all
             r3 = pg0*torch.inner(g0/3,s3) + pg1*torch.inner(g1/3,s3) + pg2*torch.inner(g2/2,s3)+pg3*torch.inner(g3/2,s3)
+            if (isRegularized == True):
+                r3 = r3-torch.pow((z3-s3).norm(), 2)
             #r9 = pg0*torch.inner(g0/3,s9)+pg1*torch.inner(g1/3,s9)+pg2*torch.inner(g2/2,s9)+pg3*torch.inner(g3/2,s9)
             tmp.append(r3)
         result.append(tmp)
@@ -182,17 +187,17 @@ g0 = z0+z1+z2#/3
 g1 = z3+z4+z5#/3
 g2 = z6+z7#/2
 g3 = z8+z9#/2
-Z = reward_z3(X, Y, z4, z5, s3, s4, s5, g0, g2, g3, s_voters)
+Z = reward_z3(X, Y, z4.detach(), z5.detach(), s3, s4, s5, g0.detach(), g2.detach(), g3.detach(), s_voters)
 fig = plt.figure(figsize = (15,10))
 
 plt.imshow(Z, extent = [-1,1,-1,1], cmap = 'jet', alpha = 1)    
 plt.plot(trace_X, trace_Y)
-plt.plot(trace_X[-1], trace_Y[-1], '*', label = "reward of v8")
-plt.xlabel('x', fontsize=11)
-plt.ylabel('y', fontsize=11)
+plt.plot(trace_X[-1], trace_Y[-1], '*', markersize=14, label = "reward of v4")
+plt.xlabel('x-dimension')
+plt.ylabel('y-dimension')
 plt.colorbar()
 plt.legend(loc = "upper right")
-plt.savefig('tmp_'+str(0)+'_'+label+'.png')
+plt.savefig('tmp_'+str(0)+'_'+label+'_v4_nrl.png')
 plt.close()
 
 
@@ -233,16 +238,17 @@ for t in range(steps):
     r9 = pg0*torch.inner(g0/3,s9)+pg1*torch.inner(g1/3,s9)+pg2*torch.inner(g2/2,s9)+pg3*torch.inner(g3/2,s9)
 
     #'''
-    r0 = r0-torch.pow((z0-s0).norm(), 2)
-    r1 = r1-torch.pow((z1-s1).norm(), 2)
-    r2 = r2-torch.pow((z2-s2).norm(), 2)
-    r3 = r3-torch.pow((z3-s3).norm(), 2)
-    r4 = r4-torch.pow((z4-s4).norm(), 2)
-    r5 = r5-torch.pow((z5-s5).norm(), 2)
-    r6 = r6-torch.pow((z6-s6).norm(), 2)
-    r7 = r7-torch.pow((z7-s7).norm(), 2)
-    r8 = r8-torch.pow((z8-s8).norm(), 2)
-    r9 = r9-torch.pow((z9-s9).norm(), 2)
+    if (isRegularized == True):
+        r0 = r0-torch.pow((z0-s0).norm(), 2)
+        r1 = r1-torch.pow((z1-s1).norm(), 2)
+        r2 = r2-torch.pow((z2-s2).norm(), 2)
+        r3 = r3-torch.pow((z3-s3).norm(), 2)
+        r4 = r4-torch.pow((z4-s4).norm(), 2)
+        r5 = r5-torch.pow((z5-s5).norm(), 2)
+        r6 = r6-torch.pow((z6-s6).norm(), 2)
+        r7 = r7-torch.pow((z7-s7).norm(), 2)
+        r8 = r8-torch.pow((z8-s8).norm(), 2)
+        r9 = r9-torch.pow((z9-s9).norm(), 2)
     #'''
     
     r0.backward(retain_graph=True)
@@ -346,19 +352,19 @@ for t in range(steps):
     #plt.xlabel("x-dimension")
     #plt.ylabel("y-dimension")
     
-    Z = reward_z3(X, Y, z4, z5, s3, s4, s5, g0, g2, g3, s_voters)
+    Z = reward_z3(X, Y, z4.detach(), z5.detach(), s3, s4, s5, g0.detach(), g2.detach(), g3.detach(), s_voters)
         
     fig = plt.figure(figsize = (15,10))
     plt.imshow(Z, extent = [-1,1,-1,1], cmap = 'jet', alpha = 1)    
     
     plt.plot(trace_X, trace_Y)
-    plt.plot(trace_X[-1], trace_Y[-1], '*', label = "reward of v4")
+    plt.plot(trace_X[-1], trace_Y[-1], '*', markersize=14, label = "reward of v4")
 
-    plt.xlabel('x-dimension', fontsize=11)
-    plt.ylabel('y-dimension', fontsize=11)
+    plt.xlabel('x-dimension')
+    plt.ylabel('y-dimension')
     plt.colorbar()
     plt.legend(loc = "upper right")
-    plt.savefig('tmp_'+str(t+1)+'_'+label+'.png')
+    plt.savefig('tmp_'+str(t+1)+'_'+label+'_v4_nrl.png')
     plt.close()
     #print("\nFinal gradients: ")
     #print(gradient0, gradient1, gradient2, gradient3, gradient4, gradient5, gradient6, gradient7, gradient8, gradient9)
@@ -366,10 +372,10 @@ for t in range(steps):
 #plt.show()
 frames = []
 for t in time:
-    image = imageio.v2.imread('tmp_'+str(t)+'_'+label+'.png')
+    image = imageio.imread('tmp_'+str(t)+'_'+label+'_v4_nrl.png')
     frames.append(image)
-
-imageio.mimsave('./party_formation_gradient_demo_v4.gif', # output gif
+#frames.append('tmp_'+str(steps)+'_'+label+'_v4.png')
+imageio.mimsave('./party_formation_gradient_demo_v4_'+label+'.gif', # output gif
                 frames,          # array of input frames
                 fps = 5) 
 
