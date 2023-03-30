@@ -1948,10 +1948,23 @@
       <section id="discussion">
       <h2>V. Discussion</h2>
 	  
-	  <p> 
-	  As we can see in the setting of group joining, each agent has a finite number of existing parties to join as a 
-	  pure strategy to play. However, it is not necessary that a pure-strategy Nash equilibrium always exists in 
-	  a non-cooperative game, and finding such an equilibrium can be computationally difficult [<a href="#ref_3">6</a>].
+	  <p id="best-response-discussion" class="inline-math"> 
+	  As to the setting of group joining, each agent has a finite number of existing parties to join as a finite  
+	  number of pure strategies to play. However, a pure-strategy Nash equilibrium does not always exist in 
+	  a non-cooperative game, and finding such an equilibrium can be computationally difficult [<a href="#ref_6">6</a>].
+	  Whenever a game in our setting here does not have a pure-strategy Nash equilibrium, the dynamics of myopic best-Responses
+	  of the agents will never reach a state state. As the number of possible states is upper bounded by \(n^n\), which corresponds  
+	  to the number of possible ways of throwing \(n\) balls into \(n\) bins, the dynamics must eventually visit a state 
+	  which has been reached before, hence a cycle of the dynamics occurs. 
+	  </p>
+	  
+	  <p id="best-response-discussion" class="inline-math"> 
+	  When each agent is assumed to play the online gradient ascent algorithm, the number of possible pure-strategies of it is 
+	  infinitely many. Indeed, all real vectors in \(\{ x\in [-1, 1]^k: \|x\|_2\leq 1\}\subset\mathbb{R}^k\) are feasible. So far 
+	  it is still unclear whether such a game in our setting has a pure-strategy Nash equilibrium. However, base on the numerical 
+	  simulations we have conducted, we have not found any game instance which does not converge to a stable state. Note that 
+	  a stable state reached by agents' simultaneously playing online gradient ascent algorithms is not necessarily a pure-strategy 
+	  Nash equilibrium. This is because the update of the opinion only considers the local deviations, so it is merely locally stable.
 	  </p>
 	</section>
 </div>
@@ -1967,12 +1980,16 @@
 	  <p> 
 	  This article presents a preliminary study on the dynamics of group formation. From the illustrations, 
 	  readers can realize what a pure-strategy Nash equilibrium in a system of multi-agents is and also learn 
-	  how online gradient ascent algorithms can help reach its stable states. 
+	  how online gradient ascent algorithms can help reach a stable state of the game. 
 	  </p>
 	  
 	  <p>
-	  We plan to prove our multi-agent online gradient ascent algorithm will stabilize the system and also 
-	  analyze the speed of convergence in the future. 
+	  In the future, we plan to prove our multi-agent online gradient ascent algorithm will stabilize the system and also 
+	  analyze the speed of convergence. The other online learning algorithms, such as follow-the-regularized leader, 
+	  multiplicative-weight update, mirror ascent, etc., can be also applied (see [<a href="#ref_4">4</a>]. Moreover, 
+	  it will be also interesting to consider myopic best-responses and online gradient ascent as the strategies that agents 
+	  can play, instead of considering each one of them separately as different settings. We are also curious about the other 
+	  types of best-response. For example, an agent can quit the group it belongs to in any iteration. 
 	  </p>
 	</section>
 </div>
