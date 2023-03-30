@@ -1188,7 +1188,8 @@
 	</p>
 	<p class="inline-math">
 		For example, consider the following figure. We have five agents \(v_1,v_2,v_3,v_4,v_5\) such that each agent is 
-		regarded as a group individually. We assume that \(z_i = s_i\) for each \(i\) to simplify our discussion. 
+		regarded as a group individually. Assume their beliefs to be \(s_1 = -0.8, s_2 = 1.0, s_3 = 0.1, s_4 = -0.1, s_5 = 0.2\) 
+		respectively. We assume that \(z_i = s_i\) for each \(i\) to simplify our discussion. 
 		By assuming \(v_1,v_2,v_3\), and \(v_4\) to have their opinions \(z_1,z_2,z_3,z_4\) fixed, we can observe the changes 
 		of winning probability of \(v_5\) by moving \(z_5\) from \(-1\) to \(1\), as well as the changes of the winning 
 		probabilities of the other agents. After getting the winning probabilities, we can derive their rewards as well. 
@@ -1275,7 +1276,21 @@
         </div>
       <!--</div>-->
     </div>
-
+	<p class="inline-math">
+	In this example, the utility \(v_1\) brings to all the agents is 
+	$$\langle z_1, s_1+s_2+s_3+s_4+s_5\rangle = (-0.8)\cdot (-0.8-0.1+0.1+0.2+1) = -0.32.$$
+	Similarly, we have \(v_2, v_3, v_4\) and \(v_5\) bring utility \(0.4, 0.04, -0.04,\) and \(0.08\) to all the agents respectively. 
+	Then we have the winning probability \(p_1\) of agent \(v_1\) is $$\frac{e^{-0.32}}{e^{-0.32}+e^{0.4}+e^{0.04}+e^{-0.04}+e^{0.08}} = 0.1369.$$
+	Similarly, we derive \(p_2 = 0.2813, p_3 = 0.1963, p_4 = 0.1812\), and \(p_5 = 0.2043\). So, the reward \(r_1\) of agent \(v_1\) is 
+	$$\begin{eqnarray*}
+	r_1 &=& p_1\cdot \langle z_1, s_1\rangle + p_2\cdot \langle z_2, s_1\rangle + p_3\cdot \langle z_3, s_1\rangle + 
+	p_4\cdot \langle z_4, s_1\rangle + p_4\cdot \langle z_5, s_1\rangle\\
+	&=& 0.1369\cdot (-0.8\cdot (-0.8)) + 0.2813\cdot (1\cdot (-0.8))+ 0.1963\cdot (0.1\cdot (-0.8)) + 0.1812\cdot ((-0.1)\cdot (-0.8)) \\
+	& & + 0.2043\cdot (0.2\cdot (-0.8))\\ 
+	&=& -0.1713.
+	\end{eqnarray*}$$ 
+	Hence, the reward for agents \(v_2, v_3, v_4\) and \(v_5\) can be similarly obtained.
+	</p>
   <!-- Group box 2 -->
     <h3>Group Joining: Myopic Best-Responses</h3>
     <p id="best_response" class="inline-math">
@@ -1295,10 +1310,10 @@
 		Drag \(v_5\) (agent No. 5) to see the changes of the winning probabilities and reward of 
 		each agent. Moreover, try to drag \(v_5\) to be near any agent and then you will find 
 		a circled \(\oplus\) operation above the agent. Click it you can see the two agents are grouped 
-		with a new group opinion and updated winning probabilities and rewards of all groups. 
-		Click the button &ldquo;Myopic Best Responses for All&ldquo; you will see the final outcome 
-		after iterations of parallel group joining actions. By clicking the button &ldquo;RESET&ldquo; you can 
-		restore the state to the very beginning.
+		with a new group opinion and updated winning probabilities and rewards of all groups. Drag \(v_5\) to 
+		other positions can dismiss this group. To Click the button &ldquo;Myopic Best Responses for All&ldquo; 
+		you will see the final outcome after iterations of parallel group joining actions. By clicking the 
+		button &ldquo;RESET&ldquo; you can restore the state to the very beginning.
 	  </div>
         <!--<div style="height: 42vh;"> -->
           <div class="d-flex w-100 pt-4">
@@ -1395,20 +1410,22 @@
               </div>
             </div>
           </div>
-          <div class="d-flex px-3">
-            <Card class="d-flex w-100 bg-grey rounded py-3 px-4 h5 lh-lg">
-              <i class="fa-solid fa-lightbulb text-secondary my-auto h2"></i>
-              <div class="ps-4 lh-md">
-                No one wants to deviate from his / her current group to the other group since the expected gain cannot be the better-off. 
-                Here comes a pure-strategy Nash equilibrium of the &ldquo;game&rdquo;.
-              </div>
-            </Card>
-          </div>
+          
 		  <div class="caption"><b>Figure 4:</b> Myopic best-responses and manual join illustration. </div>
         <!--</div> -->
       </div>
     </div>
-
+	<p id="group_explanation">
+	Suppose we want \(v_5\) to join \(v_2\) as a new group, say \(G_{2,5}\). Then we have four groups  
+	\(G_1 = \{v_1\}, G_{2,5} = \{v_2, v_5\}, G_3 = \{v_3\}, G_4 = \{v_4\}\) with group opinions 
+	\(g_1 = -0.8, g_{2,5} = (0.2+1.0)/2 = 0.6, g_3 = 0.1\) and \(g_4 = -0.1\) respectively. 
+	Using the same approach for calculating the winning probabilities of these groups, 
+	we can derive the rewards for all the agents. 
+	</p>
+	<figure class="text-center">
+		<img src="img/group_merging.png" alt="group_merging" width="562" height="485">
+		<figcaption><strong>Figure 5:</strong> Join \(v_5\) with \(v_2\) to form a group.</figcaption>
+	</figure>
     <!-- Group box 3 -->
     <p id="best_response">
       In the figure below we can check that the final stable state is a pure-strategy Nash equilibrium. That is, 
@@ -1520,7 +1537,16 @@
               </div>
             </Card>
           </div> -->
-		  <div class="caption"><b>Figure 5:</b>Illustration of a pure-strategy Nash equilibrium. </div>
+		  <div class="d-flex px-3">
+            <Card class="d-flex w-100 bg-grey rounded py-3 px-4 h5 lh-lg">
+              <i class="fa-solid fa-lightbulb text-secondary my-auto h2"></i>
+              <div class="ps-4 lh-md">
+                No one wants to deviate from his / her current group to the other group since the expected gain cannot be the better-off. 
+                Here comes a pure-strategy Nash equilibrium of the &ldquo;game&rdquo;.
+              </div>
+            </Card>
+          </div>
+		  <div class="caption"><b>Figure 6:</b>Illustration of a pure-strategy Nash equilibrium. </div>
         <!--</div> -->
       </div>
     </div>
@@ -1556,7 +1582,7 @@
 	  
 	  <figure class="text-center">
 		<img src="img/gradient_ascent_algo.svg" alt="AlgorithmGA" width="506" height="436">
-		<figcaption><strong>Figure 6:</strong> Pseudo-code of the Gradient Ascent Algorithm.</figcaption>
+		<figcaption><strong>Figure 7:</strong> Pseudo-code of the Gradient Ascent Algorithm.</figcaption>
 	  </figure>
 	  
 	  <p class="inline-math">
@@ -1687,7 +1713,7 @@
                 </Row>
               </div>
             </div>
-			<div class="caption"><b>Figure 7:</b>The dynamics of opinion update by online gradient ascent for ungrouped agents. 
+			<div class="caption"><b>Figure 8:</b>The dynamics of opinion update by online gradient ascent for ungrouped agents. 
 			The left-hand side considered regularization, while the right-hand side did not. With a slight abuse of notation, 
 			the x-dimension and y-dimension in the figures denote the first dimension of opinions and beliefs respectively.</div>
 		</div>
@@ -1797,9 +1823,9 @@
                 </Row>
               </div>
             </div>
-			<div class="caption"><b>Figure 8:</b>The dynamics of opinion update by online gradient ascent for grouped agents. 
+			<div class="caption"><b>Figure 9:</b>The dynamics of opinion update by online gradient ascent for grouped agents. 
 			The left-hand side considered regularization, while the right-hand side did not. With a slight abuse of notation, 
-			the x-dimension and y-dimension in the figures denote the first dimension of opinions and beliefs respectively.</div>
+			the \(x\)-dimension and \(y\)-dimension in the figures denote the first dimension of opinions and beliefs respectively.</div>
 		</div>
 		</div>
 		
@@ -1935,7 +1961,7 @@
                 </Row>
               </div>
             </div>
-			<div class="caption"><b>Figure 9:</b>The dynamics of the reward function images and the opinion updates by multi-agent 
+			<div class="caption"><b>Figure 10:</b>The dynamics of the reward function images and the opinion updates by multi-agent 
 			online gradient ascent for \(v_4\) and \(v_9\) in two different groups. The reward functions of the two agents can be 
 			either with or without the regularization. 
 			</div>
@@ -1944,7 +1970,7 @@
 		<p>
 		As we can observe from the above figures, without the regularization, the agent is easy to have its opinion eventually to 
 		fall into the one leading to a local maximum reward. While in the case that regularization is considered, the agent somehow 
-		will eventually have its opinion which results in the reward closed to global maximum.   
+		will eventually have its opinion which results in the reward close to global maximum.   
 		</p>
 	</section>
 </div>
