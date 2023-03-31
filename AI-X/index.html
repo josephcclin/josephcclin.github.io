@@ -1285,8 +1285,8 @@
 	$$\begin{eqnarray*}
 	r_1 &=& p_1\cdot \langle z_1, s_1\rangle + p_2\cdot \langle z_2, s_1\rangle + p_3\cdot \langle z_3, s_1\rangle + 
 	p_4\cdot \langle z_4, s_1\rangle + p_4\cdot \langle z_5, s_1\rangle\\
-	&=& 0.1369\cdot (-0.8\cdot (-0.8)) + 0.2813\cdot (1\cdot (-0.8))+ 0.1963\cdot (0.1\cdot (-0.8)) + 0.1812\cdot ((-0.1)\cdot (-0.8)) \\
-	& & + 0.2043\cdot (0.2\cdot (-0.8))\\ 
+	&=& 0.1369\cdot (-0.8\cdot (-0.8)) + 0.2813\cdot (1\cdot (-0.8))+ 0.1963\cdot (0.1\cdot (-0.8)) \\
+	& & + 0.1812\cdot ((-0.1)\cdot (-0.8)) + 0.2043\cdot (0.2\cdot (-0.8))\\ 
 	&=& -0.1713.
 	\end{eqnarray*}$$ 
 	Hence, the reward for agents \(v_2, v_3, v_4\) and \(v_5\) can be similarly obtained.
@@ -1546,7 +1546,7 @@
               </div>
             </Card>
           </div>
-		  <div class="caption"><b>Figure 6:</b>Illustration of a pure-strategy Nash equilibrium. </div>
+		  <div class="caption"><b>Figure 6:</b>Illustration of a pure-strategy Nash equilibrium.</div>
         <!--</div> -->
       </div>
     </div>
@@ -1563,11 +1563,29 @@
 	  <p class="inline-math"> 
 	  In this section, we consider the situation that each agent tries to maximize its own reward by 
 	  &ldquo;changing its opinion&rdquo; without deviating from the group that it belongs to. 
-	  We represent the opinions and beliefs as well as the dynamics of opinion changes in 
-	  \(\mathcal{K}:=[-1, 1]^2\subset\mathbb{R}^2\) to better illustrate the idea. The 2-norm constraint that 
-	  \(\|z_i\|_2, \|s_i\|_2\leq 1\) correlates both the dimensions and projection of the opinion is 
-	  required if the constraint is not satisfied. 
+	  Agents' opinions are represented as points in 
+	  \(\mathcal{K} = \{x\in [-1, 1]^2: \|x\|_2\leq 1\}\subset\mathbb{R}^2\). Consider the following 
+	  figure as an illustrating example. We have 10 agents with their opinions which are initially 
+	  their beliefs: $$
+	  \begin{align*}
+	  &z_1 = (0.3757, -0.8405),  & z_2 = (0.7536, -0.5736),\\
+	  &z_3 = (0.8314, -0.5334),  & z_4 = (-0.4106, -0.1695),\\
+	  &z_5 = (-0.4207, -0.4805), & z_6 = (-0.4853, -0.0533),\\
+	  &z_7 = (-0.6936, -0.4227), & z_8 = (-0.4561, -0.1088),\\
+	  &z_9 = (-0.6769, -0.2457), & z_{10} = (-0.6488, -0.4109).
+	  \end{align*}
+	  $$
+	  Two scenarios will be considered: either the 10 agents are regarded as 10 different groups, 
+	  or they are grouped as \(\{\textcolor{red}{v_1,v_2,v_3}\}\), \(\{\textcolor{DarkGreen}{v_4,v_5,v_6}\}\), 
+	  \(\{\textcolor{blue}{v_7,v_8}\}\), and \(\{\textcolor{Goldenrod}{v_9, v_{10}}\}\).
+	  The 2-norm constraint that \(\|z_i\|_2, \|s_i\|_2\leq 1\) correlates both the dimensions and 
+	  projection of the opinion is required if the constraint is not satisfied. 
 	  </p>
+	  
+	  <figure class="text-center">
+		<img src="img/2D_representation.png" alt="2D_representatino" width="590" height="509">
+		<figcaption><strong>Figure 7:</strong> 2D Representation of Agents' Opinions.</figcaption>
+	  </figure>
 	  
 	  <p class="inline-math">
 	  Below we introduce the online gradient ascent algorithm. The pseudo-code is given in the figure below. Suppose that 
@@ -1582,7 +1600,7 @@
 	  
 	  <figure class="text-center">
 		<img src="img/gradient_ascent_algo.svg" alt="AlgorithmGA" width="506" height="436">
-		<figcaption><strong>Figure 7:</strong> Pseudo-code of the Gradient Ascent Algorithm.</figcaption>
+		<figcaption><strong>Figure 8:</strong> Pseudo-code of the Multi-Agent Online Gradient Ascent Algorithm.</figcaption>
 	  </figure>
 	  
 	  <p class="inline-math">
@@ -1615,7 +1633,7 @@
 
 		<h3>Initially Ungrouped Agents - Reward with and without Regularization</h3>
         <p id="gaa_no_regularizers">
-          Suppose that we have 10 agents regarded as 10 individual groups in 10 different colors. 
+          In this paragraph we consider the 10 agents regarded as 10 individual groups in 10 different colors. 
 		 Let us compare the convergence results of multi-agent gradient ascent with and without regularization.
         </p>
 		
@@ -1627,7 +1645,7 @@
 		dragged, and resumed mannually. The play speed can be adjusted, too. 
 		</div>
 		<!-- VIDEO box -->
-            <h4 class="ps-3 pt-5">Initially 10 agents are regarded as 10 groups</h4>
+            <h4 class="ps-3 pt-5">Initially 10 agents regarded as 10 groups</h4>
             <div class="Group-box pb-5">
               <div class="p-3" style="height:62%">
                 <Row class="d-flex">
@@ -1713,7 +1731,7 @@
                 </Row>
               </div>
             </div>
-			<div class="caption"><b>Figure 8:</b>The dynamics of opinion update by online gradient ascent for ungrouped agents. 
+			<div class="caption"><b>Figure 9:</b>The dynamics of opinion update by online gradient ascent for ungrouped agents. 
 			The left-hand side considered regularization, while the right-hand side did not. With a slight abuse of notation, 
 			the \(x\)-dimension and \(y\)-dimension in the figures denote the first dimension of opinions and beliefs respectively.</div>
 		</div>
@@ -1726,7 +1744,7 @@
 		</p>
 		<h3>Initially Grouped Agents - Reward with and without Regularization</h3>
         <p id="gaa_no_regularizers">
-         Suppose that we have 10 agents regarded as 4 groups in 4 different colors. 
+         In this paragraph, we consider the case that the 10 agents are regarded as 4 groups in 4 different colors. 
 		 Let us compare the convergence results of multi-agent gradient ascent with and without regularization.
         </p>
 		
@@ -1738,7 +1756,7 @@
 		dragged, and resumed mannually. The play speed can be adjusted, too. 
 		</div>
 		<!-- VIDEO box -->
-            <h4 class="ps-3 pt-5">Initially 10 agents are regarded as 4 groups</h4>
+            <h4 class="ps-3 pt-5">Initially 10 agents regarded as 4 groups</h4>
             <div class="Group-box pb-5">
               <div class="p-3" style="height:62%">
                 <Row class="d-flex">
@@ -1823,7 +1841,7 @@
                 </Row>
               </div>
             </div>
-			<div class="caption"><b>Figure 9:</b>The dynamics of opinion update by online gradient ascent for grouped agents. 
+			<div class="caption"><b>Figure 10:</b>The dynamics of opinion update by online gradient ascent for grouped agents. 
 			The left-hand side considered regularization, while the right-hand side did not. With a slight abuse of notation, 
 			the \(x\)-dimension and \(y\)-dimension in the figures denote the first dimension of opinions and beliefs respectively.</div>
 		</div>
@@ -1859,10 +1877,10 @@
 		 Here we consider the previous example of 10 agents in 4 groups and focus on the two agents 
 		 \(v_4\) and \(v_9\), which are in the green group and yellow group, respectively. From the previous 
 		 paragraph, we have already observed the peculiar behavior of agent \(v_9\) and \(v_{10}\) in the 
-		 yellow group: they move downward at the beginning but move back to the positions close to their 
+		 yellow group: they move downward at the beginning but fall back to the positions close to their 
 		 beliefs. In addition to the dynamics of their opinion updates, let us look into the changes of their 
-		 reward function images as well. We can find out the fact that the reward function images with or without
-		 the regularization term could be quite different. 
+		 reward function images as well. By the following interactive illustration, we reveal the fact 
+		 that the reward function images with or without regularization are quite different. 
         </p>
 		
 		
@@ -1961,7 +1979,7 @@
                 </Row>
               </div>
             </div>
-			<div class="caption"><b>Figure 10:</b>The dynamics of the reward function images and the opinion updates by multi-agent 
+			<div class="caption"><b>Figure 11:</b>The dynamics of the reward function images and the opinion updates by multi-agent 
 			online gradient ascent for \(v_4\) and \(v_9\) in two different groups. The reward functions of the two agents can be 
 			either with or without the regularization. 
 			</div>
@@ -2034,9 +2052,9 @@
 
 	  <h3>Acknowledgment</h3>
       <p id="Acknowledgment" class="inline-math">
-	  This work is supported by the Taiwan Ministry of Science and Technology under grant no. NSTC 110-2222-E-032-002-MY2 
-	  and NSTC 111-2410-H-A49-022-MY2. The authors also thank Victorien Yen for helping implement the Javascript codes in the 
-	  immersive article. 
+	  This work is supported by the Taiwan Ministry of Science and Technology under grant no. NSTC 110-2222-E-032-002-MY2, 
+	  NSTC 111-2221-E-005-047- and NSTC 111-2410-H-A49-022-MY2. The authors also thank Victorien Yen for helping implement 
+	  the Javascript codes in the immersive article. 
       </p>
 	  </section>
 </div>
