@@ -24,7 +24,7 @@ learn_rate = torch.tensor(0.1)
 steps = 100
 time = list(np.arange(steps))
 label = 'gradient'
-isRegularized = False
+isRegularized = True
 if (isRegularized == True):
     label += '_regularized'
 
@@ -73,75 +73,6 @@ g2 = z6+z7#/2
 g3 = z8+z9#/2
 
 
-"""
-u0 = torch.tensor([0.0])
-u1 = torch.tensor([0.0])
-u2 = torch.tensor([0.0])
-u3 = torch.tensor([0.0])
-u4 = torch.tensor([0.0])
-u5 = torch.tensor([0.0])
-u6 = torch.tensor([0.0])
-u7 = torch.tensor([0.0])
-u8 = torch.tensor([0.0])
-u9 = torch.tensor([0.0])
-
-
-for v in s_voters:
-    u0 += torch.inner(z0, v)
-    u1 += torch.inner(z1, v)
-    u2 += torch.inner(z2, v)
-    u3 += torch.inner(z3, v)
-    u4 += torch.inner(z4, v)
-    u5 += torch.inner(z5, v)
-    u6 += torch.inner(z6, v)
-    u7 += torch.inner(z7, v)
-    u8 += torch.inner(z8, v)
-    u9 += torch.inner(z9, v)
-    
-exp_u_all = torch.exp(torch.tensor([u0,u1,u2,u3,u4,u5,u6,u7,u8,u9])).sum()    
-
-p0 = torch.exp(u0)/exp_u_all
-p1 = torch.exp(u1)/exp_u_all
-p2 = torch.exp(u2)/exp_u_all
-p3 = torch.exp(u3)/exp_u_all
-p4 = torch.exp(u4)/exp_u_all
-p5 = torch.exp(u5)/exp_u_all
-p6 = torch.exp(u6)/exp_u_all
-p7 = torch.exp(u7)/exp_u_all
-p8 = torch.exp(u8)/exp_u_all
-p9 = torch.exp(u9)/exp_u_all
-
-
-r0 = p0*torch.inner(z0,s0)+p1*torch.inner(z1,s0)+p2*torch.inner(z2,s0)+p3*torch.inner(z3,s0)+p4*torch.inner(z4,s0)+p5*torch.inner(z5,s0)+p6*torch.inner(z6,s0)+p7*torch.inner(z7,s0)+p8*torch.inner(z8,s0)+p9*torch.inner(z9,s0)
-r1 = p0*torch.inner(z0,s1)+p1*torch.inner(z1,s1)+p2*torch.inner(z2,s1)+p3*torch.inner(z3,s1)+p4*torch.inner(z4,s1)+p5*torch.inner(z5,s1)+p6*torch.inner(z6,s1)+p7*torch.inner(z7,s1)+p8*torch.inner(z8,s1)+p9*torch.inner(z9,s1)
-r2 = p0*torch.inner(z0,s2)+p1*torch.inner(z1,s2)+p2*torch.inner(z2,s2)+p3*torch.inner(z3,s2)+p4*torch.inner(z4,s2)+p5*torch.inner(z5,s2)+p6*torch.inner(z6,s2)+p7*torch.inner(z7,s2)+p8*torch.inner(z8,s2)+p9*torch.inner(z9,s2)
-r3 = p0*torch.inner(z0,s3)+p1*torch.inner(z1,s3)+p2*torch.inner(z2,s3)+p3*torch.inner(z3,s3)+p4*torch.inner(z4,s3)+p5*torch.inner(z5,s3)+p6*torch.inner(z6,s3)+p7*torch.inner(z7,s3)+p8*torch.inner(z8,s3)+p9*torch.inner(z9,s3)
-r4 = p0*torch.inner(z0,s4)+p1*torch.inner(z1,s4)+p2*torch.inner(z2,s4)+p3*torch.inner(z3,s4)+p4*torch.inner(z4,s4)+p5*torch.inner(z5,s4)+p6*torch.inner(z6,s4)+p7*torch.inner(z7,s4)+p8*torch.inner(z8,s4)+p9*torch.inner(z9,s4)
-r5 = p0*torch.inner(z0,s5)+p1*torch.inner(z1,s5)+p2*torch.inner(z2,s5)+p3*torch.inner(z3,s5)+p4*torch.inner(z4,s5)+p5*torch.inner(z5,s5)+p6*torch.inner(z6,s5)+p7*torch.inner(z7,s5)+p8*torch.inner(z8,s5)+p9*torch.inner(z9,s5)
-r6 = p0*torch.inner(z0,s6)+p1*torch.inner(z1,s6)+p2*torch.inner(z2,s6)+p3*torch.inner(z3,s6)+p4*torch.inner(z4,s6)+p5*torch.inner(z5,s6)+p6*torch.inner(z6,s6)+p7*torch.inner(z7,s6)+p8*torch.inner(z8,s6)+p9*torch.inner(z9,s6)
-r7 = p0*torch.inner(z0,s7)+p1*torch.inner(z1,s7)+p2*torch.inner(z2,s7)+p3*torch.inner(z3,s7)+p4*torch.inner(z4,s7)+p5*torch.inner(z5,s7)+p6*torch.inner(z6,s7)+p7*torch.inner(z7,s7)+p8*torch.inner(z8,s7)+p9*torch.inner(z9,s7)
-r8 = p0*torch.inner(z0,s8)+p1*torch.inner(z1,s8)+p2*torch.inner(z2,s8)+p3*torch.inner(z3,s8)+p4*torch.inner(z4,s8)+p5*torch.inner(z5,s8)+p6*torch.inner(z6,s8)+p7*torch.inner(z7,s8)+p8*torch.inner(z8,s8)+p9*torch.inner(z9,s8)
-r9 = p0*torch.inner(z0,s9)+p1*torch.inner(z1,s9)+p2*torch.inner(z2,s9)+p3*torch.inner(z3,s9)+p4*torch.inner(z4,s9)+p5*torch.inner(z5,s9)+p6*torch.inner(z6,s9)+p7*torch.inner(z7,s9)+p8*torch.inner(z8,s9)+p9*torch.inner(z9,s9)
-
-
-r0 = r0-torch.pow((z0-s0).norm(), 2)
-r1 = r1-torch.pow((z1-s1).norm(), 2)
-r2 = r2-torch.pow((z2-s2).norm(), 2)
-r3 = r3-torch.pow((z3-s3).norm(), 2)
-r4 = r4-torch.pow((z4-s4).norm(), 2)
-r5 = r5-torch.pow((z5-s5).norm(), 2)
-r6 = r6-torch.pow((z6-s6).norm(), 2)
-r7 = r7-torch.pow((z7-s7).norm(), 2)
-r8 = r8-torch.pow((z8-s8).norm(), 2)
-r9 = r9-torch.pow((z9-s9).norm(), 2)
-"""
-
-'''
-g0 = z0+z1+z2#/3
-g1 = z3+z4+z5#/3
-g2 = z6+z7#/2
-g3 = z8+z9#/2
-'''
 
 def reward_z8(z8X, z8Y, z9, s8, s9, g0, g1, g2, s_voters, isRegularized):
     result = []
