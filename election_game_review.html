@@ -13,7 +13,8 @@
 <span style="font-size: 18px">		
 <ol class="list1">
 <li>The phrasing of some claims is not clear; one needs to then read the proof to get the meaning of the claim.</li>
-=>
+<p style="color:green;">=> TBD.
+</p>
 <li>Discuss games around elections:
 <ul class="list2">
 <li>Ding and Lin, On Computing Optimal Strategies in Open List Proportional Representation: the Two Parties Case, AAAI-14</li>
@@ -21,15 +22,21 @@
 <li>Harrenstein et al., A Hotelling-Downs Framework for Party Nominees, AAMAS-21</li>
 <li>Sabato et al., Real candidacy games: A new model for strategic candidacy, AAMAS-17</li>
 </ul>
-</li>		
+</li>
+<p style="color:green;">=> TBD.
+</p>
 <li>Discuss the area of <b>primaries</b> (which is the process of selecting party nominees):</li>
 <ul class="list2">
 <li>Borodin et al., Primarily about Primaries, AAAI-19</li>
 </ul>
+<p style="color:green;">=> TBD.
+</p>
 <li>Discuss the topic of nominating an election winner:</li>
 <ul class="list2">
 <li>Faliszewski et al., How Hard Is It for a Party to Nominate an Election Winner?, IJCAI-16</li>		
 </ul>
+<p style="color:green;">=> TBD.
+</p>
 <li>It seems to me that parties rather ignore any utility contribution that their supporters get from other winning parties. 
 Anyway, if the party loses they are not going to care about the utility of their candidate.  Otherwise, if the party wins, 
 the party wants have their own electorate as happy as possible. Assuming the proposed payoff, it seems to me that it might 
@@ -40,19 +47,75 @@ nomination. So, it seems a more natural payoff would be simply the probability t
 the utility of the party's nominee for the party's supporters. Summarizing, I am not convinced by this choice of function 
 (maybe I am missing something obvious?).
 </li>
-=> We regard a party, which consists of its supporters, as a collective concept. A candidate will be nominated by the supporters of the party to compete in an election campaign. 
-Supporters of a party can benefit not only from the candidate nominated for them but also from that from the competing party. 
-<li> </li>		
-<li> </li>		
-<li> </li>		
-<li> </li>		
-<li> </li>		
-<li> </li>	
-<li> </li>		
-<li> </li>		
-<li> </li>		
-<li> </li>		
-<li> </li>	
+<p style="color:red;">=> We regard a party, which consists of its supporters, as a collective concept. A candidate will be 
+nominated by the supporters of the party to compete in an election campaign. Supporters of a party can benefit not only from 
+the candidate nominated for them but also from that from the competing party. Since the winning candidate serves for the whole 
+society, that is, for all the voters, not only for its supporters, we consider the payoff of the party as the expected utility 
+the supporters can get to well formulate the payoff whenever the party wins or loses. 
+</p>
+<li>Why are egoistic games &ldquo;natural and reasonable&rdquo; in the real world? I am not so sure that it is natural that 
+even more extremist candidate from the party a voter supports is indeed preferred to all representatives of other parties. 
+To me it only works in quite polarized party settings and might not be true when there are many parties. Hence, this 
+assumption seem to already favor the thesis of the paper that the paper's results support the Duverger's law.
+</li>		
+<p style="color:red;">=>
+As a party is a collective concept which consists of its supporters, a candidate of the party is expected to be more favorable 
+than the one of the competing party for the supporters. Although it seems to be natural, it is not always the case in real world. 
+For example, a smaller party that has fewer supporters and less resource is difficult to compete with a larger party, so a 
+candidate of the larger party is possibly more beneficial to the supporters of the smaller party than that of a smaller party	.
+</p>
+<li>why are the parameters \(d\) and \(k\) believed to be a good parameterization choice?</li>		
+<p style="color:green;">=> TBD.
+</p>
+<li>It is a pity that the difference between the softmax and the natural function is not discussed on a more intuitive level. 
+Why are theses two good candidates from the perspective of the model? What are the features/cases that differentiate them? 
+Do they lead to a very different outcome? Which one is preferred when? 
+</li>
+<p style="color:green;">=> TBD.
+</p>		
+<li>It is unclear how the model of the preferences (that is the cardinal utilities) relates to other standard models in voting theory. For example, the Spatial Theory of Voting is mentioned. Sometimes, in this theory the space only serves as a basis for ordinal or approval preferences. Can one translate the model from this paper to such elections? Or can one use another models of preferences to simulate the considered model? It is a relevant question, since in practice one should not expect voters in political elections to give cardinal utilities to the parties, even less to separate candidates.
+</li>
+<p style="color:green;">=> TBD.
+</p>	
+<li>Lemma 1's claim is convoluted. I cannot understand what the reasoning behind the phrase "except s_i". </li>
+<p style="color:green;">=> TBD.
+</p>
+<li>"This somehow provides a possible hint" -- this sentence has no persuasive power since it is softened by "somehow" and "possible". Is this a hint or not?  A short comment why one should believe that this is a hint should be in the text.
+</li>
+<p style="color:green;">=> TBD.
+</p>
+<li>Tables are hard to read since they are not aligned. It would also be better to have more description in Table 2, like the one in Table 1, such that the reader can follow the computations and the lack of PNE.
+</li>
+<p style="color:green;">=> TBD.
+</p>		
+<li>pure strategies are realistic in practical world” --> This is not a correct point in my opinion, since, even though a pure strategy is realized, the players in most game-theoretic settings are interested in their expected value which is induced by randomizing over their pure strategies. That is why we are interested in (mixed) Nash equilibria in general.
+</li>
+<p style="color:green;">=> TBD.
+</p>		
+<li>P2, Par2, L17-18: “summarizes infinitely many possibilities how a candidate can benefit the voters.” --> I am not sure about the meaning of this. I suggest to rephrase or remove.
+</li>
+<p style="color:green;">=> TBD.
+</p>		
+<li>P5, Par1, L10: “to break symmetry” --> I do not understand the point about “symmetry”. You could replace this phrase with “the parties are sorted according to their strongest candidates” (due to the latter sequence of inequalities)
+</li>
+<p style="color:green;">=> TBD.
+</p>		
+<li>P5, Par3, softmax function: The exponent of the numerator seems to be missing a subscript “i” in x. I believe the exponent should have u(x_{i, s_{i}}) instead of u(x_{i, s})
+</li>
+<p style="color:green;">=> I guess the reviewer was confused. Our statements should be correct, yet we might need to clarify the notations.
+</p>		
+<li>P12, Sec6, Par1, L4: “is in proportional” --> I guess here you want to say “proportional”. However, your Theorem 4 shows an upper bound on PoA, but no similar lower bound. If you also had shown a lower bound of, say, m/2 then PoA would indeed be proportional to m, but for all we know, the PoA could be 1.
+</li>
+<p style="color:green;">=> TBD.
+</p>
+<li>the first few lines on page 3 are unclear.
+</li>
+<p style="color:green;">=> TBD.
+</p>
+<li> The assumption that the candidate with higher social utility has a greater chance of winning requires more justification.
+</li>
+<p style="color:green;">=> TBD.
+</p>
 </ol>		
 </span>
 </div>
