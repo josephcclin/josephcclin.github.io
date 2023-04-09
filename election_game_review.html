@@ -70,7 +70,13 @@ For example, a smaller party that has fewer supporters and less resource is diff
 candidate of the larger party is possibly more beneficial to the supporters of the smaller party than that of a smaller party.
 </p>
 <li>Why are the parameters \(d\) and \(k\) believed to be a good parameterization choice?</li>		
-<p style="color:red;">=> TBD.
+<p style="color:green;">=> A remark is added after the algorithm and the theorem. &ldquo;As candidates in each party are sorted 
+by the utility for their own party, the nominating depth $d$ equals the maximum possible number of candidates that we suffice 
+to consider. On the other hand, a party is chaotic if it does not have a candidate as a dominant strategy, and hence a 
+``searching" for the state involving chaotic parties is required. If the number $k$ of chaotic parties is small, it leads to 
+limited exponential explosion. In practical, a party usually has very limited number of potential candidates to choose for an 
+election campaign, so we believe the two parameters are small and hence the fixed-parameter algorithm is efficient in 
+practical.&rdquo;
 </p>
 <li>It is a pity that the difference between the softmax and the natural function is not discussed on a more intuitive level. 
 Why are theses two good candidates from the perspective of the model? What are the features/cases that differentiate them? 
