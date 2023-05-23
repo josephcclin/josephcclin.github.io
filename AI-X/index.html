@@ -12,7 +12,7 @@
   </title>
 
   <!-- Stylesheet for IEEE Xplore immersive article -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
   <link rel="stylesheet" href="fonts/stylesheet.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" type="text/css" href="css/all.min.css">
@@ -26,155 +26,155 @@
   <script id="MathJax-script" defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
   <script defer src="fontawesome.min.js"></script>
   <script defer src="all.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> -->
   <script type="text/javascript">
     const tipWidth = 160
     const replace = (id, name) => d3.select(id).attr('src', `./images/${name}.gif`)
     const replaceVideo = (id, name) => d3.select(id).attr('src', `./img/${name}.mp4`)
     const data = {
-          "1": [0.2883, 0.2881, 0.2877, 0.2871, 0.2864, 0.2856, 0.2846, 0.2835,
-       		0.2822, 0.2809, 0.2794, 0.2778, 0.276 , 0.2742, 0.2723, 0.2703,
-	       	0.2681, 0.2659, 0.2637, 0.2613, 0.2588, 0.2563, 0.2538, 0.2511,
-       		0.2484, 0.2457, 0.2429, 0.24  , 0.2371, 0.2342, 0.2312, 0.2282,
-       		0.2251, 0.2221, 0.219 , 0.2159, 0.2127, 0.2096, 0.2064, 0.2032,
-       		0.2   , 0.1968, 0.1936, 0.1904, 0.1872, 0.1839, 0.1807, 0.1775,
-       		0.1743, 0.1711, 0.1679, 0.1648, 0.1616, 0.1585, 0.1553, 0.1522,
-       		0.1491, 0.146 , 0.143 , 0.1399, 0.1369, 0.1339, 0.131 , 0.128 ,
-       		0.1251, 0.1222, 0.1194, 0.1166, 0.1138, 0.111 , 0.1083, 0.1056,
-       		0.1029, 0.1002, 0.0976, 0.0951, 0.0925, 0.09  , 0.0875, 0.0851,
-       		0.0827, 0.0803, 0.078 , 0.0757, 0.0735, 0.0712, 0.0691, 0.0669,
-       		0.0648, 0.0627, 0.0607, 0.0587, 0.0567, 0.0548, 0.0529, 0.0511,
-       		0.0493, 0.0475, 0.0457, 0.044 , 0.0424],
-          "2": [0.0683, 0.0708, 0.0733, 0.0758, 0.0784, 0.081 , 0.0837, 0.0864,
-        	0.0892, 0.092 , 0.0949, 0.0978, 0.1007, 0.1037, 0.1068, 0.1099,
-	        0.113 , 0.1162, 0.1194, 0.1227, 0.126 , 0.1293, 0.1327, 0.1362,
-        	0.1396, 0.1432, 0.1467, 0.1503, 0.1539, 0.1576, 0.1613, 0.165 ,
-	        0.1688, 0.1726, 0.1764, 0.1803, 0.1842, 0.1881, 0.192 , 0.196 ,
-        	0.2   , 0.204 , 0.208 , 0.2121, 0.2161, 0.2202, 0.2243, 0.2284,
-	        0.2325, 0.2366, 0.2407, 0.2448, 0.2489, 0.253 , 0.2571, 0.2612,
-        	0.2653, 0.2693, 0.2733, 0.2773, 0.2813, 0.2853, 0.2892, 0.2931,
-	        0.2969, 0.3007, 0.3044, 0.3081, 0.3117, 0.3153, 0.3188, 0.3222,
-       	 	0.3256, 0.3288, 0.332 , 0.3351, 0.3381, 0.341 , 0.3438, 0.3465,
-	        0.3491, 0.3515, 0.3539, 0.356 , 0.3581, 0.36  , 0.3618, 0.3634,
-	        0.3648, 0.3661, 0.3672, 0.3681, 0.3688, 0.3694, 0.3697, 0.3699,
-	        0.3698, 0.3695, 0.369 , 0.3683, 0.3674],
-          "3": [0.1403, 0.1428, 0.1452, 0.1475, 0.1498, 0.1521, 0.1543, 0.1565,
-	        0.1587, 0.1608, 0.1628, 0.1648, 0.1668, 0.1687, 0.1705, 0.1723,
-	        0.1741, 0.1758, 0.1774, 0.179 , 0.1806, 0.1821, 0.1835, 0.1849,
-        	0.1863, 0.1875, 0.1888, 0.1899, 0.191 , 0.1921, 0.1931, 0.1941,
-	        0.1949, 0.1958, 0.1966, 0.1973, 0.1979, 0.1985, 0.1991, 0.1996,
-        	0.2   , 0.2004, 0.2007, 0.2009, 0.2011, 0.2013, 0.2013, 0.2014,
-	        0.2013, 0.2012, 0.2011, 0.2008, 0.2006, 0.2002, 0.1998, 0.1994,
-        	0.1989, 0.1983, 0.1977, 0.197 , 0.1963, 0.1955, 0.1946, 0.1937,
-	        0.1927, 0.1917, 0.1906, 0.1895, 0.1883, 0.1871, 0.1858, 0.1844,
-        	0.183 , 0.1816, 0.18  , 0.1785, 0.1769, 0.1752, 0.1735, 0.1717,
-	        0.1699, 0.1681, 0.1662, 0.1642, 0.1622, 0.1602, 0.1581, 0.1559,
-        	0.1538, 0.1515, 0.1493, 0.147 , 0.1447, 0.1423, 0.1399, 0.1374,
-	        0.135 , 0.1325, 0.1299, 0.1273, 0.1248],
-          "4": [0.1647, 0.1669, 0.169 , 0.1711, 0.173 , 0.175 , 0.1768, 0.1786,
-	       	0.1803, 0.182 , 0.1836, 0.1851, 0.1865, 0.1879, 0.1892, 0.1905,
-       		0.1916, 0.1927, 0.1938, 0.1947, 0.1956, 0.1965, 0.1972, 0.1979,
-	       	0.1986, 0.1991, 0.1996, 0.2001, 0.2004, 0.2007, 0.201 , 0.2012,
-		0.2013, 0.2013, 0.2013, 0.2013, 0.2011, 0.2009, 0.2007, 0.2004,
-       		0.2   , 0.1996, 0.1991, 0.1985, 0.1979, 0.1973, 0.1966, 0.1958,
-       		0.195 , 0.1941, 0.1932, 0.1922, 0.1912, 0.1901, 0.189 , 0.1878,
-	        0.1866, 0.1853, 0.184 , 0.1826, 0.1812, 0.1797, 0.1782, 0.1767,
-	        0.1751, 0.1735, 0.1718, 0.1701, 0.1684, 0.1666, 0.1648, 0.1629,
-	        0.161 , 0.1591, 0.1572, 0.1552, 0.1532, 0.1511, 0.149 , 0.1469,
-	        0.1448, 0.1426, 0.1405, 0.1383, 0.136 , 0.1338, 0.1315, 0.1292,
-       		0.1269, 0.1246, 0.1222, 0.1199, 0.1175, 0.1151, 0.1127, 0.1103,
-       		0.1079, 0.1054, 0.103 , 0.1006, 0.0981],
-          "5": [0.3383, 0.3315, 0.3249, 0.3185, 0.3123, 0.3063, 0.3005, 0.2949,
-       		0.2896, 0.2844, 0.2794, 0.2746, 0.2699, 0.2655, 0.2612, 0.2571,
-	       	0.2531, 0.2494, 0.2457, 0.2423, 0.2389, 0.2358, 0.2328, 0.2299,
-	       	0.2271, 0.2245, 0.222 , 0.2197, 0.2175, 0.2154, 0.2134, 0.2116,
-       		0.2098, 0.2082, 0.2067, 0.2053, 0.204 , 0.2029, 0.2018, 0.2009,
-	       	0.2   , 0.1993, 0.1986, 0.1981, 0.1976, 0.1973, 0.197 , 0.1969,
-       		0.1969, 0.1969, 0.1971, 0.1973, 0.1977, 0.1982, 0.1987, 0.1994,
-       		0.2002, 0.201 , 0.202 , 0.2031, 0.2043, 0.2056, 0.207 , 0.2085,
-  	     	0.2101, 0.2119, 0.2137, 0.2157, 0.2178, 0.2201, 0.2224, 0.2249,
-	        0.2275, 0.2303, 0.2331, 0.2362, 0.2393, 0.2426, 0.2461, 0.2497,
-	        0.2535, 0.2574, 0.2615, 0.2658, 0.2702, 0.2748, 0.2796, 0.2846,
-	        0.2897, 0.2951, 0.3006, 0.3064, 0.3123, 0.3184, 0.3248, 0.3313,
-	        0.3381, 0.3451, 0.3523, 0.3597, 0.3674]
+        "1": [0.2883, 0.2881, 0.2877, 0.2871, 0.2864, 0.2856, 0.2846, 0.2835,
+        0.2822, 0.2809, 0.2794, 0.2778, 0.276 , 0.2742, 0.2723, 0.2703,
+        0.2681, 0.2659, 0.2637, 0.2613, 0.2588, 0.2563, 0.2538, 0.2511,
+        0.2484, 0.2457, 0.2429, 0.24  , 0.2371, 0.2342, 0.2312, 0.2282,
+        0.2251, 0.2221, 0.219 , 0.2159, 0.2127, 0.2096, 0.2064, 0.2032,
+        0.2   , 0.1968, 0.1936, 0.1904, 0.1872, 0.1839, 0.1807, 0.1775,
+        0.1743, 0.1711, 0.1679, 0.1648, 0.1616, 0.1585, 0.1553, 0.1522,
+        0.1491, 0.146 , 0.143 , 0.1399, 0.1369, 0.1339, 0.131 , 0.128 ,
+        0.1251, 0.1222, 0.1194, 0.1166, 0.1138, 0.111 , 0.1083, 0.1056,
+        0.1029, 0.1002, 0.0976, 0.0951, 0.0925, 0.09  , 0.0875, 0.0851,
+        0.0827, 0.0803, 0.078 , 0.0757, 0.0735, 0.0712, 0.0691, 0.0669,
+        0.0648, 0.0627, 0.0607, 0.0587, 0.0567, 0.0548, 0.0529, 0.0511,
+        0.0493, 0.0475, 0.0457, 0.044 , 0.0424],
+        "2": [0.0683, 0.0708, 0.0733, 0.0758, 0.0784, 0.081 , 0.0837, 0.0864,
+        0.0892, 0.092 , 0.0949, 0.0978, 0.1007, 0.1037, 0.1068, 0.1099,
+        0.113 , 0.1162, 0.1194, 0.1227, 0.126 , 0.1293, 0.1327, 0.1362,
+        0.1396, 0.1432, 0.1467, 0.1503, 0.1539, 0.1576, 0.1613, 0.165 ,
+        0.1688, 0.1726, 0.1764, 0.1803, 0.1842, 0.1881, 0.192 , 0.196 ,
+        0.2   , 0.204 , 0.208 , 0.2121, 0.2161, 0.2202, 0.2243, 0.2284,
+        0.2325, 0.2366, 0.2407, 0.2448, 0.2489, 0.253 , 0.2571, 0.2612,
+        0.2653, 0.2693, 0.2733, 0.2773, 0.2813, 0.2853, 0.2892, 0.2931,
+        0.2969, 0.3007, 0.3044, 0.3081, 0.3117, 0.3153, 0.3188, 0.3222,
+        0.3256, 0.3288, 0.332 , 0.3351, 0.3381, 0.341 , 0.3438, 0.3465,
+        0.3491, 0.3515, 0.3539, 0.356 , 0.3581, 0.36  , 0.3618, 0.3634,
+        0.3648, 0.3661, 0.3672, 0.3681, 0.3688, 0.3694, 0.3697, 0.3699,
+        0.3698, 0.3695, 0.369 , 0.3683, 0.3674],
+        "3": [0.1403, 0.1428, 0.1452, 0.1475, 0.1498, 0.1521, 0.1543, 0.1565,
+        0.1587, 0.1608, 0.1628, 0.1648, 0.1668, 0.1687, 0.1705, 0.1723,
+        0.1741, 0.1758, 0.1774, 0.179 , 0.1806, 0.1821, 0.1835, 0.1849,
+        0.1863, 0.1875, 0.1888, 0.1899, 0.191 , 0.1921, 0.1931, 0.1941,
+        0.1949, 0.1958, 0.1966, 0.1973, 0.1979, 0.1985, 0.1991, 0.1996,
+        0.2   , 0.2004, 0.2007, 0.2009, 0.2011, 0.2013, 0.2013, 0.2014,
+        0.2013, 0.2012, 0.2011, 0.2008, 0.2006, 0.2002, 0.1998, 0.1994,
+        0.1989, 0.1983, 0.1977, 0.197 , 0.1963, 0.1955, 0.1946, 0.1937,
+        0.1927, 0.1917, 0.1906, 0.1895, 0.1883, 0.1871, 0.1858, 0.1844,
+        0.183 , 0.1816, 0.18  , 0.1785, 0.1769, 0.1752, 0.1735, 0.1717,
+        0.1699, 0.1681, 0.1662, 0.1642, 0.1622, 0.1602, 0.1581, 0.1559,
+        0.1538, 0.1515, 0.1493, 0.147 , 0.1447, 0.1423, 0.1399, 0.1374,
+        0.135 , 0.1325, 0.1299, 0.1273, 0.1248],
+        "4": [0.1647, 0.1669, 0.169 , 0.1711, 0.173 , 0.175 , 0.1768, 0.1786,
+        0.1803, 0.182 , 0.1836, 0.1851, 0.1865, 0.1879, 0.1892, 0.1905,
+        0.1916, 0.1927, 0.1938, 0.1947, 0.1956, 0.1965, 0.1972, 0.1979,
+        0.1986, 0.1991, 0.1996, 0.2001, 0.2004, 0.2007, 0.201 , 0.2012,
+  0.2013, 0.2013, 0.2013, 0.2013, 0.2011, 0.2009, 0.2007, 0.2004,
+        0.2   , 0.1996, 0.1991, 0.1985, 0.1979, 0.1973, 0.1966, 0.1958,
+        0.195 , 0.1941, 0.1932, 0.1922, 0.1912, 0.1901, 0.189 , 0.1878,
+        0.1866, 0.1853, 0.184 , 0.1826, 0.1812, 0.1797, 0.1782, 0.1767,
+        0.1751, 0.1735, 0.1718, 0.1701, 0.1684, 0.1666, 0.1648, 0.1629,
+        0.161 , 0.1591, 0.1572, 0.1552, 0.1532, 0.1511, 0.149 , 0.1469,
+        0.1448, 0.1426, 0.1405, 0.1383, 0.136 , 0.1338, 0.1315, 0.1292,
+        0.1269, 0.1246, 0.1222, 0.1199, 0.1175, 0.1151, 0.1127, 0.1103,
+        0.1079, 0.1054, 0.103 , 0.1006, 0.0981],
+        "5": [0.3383, 0.3315, 0.3249, 0.3185, 0.3123, 0.3063, 0.3005, 0.2949,
+        0.2896, 0.2844, 0.2794, 0.2746, 0.2699, 0.2655, 0.2612, 0.2571,
+        0.2531, 0.2494, 0.2457, 0.2423, 0.2389, 0.2358, 0.2328, 0.2299,
+        0.2271, 0.2245, 0.222 , 0.2197, 0.2175, 0.2154, 0.2134, 0.2116,
+        0.2098, 0.2082, 0.2067, 0.2053, 0.204 , 0.2029, 0.2018, 0.2009,
+        0.2   , 0.1993, 0.1986, 0.1981, 0.1976, 0.1973, 0.197 , 0.1969,
+        0.1969, 0.1969, 0.1971, 0.1973, 0.1977, 0.1982, 0.1987, 0.1994,
+        0.2002, 0.201 , 0.202 , 0.2031, 0.2043, 0.2056, 0.207 , 0.2085,
+        0.2101, 0.2119, 0.2137, 0.2157, 0.2178, 0.2201, 0.2224, 0.2249,
+        0.2275, 0.2303, 0.2331, 0.2362, 0.2393, 0.2426, 0.2461, 0.2497,
+        0.2535, 0.2574, 0.2615, 0.2658, 0.2702, 0.2748, 0.2796, 0.2846,
+        0.2897, 0.2951, 0.3006, 0.3064, 0.3123, 0.3184, 0.3248, 0.3313,
+        0.3381, 0.3451, 0.3523, 0.3597, 0.3674]
 
       }
       const rs = {
-        "1": [0.4025,  0.3896,  0.3769,  0.3645,  0.3523,  0.3403,  0.3286,
-        	0.317 ,  0.3056,  0.2944,  0.2834,  0.2725,  0.2618,  0.2512,
-	        0.2408,  0.2305,  0.2203,  0.2103,  0.2003,  0.1905,  0.1808,
-        	0.1711,  0.1616,  0.1521,  0.1427,  0.1334,  0.1242,  0.115 ,
-	        0.1059,  0.0969,  0.0878,  0.0789,  0.07  ,  0.0611,  0.0523,
-        	0.0435,  0.0347,  0.026 ,  0.0173,  0.0087, -0.    , -0.0086,
-	       	-0.0172, -0.0258, -0.0344, -0.043 , -0.0515, -0.0601, -0.0686,
-       		-0.0772, -0.0857, -0.0943, -0.1028, -0.1113, -0.1199, -0.1284,
-	       	-0.137 , -0.1455, -0.1541, -0.1627, -0.1713, -0.1799, -0.1886,
-	        -0.1972, -0.2059, -0.2146, -0.2233, -0.2321, -0.2409, -0.2497,
-	        -0.2586, -0.2675, -0.2765, -0.2854, -0.2945, -0.3036, -0.3127,
-	        -0.322 , -0.3312, -0.3406, -0.35  , -0.3595, -0.3691, -0.3788,
-	        -0.3886, -0.3984, -0.4084, -0.4185, -0.4287, -0.439 , -0.4495,
-	        -0.4601, -0.4708, -0.4817, -0.4927, -0.5039, -0.5153, -0.5269,
-       		-0.5387, -0.5506, -0.5628],
+      "1": [0.4025,  0.3896,  0.3769,  0.3645,  0.3523,  0.3403,  0.3286,
+        0.317 ,  0.3056,  0.2944,  0.2834,  0.2725,  0.2618,  0.2512,
+        0.2408,  0.2305,  0.2203,  0.2103,  0.2003,  0.1905,  0.1808,
+        0.1711,  0.1616,  0.1521,  0.1427,  0.1334,  0.1242,  0.115 ,
+        0.1059,  0.0969,  0.0878,  0.0789,  0.07  ,  0.0611,  0.0523,
+        0.0435,  0.0347,  0.026 ,  0.0173,  0.0087, -0.    , -0.0086,
+        -0.0172, -0.0258, -0.0344, -0.043 , -0.0515, -0.0601, -0.0686,
+        -0.0772, -0.0857, -0.0943, -0.1028, -0.1113, -0.1199, -0.1284,
+        -0.137 , -0.1455, -0.1541, -0.1627, -0.1713, -0.1799, -0.1886,
+        -0.1972, -0.2059, -0.2146, -0.2233, -0.2321, -0.2409, -0.2497,
+        -0.2586, -0.2675, -0.2765, -0.2854, -0.2945, -0.3036, -0.3127,
+        -0.322 , -0.3312, -0.3406, -0.35  , -0.3595, -0.3691, -0.3788,
+        -0.3886, -0.3984, -0.4084, -0.4185, -0.4287, -0.439 , -0.4495,
+        -0.4601, -0.4708, -0.4817, -0.4927, -0.5039, -0.5153, -0.5269,
+        -0.5387, -0.5506, -0.5628],
         "2": [-0.5031, -0.487 , -0.4712, -0.4557, -0.4404, -0.4254, -0.4107,
-       		-0.3962, -0.382 , -0.368 , -0.3542, -0.3406, -0.3272, -0.314 ,
-       		-0.301 , -0.2881, -0.2754, -0.2628, -0.2504, -0.2381, -0.226 ,
-       		-0.2139, -0.202 , -0.1902, -0.1784, -0.1668, -0.1552, -0.1438,
-	       	-0.1324, -0.1211, -0.1098, -0.0986, -0.0875, -0.0764, -0.0654,
-       		-0.0544, -0.0434, -0.0325, -0.0217, -0.0108, -0.    ,  0.0108,
-	        0.0216,  0.0323,  0.043 ,  0.0537,  0.0644,  0.0751,  0.0858,
-        	0.0965,  0.1072,  0.1178,  0.1285,  0.1392,  0.1498,  0.1605,
-	        0.1712,  0.1819,  0.1927,  0.2034,  0.2141,  0.2249,  0.2357,
-        	0.2465,  0.2574,  0.2683,  0.2792,  0.2901,  0.3011,  0.3122,
-	        0.3232,  0.3344,  0.3456,  0.3568,  0.3681,  0.3795,  0.3909,
-        	0.4025,  0.4141,  0.4257,  0.4375,  0.4494,  0.4614,  0.4735,
-        	0.4857,  0.498 ,  0.5105,  0.5231,  0.5358,  0.5488,  0.5618,
-        	0.5751,  0.5885,  0.6021,  0.6159,  0.6299,  0.6442,  0.6586,
-        	0.6733,  0.6883,  0.7035],
+        -0.3962, -0.382 , -0.368 , -0.3542, -0.3406, -0.3272, -0.314 ,
+        -0.301 , -0.2881, -0.2754, -0.2628, -0.2504, -0.2381, -0.226 ,
+        -0.2139, -0.202 , -0.1902, -0.1784, -0.1668, -0.1552, -0.1438,
+        -0.1324, -0.1211, -0.1098, -0.0986, -0.0875, -0.0764, -0.0654,
+        -0.0544, -0.0434, -0.0325, -0.0217, -0.0108, -0.    ,  0.0108,
+        0.0216,  0.0323,  0.043 ,  0.0537,  0.0644,  0.0751,  0.0858,
+        0.0965,  0.1072,  0.1178,  0.1285,  0.1392,  0.1498,  0.1605,
+        0.1712,  0.1819,  0.1927,  0.2034,  0.2141,  0.2249,  0.2357,
+        0.2465,  0.2574,  0.2683,  0.2792,  0.2901,  0.3011,  0.3122,
+        0.3232,  0.3344,  0.3456,  0.3568,  0.3681,  0.3795,  0.3909,
+        0.4025,  0.4141,  0.4257,  0.4375,  0.4494,  0.4614,  0.4735,
+        0.4857,  0.498 ,  0.5105,  0.5231,  0.5358,  0.5488,  0.5618,
+        0.5751,  0.5885,  0.6021,  0.6159,  0.6299,  0.6442,  0.6586,
+        0.6733,  0.6883,  0.7035],
         "3": [-0.0503, -0.0487, -0.0471, -0.0456, -0.044 , -0.0425, -0.0411,
-       		-0.0396, -0.0382, -0.0368, -0.0354, -0.0341, -0.0327, -0.0314,
-       		-0.0301, -0.0288, -0.0275, -0.0263, -0.025 , -0.0238, -0.0226,
-       		-0.0214, -0.0202, -0.019 , -0.0178, -0.0167, -0.0155, -0.0144,
-       		-0.0132, -0.0121, -0.011 , -0.0099, -0.0087, -0.0076, -0.0065,
-       		-0.0054, -0.0043, -0.0033, -0.0022, -0.0011,  0.    ,  0.0011,
-        	0.0022,  0.0032,  0.0043,  0.0054,  0.0064,  0.0075,  0.0086,
-        	0.0096,  0.0107,  0.0118,  0.0128,  0.0139,  0.015 ,  0.0161,
-        	0.0171,  0.0182,  0.0193,  0.0203,  0.0214,  0.0225,  0.0236,
-       	 	0.0247,  0.0257,  0.0268,  0.0279,  0.029 ,  0.0301,  0.0312,
-        	0.0323,  0.0334,  0.0346,  0.0357,  0.0368,  0.0379,  0.0391,
-        	0.0402,  0.0414,  0.0426,  0.0438,  0.0449,  0.0461,  0.0473,
-        	0.0486,  0.0498,  0.051 ,  0.0523,  0.0536,  0.0549,  0.0562,
-        	0.0575,  0.0588,  0.0602,  0.0616,  0.063 ,  0.0644,  0.0659,
-        	0.0673,  0.0688,  0.0704],
+        -0.0396, -0.0382, -0.0368, -0.0354, -0.0341, -0.0327, -0.0314,
+        -0.0301, -0.0288, -0.0275, -0.0263, -0.025 , -0.0238, -0.0226,
+        -0.0214, -0.0202, -0.019 , -0.0178, -0.0167, -0.0155, -0.0144,
+        -0.0132, -0.0121, -0.011 , -0.0099, -0.0087, -0.0076, -0.0065,
+        -0.0054, -0.0043, -0.0033, -0.0022, -0.0011,  0.    ,  0.0011,
+        0.0022,  0.0032,  0.0043,  0.0054,  0.0064,  0.0075,  0.0086,
+        0.0096,  0.0107,  0.0118,  0.0128,  0.0139,  0.015 ,  0.0161,
+        0.0171,  0.0182,  0.0193,  0.0203,  0.0214,  0.0225,  0.0236,
+        0.0247,  0.0257,  0.0268,  0.0279,  0.029 ,  0.0301,  0.0312,
+        0.0323,  0.0334,  0.0346,  0.0357,  0.0368,  0.0379,  0.0391,
+        0.0402,  0.0414,  0.0426,  0.0438,  0.0449,  0.0461,  0.0473,
+        0.0486,  0.0498,  0.051 ,  0.0523,  0.0536,  0.0549,  0.0562,
+        0.0575,  0.0588,  0.0602,  0.0616,  0.063 ,  0.0644,  0.0659,
+        0.0673,  0.0688,  0.0704],
         "4": [ 0.0503,  0.0487,  0.0471,  0.0456,  0.044 ,  0.0425,  0.0411,
-        	0.0396,  0.0382,  0.0368,  0.0354,  0.0341,  0.0327,  0.0314,
-        	0.0301,  0.0288,  0.0275,  0.0263,  0.025 ,  0.0238,  0.0226,
-        	0.0214,  0.0202,  0.019 ,  0.0178,  0.0167,  0.0155,  0.0144,
-        	0.0132,  0.0121,  0.011 ,  0.0099,  0.0087,  0.0076,  0.0065,
-        	0.0054,  0.0043,  0.0033,  0.0022,  0.0011, -0.    , -0.0011,
-       		-0.0022, -0.0032, -0.0043, -0.0054, -0.0064, -0.0075, -0.0086,
-       		-0.0096, -0.0107, -0.0118, -0.0128, -0.0139, -0.015 , -0.0161,
-       		-0.0171, -0.0182, -0.0193, -0.0203, -0.0214, -0.0225, -0.0236,
-       		-0.0247, -0.0257, -0.0268, -0.0279, -0.029 , -0.0301, -0.0312,
-       		-0.0323, -0.0334, -0.0346, -0.0357, -0.0368, -0.0379, -0.0391,
-       		-0.0402, -0.0414, -0.0426, -0.0438, -0.0449, -0.0461, -0.0473,
-       		-0.0486, -0.0498, -0.051 , -0.0523, -0.0536, -0.0549, -0.0562,
-       		-0.0575, -0.0588, -0.0602, -0.0616, -0.063 , -0.0644, -0.0659,
-       		-0.0673, -0.0688, -0.0704], 
-        "5": [ 0.5031,  0.4773,  0.4523,  0.4283,  0.4052,  0.3829,  0.3614,
-        	0.3408,  0.3209,  0.3018,  0.2834,  0.2657,  0.2487,  0.2324,
-        	0.2167,  0.2017,  0.1873,  0.1735,  0.1603,  0.1476,  0.1356,
-        	0.1241,  0.1131,  0.1027,  0.0928,  0.0834,  0.0745,  0.0661,
-        	0.0582,  0.0508,  0.0439,  0.0375,  0.0315,  0.026 ,  0.0209,
-        	0.0163,  0.0122,  0.0085,  0.0052,  0.0024, -0.    , -0.0019,
-      	 	-0.0034, -0.0045, -0.0052, -0.0054, -0.0052, -0.0045, -0.0034,
-       		-0.0019,  0.    ,  0.0024,  0.0051,  0.0084,  0.012 ,  0.0161,
-        	0.0205,  0.0255,  0.0308,  0.0366,  0.0428,  0.0495,  0.0566,
-        	0.0641,  0.0721,  0.0805,  0.0893,  0.0986,  0.1084,  0.1186,
-        	0.1293,  0.1404,  0.152 ,  0.1641,  0.1767,  0.1897,  0.2033,
-        	0.2173,  0.2319,  0.2469,  0.2625,  0.2786,  0.2953,  0.3125,
-        	0.3303,  0.3486,  0.3676,  0.3871,  0.4072,  0.428 ,  0.4495,
-        	0.4716,  0.4943,  0.5178,  0.542 ,  0.5669,  0.5926,  0.6191,
-        	0.6464,  0.6745,  0.7035],
+        0.0396,  0.0382,  0.0368,  0.0354,  0.0341,  0.0327,  0.0314,
+        0.0301,  0.0288,  0.0275,  0.0263,  0.025 ,  0.0238,  0.0226,
+        0.0214,  0.0202,  0.019 ,  0.0178,  0.0167,  0.0155,  0.0144,
+        0.0132,  0.0121,  0.011 ,  0.0099,  0.0087,  0.0076,  0.0065,
+        0.0054,  0.0043,  0.0033,  0.0022,  0.0011, -0.    , -0.0011,
+        -0.0022, -0.0032, -0.0043, -0.0054, -0.0064, -0.0075, -0.0086,
+        -0.0096, -0.0107, -0.0118, -0.0128, -0.0139, -0.015 , -0.0161,
+        -0.0171, -0.0182, -0.0193, -0.0203, -0.0214, -0.0225, -0.0236,
+        -0.0247, -0.0257, -0.0268, -0.0279, -0.029 , -0.0301, -0.0312,
+        -0.0323, -0.0334, -0.0346, -0.0357, -0.0368, -0.0379, -0.0391,
+        -0.0402, -0.0414, -0.0426, -0.0438, -0.0449, -0.0461, -0.0473,
+        -0.0486, -0.0498, -0.051 , -0.0523, -0.0536, -0.0549, -0.0562,
+        -0.0575, -0.0588, -0.0602, -0.0616, -0.063 , -0.0644, -0.0659,
+        -0.0673, -0.0688, -0.0704], 
+      "5": [ 0.5031,  0.4773,  0.4523,  0.4283,  0.4052,  0.3829,  0.3614,
+        0.3408,  0.3209,  0.3018,  0.2834,  0.2657,  0.2487,  0.2324,
+        0.2167,  0.2017,  0.1873,  0.1735,  0.1603,  0.1476,  0.1356,
+        0.1241,  0.1131,  0.1027,  0.0928,  0.0834,  0.0745,  0.0661,
+        0.0582,  0.0508,  0.0439,  0.0375,  0.0315,  0.026 ,  0.0209,
+        0.0163,  0.0122,  0.0085,  0.0052,  0.0024, -0.    , -0.0019,
+        -0.0034, -0.0045, -0.0052, -0.0054, -0.0052, -0.0045, -0.0034,
+        -0.0019,  0.    ,  0.0024,  0.0051,  0.0084,  0.012 ,  0.0161,
+        0.0205,  0.0255,  0.0308,  0.0366,  0.0428,  0.0495,  0.0566,
+        0.0641,  0.0721,  0.0805,  0.0893,  0.0986,  0.1084,  0.1186,
+        0.1293,  0.1404,  0.152 ,  0.1641,  0.1767,  0.1897,  0.2033,
+        0.2173,  0.2319,  0.2469,  0.2625,  0.2786,  0.2953,  0.3125,
+        0.3303,  0.3486,  0.3676,  0.3871,  0.4072,  0.428 ,  0.4495,
+        0.4716,  0.4943,  0.5178,  0.542 ,  0.5669,  0.5926,  0.6191,
+        0.6464,  0.6745,  0.7035],
       }
 
       const positions = [
@@ -280,9 +280,9 @@
         </h1>
         <!-- Subheading -->
         <p class="subhead">
-		  An interactive article on illustrating group joinging strategies and opinion updates via online gradient ascent to analyze group formation 
-		  dynamics. Learn how the choices of coaltion of agents lead to a pure-strategy Nash equilibrium and how updating agents' opinions eventually stablizes group 
-		  formation.
+          An interactive article on illustrating group joinging strategies and opinion updates via online gradient ascent to analyze group formation 
+          dynamics. Learn how the choices of coaltion of agents lead to a pure-strategy Nash equilibrium and how updating agents' opinions eventually stablizes group 
+          formation.
         </p>
         <!-- Header info general wrapper -->
         <div class="header-info">
@@ -294,8 +294,8 @@
               <ul>
                 <li>Chuang-Chieh Lin | Tamkang University, Taiwan</li>
                 <li>Chih-Chieh Hung | National Chung Hsing University, Taiwan</li>
-				<li>Chi-Jen Lu | Academia Sinica, Taiwan</li>
-				<li>Po-An Chen | National Yang Ming Chiao Tung University, Taiwan</li>
+                <li>Chi-Jen Lu | Academia Sinica, Taiwan</li>
+                <li>Po-An Chen | National Yang Ming Chiao Tung University, Taiwan</li>
               </ul>
             </div>
             <!-- Published info section -->
@@ -335,9 +335,9 @@
               <a href="#online_learning">Opinion Updates by Online Gradient Ascent</a>
               <span class="separator">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
             </li>
-			<li>
+			      <li>
               <a href="#discussion">Discussion</a>
-			  <span class="separator">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+			        <span class="separator">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
             </li>
             <li>
               <a href="#conclusion">Conclusion</a>
@@ -354,42 +354,42 @@
         <!-- Section title -->
         <h2>I. Introduction</h2>
         <p>
-			Game theory has been applied in a variety of aspects due to its predictability 
-			of outcomes in real world. Furthermore, it can be used in solving problems, such as 
-			the saddle-point optimization which has been extensively used in the generative 
-			adversarial network models [<a href="#ref_1">1</a>]. 
-			A game consists of strategic agents, each of which acts rationally to maximize its 
-			own reward (or utility) or minimize its cost. A Nash equilibrium is a stable state 
-			composed of strategies of all agents such that none of the agents wants to change its 
-			own strategy to the other one unilatersally. Hence, such a state is possibly achievable 
-			because no one wants to change its mind when the other ones hold on their current 
-			strategies. Yet, how to achieve a Nash equilibrium in a game may not be quite 
-			straightforward, especially when agents behave in a &ldquo;decentralized&rdquo; way. 
-			Indeed, while an agent's reward functions has dependency on strategies of the 
-			other agents, a maximizer of one agent's reward function is not necessarily a 
-                        maximizer for any other agent. 
-                        The maximizer of one agent’s reward function can change whenever any 
-                        other agent changes its strategy.
-                </p>
+          Game theory has been applied in a variety of aspects due to its predictability 
+          of outcomes in real world. Furthermore, it can be used in solving problems, such as 
+          the saddle-point optimization which has been extensively used in the generative 
+          adversarial network models [<a href="#ref_1">1</a>]. 
+          A game consists of strategic agents, each of which acts rationally to maximize its 
+          own reward (or utility) or minimize its cost. A Nash equilibrium is a stable state 
+          composed of strategies of all agents such that none of the agents wants to change its 
+          own strategy to the other one unilatersally. Hence, such a state is possibly achievable 
+          because no one wants to change its mind when the other ones hold on their current 
+          strategies. Yet, how to achieve a Nash equilibrium in a game may not be quite 
+          straightforward, especially when agents behave in a &ldquo;decentralized&rdquo; way. 
+          Indeed, while an agent's reward functions has dependency on strategies of the 
+          other agents, a maximizer of one agent's reward function is not necessarily a 
+          maximizer for any other agent. 
+          The maximizer of one agent’s reward function can change whenever any 
+          other agent changes its strategy.
+        </p>  
+        <p>
+          In this article, we consider group formation of strategic agents as an illustrating 
+          example for demonstrating the strategic behaviors of the agents and also delve into the 
+          eventual outcome of the game to study the group formation of a society. 
+          The theoretical techniques used in this article include identification of a 
+          pure-strategy Nash equilibrium and gradient 
+          ascent algorithms with and without regularizers.
         
-		<p>
-			In this article, we consider group formation of strategic agents as an illustrating 
-			example for demonstrating the strategic behaviors of the agents and also delve into the 
-			eventual outcome of the game to study the group formation of a society. 
-			The theoretical techniques used in this article include identification of a 
-                        pure-strategy Nash equilibrium and gradient 
-			ascent algorithms with and without regularizers.
-		
-			A strategic agent can either join a group or change its opinion to 
-			maximize its reward. The eventual equilibrium of the game hopefully suggests predictable 
-			outcomes of the whole society. For the case that agents apply group joining strategies, 
-			we consider <i>pure-strategy Nash equilibria</i> as the solution concept, where a pure 
-			strategy means a strategy played with probability 1. For the case that agents change their 
-			opinions, we assume that each agent plays an <i>online gradient ascent algorithm</i>, which 
-			guarantees the time-average convergence to a hindsight optimum for a single agent (e.g., 
-			see [<a href="#ref_4">4</a>, <a href="#ref_5">5</a>] for the cost-minimization case), in a 
-			decentralized way and then we look into the convergent state of the system. 
-		</p>
+          A strategic agent can either join a group or change its opinion to 
+          maximize its reward. The eventual equilibrium of the game hopefully suggests predictable 
+          outcomes of the whole society. For the case that agents apply group joining strategies, 
+          we consider <i>pure-strategy Nash equilibria</i> as the solution concept, where a pure 
+          strategy means a strategy played with probability 1. For the case that agents change their 
+          opinions, we assume that each agent plays an <i>online gradient ascent algorithm</i>, which 
+          guarantees the time-average convergence to a hindsight optimum for a single agent (e.g., 
+          see [<a href="#ref_4">4</a>, <a href="#ref_5">5</a>] for the cost-minimization case), in a 
+          decentralized way and then we look into the convergent state of the system. 
+        </p>
+      </section>
 	</div>
 	<!-- Content container with large top spacing -->
 	<div class="container mt-lg">
@@ -761,14 +761,14 @@
                 .style('background-color', tcolor[g[0] - 1])
                 .style('left', `${500 * (tp[i] + 1) - 90}px`)
               extrabox.append("p")
-                .attr('class', "mb-0 small")
+                .attr('class', "my-auto small lh-sm")
                 .node()
                 .innerHTML = `win. prob. ${wp[i]}`
               g.forEach((n) => {
                 d3.selectAll(`#v${n + 5}`).remove()
                 d3.selectAll(`#l0${n + 5}`).remove()
                 extrabox.append("p")
-                  .attr('class', "mb-0 small")
+                  .attr('class', "my-auto small lh-sm")
                   .node()
                   .innerHTML = `reward of ${n}. ${r[n - 1]}`
                 console.log(n + 5)
@@ -1074,14 +1074,14 @@
                 .style('background-color', tcolor[g[0] - 1])
                 .style('left', `${500 * (tp[i] + 1) - 90}px`)
               extrabox.append("p")
-                .attr('class', "mb-0 small")
+                .attr('class', "my-auto small lh-sm")
                 .node()
                 .innerHTML = `win. prob. ${wp[i]}`
               g.forEach((n) => {
                 d3.selectAll(`#v${n + 10}`).remove()
                 d3.selectAll(`#l0${n + 10}`).remove()
                 extrabox.append("p")
-                  .attr('class', "mb-0 small")
+                  .attr('class', "my-auto small lh-sm")
                   .node()
                   .innerHTML = `reward of ${n}. ${r[n - 1]}`
                 d3.select(`#t0${n + 10}`).style('display', 'none')
@@ -1178,35 +1178,35 @@
     <h3>1D Representation</h3>
     <p id="1D_representation" class="inline-math">
       To better illustrate the computation of a winning probability and the reward for each agent, it is a good 
-	  idea to first consider 1D space. Let us consider the opinions and beliefs to be in \([-1, 1]\subset\mathbb{R}\), 
-	  we can represent these vectors as well as the dynamics of changes on a real line. The constraint that 
-	  \(z_i,s_i\in [-1, 1]\) has 2-norm bounded by 1 for each \(i\) clearly holds.
-	</p>
-	<p class="inline-math">
-		We point out that changes of the opinion of an agent affects not only its own winning probability but also 
-		those of the others. This is true intuitively when we consider the competitions in practical world. Indeed, 
-		this observation is captured in our definition of the winning probability. The changes of the opinion of a 
-		single agent will contribute to the denominator of the formula. 
-	</p>
-	<p class="inline-math">
-		For example, consider the following figure. We have five agents \(v_1,v_2,v_3,v_4,v_5\) such that each agent is 
-		regarded as a group individually. Assume their beliefs to be \(s_1 = -0.8, s_2 = 1.0, s_3 = 0.1, s_4 = -0.1, s_5 = 0.2\) 
-		respectively. We assume that \(z_i = s_i\) for each \(i\) to simplify our discussion. 
-		By assuming \(v_1,v_2,v_3\), and \(v_4\) to have their opinions \(z_1,z_2,z_3,z_4\) fixed, we can observe the changes 
-		of winning probability of \(v_5\) by moving \(z_5\) from \(-1\) to \(1\), as well as the changes of the winning 
-		probabilities of the other agents. After getting the winning probabilities, we can derive their rewards as well. 
+      idea to first consider 1D space. Let us consider the opinions and beliefs to be in \([-1, 1]\subset\mathbb{R}\), 
+      we can represent these vectors as well as the dynamics of changes on a real line. The constraint that 
+      \(z_i,s_i\in [-1, 1]\) has 2-norm bounded by 1 for each \(i\) clearly holds.
+	  </p>
+    <p class="inline-math">
+      We point out that changes of the opinion of an agent affects not only its own winning probability but also 
+      those of the others. This is true intuitively when we consider the competitions in practical world. Indeed, 
+      this observation is captured in our definition of the winning probability. The changes of the opinion of a 
+      single agent will contribute to the denominator of the formula. 
     </p>
-    <!--<div class="framed mb-5" style="height: 95vh;">-->
+    <p class="inline-math">
+      For example, consider the following figure. We have five agents \(v_1,v_2,v_3,v_4,v_5\) such that each agent is 
+      regarded as a group individually. Assume their beliefs to be \(s_1 = -0.8, s_2 = 1.0, s_3 = 0.1, s_4 = -0.1, s_5 = 0.2\) 
+      respectively. We assume that \(z_i = s_i\) for each \(i\) to simplify our discussion. 
+      By assuming \(v_1,v_2,v_3\), and \(v_4\) to have their opinions \(z_1,z_2,z_3,z_4\) fixed, we can observe the changes 
+      of winning probability of \(v_5\) by moving \(z_5\) from \(-1\) to \(1\), as well as the changes of the winning 
+      probabilities of the other agents. After getting the winning probabilities, we can derive their rewards as well. 
+    </p>
+
 	<!-- Interactive frame -->
-	<div class="framed" style="margin-bottom: 20px">
+	  <div class="framed" style="margin-bottom: 20px">
       <div class="inside">
-	  <div class="eyebrow">
-		Drag \(v_5\) (agent No. 5) to see the changes of the winning probabilities 
-		of each agent. Also observe the changes of the reward of each agent. You should be 
-		able to see that moving \(v_5\) to the left is more beneficial to agent \(v_1\), and 
-		moving \(v_5\) to the right is more beneficial to agent \(v_2\).
-	  </div>
-      <!--  <div style="height: 42vh;">-->
+        <div class="eyebrow">
+          Drag \(v_5\) (agent No. 5) to see the changes of the winning probabilities 
+          of each agent. Also observe the changes of the reward of each agent. You should be 
+          able to see that moving \(v_5\) to the left is more beneficial to agent \(v_1\), and 
+          moving \(v_5\) to the right is more beneficial to agent \(v_2\).
+        </div>
+        <!--  <div style="height: 42vh;">-->
           <div class="d-flex w-100">
             <h4 class="ps-3 pt-3 text-start">Policy Dimenson = 1</h4>
             <span class="pe-3 pb-2 ms-auto mt-auto h-25">
@@ -1217,24 +1217,24 @@
             <div class="d-flex flex-column px-3 justify-content-center">
               <div id="box1" class="d-flex mx-auto position-relative" style="width: 1000px">
                 <div id="t01" class="tip" style="background-color: #d04a5c23;">
-                  <p id="wp1" class="mb-0">win prob.</p>
-                  <p id="r1">reward</p>
+                  <p id="wp1" class="my-auto lh-sm">win prob.</p>
+                  <p id="r1" class="my-auto small">reward</p>
                 </div>
                 <div id="t02" class="tip" style="background-color: #02798c33;">
-                  <p id="wp2" class="mb-0">win prob.</p>
-                  <p id="r2">reward</p>
+                  <p id="wp2" class="my-auto lh-sm">win prob.</p>
+                  <p id="r2" class="my-auto small">reward</p>
                 </div>
                 <div id="t03" class="tip" style="background-color: #ffc1073b;">
-                  <p id="wp3" class="mb-0">win prob.</p>
-                  <p id="r3">reward</p>
+                  <p id="wp3" class="my-auto lh-sm">win prob.</p>
+                  <p id="r3" class="my-auto small">reward</p>
                 </div>
                 <div id="t04" class="tip" style="background-color: #4a6bd023;">
-                  <p id="wp4" class="mb-0">win prob.</p>
-                  <p id="r4">reward</p>
+                  <p id="wp4" class="my-auto lh-sm">win prob.</p>
+                  <p id="r4" class="my-auto small">reward</p>
                 </div>
                 <div id="t05" class="tip" style="background-color: #bababa69;">
-                  <p id="wp5" class="mb-0">win prob.</p>
-                  <p id="r5">reward</p>
+                  <p id="wp5" class="my-auto lh-sm">win prob.</p>
+                  <p id="r5" class="my-auto small">reward</p>
                 </div>
                 <!-- Doll 1 -->
                 <span id="s01" class="position-absolute">
@@ -1268,167 +1268,170 @@
             </div>
           </div>
           <div class="d-flex px-3">
-            <Card class="w-100 bg-grey rounded py-3 px-4 h5 lh-lg">
-              <Img src="./img/aix_doll-05.svg" style="height: 50px" class="ps-3" />
-              &emsp; \(v_5\) is considering to join one of the currently existing groups or stay alone.
+            <Card class="w-100 bg-grey rounded py-3 px-4 h5 lh-lg mb-0" style="align-items: center; flex-flow: wrap;">
+              <img src="./img/aix_doll-05.svg" style="height: 50px; width: 50px" class="ps-3" />
+              &emsp; \(v_5\) &ensp; is considering to join one of the currently existing groups or stay alone.
             </Card>
           </div>
-		  <div class="caption"><b>Figure 3:</b> Introducing winning probabilities and rewards of agents in 1D representation. 
-		  </div>
+          <div class="caption">
+            <b>Figure 3:</b> 
+            Introducing winning probabilities and rewards of agents in 1D representation. 
+          </div>
         </div>
-      <!--</div>-->
     </div>
-	<p class="inline-math">
-	In this example, the utility \(v_1\) brings to all the agents is 
-	$$\langle z_1, s_1+s_2+s_3+s_4+s_5\rangle = (-0.8)\cdot (-0.8-0.1+0.1+0.2+1) = -0.32.$$
-	Similarly, we have \(v_2, v_3, v_4\) and \(v_5\) bring utility \(0.4, 0.04, -0.04,\) and \(0.08\) to all the agents respectively. 
-	Then we have the winning probability \(p_1\) of agent \(v_1\) is $$\frac{e^{-0.32}}{e^{-0.32}+e^{0.4}+e^{0.04}+e^{-0.04}+e^{0.08}} = 0.1369.$$
-	Similarly, we derive \(p_2 = 0.2813, p_3 = 0.1963, p_4 = 0.1812\), and \(p_5 = 0.2043\). So, the reward \(r_1\) of agent \(v_1\) is 
-	$$\begin{eqnarray*}
-	r_1 &=& p_1\cdot \langle z_1, s_1\rangle + p_2\cdot \langle z_2, s_1\rangle + p_3\cdot \langle z_3, s_1\rangle + 
-	p_4\cdot \langle z_4, s_1\rangle + p_4\cdot \langle z_5, s_1\rangle\\
-	&=& 0.1369\cdot (-0.8\cdot (-0.8)) + 0.2813\cdot (1\cdot (-0.8))+ 0.1963\cdot (0.1\cdot (-0.8)) \\
-	& & + 0.1812\cdot ((-0.1)\cdot (-0.8)) + 0.2043\cdot (0.2\cdot (-0.8))\\ 
-	&=& -0.1713.
-	\end{eqnarray*}$$ 
-	Hence, the reward for agents \(v_2, v_3, v_4\) and \(v_5\) can be similarly obtained.
-	</p>
+	  <p class="inline-math">
+      In this example, the utility \(v_1\) brings to all the agents is 
+      $$\langle z_1, s_1+s_2+s_3+s_4+s_5\rangle = (-0.8)\cdot (-0.8-0.1+0.1+0.2+1) = -0.32.$$
+      Similarly, we have \(v_2, v_3, v_4\) and \(v_5\) bring utility \(0.4, 0.04, -0.04,\) and \(0.08\) to all the agents respectively. 
+      Then we have the winning probability \(p_1\) of agent \(v_1\) is $$\frac{e^{-0.32}}{e^{-0.32}+e^{0.4}+e^{0.04}+e^{-0.04}+e^{0.08}} = 0.1369.$$
+      Similarly, we derive \(p_2 = 0.2813, p_3 = 0.1963, p_4 = 0.1812\), and \(p_5 = 0.2043\). So, the reward \(r_1\) of agent \(v_1\) is 
+      $$\begin{eqnarray*}
+      r_1 &=& p_1\cdot \langle z_1, s_1\rangle + p_2\cdot \langle z_2, s_1\rangle + p_3\cdot \langle z_3, s_1\rangle + 
+      p_4\cdot \langle z_4, s_1\rangle + p_4\cdot \langle z_5, s_1\rangle\\
+      &=& 0.1369\cdot (-0.8\cdot (-0.8)) + 0.2813\cdot (1\cdot (-0.8))+ 0.1963\cdot (0.1\cdot (-0.8)) \\
+      & & + 0.1812\cdot ((-0.1)\cdot (-0.8)) + 0.2043\cdot (0.2\cdot (-0.8))\\ 
+      &=& -0.1713.
+      \end{eqnarray*}$$ 
+      Hence, the reward for agents \(v_2, v_3, v_4\) and \(v_5\) can be similarly obtained.
+    </p>
   <!-- Group box 2 -->
     <h3>Group Joining: Myopic Best-Responses</h3>
-    <p id="best_response" class="inline-math">
+    <p class="inline-math">
       We consider a kind of best-response for each agent in this section. Assume that agent \(v_i\) decides to join \(G_j\) for which 
-	  $$j = \arg\max_{\ell} p_{\ell}(\tau)\cdot \langle g_{\ell}, s_i\rangle.$$ We call this strategy a <i>myopic best-response</i>. 
-	  Namely, an agent joins a group by considering not only its winning probability but also the utility that the agent can get 
-	  from the group before its joining. The agents do not consider the next and future states, hence the name &ldquo;myopic&rdquo; best-response.
+      $$j = \arg\max_{\ell} p_{\ell}(\tau)\cdot \langle g_{\ell}, s_i\rangle.$$ We call this strategy a <i>myopic best-response</i>. 
+      Namely, an agent joins a group by considering not only its winning probability but also the utility that the agent can get 
+      from the group before its joining. The agents do not consider the next and future states, hence the name &ldquo;myopic&rdquo; best-response.
     </p>
-	<p>
-	In the figure below, we can see the changes of the group opinions due to agent \(v_5\)'s group joining strategy. Also, we can 
-	see the final outcome as a stable state after each agent performing their myopic best-responses in parallel iteratively. 
-	</p>
+    <p>
+      In the figure below, we can see the changes of the group opinions due to agent \(v_5\)'s group joining strategy. Also, we can 
+      see the final outcome as a stable state after each agent performing their myopic best-responses in parallel iteratively. 
+    </p>
     <div class="framed" style="margin-bottom: 20px">
       <div class="inside">
-	  <div class="eyebrow">
-		Drag \(v_5\) (agent No. 5) to see the changes of the winning probabilities and reward of 
-		each agent. Moreover, try to drag \(v_5\) to be near any agent and then you will find 
-		a circled \(\oplus\) operator above the agent. Click it you can see the two agents are grouped 
-		with a new group opinion and updated winning probabilities and rewards of all groups. Dragging \(v_5\) to 
-		the positions elsewhere can dismiss this group. To Click the button &ldquo;Myopic Best Responses for All&ldquo; 
-		you will see the final outcome after iterations of parallel group joining actions. By clicking the 
-		button &ldquo;RESET&ldquo; you can restore the state to the very beginning.
-	  </div>
-        <!--<div style="height: 42vh;"> -->
-          <div class="d-flex w-100 pt-4">
-            <h4 class="ps-3 pt-3 text-start">The Myopic Best Responses / Manual Join</h4>
-            <span class="pe-2 pb-2 ms-auto mt-auto h-25">
-              <button id="best" class="btn btn-ieee py-1">
-                Myopic Best Responses for All
-              </button>
-            </span>
-            <span class="pe-3 pb-2 mt-auto h-25">
-              <button id="reset2" class="btn btn-secondary py-1">
-                RESET
-              </button>
-            </span>
-          </div>
+        <div class="eyebrow">
+        Drag \(v_5\) (agent No. 5) to see the changes of the winning probabilities and reward of 
+        each agent. Moreover, try to drag \(v_5\) to be near any agent and then you will find 
+        a circled \(\oplus\) operator above the agent. Click it you can see the two agents are grouped 
+        with a new group opinion and updated winning probabilities and rewards of all groups. Dragging \(v_5\) to 
+        the positions elsewhere can dismiss this group. To Click the button &ldquo;Myopic Best Responses for All&ldquo; 
+        you will see the final outcome after iterations of parallel group joining actions. By clicking the 
+        button &ldquo;RESET&ldquo; you can restore the state to the very beginning.
+        </div>
+      <!--<div style="height: 42vh;"> -->
+        <div class="d-flex w-100 pt-4">
+          <h4 class="ps-3 pt-3 text-start">The Myopic Best Responses / Manual Join</h4>
+          <span class="pe-2 pb-2 ms-auto mt-auto h-25">
+            <button id="best" class="btn btn-ieee py-1">
+              Myopic Best Responses for All
+            </button>
+          </span>
+          <span class="pe-3 pb-2 mt-auto h-25">
+            <button id="reset2" class="btn btn-secondary py-1">
+              RESET
+            </button>
+          </span>
+        </div>
 
-          <div class="Group-box pb-3">
-            <div class="d-flex flex-column px-3 justify-content-center">
-              <div id="box2" class="d-flex mx-auto position-relative" style="width: 1000px">
-                <div id="t06" class="tip" style="background-color: #d04a5c23;">
-                  <p id="wp6" class="mb-0">win prob.</p>
-                  <p id="r6">reward</p>
-                </div>
-                <div id="t07" class="tip" style="background-color: #02798c33;">
-                  <p id="wp7" class="mb-0">win prob.</p>
-                  <p id="r7">reward</p>
-                </div>
-                <div id="t08" class="tip" style="background-color: #ffc1073b;">
-                  <p id="wp8" class="mb-0">win prob.</p>
-                  <p id="r8">reward</p>
-                </div>
-                <div id="t09" class="tip" style="background-color: #4a6bd023;">
-                  <p id="wp9" class="mb-0">win prob.</p>
-                  <p id="r9">reward</p>
-                </div>
-                <div id="t010" class="tip" style="background-color: #bababa69;">
-                  <p id="wp10" class="mb-0">win prob.</p>
-                  <p id="r10">reward</p>
-                </div>
-
-                <div id="s06" class="position-absolute">
-                  <div id="i01" class="plus w-100 pb-2" style="display: none">
-                    <i
-                      class="fa-solid fa-circle-plus mx-auto text-doll-red"
-                      style="cursor: pointer;"
-                      title="Join"
-                    >
-                    </i>
-                  </div>
-                  <img src="./img/aix_doll-01.svg" style="transition:'left .3s ease-in'; height: 100px" />
-                </div>
-
-                <div id="s07" class="position-absolute">
-                  <div id="i02" class="plus w-100 pb-2" style="display: none">
-                    <i
-                      class="fa-solid fa-circle-plus mx-auto text-doll-green"
-                      style="cursor: pointer;"
-                      title="Join"
-                    >
-                  </i>
-                  </div>
-                  <img src="./img/aix_doll-02.svg" style="transition:'left .3s ease-in'; height: 100px" />
-                </div>
-
-                <div id="s08" class="position-absolute">
-                  <div id="i03" class="plus w-100 pb-2" style="display: none">
-                    <i
-                      class="fa-solid fa-circle-plus mx-auto text-doll-yellow"
-                      style="cursor: pointer;"
-                      title="Join"
-                    >
-                    </i>
-                  </div>
-                  <img src="./img/aix_doll-03.svg" style="transition:'left .3s ease-in'; height: 100px" />
-                </div>
-
-                <div id="s09" class="position-absolute">
-                  <div id="i04" class="plus w-100 pb-2" style="display: none">
-                    <i
-                      class="fa-solid fa-circle-plus mx-auto text-doll-blue"
-                      style="cursor: pointer;"
-                      title="Join"
-                    >
-                  </i>
-                  </div>
-                  <img src="./img/aix_doll-04.svg" style="transition:'left .3s ease-in'; height: 100px;" />
-                </div>
-
-                <span id="s010" class="position-absolute" style="cursor: grab;">
-                  <span class="position-absolute badge rounded-pill bg-secondary" style="bottom:-80%">Drag Me</span>
-                  <img src="./img/aix_doll-05.svg" style="height: 100px;" />
-                </span>
-                <svg class="pt-6 w-100 overflow-visible" id="Viz_area2" style="height: 180px; width: 250xp"></svg>
+        <div class="Group-box pb-3">
+          <div class="d-flex flex-column px-3 justify-content-center">
+            <div id="box2" class="d-flex mx-auto position-relative" style="width: 1000px">
+              <div id="t06" class="tip" style="background-color: #d04a5c23;">
+                <p id="wp6" class="my-auto lh-sm">win prob.</p>
+                <p id="r6" class="my-auto small">reward</p>
               </div>
+              <div id="t07" class="tip" style="background-color: #02798c33;">
+                <p id="wp7" class="my-auto lh-sm">win prob.</p>
+                <p id="r7" class="my-auto small">reward</p>
+              </div>
+              <div id="t08" class="tip" style="background-color: #ffc1073b;">
+                <p id="wp8" class="my-auto lh-sm">win prob.</p>
+                <p id="r8" class="my-auto small">reward</p>
+              </div>
+              <div id="t09" class="tip" style="background-color: #4a6bd023;">
+                <p id="wp9" class="my-auto lh-sm">win prob.</p>
+                <p id="r9" class="my-auto small">reward</p>
+              </div>
+              <div id="t010" class="tip" style="background-color: #bababa69;">
+                <p id="wp10" class="my-auto lh-sm">win prob.</p>
+                <p id="r10" class="my-auto small">reward</p>
+              </div>
+
+              <div id="s06" class="position-absolute">
+                <div id="i01" class="plus w-100 pb-2" style="display: none">
+                  <i
+                    class="fa-solid fa-circle-plus mx-auto text-doll-red"
+                    style="cursor: pointer;"
+                    title="Join"
+                  >
+                  </i>
+                </div>
+                <img src="./img/aix_doll-01.svg" style="transition:'left .3s ease-in'; height: 100px" />
+              </div>
+
+              <div id="s07" class="position-absolute">
+                <div id="i02" class="plus w-100 pb-2" style="display: none">
+                  <i
+                    class="fa-solid fa-circle-plus mx-auto text-doll-green"
+                    style="cursor: pointer;"
+                    title="Join"
+                  >
+                </i>
+                </div>
+                <img src="./img/aix_doll-02.svg" style="transition:'left .3s ease-in'; height: 100px" />
+              </div>
+
+              <div id="s08" class="position-absolute">
+                <div id="i03" class="plus w-100 pb-2" style="display: none">
+                  <i
+                    class="fa-solid fa-circle-plus mx-auto text-doll-yellow"
+                    style="cursor: pointer;"
+                    title="Join"
+                  >
+                  </i>
+                </div>
+                <img src="./img/aix_doll-03.svg" style="transition:'left .3s ease-in'; height: 100px" />
+              </div>
+
+              <div id="s09" class="position-absolute">
+                <div id="i04" class="plus w-100 pb-2" style="display: none">
+                  <i
+                    class="fa-solid fa-circle-plus mx-auto text-doll-blue"
+                    style="cursor: pointer;"
+                    title="Join"
+                  >
+                </i>
+                </div>
+                <img src="./img/aix_doll-04.svg" style="transition:'left .3s ease-in'; height: 100px;" />
+              </div>
+
+              <span id="s010" class="position-absolute" style="cursor: grab;">
+                <span class="position-absolute badge rounded-pill bg-secondary" style="bottom:-80%">Drag Me</span>
+                <img src="./img/aix_doll-05.svg" style="height: 100px;" />
+              </span>
+              <svg class="pt-6 w-100 overflow-visible" id="Viz_area2" style="height: 180px; width: 250px"></svg>
             </div>
           </div>
-          
-		  <div class="caption"><b>Figure 4:</b> Myopic best-responses and manual join illustration. </div>
-        <!--</div> -->
+        </div>
+
+        <div class="caption">
+          <b>Figure 4:</b>
+            Myopic best-responses and manual join illustration.
+        </div>
       </div>
     </div>
 	<p id="group_explanation">
-	Suppose we want \(v_5\) to join \(v_2\) as a new group, say \(G_{2,5}\). Then we have four groups  
-	\(G_1 = \{v_1\}\), \(G_{2,5} = \{v_2, v_5\}\), \(G_3 = \{v_3\}\), \(G_4 = \{v_4\}\) with group opinions 
-	\(g_1 = -0.8\), \(g_{2,5} = (0.2+1.0)/2 = 0.6\), \(g_3 = 0.1\) and \(g_4 = -0.1\) respectively. 
-	Using the same approach for calculating the winning probabilities of these groups, 
-	we can derive the rewards for all the agents. 
+    Suppose we want \(v_5\) to join \(v_2\) as a new group, say \(G_{2,5}\). Then we have four groups  
+    \(G_1 = \{v_1\}\), \(G_{2,5} = \{v_2, v_5\}\), \(G_3 = \{v_3\}\), \(G_4 = \{v_4\}\) with group opinions 
+    \(g_1 = -0.8\), \(g_{2,5} = (0.2+1.0)/2 = 0.6\), \(g_3 = 0.1\) and \(g_4 = -0.1\) respectively. 
+    Using the same approach for calculating the winning probabilities of these groups, 
+    we can derive the rewards for all the agents. 
 	</p>
 	<figure class="text-center">
 		<img src="img/group_merging.png" alt="group_merging" width="562" height="485">
 		<figcaption><strong>Figure 5:</strong> Join \(v_5\) with \(v_2\) to form a group.</figcaption>
 	</figure>
     <!-- Group box 3 -->
-    <p id="best_response">
+    <p>
       In the figure below we can check that the final stable state is a pure-strategy Nash equilibrium. That is, 
       the dynamics of group joining strategies of all the agents lead to a pure-strategy Nash equilibrium.  
     </p>
@@ -1436,418 +1439,424 @@
       <div class="inside">
         <!--<div style="height: 42vh;"> -->
 		<div class="eyebrow">
-		Hover your mouse over the grouped agents to see the myopic rewards of the two options of group joining. 
-		You may want to drag an agent, for example, \(v_5\) to see if you can make it change its mind. 
-		See whether it will has the incentive to do so or not. 
+      Hover your mouse over the grouped agents to see the myopic rewards of the two options of group joining. 
+      You may want to drag an agent, for example, \(v_5\) to see if you can make it change its mind. 
+      See whether it will has the incentive to do so or not. 
 		</div>
-          <div class="d-flex w-100 pt-4">
-            <h4 class="ps-3 pt-3 text-start">The pure-strategy Nash equilibrium</h4>
-          </div>
+    <div class="d-flex w-100 pt-4">
+      <h4 class="ps-3 pt-3 text-start">The pure-strategy Nash equilibrium</h4>
+    </div>
 
-          <div class="Group-box pb-3">
-            <div class="d-flex flex-column px-3 justify-content-center">
-              <div id="box3" class="d-flex mx-auto position-relative" style="width: 1000px">
-                <div id="myopic" class="d-flex position-absolute" style="width: 1000px; top: 230px;">
-                  <div class="mx-auto d-flex" style="width: 600px">
-                    <span id="leftTip" class="p-3 small rounded"></span>
-                    <span id="rightTip" class="ms-auto p-3 small rounded"></span>
-                  </div>
-                </div>
-                <div id="t011" class="tip" style="background-color: #d04a5c23;">
-                  <p id="wp11" class="mb-0">win prob.</p>
-                  <p id="r11">reward</p>
-                </div>
-                <div id="t012" class="tip" style="background-color: #02798c33;">
-                  <p id="wp12" class="mb-0">win prob.</p>
-                  <p id="r12">reward</p>
-                </div>
-                <div id="t013" class="tip" style="background-color: #ffc1073b;">
-                  <p id="wp13" class="mb-0">win prob.</p>
-                  <p id="r13">reward</p>
-                </div>
-                <div id="t014" class="tip" style="background-color: #4a6bd023;">
-                  <p id="wp14" class="mb-0">win prob.</p>
-                  <p id="r14">reward</p>
-                </div>
-                <div id="t015" class="tip" style="background-color: #bababa69;">
-                  <p id="wp15" class="mb-0">win prob.</p>
-                  <p id="r15">reward</p>
-                </div>
-
-                <div id="s011" class="position-absolute">
-                  <div id="i06" class="plus w-100 pb-2" style="display: none">
-                    <i
-                      class="fa-solid fa-circle-plus mx-auto text-doll-red"
-                      style="cursor: pointer;"
-                      title="Join"
-                    >
-                    </i>
-                  </div>
-                  <img src="./img/aix_doll-01.svg" style="transition:'left .3s ease-in'; height: 100px" />
-                </div>
-
-                <div id="s012" class="position-absolute">
-                  <div id="i07" class="plus w-100 pb-2" style="display: none">
-                    <i
-                      class="fa-solid fa-circle-plus mx-auto text-doll-green"
-                      style="cursor: pointer;"
-                      title="Join"
-                    >
-                  </i>
-                  </div>
-                  <img src="./img/aix_doll-02.svg" style="transition:'left .3s ease-in'; height: 100px" />
-                </div>
-
-                <div id="s013" class="position-absolute">
-                  <div id="i08" class="plus w-100 pb-2" style="display: none">
-                    <i
-                      class="fa-solid fa-circle-plus mx-auto text-doll-yellow"
-                      style="cursor: pointer;"
-                      title="Join"
-                    >
-                    </i>
-                  </div>
-                  <img src="./img/aix_doll-03.svg" style="transition:'left .3s ease-in'; height: 100px" />
-                </div>
-
-                <div id="s014" class="position-absolute">
-                  <div id="i09" class="plus w-100 pb-2" style="display: none">
-                    <i
-                      class="fa-solid fa-circle-plus mx-auto text-doll-blue"
-                      style="cursor: pointer;"
-                      title="Join"
-                    >
-                  </i>
-                  </div>
-                  <img src="./img/aix_doll-04.svg" style="transition:'left .3s ease-in'; height: 100px;" />
-                </div>
-
-                <span id="s015" class="position-absolute" style="cursor: grab;">
-                  <span class="position-absolute badge rounded-pill bg-secondary" style="bottom:-80%">Drag Me</span>
-                  <img src="./img/aix_doll-05.svg" style="height: 100px;" />
-                </span>
-                <svg class="pt-6 w-100 overflow-visible" id="Viz_area3" style="height: 180px; width: 250xp"></svg>
-              </div>
+    <div class="Group-box pb-3">
+      <div class="d-flex flex-column px-3 justify-content-center">
+        <div id="box3" class="d-flex mx-auto position-relative" style="width: 1000px">
+          <div id="myopic" class="d-flex position-absolute" style="width: 1000px; top: 230px;">
+            <div class="mx-auto d-flex" style="width: 600px">
+              <span id="leftTip" class="p-3 small rounded"></span>
+              <span id="rightTip" class="ms-auto p-3 small rounded"></span>
             </div>
           </div>
-          <!-- <div class="d-flex px-3">
-            <Card class="d-flex w-100 bg-grey rounded py-3 px-4 h5 lh-lg">
-              <i class="fa-solid fa-lightbulb text-secondary my-auto h2"></i>
-              <div class="ps-4 lh-md">
-                text...
-              </div>
-            </Card>
-          </div> -->
-		  <div class="d-flex px-3">
-            <Card class="d-flex w-100 bg-grey rounded py-3 px-4 h5 lh-lg">
-              <i class="fa-solid fa-lightbulb text-secondary my-auto h2"></i>
-              <div class="ps-4 lh-md">
-                No one wants to deviate from his / her current group to the other group since the expected gain cannot be the better-off. 
-                Here comes a pure-strategy Nash equilibrium of the &ldquo;game&rdquo;.
-              </div>
-            </Card>
+          <div id="t011" class="tip" style="background-color: #d04a5c23;">
+            <p id="wp11" class="my-auto small lh-sm">win prob.</p>
+            <p id="r11"">reward</p>
           </div>
-		  <div class="caption"><b>Figure 6:</b>Illustration of a pure-strategy Nash equilibrium.</div>
-        <!--</div> -->
+          <div id="t012" class="tip" style="background-color: #02798c33;">
+            <p id="wp12" class="my-auto small lh-sm">win prob.</p>
+            <p id="r12">reward</p>
+          </div>
+          <div id="t013" class="tip" style="background-color: #ffc1073b;">
+            <p id="wp13" class="my-auto small lh-sm">win prob.</p>
+            <p id="r13">reward</p>
+          </div>
+          <div id="t014" class="tip" style="background-color: #4a6bd023;">
+            <p id="wp14" class="my-auto small lh-sm">win prob.</p>
+            <p id="r14">reward</p>
+          </div>
+          <div id="t015" class="tip" style="background-color: #bababa69;">
+            <p id="wp15" class="my-auto small lh-sm">win prob.</p>
+            <p id="r15">reward</p>
+          </div>
+
+          <div id="s011" class="position-absolute">
+            <div id="i06" class="plus w-100 pb-2" style="display: none">
+              <i
+                class="fa-solid fa-circle-plus mx-auto text-doll-red"
+                style="cursor: pointer;"
+                title="Join"
+              >
+              </i>
+            </div>
+            <img src="./img/aix_doll-01.svg" style="transition:'left .3s ease-in'; height: 100px" />
+          </div>
+
+          <div id="s012" class="position-absolute">
+            <div id="i07" class="plus w-100 pb-2" style="display: none">
+              <i
+                class="fa-solid fa-circle-plus mx-auto text-doll-green"
+                style="cursor: pointer;"
+                title="Join"
+              >
+            </i>
+            </div>
+            <img src="./img/aix_doll-02.svg" style="transition:'left .3s ease-in'; height: 100px" />
+          </div>
+
+          <div id="s013" class="position-absolute">
+            <div id="i08" class="plus w-100 pb-2" style="display: none">
+              <i
+                class="fa-solid fa-circle-plus mx-auto text-doll-yellow"
+                style="cursor: pointer;"
+                title="Join"
+              >
+              </i>
+            </div>
+            <img src="./img/aix_doll-03.svg" style="transition:'left .3s ease-in'; height: 100px" />
+          </div>
+
+          <div id="s014" class="position-absolute">
+            <div id="i09" class="plus w-100 pb-2" style="display: none">
+              <i
+                class="fa-solid fa-circle-plus mx-auto text-doll-blue"
+                style="cursor: pointer;"
+                title="Join"
+              >
+            </i>
+            </div>
+            <img src="./img/aix_doll-04.svg" style="transition:'left .3s ease-in'; height: 100px;" />
+          </div>
+
+          <span id="s015" class="position-absolute" style="cursor: grab;">
+            <span class="position-absolute badge rounded-pill bg-secondary" style="bottom:-80%">Drag Me</span>
+            <img src="./img/aix_doll-05.svg" style="height: 100px;" />
+          </span>
+          <svg class="pt-6 w-100 overflow-visible" id="Viz_area3" style="height: 180px; width: 250px"></svg>
+        </div>
       </div>
     </div>
-  </section>
+		<div class="d-flex px-3">
+      <Card class="d-flex w-100 bg-grey rounded py-3 px-4 h5 lh-lg mb-0" style="align-items: center; flex-flow: wrap;">
+        <div style="width: 5%">
+          <i class="fa-solid fa-lightbulb text-secondary my-auto h2"></i>
+        </div>
+        <div style="width: 95%">
+          <h5 class="ps-2 lh-md">
+            No one wants to deviate from his / her current group to the other group since the expected gain cannot be the better-off. 
+            Here comes a pure-strategy Nash equilibrium of the &ldquo;game&rdquo;.
+          </h5>
+        </div>
+      </Card>
+    </div>
+		<div class="caption">
+      <b>Figure 6:</b>
+      Illustration of a pure-strategy Nash equilibrium.
+    </div>
+  </div>
+</div>
+</section>
 </div>
 
 
 <div class="container mt-lg">
-      <!-- Anchor ID -->
-      <section id="online_learning">
-      <h2>IV. Opinion Updates by Online Gradient Ascent</h2>
-	  <h3>2D Representation and the Algorithm</h3>
-	  
+  <!-- Anchor ID -->
+  <section id="online_learning">
+    <h2>IV. Opinion Updates by Online Gradient Ascent</h2>
+    <h3>2D Representation and the Algorithm</h3>
 	  <p class="inline-math"> 
-	  In this section, we consider the situation that each agent tries to maximize its own reward by 
-	  &ldquo;changing its opinion&rdquo; without deviating from the group that it belongs to. 
-	  Agents' opinions are represented as points in 
-	  \(\mathcal{K} = \{x\in [-1, 1]^2: \|x\|_2\leq 1\}\subset\mathbb{R}^2\). Consider the following 
-	  figure as an illustrating example. We have 10 agents with their opinions which are initially 
-	  their beliefs: $$
-	  \begin{align*}
-	  &z_1 = (0.3757, -0.8405),  & z_2 = (0.7536, -0.5736),\\
-	  &z_3 = (0.8314, -0.5334),  & z_4 = (-0.4106, -0.1695),\\
-	  &z_5 = (-0.4207, -0.4805), & z_6 = (-0.4853, -0.0533),\\
-	  &z_7 = (-0.6936, -0.4227), & z_8 = (-0.4561, -0.1088),\\
-	  &z_9 = (-0.6769, -0.2457), & z_{10} = (-0.6488, -0.4109).
-	  \end{align*}
-	  $$
-	  Two scenarios will be considered: either the 10 agents are regarded as 10 different groups, 
-	  or they are grouped as \(\{\textcolor{red}{v_1,v_2,v_3}\}\), \(\{\textcolor{DarkGreen}{v_4,v_5,v_6}\}\), 
-	  \(\{\textcolor{blue}{v_7,v_8}\}\), and \(\{\textcolor{Goldenrod}{v_9, v_{10}}\}\).
-	  The 2-norm constraint that \(\|z_i\|_2, \|s_i\|_2\leq 1\) correlates both the dimensions and 
-	  projection of the opinion is required if the constraint is not satisfied. 
+      In this section, we consider the situation that each agent tries to maximize its own reward by 
+      &ldquo;changing its opinion&rdquo; without deviating from the group that it belongs to. 
+      Agents' opinions are represented as points in 
+      \(\mathcal{K} = \{x\in [-1, 1]^2: \|x\|_2\leq 1\}\subset\mathbb{R}^2\). Consider the following 
+      figure as an illustrating example. We have 10 agents with their opinions which are initially 
+      their beliefs: $$
+      \begin{align*}
+      &z_1 = (0.3757, -0.8405),  & z_2 = (0.7536, -0.5736),\\
+      &z_3 = (0.8314, -0.5334),  & z_4 = (-0.4106, -0.1695),\\
+      &z_5 = (-0.4207, -0.4805), & z_6 = (-0.4853, -0.0533),\\
+      &z_7 = (-0.6936, -0.4227), & z_8 = (-0.4561, -0.1088),\\
+      &z_9 = (-0.6769, -0.2457), & z_{10} = (-0.6488, -0.4109).
+      \end{align*}
+      $$
+      Two scenarios will be considered: either the 10 agents are regarded as 10 different groups, 
+      or they are grouped as \(\{\textcolor{red}{v_1,v_2,v_3}\}\), \(\{\textcolor{DarkGreen}{v_4,v_5,v_6}\}\), 
+      \(\{\textcolor{blue}{v_7,v_8}\}\), and \(\{\textcolor{Goldenrod}{v_9, v_{10}}\}\).
+      The 2-norm constraint that \(\|z_i\|_2, \|s_i\|_2\leq 1\) correlates both the dimensions and 
+      projection of the opinion is required if the constraint is not satisfied. 
 	  </p>
 	  
 	  <figure class="text-center">
-		<img src="img/2D_representation.png" alt="2D_representatino" width="590" height="509">
-		<figcaption><strong>Figure 7:</strong> 2D Representation of Agents' Opinions.</figcaption>
+		  <img src="img/2D_representation.png" alt="2D_representatino" width="590" height="509">
+		  <figcaption>
+        <strong>Figure 7:</strong> 
+        2D Representation of Agents' Opinions.
+      </figcaption>
 	  </figure>
 	  
 	  <p class="inline-math">
-	  Below we introduce the online gradient ascent algorithm. The pseudo-code is given in the figure below. Suppose that 
-	  we would like to have the agent update their opinions in \(T\) iterations. At each iteration, agents update 
-	  their opinion in a decentralized way. In each iteration, each agent first observes the reward resulted from 
-	  the previous iteration, then compute the &ldquo;gradient&rdquo; (the symbol \(\nabla\)), which is the first derivate 
-	  with respect to its opinion and can be regarded as &ldquo;slopes&rdquo; in each dimension of the feasible space. 
-	  Then each agent updates its opinion by adding the gradient multiplied by \(\eta\), which is 
-	  called the learning rate or the step size. Roughly speaking, the gradient shows the direction of improving 
-	  an agent's reward and the learning rate decides how far the updating step should make at such direction. 
+      Below we introduce the online gradient ascent algorithm. The pseudo-code is given in the figure below. Suppose that 
+      we would like to have the agent update their opinions in \(T\) iterations. At each iteration, agents update 
+      their opinion in a decentralized way. In each iteration, each agent first observes the reward resulted from 
+      the previous iteration, then compute the &ldquo;gradient&rdquo; (the symbol \(\nabla\)), which is the first derivate 
+      with respect to its opinion and can be regarded as &ldquo;slopes&rdquo; in each dimension of the feasible space. 
+      Then each agent updates its opinion by adding the gradient multiplied by \(\eta\), which is 
+      called the learning rate or the step size. Roughly speaking, the gradient shows the direction of improving 
+      an agent's reward and the learning rate decides how far the updating step should make at such direction. 
 	  </p>
 	  
 	  <figure class="text-center">
-		<img src="img/gradient_ascent_algo.svg" alt="AlgorithmGA" width="506" height="436">
-		<figcaption><strong>Figure 8:</strong> Pseudo-code of the Multi-Agent Online Gradient Ascent Algorithm.</figcaption>
+      <img src="img/gradient_ascent_algo.svg" alt="AlgorithmGA" width="506" height="436">
+      <figcaption>
+        <strong>Figure 8:</strong> 
+        Pseudo-code of the Multi-Agent Online Gradient Ascent Algorithm.
+      </figcaption>
 	  </figure>
 	  
 	  <p class="inline-math">
-	  At line 4 of the algorithm, $$
-		\Pi_{\mathcal{K}}(x) = \left\{
+      At line 4 of the algorithm, $$
+      \Pi_{\mathcal{K}}(x) = \left\{
 			\begin{array}{ll}
 			x & \mbox{ if } \|x\|_2\leq 1\\
 			\frac{x}{\|x\|_2} & \mbox{ otherwise}
 			\end{array}
 			\right.$$
-	  is a simple &ldquo;projection&rdquo; which projects \(x\) onto the feasible set \(\mathcal{K}\), 
-	  if it is outside \(\mathcal{K}\), by dividing its 2-norm. Note that in this article, we consider constant 
-	  learning rates to simplify our discussion. In fact, learning rates can be set adaptively and decay with time. 	  
+      is a simple &ldquo;projection&rdquo; which projects \(x\) onto the feasible set \(\mathcal{K}\), 
+      if it is outside \(\mathcal{K}\), by dividing its 2-norm. Note that in this article, we consider constant 
+      learning rates to simplify our discussion. In fact, learning rates can be set adaptively and decay with time. 	  
 	  </p>
-	  
 	  <h4>Regularization</h4>
-	
 	  <p class="inline-math">
-	  Recall that each agent has its own belief. An agent can be benefited by maximizing its own reward, however, it 
-	  could be not as &ldquo;happy&rdquo; as it thought at the beginning. Hence, it is interesting to consider a 
-	  constraint to make it update the opinion in a more controlled way. Here we introduce the concept called 
-	  &ldquo;regularization&rdquo;. 
-	  The reward function for agent \(v_i\) including the regularizer is defined as 
-	  $$r_i(\tau) = \sum_{j=1}^m p_j(\tau)\langle s_i, \bar{g}_j\rangle - \|z_i-s_i\|_2^2.$$
-	  Since \(-\|z_i-s_i\|_2^2\) is always non-positive, an agent will be forced to consider &ldquo;not being too far 
-	  from its belief&rdquo;. Our experimental illustrations show that such a regularization helps the 
-	  game converge to a stable state where the difference between the opinion and belief of each agent is moderate. 
+      Recall that each agent has its own belief. An agent can be benefited by maximizing its own reward, however, it 
+      could be not as &ldquo;happy&rdquo; as it thought at the beginning. Hence, it is interesting to consider a 
+      constraint to make it update the opinion in a more controlled way. Here we introduce the concept called 
+      &ldquo;regularization&rdquo;. 
+      The reward function for agent \(v_i\) including the regularizer is defined as 
+      $$r_i(\tau) = \sum_{j=1}^m p_j(\tau)\langle s_i, \bar{g}_j\rangle - \|z_i-s_i\|_2^2.$$
+      Since \(-\|z_i-s_i\|_2^2\) is always non-positive, an agent will be forced to consider &ldquo;not being too far 
+      from its belief&rdquo;. Our experimental illustrations show that such a regularization helps the 
+      game converge to a stable state where the difference between the opinion and belief of each agent is moderate. 
 	  </p>
 	  
 
-		<h3>Initially Ungrouped Agents - Reward with and without Regularization</h3>
-        <p id="gaa_no_regularizers">
-          In this paragraph we consider the 10 agents regarded as 10 individual groups in 10 different colors. 
-		 Let us compare the convergence results of multi-agent gradient ascent with and without regularization.
-        </p>
+		<h3>
+      Initially Ungrouped Agents - Reward with and without Regularization
+    </h3>
+    <p>
+      In this paragraph we consider the 10 agents regarded as 10 individual groups in 10 different colors. 
+      Let us compare the convergence results of multi-agent gradient ascent with and without regularization.
+    </p>
 		
 		<!-- HERE -->
 		<div class="framed" style="margin-bottom: 20px">
         <div class="inside">
 		<div class="eyebrow">
-		Choose how fast you would like to see the online gradient ascent algorithm updates the agents' opinions. 
-		The left-hand side considers regularization, while the right-hand side does not. 
-		The videos can be paused, 
-		dragged, and resumed mannually. The play speed can be adjusted, too. 
+      Choose how fast you would like to see the online gradient ascent algorithm updates the agents' opinions. 
+      The left-hand side considers regularization, while the right-hand side does not. 
+      The videos can be paused, 
+      dragged, and resumed mannually. The play speed can be adjusted, too. 
 		</div>
 		<!-- VIDEO box -->
-            <h4 class="ps-3 pt-5">Initially 10 agents regarded as 10 groups</h4>
-            <div class="Group-box pb-5">
-              <div class="p-3" style="height:62%">
-                <Row class="d-flex">
-                  <Col xs="6" class="d-flex flex-column flex-fill my-2 justify-content-center">
-                    <video
-                      autoplay
-                      controls
-                      id="video3"
-                      class="mx-auto"
-                      style="transition:'left .3s ease-in'; height: 230px; width: 350px;"
-                      src="img/v5.mp4"
-                      type="video/mp4"
-                    >
-                    </video>
-                    <div class="d-flex flex-column mx-auto">
-                      <div class="form-check pt-5">
-                        <input
-                          class="form-check-input pt-3"
-                          type="radio"
-                          name="flexRadioDefault7"
-                          id="flexRadioDefault5"
-                          onchange="replaceVideo('#video3', 'v5')"
-                          checked
-                        >
-                        <label class="form-check-label h6 text-end" for="flexRadioDefault5">
-                          Learning rate 0.1
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <input
-                          class="form-check-input"
-                          type="radio"
-                          name="flexRadioDefault7"
-                          id="flexRadioDefault6"
-                          onchange="replaceVideo('#video3', 'v6')"
-                        >
-                        <label class="form-check-label h6 text-end" for="flexRadioDefault6">
-                          Learning rate 0.01
-                        </label>
-                      </div>
-                    </div>
-                  </Col>
-
-                  <Col xs="6" class="d-flex flex-column flex-fill my-2 mx-auto justify-content-center">
-                    <video
-                      autoplay
-                      controls
-                      id="video4"
-                      class="mx-auto"
-                      style="transition:'left .3s ease-in'; height: 230px; width: 350px;"
-                      src="img/v7.mp4"
-                      type="video/mp4"
-                    >
-                    </video>
-                    <div class="d-flex flex-column mx-auto">
-                      <div class="form-check pt-5">
-                        <input
-                          class="form-check-input"
-                          type="radio"
-                          name="flexRadioDefault8"
-                          id="flexRadioDefault7"
-                          onchange="replaceVideo('#video4', 'v7')"
-                          checked
-                        >
-                        <label class="form-check-label h6 text-end" for="flexRadioDefault7">
-                          Learning rate 0.1
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <input
-                          class="form-check-input"
-                          type="radio"
-                          name="flexRadioDefault8"
-                          id="flexRadioDefault8"
-                          onchange="replaceVideo('#video4', 'v8')"
-                        >
-                        <label class="form-check-label h6 text-end" for="flexRadioDefault8">
-                          Learning rate 0.01
-                        </label>
-                      </div>
-                    </div>
-                  </Col>
-                </Row>
+      <h4 class="ps-3 pt-5">Initially 10 agents regarded as 10 groups</h4>
+      <div class="Group-box pb-5">
+        <div class="p-3" style="height:62%">
+          <Row class="d-flex">
+            <Col xs="6" class="d-flex flex-column flex-fill my-2 justify-content-center">
+              <video
+                autoplay
+                controls
+                id="video3"
+                class="mx-auto"
+                style="transition:'left .3s ease-in'; height: 230px; width: 350px;"
+                src="img/v5.mp4"
+                type="video/mp4"
+              >
+              </video>
+              <div class="d-flex flex-column mx-auto">
+                <div class="form-check pt-5">
+                  <input
+                    class="form-check-input pt-3"
+                    type="radio"
+                    name="flexRadioDefault7"
+                    id="flexRadioDefault5"
+                    onchange="replaceVideo('#video3', 'v5')"
+                    checked
+                  >
+                  <label class="form-check-label h6 text-end" for="flexRadioDefault5">
+                    Learning rate 0.1
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="flexRadioDefault7"
+                    id="flexRadioDefault6"
+                    onchange="replaceVideo('#video3', 'v6')"
+                  >
+                  <label class="form-check-label h6 text-end" for="flexRadioDefault6">
+                    Learning rate 0.01
+                  </label>
+                </div>
               </div>
-            </div>
+            </Col>
+
+            <Col xs="6" class="d-flex flex-column flex-fill my-2 mx-auto justify-content-center">
+              <video
+                autoplay
+                controls
+                id="video4"
+                class="mx-auto"
+                style="transition:'left .3s ease-in'; height: 230px; width: 350px;"
+                src="img/v7.mp4"
+                type="video/mp4"
+              >
+              </video>
+              <div class="d-flex flex-column mx-auto">
+                <div class="form-check pt-5">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="flexRadioDefault8"
+                    id="flexRadioDefault7"
+                    onchange="replaceVideo('#video4', 'v7')"
+                    checked
+                  >
+                  <label class="form-check-label h6 text-end" for="flexRadioDefault7">
+                    Learning rate 0.1
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="flexRadioDefault8"
+                    id="flexRadioDefault8"
+                    onchange="replaceVideo('#video4', 'v8')"
+                  >
+                  <label class="form-check-label h6 text-end" for="flexRadioDefault8">
+                    Learning rate 0.01
+                  </label>
+                </div>
+              </div>
+            </Col>
+          </Row>
+        </div>
+      </div>
 			<div class="caption"><b>Figure 9:</b>The dynamics of opinion update by online gradient ascent for ungrouped agents. 
 			The left-hand side considers regularization, while the right-hand side does not. With a slight abuse of notation, 
 			the \(x\)-dimension and \(y\)-dimension in the figures denote the first dimension of opinions and beliefs respectively.</div>
 		</div>
 		</div>
 		<p> 
-		We find that, for example, agent \(v_1\) moves towards the botton-left direction in the feasible space, though 
-		with regularization it behaves in a more conservative way (see the figure on the left-hand side). Moreover, the learning rate, either 0.1 
-		or 0.01, seems to lead to final convergence, though the larger learning rate gives the agents faster speed of convergence 
-		in this example. 
+      We find that, for example, agent \(v_1\) moves towards the botton-left direction in the feasible space, though 
+      with regularization it behaves in a more conservative way (see the figure on the left-hand side). Moreover, the learning rate, either 0.1 
+      or 0.01, seems to lead to final convergence, though the larger learning rate gives the agents faster speed of convergence 
+      in this example. 
 		</p>
-		<h3>Initially Grouped Agents - Reward with and without Regularization</h3>
-        <p id="gaa_no_regularizers">
-         In this paragraph, we consider the case that the 10 agents are regarded as 4 groups in 4 different colors. 
-		 Let us compare the convergence results of multi-agent gradient ascent with and without regularization.
-        </p>
+		<h3>
+      Initially Grouped Agents - Reward with and without Regularization
+    </h3>
+    <p>
+      In this paragraph, we consider the case that the 10 agents are regarded as 4 groups in 4 different colors. 
+      Let us compare the convergence results of multi-agent gradient ascent with and without regularization.
+    </p>
 		
 		<!-- HERE -->
 		<div class="framed" style="margin-bottom: 20px">
-        <div class="inside">
-		<div class="eyebrow">
-		Choose how fast you would like to see the online gradient ascent algorithm updates the agents' opinions. 
-		The left-hand side considers regularization, while the right-hand side does not. 
-		The videos can be paused, dragged, and resumed mannually. The play speed can be adjusted, too. 
+      <div class="inside">
+      <div class="eyebrow">
+      Choose how fast you would like to see the online gradient ascent algorithm updates the agents' opinions. 
+      The left-hand side considers regularization, while the right-hand side does not. 
+      The videos can be paused, dragged, and resumed mannually. The play speed can be adjusted, too. 
 		</div>
-		<!-- VIDEO box -->
-            <h4 class="ps-3 pt-5">Initially 10 agents regarded as 4 groups</h4>
-            <div class="Group-box pb-5">
-              <div class="p-3" style="height:62%">
-                <Row class="d-flex">
-                  <Col xs="6" class="d-flex flex-column flex-fill my-2 justify-content-center">
-                    <video
-                      autoplay
-                      controls
-                      id="video1"
-                      class="mx-auto"
-                      style="transition:'left .3s ease-in'; height: 230px; width: 350px;"
-                      src="img/v1.mp4"
-                      type="video/mp4"
-                    >
-                    </video>
-                    <div class="d-flex flex-column mx-auto">
-                      <div class="form-check pt-5">
-                        <input
-                          class="form-check-input"
-                          type="radio"
-                          name="flexRadioDefault5"
-                          id="flexRadioDefault1"
-                          onchange="replaceVideo('#video1', 'v1')"
-                          checked
-                        >
-                        <label class="form-check-label h6 text-end" for="flexRadioDefault1">
-                          Learning rate 0.1
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <input
-                          class="form-check-input"
-                          type="radio"
-                          name="flexRadioDefault5"
-                          id="flexRadioDefault2"
-                          onchange="replaceVideo('#video1', 'v2')"
-                        >
-                        <label class="form-check-label h6 text-end" for="flexRadioDefault2">
-                          Learning rate 0.01
-                        </label>
-                      </div>
-                    </div>
-                  </Col>
 
-                  <Col xs="6" class="d-flex flex-column flex-fill my-2 justify-content-center">
-                    <video
-                      autoplay
-                      controls
-                      id="video2"
-                      class="mx-auto"
-                      style="transition:'left .3s ease-in'; height: 230px; width: 350px;"
-                      src="img/v3.mp4"
-                      type="video/mp4"
-                    >
-                    </video>
-                    <div class="d-flex flex-column mx-auto">
-                      <div class="form-check pt-5">
-                        <input class="form-check-input"
-                          type="radio"
-                          name="flexRadioDefault6"
-                          id="flexRadioDefault5"
-                          onchange="replaceVideo('#video2', 'v3')"
-                          checked
-                        >
-                        <label class="form-check-label h6 text-end" for="flexRadioDefault3">
-                          Learning rate 0.1
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <input
-                          class="form-check-input"
-                          type="radio"
-                          name="flexRadioDefault6"
-                          id="flexRadioDefault2"
-                          onchange="replaceVideo('#video2', 'v4')"
-                        >
-                        <label class="form-check-label h6 text-end" for="flexRadioDefault4">
-                          Learning rate 0.01
-                        </label>
-                      </div>
-                    </div>
-                  </Col>
-                </Row>
+		<!-- VIDEO box -->
+      <h4 class="ps-3 pt-5">Initially 10 agents regarded as 4 groups</h4>
+      <div class="Group-box pb-5">
+        <div class="p-3" style="height:62%">
+          <Row class="d-flex">
+            <Col xs="6" class="d-flex flex-column flex-fill my-2 justify-content-center">
+              <video
+                autoplay
+                controls
+                id="video1"
+                class="mx-auto"
+                style="transition:'left .3s ease-in'; height: 230px; width: 350px;"
+                src="img/v1.mp4"
+                type="video/mp4"
+              >
+              </video>
+              <div class="d-flex flex-column mx-auto">
+                <div class="form-check pt-5">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="flexRadioDefault5"
+                    id="flexRadioDefault1"
+                    onchange="replaceVideo('#video1', 'v1')"
+                    checked
+                  >
+                  <label class="form-check-label h6 text-end" for="flexRadioDefault1">
+                    Learning rate 0.1
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="flexRadioDefault5"
+                    id="flexRadioDefault2"
+                    onchange="replaceVideo('#video1', 'v2')"
+                  >
+                  <label class="form-check-label h6 text-end" for="flexRadioDefault2">
+                    Learning rate 0.01
+                  </label>
+                </div>
               </div>
-            </div>
+            </Col>
+
+            <Col xs="6" class="d-flex flex-column flex-fill my-2 justify-content-center">
+              <video
+                autoplay
+                controls
+                id="video2"
+                class="mx-auto"
+                style="transition:'left .3s ease-in'; height: 230px; width: 350px;"
+                src="img/v3.mp4"
+                type="video/mp4"
+              >
+              </video>
+              <div class="d-flex flex-column mx-auto">
+                <div class="form-check pt-5">
+                  <input class="form-check-input"
+                    type="radio"
+                    name="flexRadioDefault6"
+                    id="flexRadioDefault5"
+                    onchange="replaceVideo('#video2', 'v3')"
+                    checked
+                  >
+                  <label class="form-check-label h6 text-end" for="flexRadioDefault3">
+                    Learning rate 0.1
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="flexRadioDefault6"
+                    id="flexRadioDefault2"
+                    onchange="replaceVideo('#video2', 'v4')"
+                  >
+                  <label class="form-check-label h6 text-end" for="flexRadioDefault4">
+                    Learning rate 0.01
+                  </label>
+                </div>
+              </div>
+            </Col>
+          </Row>
+        </div>
+      </div>
 			<div class="caption"><b>Figure 10:</b>The dynamics of opinion update by online gradient ascent for grouped agents. 
-			The left-hand side considers regularization, while the right-hand side does not. With a slight abuse of notation, 
-			the \(x\)-dimension and \(y\)-dimension in the figures denote the first dimension of opinions and beliefs respectively.</div>
+        The left-hand side considers regularization, while the right-hand side does not. With a slight abuse of notation, 
+        the \(x\)-dimension and \(y\)-dimension in the figures denote the first dimension of opinions and beliefs respectively.</div>
 		</div>
 		</div>
 		
@@ -1869,159 +1878,159 @@
 		</p>
 		
 		<h3>Reward Function Image Changes and Dynamics of the Opinion Updates</h3>
-        <p id="gaa_no_regularizers">
-         In this paragraph, we look into the changes of the reward function image. Our goal here 
-		 is to stress on the fact that the reward function of each agent actually changes due to 
-		 the updates of the other agents. Indeed, as we have illustrated in the first section, each 
-		 agent's winning probability is affected not only by its own opinion but also by the other 
-		 agents' opinions. Due to this reason, each agent is dealing with a time-varying 
-		 reward function. 
+      <p>
+        In this paragraph, we look into the changes of the reward function image. Our goal here 
+        is to stress on the fact that the reward function of each agent actually changes due to 
+        the updates of the other agents. Indeed, as we have illustrated in the first section, each 
+        agent's winning probability is affected not only by its own opinion but also by the other 
+        agents' opinions. Due to this reason, each agent is dealing with a time-varying 
+        reward function. 
 		</p> 
 		<p> 
-		 Here we consider the previous example of 10 agents in 4 groups and focus on the two agents 
-		 \(v_4\) and \(v_9\), which are in the green group and yellow group, respectively. From the previous 
-		 paragraph, we have already observed the peculiar behavior of agent \(v_9\) and \(v_{10}\) in the 
-		 yellow group: they move downward at the beginning but fall back afterwards to the positions close to their 
-		 beliefs. In addition to the dynamics of their opinion updates, let us look into the changes of their 
-		 reward function images as well. By the following interactive illustration, we reveal the fact 
-		 that the reward function images with or without regularization are quite different. 
-        </p>
+      Here we consider the previous example of 10 agents in 4 groups and focus on the two agents 
+      \(v_4\) and \(v_9\), which are in the green group and yellow group, respectively. From the previous 
+      paragraph, we have already observed the peculiar behavior of agent \(v_9\) and \(v_{10}\) in the 
+      yellow group: they move downward at the beginning but fall back afterwards to the positions close to their 
+      beliefs. In addition to the dynamics of their opinion updates, let us look into the changes of their 
+      reward function images as well. By the following interactive illustration, we reveal the fact 
+      that the reward function images with or without regularization are quite different. 
+    </p>
 		
 		
 		<!-- HERE -->
 		<div class="framed" style="margin-bottom: 20px">
-        <div class="inside">
-		<div class="eyebrow">
-		Choose whether you want to see the reward function with or without regularization. By playing or pause the videos, 
-		you will be able to observe the reward function image changes, like environmental changes, as well as the dynamics 
-		of the opinion updates. Do they really move to the desired directions? 	
-		</div>
+      <div class="inside">
+      <div class="eyebrow">
+        Choose whether you want to see the reward function with or without regularization. By playing or pause the videos, 
+        you will be able to observe the reward function image changes, like environmental changes, as well as the dynamics 
+        of the opinion updates. Do they really move to the desired directions? 	
+      </div>
 		<!-- VIDEO box -->
-            <h4 class="ps-3 pt-5">Reward function image changes and opinion updates of \(v_4\) and \(v_9\).</h4>
-            <div class="Group-box pb-5">
-              <div class="p-3" style="height:62%">
-                <Row class="d-flex">
-                  <Col xs="6" class="d-flex flex-column flex-fill my-2 justify-content-center">
-                    <video
-                      autoplay
-                      controls
-                      id="video5"
-                      class="mx-auto"
-                      style="transition:'left .3s ease-in'; height: 230px; width: 350px;"
-                      src="img/v4_no_regularizer.mp4"
-                      type="video/mp4"
-                    >
-                    </video>
-                    <div class="d-flex flex-column mx-auto">
-                      <div class="form-check pt-5">
-                        <input
-                          class="form-check-input pt-3"
-                          type="radio"
-                          name="flexRadioDefault7"
-                          id="flexRadioDefault5"
-                          onchange="replaceVideo('#video5', 'v4_no_regularizer')"
-                          checked
-                        >
-                        <label class="form-check-label h6 text-end" for="flexRadioDefault5">
-                          v4: no regularizer
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <input
-                          class="form-check-input"
-                          type="radio"
-                          name="flexRadioDefault7"
-                          id="flexRadioDefault6"
-                          onchange="replaceVideo('#video5', 'v4_with_regularizer')"
-                        >
-                        <label class="form-check-label h6 text-end" for="flexRadioDefault6">
-                          v4: with regularizer
-                        </label>
-                      </div>
-                    </div>
-                  </Col>
-
-                  <Col xs="6" class="d-flex flex-column flex-fill my-2 mx-auto justify-content-center">
-                    <video
-                      autoplay
-                      controls
-                      id="video6"
-                      class="mx-auto"
-                      style="transition:'left .3s ease-in'; height: 230px; width: 350px;"
-                      src="img/v9_no_regularizer.mp4"
-                      type="video/mp4"
-                    >
-                    </video>
-                    <div class="d-flex flex-column mx-auto">
-                      <div class="form-check pt-5">
-                        <input
-                          class="form-check-input"
-                          type="radio"
-                          name="flexRadioDefault8"
-                          id="flexRadioDefault7"
-                          onchange="replaceVideo('#video6', 'v9_no_regularizer')"
-                          checked
-                        >
-                        <label class="form-check-label h6 text-end" for="flexRadioDefault7">
-                          v9: no regularizer
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <input
-                          class="form-check-input"
-                          type="radio"
-                          name="flexRadioDefault8"
-                          id="flexRadioDefault8"
-                          onchange="replaceVideo('#video6', 'v9_with_regularizer')"
-                        >
-                        <label class="form-check-label h6 text-end" for="flexRadioDefault8">
-                          v9: with regularizer
-                        </label>
-                      </div>
-                    </div>
-                  </Col>
-                </Row>
+      <h4 class="ps-3 pt-5">Reward function image changes and opinion updates of \(v_4\) and \(v_9\).</h4>
+      <div class="Group-box pb-5">
+        <div class="p-3" style="height:62%">
+          <Row class="d-flex">
+            <Col xs="6" class="d-flex flex-column flex-fill my-2 justify-content-center">
+              <video
+                autoplay
+                controls
+                id="video5"
+                class="mx-auto"
+                style="transition:'left .3s ease-in'; height: 230px; width: 350px;"
+                src="img/v4_no_regularizer.mp4"
+                type="video/mp4"
+              >
+              </video>
+              <div class="d-flex flex-column mx-auto">
+                <div class="form-check pt-5">
+                  <input
+                    class="form-check-input pt-3"
+                    type="radio"
+                    name="flexRadioDefault7"
+                    id="flexRadioDefault5"
+                    onchange="replaceVideo('#video5', 'v4_no_regularizer')"
+                    checked
+                  >
+                  <label class="form-check-label h6 text-end" for="flexRadioDefault5">
+                    v4: no regularizer
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="flexRadioDefault7"
+                    id="flexRadioDefault6"
+                    onchange="replaceVideo('#video5', 'v4_with_regularizer')"
+                  >
+                  <label class="form-check-label h6 text-end" for="flexRadioDefault6">
+                    v4: with regularizer
+                  </label>
+                </div>
               </div>
-            </div>
+            </Col>
+
+            <Col xs="6" class="d-flex flex-column flex-fill my-2 mx-auto justify-content-center">
+              <video
+                autoplay
+                controls
+                id="video6"
+                class="mx-auto"
+                style="transition:'left .3s ease-in'; height: 230px; width: 350px;"
+                src="img/v9_no_regularizer.mp4"
+                type="video/mp4"
+              >
+              </video>
+              <div class="d-flex flex-column mx-auto">
+                <div class="form-check pt-5">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="flexRadioDefault8"
+                    id="flexRadioDefault7"
+                    onchange="replaceVideo('#video6', 'v9_no_regularizer')"
+                    checked
+                  >
+                  <label class="form-check-label h6 text-end" for="flexRadioDefault7">
+                    v9: no regularizer
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="flexRadioDefault8"
+                    id="flexRadioDefault8"
+                    onchange="replaceVideo('#video6', 'v9_with_regularizer')"
+                  >
+                  <label class="form-check-label h6 text-end" for="flexRadioDefault8">
+                    v9: with regularizer
+                  </label>
+                </div>
+              </div>
+            </Col>
+          </Row>
+        </div>
+      </div>
 			<div class="caption"><b>Figure 11:</b>The dynamics of the reward function images and the opinion updates by multi-agent 
-			online gradient ascent for \(v_4\) and \(v_9\) in two different groups. The reward functions of the two agents can be 
-			either with or without the regularization. 
+        online gradient ascent for \(v_4\) and \(v_9\) in two different groups. The reward functions of the two agents can be 
+        either with or without the regularization. 
 			</div>
 		</div>
 		</div>
 		<p>
-		As we can observe from the above figures, without the regularization, an agent is more likely to have its opinion eventually to 
-		fall into the one leading to a local maximum reward. While in the case of considering regularization, an agent somehow 
-		will eventually express an opinion which gives reward close to global maximum.   
+      As we can observe from the above figures, without the regularization, an agent is more likely to have its opinion eventually to 
+      fall into the one leading to a local maximum reward. While in the case of considering regularization, an agent somehow 
+      will eventually express an opinion which gives reward close to global maximum.   
 		</p>
 	</section>
 </div>
 
 
 <div class="container mt-lg">
-      <!-- Anchor ID -->
-      <section id="discussion">
-      <h2>V. Discussion</h2>
-	  
-	  <p id="best-response-discussion" class="inline-math"> 
-	  As to the setting of group joining, each agent has a finite number of existing groups to join as a finite  
-	  number of pure strategies to play. However, a pure-strategy Nash equilibrium does not always exist in 
-	  a non-cooperative game, and finding such an equilibrium can be computationally difficult [<a href="#ref_6">6</a>].
-	  Whenever a game in our setting here does not have a pure-strategy Nash equilibrium, the dynamics of myopic best-responses
-	  of the agents will never reach a stable state. As the number of possible states is upper bounded by \(n^n\), which corresponds  
-	  to the number of possible ways of throwing \(n\) balls into \(n\) bins, the dynamics must eventually visit a state 
-	  which has been reached before, hence a cycle of the dynamics occurs. 
-	  </p>
-	  
-	  <p id="best-response-discussion" class="inline-math"> 
-	  When each agent is assumed to play the online gradient ascent algorithm, the number of possible pure-strategies of it is 
-	  infinitely many. Indeed, all real vectors in \(\{ x\in [-1, 1]^k: \|x\|_2\leq 1\}\subset\mathbb{R}^k\) are feasible. So far 
-	  it is still unclear whether such a game in our setting &ldquo;always&rdquo; has a pure-strategy Nash equilibrium. However, 
-	  base on the numerical simulations we have conducted, we have not found any game instance which does not converge to a stable 
-	  state. Note that a stable state reached by agents' simultaneously playing online gradient ascent algorithms is not necessarily 
-	  a pure-strategy Nash equilibrium. This is because the update of the opinion only considers the local deviations, so it is 
-	  merely locally stable.
-	  </p>
+  <!-- Anchor ID -->
+  <section id="discussion">
+    <h2>V. Discussion</h2>
+
+    <p class="inline-math"> 
+      As to the setting of group joining, each agent has a finite number of existing groups to join as a finite  
+      number of pure strategies to play. However, a pure-strategy Nash equilibrium does not always exist in 
+      a non-cooperative game, and finding such an equilibrium can be computationally difficult [<a href="#ref_6">6</a>].
+      Whenever a game in our setting here does not have a pure-strategy Nash equilibrium, the dynamics of myopic best-responses
+      of the agents will never reach a stable state. As the number of possible states is upper bounded by \(n^n\), which corresponds  
+      to the number of possible ways of throwing \(n\) balls into \(n\) bins, the dynamics must eventually visit a state 
+      which has been reached before, hence a cycle of the dynamics occurs. 
+    </p>
+    
+    <p class="inline-math"> 
+      When each agent is assumed to play the online gradient ascent algorithm, the number of possible pure-strategies of it is 
+      infinitely many. Indeed, all real vectors in \(\{ x\in [-1, 1]^k: \|x\|_2\leq 1\}\subset\mathbb{R}^k\) are feasible. So far 
+      it is still unclear whether such a game in our setting &ldquo;always&rdquo; has a pure-strategy Nash equilibrium. However, 
+      base on the numerical simulations we have conducted, we have not found any game instance which does not converge to a stable 
+      state. Note that a stable state reached by agents' simultaneously playing online gradient ascent algorithms is not necessarily 
+      a pure-strategy Nash equilibrium. This is because the update of the opinion only considers the local deviations, so it is 
+      merely locally stable.
+    </p>
 	</section>
 </div>
 
@@ -2029,105 +2038,100 @@
 
 
 <div class="container mt-lg">
-      <!-- Anchor ID -->
-      <section id="conclusion">
-      <h2>VI. Conclusion</h2>
-	  
-	  <p> 
-	  This article presents a preliminary study on the dynamics of group formation. From the illustrations, 
-	  readers can realize what a pure-strategy Nash equilibrium in a system of multi-agents is and also learn 
-	  how online gradient ascent algorithms can help reach a stable state of the game. 
-	  </p>
-	  
-	  <p>
-	  In the future, we plan to prove our multi-agent online gradient ascent algorithm will stabilize the system and also 
-	  analyze the speed of convergence. The other online learning algorithms, such as follow-the-regularized leader, 
-	  multiplicative-weight update, mirror ascent, etc., can be also applied (see [<a href="#ref_4">4</a>]). Moreover, 
-	  it will be also interesting to consider myopic best-responses and online gradient ascent together as the strategies 
-	  that agents can play, instead of considering each one of them separately as different settings. 
-	  We are also curious about the other types of best-response. For example, an agent can quit the group it belongs 
-	  to in any iteration. 
-	  </p>
-	  
-	  
+  <!-- Anchor ID -->
+  <section id="conclusion">
+  <h2>VI. Conclusion</h2>
+    <p> 
+      This article presents a preliminary study on the dynamics of group formation. From the illustrations, 
+      readers can realize what a pure-strategy Nash equilibrium in a system of multi-agents is and also learn 
+      how online gradient ascent algorithms can help reach a stable state of the game. 
+    </p>       
+    <p>
+      In the future, we plan to prove our multi-agent online gradient ascent algorithm will stabilize the system and also 
+      analyze the speed of convergence. The other online learning algorithms, such as follow-the-regularized leader, 
+      multiplicative-weight update, mirror ascent, etc., can be also applied (see [<a href="#ref_4">4</a>]). Moreover, 
+      it will be also interesting to consider myopic best-responses and online gradient ascent together as the strategies 
+      that agents can play, instead of considering each one of them separately as different settings. 
+      We are also curious about the other types of best-response. For example, an agent can quit the group it belongs 
+      to in any iteration. 
+    </p>
 	</section>
 </div>
 
 
 <div class="container mt-lg">
-      <!-- Anchor ID -->
-      <section id="acknowledgement">
-
-	  <h3>Acknowledgment</h3>
+  <!-- Anchor ID -->
+  <section id="acknowledgement">
+    <h3>Acknowledgment</h3>
       <p id="Acknowledgment" class="inline-math">
-	  This work is supported by the Taiwan Ministry of Science and Technology under grant no. NSTC 110-2222-E-032-002-MY2, 
-	  NSTC 111-2221-E-005-047- and NSTC 111-2410-H-A49-022-MY2. The authors also thank Victorien Yen for helping implement 
-	  the Javascript codes in the immersive article. 
+        This work is supported by the Taiwan Ministry of Science and Technology under grant no. NSTC 110-2222-E-032-002-MY2, 
+        NSTC 111-2221-E-005-047- and NSTC 111-2410-H-A49-022-MY2. The authors also thank Victorien Yen for helping implement 
+        the Javascript codes in the immersive article. 
       </p>
-	  </section>
+  </section>
 </div>
 
 
-	<div class="container mt-lg">
-      <section class="references">
-        <h2>References</h2>
-        <ol>
-          <li id="ref_1">
-            Generative adversarial networks
-            <br>
-            <span>
-              Goodfellow, I., Pouget-Abadie, J., Mirza, M., Xu, B., Warde-Farley, D.,
-			  Ozair, S., Courville, A. and Bengio, Y., 2020. Communications of the ACM, Vol 63, pp. 139--144.
-		      DOI: <a href="https://dl.acm.org/doi/10.1145/3422622" target="_blank">
-			  10.1145/3422622</a>
-            </span>
-          </li>
-          <li id="ref_2">
-            How good is a two-party election game?
-            <br>
-            <span>
-              Lin, C.C., Chen, P.A. and Lu, C.J., 2021. Theoretical Computer Science, Vol 871(6), pp. 79--93.  
-		    DOI: <a href="https://doi.org/10.1016/j.tcs.2021.04.013" target="_blank">
-			 10.1016/j.tcs.2021.04.013</a>
-            </span>
-          </li>
-		  <li id="ref_3">
-            On the efficiency of an Election Game of Two or More Parties: How Bad Can It Be?
-            <br>
-            <span>
-            Lin, C.C., Chen, P.A. and Lu, C.J., 2023. arXiv:2303.14405. DOI:  
-		    <a href="https://doi.org/10.48550/arXiv.2303.14405" target="_blank">
-			 10.48550/arXiv.2303.14405</a>
-            </span>
-          </li>
-          <li id="ref_4">
-            A Modern Introduction to Online Learning.
-            <br>
-            <span>
-              Orabona, F., 2022. arXiv:1912.13213. DOI:
-              <a href="https://doi.org/10.48550/arXiv.1912.13213" target="_blank">
-			  10.48550/arXiv.1912.13213</a>
-            </span>
-          </li>
-		  <li id="ref_5">
-		  Introduction to Online Convex Optimization.
-		  <br>
-		  <span>
-		  Hazan, E., 2016. Foundations and Trends in Optimization, Vol 2(3-4), pp. 157--325. DOI: 
-		  <a href="https://doi.org/10.1561/2400000013" target="_blank">10.1561/2400000013</a>
-		  </span>
-		  </li>
-		  <li id="ref_6">
-		  Equilibria problems on games: Complexity versus succinctness. 
-		  <br>
-		  <span>
-		  &Agrave;lvarez, C., Gabarro, J. and Serna, M., 2011. Journal of Computer and System Sciences, 
-		  Vol 77, pp. 1172--1197. DOI: <a href="http://dx.doi.org/10.1016/j.jcss.2011.01.001" target="_blank">10.1016/j.jcss.2011.01.001</a>
-		  </span>
-		  </li>
-         </ol>
-      </section>
-    </div>
+<div class="container mt-lg">
+    <section class="references">
+      <h2>References</h2>
+      <ol>
+        <li id="ref_1">
+          Generative adversarial networks
+          <br />
+          <span>
+            Goodfellow, I., Pouget-Abadie, J., Mirza, M., Xu, B., Warde-Farley, D.,
+            Ozair, S., Courville, A. and Bengio, Y., 2020. Communications of the ACM, Vol 63, pp. 139--144.
+            DOI: 
+            <a href="https://dl.acm.org/doi/10.1145/3422622" target="_blank">10.1145/3422622</a>
+          </span>
+        </li>
+        <li id="ref_2">
+          How good is a two-party election game?
+          <br />
+          <span>
+            Lin, C.C., Chen, P.A. and Lu, C.J., 2021. Theoretical Computer Science, Vol 871(6), pp. 79--93.  
+            DOI: 
+            <a href="https://doi.org/10.1016/j.tcs.2021.04.013" target="_blank">10.1016/j.tcs.2021.04.013</a>
+          </span>
+        </li>
+        <li id="ref_3">
+          On the efficiency of an Election Game of Two or More Parties: How Bad Can It Be?
+          <br />
+          <span>
+          Lin, C.C., Chen, P.A. and Lu, C.J., 2023. arXiv:2303.14405. 
+          DOI: 
+          <a href="https://doi.org/10.48550/arXiv.2303.14405" target="_blank">10.48550/arXiv.2303.14405</a>
+          </span>
+        </li>
+        <li id="ref_4">
+          A Modern Introduction to Online Learning.
+          <br />
+          <span>
+            Orabona, F., 2022. arXiv:1912.13213.
+            DOI:
+            <a href="https://doi.org/10.48550/arXiv.1912.13213" target="_blank">10.48550/arXiv.1912.13213</a>
+          </span>
+        </li>
+        <li id="ref_5">
+        Introduction to Online Convex Optimization.
+        <br>
+        <span>
+        Hazan, E., 2016. Foundations and Trends in Optimization, Vol 2(3-4), pp. 157--325. DOI: 
+        <a href="https://doi.org/10.1561/2400000013" target="_blank">10.1561/2400000013</a>
+        </span>
+        </li>
+        <li id="ref_6">
+        Equilibria problems on games: Complexity versus succinctness. 
+        <br>
+        <span>
+        &Agrave;lvarez, C., Gabarro, J. and Serna, M., 2011. Journal of Computer and System Sciences, 
+        Vol 77, pp. 1172--1197. DOI: <a href="http://dx.doi.org/10.1016/j.jcss.2011.01.001" target="_blank">10.1016/j.jcss.2011.01.001</a>
+        </span>
+        </li>
+      </ol>
+    </section>
+  </div>
 
   </article><!-- End of aticle -->
 
