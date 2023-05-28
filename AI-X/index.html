@@ -389,6 +389,34 @@
           see [<a href="#ref_4">4</a>, <a href="#ref_5">5</a>] for the cost-minimization case), in a 
           decentralized way and then we look into the convergent state of the system. 
         </p>
+		<h3>RELATED WORK</h3>
+		<p>
+		In some other specific class of games, gradient descent/ascent ideas for individual cost minimization/utility 
+		maximization can have an analytical form of the update rule. For &ldquo;opinion formation&rdquo; 
+		games in a social network, Bindel et al. [<a href="#ref_8">8</a>] viewed the strategy updating rule 
+		equivalently as each player updating her opinion to minimize her quadratic individual cost function, 
+		which is done by solving a system of equations representing the first-order conditions. The authors then 
+		analyzed how socially good or bad the system can be at equilibrium compared to the optimum solution in 
+		terms of the price of anarchy [<a href="#ref_9">9</a>]. On the other hand, in [<a href="#ref_10">10</a>], 
+		one can view the problem of finding the &ldquo;minimax&rdquo; strategy and the &ldquo;maximin&rdquo; strategy 
+		as a multiagent extension of online learning/online convex optimization. Note that using generic or specific 
+		no-regret algorithms is also a common approach to reach certain equilibria on average in repeated 
+		games [<a href="#ref_11">11</a>, Chapter 4]. There, the authors adapted the Optimistic Gradient Descent Ascent 
+		algorithm for the specific problem structure of competitive opinion optimization to derive the dynamics for 
+		both the min and max players and analyze the convergence to equilibria in the simultaneous version of competitive 
+		opinion optimization with a convergence rate.
+		</p>
+		
+		<p> 
+		The so-called satisfaction game of [<a href="#ref_7">7</a>] and its induced solution concept of 
+		&ldquo;satisfaction equilibrium&rdquo;, where each player targets satisfaction of quality of service requirements 
+		(rather than individual utility maximization), were largely motivated by proposing/designing paradigms or mechanisms 
+		to incentivize strategic players to think not only from an individual perspective but also a system point of view 
+		in a resource allocation problem, which can be thought of as a social choice. While this is claimed to be more 
+		socially beneficial as a whole than the standard utility maximization model, it is not applicable in our case of 
+		group formation since our players in the group formation game may happen to be completely self-interested rather 
+		than being able to care from a system point of view due to the nature of such a game.
+		</p>
       </section>
 	</div>
 	<!-- Content container with large top spacing -->
@@ -2129,6 +2157,50 @@
         Vol 77, pp. 1172--1197. DOI: <a href="http://dx.doi.org/10.1016/j.jcss.2011.01.001" target="_blank">10.1016/j.jcss.2011.01.001</a>
         </span>
         </li>
+		<li id="ref_7">
+        A Paradigm Shift Toward Satisfaction, Realism and Efficiency in Wireless Networks Resource Sharing. 
+        <br>
+        <span>
+        Papavassiliou, S., Tsiropoulou, E. E., Promponas, P. and Vamvakas, P., 2020. IEEE Network, 
+        Vol 35(1), pp. 348--355. DOI: <a href="https://doi.org/10.1109/MNET.011.2000368" target="_blank">10.1109/MNET.011.2000368</a>
+        </span>
+        </li>
+		<li id="ref_8">
+		How bad is forming your own opinion? 
+		<br>
+		<span>
+		Bindel, D., Kleinberg, J. and Oren, S., 2011. Games and Economic Behavior,  
+		Vol 92, pp. 248--265. DOI: <a href="https://doi.org/10.1016/j.geb.2014.06.004" target="_blank">10.1016/j.geb.2014.06.004</a>
+		</span>
+		</li>
+		</li>
+		<li id="ref_9">
+		Worst-case equilibria. 
+		<br>
+		<span>
+		KoutsoupiasBindel, E. and Papadimitriou, C., 2009. Computer Science Review,  
+		Vol 3(2), pp. 65--69. DOI: <a href="https://doi.org/10.1016/j.cosrev.2009.04.003" target="_blank">10.1016/j.cosrev.2009.04.003</a>
+		</span>
+		</li>
+		<li id="ref_10">
+		Multiagent Learning for Competitive Opinion Optimization (Extended Abstract). 
+		<br>
+		<span>
+		Chen, P.-A., Lu, C.-J., Lin, C.-C. and Fu, K.-W., 2022. In: Hsieh, SY., Hung, LJ., Klasing, R., Lee, CW., Peng, SL. (eds) 
+		New Trends in Computer Technologies and Applications. ICS 2022. Communications in Computer and Information Science, 
+		Vol 1723, Springer, Singapore.,  
+		pp. 61--72. DOI: <a href="https://doi.org/10.1007/978-981-19-9582-8_6" target="_blank">10.1007/978-981-19-9582-8_6</a>
+		</span>
+		</li>
+		<li id="ref_11">
+		Algorithmic Game Theory. 
+		<br>
+		<span>
+		Nisan, N., Roughgarden, T., Tardos, E. and Vazirani, V. V. (eds.), 2007.  
+		Cambridge University Press, Cambridge.  
+		DOI: <a href="https://doi.org/10.1017/CBO9780511800481" target="_blank">10.1017/CBO9780511800481</a>
+		</span>
+		</li>
       </ol>
     </section>
   </div>
