@@ -353,7 +353,7 @@
       <section id="introduction">
         <!-- Section title -->
         <h2>I. Introduction</h2>
-        <p>
+        <p class="inline-math">
           Game theory has been applied in a variety of aspects due to its predictability 
           of outcomes in real world. Furthermore, it can be used in solving problems, such as 
           the saddle-point optimization which has been extensively used in the generative 
@@ -371,7 +371,7 @@
           The maximizer of one agent’s reward function can change whenever any 
           other agent changes its strategy.
         </p>  
-        <p>
+        <p class="inline-math">
           In this article, we consider group formation of strategic agents as an illustrating 
           example for demonstrating the strategic behaviors of the agents and also delve into the 
           eventual outcome of the game to study the group formation of a society. 
@@ -390,8 +390,8 @@
           decentralized way and then we look into the convergent state of the system. 
         </p>	
 		<h3>RELATED WORK</h3>
-		<h4>On Group Formation and Collective Behaviour</h4>
-		<p>
+		<h4>On Group Formation and Collective Behavior</h4>
+		<p class="inline-math">
 		Gueron and Levin [<a href="#ref_12">12</a>] investigated a general continuous model for animal group size 
 		distribution. They related group size distribution to the function of the rates of fusion and that of fission. 
 		Their work showed that the stationary distribution on the group size has a peak value which is endogenous 
@@ -401,7 +401,7 @@
 		different from the more collective concepts such as group size.  
 		</p>
 		
-		<p>
+		<p class="inline-math">
 		There are studies on social grouping which focuses on the collective behaviour of animals [<a href="#ref_14">14</a>, <a href="#ref_15">15</a>]. 
 		How animal groups form and function, as well as how the phenotypic variation of individuals affects or propel the 
 		collective behavior, are investigated. Our work does not emphasize the collective behavior. Instead, 
@@ -410,7 +410,7 @@
 		</p>
 		
 		<h4>On Opinion Formation</h4>
-		<p>
+		<p class="inline-math">
 		In some other specific class of games, gradient descent/ascent ideas for individual cost minimization/utility 
 		maximization can have an analytical form of the update rule. For &ldquo;opinion formation&rdquo; 
 		games in a social network, Bindel et al. [<a href="#ref_8">8</a>] viewed the strategy updating rule 
@@ -427,7 +427,7 @@
 		opinion optimization with a convergence rate.
 		</p>
 		<h4>On Satisfaction Game</h4>
-		<p> 
+		<p class="inline-math"> 
 		The so-called satisfaction game of [<a href="#ref_7">7</a>] and its induced solution concept of 
 		&ldquo;satisfaction equilibrium&rdquo;, where each player targets satisfaction of quality of service requirements 
 		(rather than individual utility maximization), were largely motivated by proposing/designing paradigms or mechanisms 
@@ -438,9 +438,9 @@
 		than being able to care from a system point of view due to the nature of such a game.
 		</p>
 		
-		<h4>On Multiagent Reinforcement Learning</h4>
-		<p>
-		Arguably, our work is most relevant to the paradigm of multiagent reinforcement learning. Tampuu et al. 
+		<h4>On Multiagent Online Learning</h4>
+		<p class="inline-math">
+		Arguably, our work is most relevant to the paradigm of multiagent online learning. Tampuu et al. 
 		[<a href="#ref_16">16</a>] considered evolution of cooperation and competition of multiagents. They showed 
 		the robustness of agents' strategies each of which is built on a deep Q-networks (DQN), so that each agent plays 
 		against other agents which can react adaptively and the environment can be high-dimensional. In our work, 
@@ -448,6 +448,14 @@
 		the winning probability, which is different from the setting in [<a href="#ref_16">16</a>]. Our work conceptually 
 		fits the election campaign of parties (e.g., refer to our previous work [<a href="#ref_2">2</a>, <a href="#ref_3">3</a>]) 
 		such that each party can be initially an individual. 
+		</p>
+		<p class="inline-math">
+		Our proposed distributed algorithm for opinion updates is also related to those so-called block-coordinate gradient 
+		descent/ascent (with/without projection) algorithm and alternating optimization algorithms [<a href="#ref_17">17</a>] 
+		in continuous optimization. If an agent’s opinion is seen as a block of variables, our algorithm can distributedly 
+		update each agent’s opinion in parallel, compared to the sequential updates of blocks, a limitation in some sense, 
+		using gradient descent/ascent or directly optimization. Gradient updates tend to help with stabilization of dynamics 
+		as well in comparison with one-step optimization’s more abrupt update, which can be thought of as best responses. 
 		</p>
       </section>
 	</div>
@@ -462,17 +470,17 @@
 			With respect to an issue, for example, supporting or opposing the green energy, 
 			supporting and opposing the death penalty, increasing or decreasing tax, etc., 
 			an individual can be sometimes regarded as a leftist or a rightist. Due to the pressure coming 
-			from the peers or the social network, an individual may hide his or her own true opinions and 
-			preferences, which are called &ldquo;beliefs&rdquo;, and might express different ones different 
-			from the beliefs, which are called &ldquo;opinions&rdquo; for short. To quantify the degree 
-			how an individual agrees or disagrees with an issue, it is natural to consider such beliefs
-			and opinions as &ldquo;real vectors&rdquo; such that a negative value and a positive value 
+			from the peers or the social network, an individual may hide his or her own true preferences, 
+			which are true and private, and might express different ones, which are public 
+			to the whole society. To quantify the degree 
+			how an individual agrees or disagrees with an issue, it is natural to consider such preferences
+			as &ldquo;real vectors&rdquo; such that a negative value and a positive value 
 			in a dimension shows the degree of disagreement and agreement with a corresponding issue, 
 			respectively. 
 		</p>	
 		<p class="inline-math">	
-			In this game setting, we are given a set \(V\) of \(n\) agents \(v_1,v_2,\ldots,v_n\), each 
-			agent \(v_i\) is represented as a <i>public preference vector</i> \(z_i\) and a <i>private 
+			In the proposed game setting, we are given a set \(V\) of \(n\) agents \(v_1,v_2,\ldots,v_n\), 
+			each agent \(v_i\) is represented as a <i>public preference vector</i> \(z_i\) and a <i>private 
 			preference vector</i> \(s_i\), such that the former (we call it an <i>opinion</i>) 
 			corresponds to the preference revealed to all the agents while the latter corresponds 
 			to its <i>belief</i> which is unchangeable. For a vector \(x = (x_1,x_2,\ldots,x_k)\in 
@@ -1708,8 +1716,21 @@
       game converge to a stable state where the difference between the opinion and belief of each agent is moderate. 
 	  </p>
 	  
+	 <h4>Computational Complexity of the Algorithm</h4>
+	 <p class="inline-math">
+	 Since the algorithm is decentralized, the \(n\) agents updates their own opinions in parallel. Below we argue that 
+	 such an update for each agent in one iteration takes \(O(kn)\) time, hence totally it takes \(O(Tkn)\) time in \(T\) 
+	 iterations. To compute the reward \(r_i(\tau)\) for agent \(v_i\) in an iteration, it requires the computation of its 
+	 winning probability \(p_i(\tau)\) first, which takes \(O(kn)\) time overall to compute all inner products of existing 
+	 groups' opinions and each agent's belief. 
+	 Note that all group opinions can be obtained in \(O(kn)\) time and then it takes \(O(k)\) to compute the inner product 
+	 of a group opinion and an agent's belief. Then, it takes another \(O(km) = O(kn)\) time to compute the expected utility 
+	 where \(m\) is the number of existing groups. The regularization term requires just \(O(k)\) time to compute the norm 
+	 of the difference between the opinion and the belief of an agent. The gradient computation as well as the projection 
+	 takes another \(O(k)\) time. Hence, overall in one iteration an agent takes \(O(kn)\) time for the opinion update.
+	 </p>
 
-		<h3>
+	<h3>
       Initially Ungrouped Agents - Reward with and without Regularization
     </h3>
     <p>
@@ -2294,6 +2315,16 @@
 		Tampuu, A., Matiisen, T., Kodelja, D., Kuzovkin, I., Korjus, K., Aru, J., Aru, J. and Vicente, R., 2017. PLoS One,  
 		Vol 12(4), pp. e0172395.  
 		DOI: <a href="https://doi.org/10.1371/journal.pone.0172395" target="_blank">10.1371/journal.pone.0172395</a>
+		</span>
+		</li>
+		
+		<li id="ref_17">
+		On the Convergence of Block Coordinate Descent Type Methods.
+		<br>
+		<span>
+		Beck, A. and Tetruashvili, L., 2013. SIAM Journal of Optimization,  
+		Vol 23(4), pp. 2037--2060.  
+		DOI: <a href="https://doi.org/10.1137/120887679" target="_blank">10.1137/120887679</a>
 		</span>
 		</li>
       </ol>
