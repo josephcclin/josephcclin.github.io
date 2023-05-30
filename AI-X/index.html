@@ -1681,6 +1681,9 @@
       Then each agent updates its opinion by adding the gradient multiplied by \(\eta\), which is 
       called the learning rate or the step size. Roughly speaking, the gradient shows the direction of improving 
       an agent's reward and the learning rate decides how far the updating step should make at such direction. 
+	  We set a sufficiently large \(T\) as the number of total iterations \(T\) for the agents to run the algorithm.  
+	  Whenever each agent finds that its updated opinion is exactly the same as or extremely close (by setting a small constant as a threshold) 
+	  to that in the previous iteration, we can say that none of the agent can make any improvement so that an equilibrium is reached. 
 	  </p>
 	  
 	  <figure class="text-center">
@@ -1710,8 +1713,11 @@
       constraint to make it update the opinion in a more controlled way. Here we introduce the concept called 
       &ldquo;regularization&rdquo;. 
       The reward function for agent \(v_i\) including the regularizer is defined as 
-      $$r_i(\tau) = \sum_{j=1}^m p_j(\tau)\langle s_i, \bar{g}_j\rangle - \|z_i-s_i\|_2^2.$$
-      Since \(-\|z_i-s_i\|_2^2\) is always non-positive, an agent will be forced to consider &ldquo;not being too far 
+      $$r_i(\tau) = \sum_{j=1}^m p_j(\tau)\langle s_i, \bar{g}_j\rangle - \|z_i-s_i\|_2^2.$$ 
+	  The idea here is inspired by the online mirror descent [<a href="#ref_4">4</a>], in which a locality constraint 
+	  is appended to the object to force the algorithm to iteratively update the solution in a &ldquo;moderate&rdquo; way.
+      In our application, we consider reward maximization and the regularization term is \(-\|z_i-s_i\|_2^2\). 
+	  Since \(-\|z_i-s_i\|_2^2\) is always non-positive, an agent will be forced to consider &ldquo;not being too far 
       from its belief&rdquo;. Our experimental illustrations show that such a regularization helps the 
       game converge to a stable state where the difference between the opinion and belief of each agent is moderate. 
 	  </p>
