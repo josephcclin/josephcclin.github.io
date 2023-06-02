@@ -1775,15 +1775,15 @@
 	 To update opinion \(z_i\), we need to compute the gradient \(\nabla_{z_i}r_i(\tau)\). 
 	 Suppose that \(v_i\in G_{\ell}\), then we have 
 	 $$
-	 \nabla_{z_i}r_i(\tau) = p_{\ell}(\tau)\cdot \frac{s_i}{n_{\ell}} + \sum_{j\in [m], n_j\neq 0} \langle s_i, \bar{g}_j\rangle 
+	 \nabla_{z_i}r_i(\tau) = p_{\ell}(\tau)\cdot \frac{s_i}{n_{\ell}} + \sum_{j\in [m], n_j> 0} \langle s_i, \bar{g}_j\rangle 
 	 \nabla_{z_i} p_j(\tau) - 2(z_i-s_i), 
 	 $$
 	 where \(\nabla_{z_i} p_j(\tau)=\frac{-U_{j}U_{\ell}\sum_{v_r\in V}s_r}{U_{all}^2}\) for \(j\neq\ell\), 
 	 \(\nabla_{z_i} p_{\ell}(\tau)=\left(\frac{U_{\ell}}{U_{all}}-\frac{U_{\ell}^2}{U_{all}^2}\right)\sum_{v_r\in V}s_r\), 
-	 and we denote by \(U_{all}:= \sum_{h\in[m], n_h\neq 0}e^{n_h\langle \bar{g}_h, \sum_{v_r\in V}s_r\rangle}\) and  
+	 and we denote by \(U_{all}:= \sum_{h\in[m], n_h> 0}e^{n_h\langle \bar{g}_h, \sum_{v_r\in V}s_r\rangle}\) and  
 	 \(U_{j}:= e^{n_j\langle \bar{g}_j, \sum_{v_r\in V}s_r\rangle}\) for each \(j\). Since it takes 
-	 \(O(kn)\) time to compute \(U_{all}\) and \(U_{j}\) for all \(j\in [m], n_j\neq 0\), we derive that 
-	 \(\nabla_{z_i} p_j(\tau)\) can be computed in \(O(kn)\) time for all \(j\). Thus, \(\nabla_{z_i}r_i(\tau)\) can be 
+	 \(O(kn)\) time to compute \(U_{all}\) and all \(U_{j}\) for \(j\in [m], n_j\neq 0\), we derive that all 
+	 \(\nabla_{z_i} p_j(\tau)\) can be computed in \(O(kn)\) time for \(j\in [m], n_j> 0\). Thus, \(\nabla_{z_i}r_i(\tau)\) can be 
 	 computed in \(O(kn)\) time as well. Note that the projection 
 	 takes another \(O(k)\) time. Hence, overall in one iteration an agent takes \(O(kn)\) time for the opinion update.
 	 </p>
