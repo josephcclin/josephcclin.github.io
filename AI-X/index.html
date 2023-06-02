@@ -1259,31 +1259,31 @@
     <h3>1D Representation</h3>
     <p id="1D_representation" class="inline-math">
       To better illustrate the computation of a winning probability and the reward for each agent, it is a good 
-      idea to first consider 1D space. Let us consider the opinions and beliefs to be in \([-1, 1]\subset\mathbb{R}\), 
-      we can represent these vectors as well as the dynamics of changes on a real line. The constraint that 
-      \(z_i,s_i\in [-1, 1]\) has 2-norm bounded by 1 for each \(i\) clearly holds.
+      idea to first consider 1D space. Let us consider the opinions and beliefs to be in \([-1, 1]\subset\mathbb{R}\). 
+      We can represent these vectors, as well as the dynamics of changes on a real line. The constraint that 
+      \(z_i,s_i\in [-1, 1]\) has a 2-norm bounded by 1 for each \(i\) clearly holds.
 	  </p>
     <p class="inline-math">
-      We point out that changes of the opinion of an agent affects not only its own winning probability but also 
-      those of the others. This is true intuitively when we consider the competitions in practical world. Indeed, 
-      this observation is captured in our definition of the winning probability. The changes of the opinion of a 
+      We point out that changes in the opinion of an agent affect not only its own winning probability but also 
+      those of the others. This is intuitively true when we consider competitions in real world. This observation 
+	  is captured in our definition of the winning probability. The changes in the opinion of a 
       single agent will contribute to the denominator of the formula. 
     </p>
     <p class="inline-math">
-      For example, consider the following figure. We have five agents \(v_1,v_2,v_3,v_4,v_5\) such that each agent is 
-      regarded as a group individually. Assume their beliefs to be \(s_1 = -0.8, s_2 = 1.0, s_3 = 0.1, s_4 = -0.1, s_5 = 0.2\) 
+      For example, consider the following figure. We have five agents \(v_1,v_2,v_3,v_4\), and \(v_5\) such that each agent is 
+      regarded as a group individually. Assume their beliefs are \(s_1 = -0.8, s_2 = 1.0, s_3 = 0.1, s_4 = -0.1, s_5 = 0.2,\) 
       respectively. We assume that \(z_i = s_i\) for each \(i\) to simplify our discussion. 
-      By assuming \(v_1,v_2,v_3\), and \(v_4\) to have their opinions \(z_1,z_2,z_3,z_4\) fixed, we can observe the changes 
-      of winning probability of \(v_5\) by moving \(z_5\) from \(-1\) to \(1\), as well as the changes of the winning 
-      probabilities of the other agents. After getting the winning probabilities, we can derive their rewards as well. 
+      By assuming that \(v_1,v_2,v_3\), and \(v_4\) have their opinions \(z_1,z_2,z_3\), and \(z_4\) fixed, we can observe 
+	  the changes in the winning probability of \(v_5\) by moving \(z_5\) from \(-1\) to \(1\), as well as the changes in the 
+	  winning probabilities of the other agents. After obtaining the winning probabilities, we can derive their rewards as well. 
     </p>
 
 	<!-- Interactive frame -->
 	  <div class="framed" style="margin-bottom: 20px">
       <div class="inside">
         <div class="eyebrow">
-          Drag \(v_5\) (agent No. 5) to see the changes of the winning probabilities 
-          of each agent. Also observe the changes of the reward of each agent. You should be 
+          Drag \(v_5\) (agent No. 5) to see the changes in the winning probabilities 
+          of each agent. Also observe the changes in the reward of each agent. You should be 
           able to see that moving \(v_5\) to the left is more beneficial to agent \(v_1\), and 
           moving \(v_5\) to the right is more beneficial to agent \(v_2\).
         </div>
@@ -1351,21 +1351,22 @@
           <div class="d-flex px-3">
             <Card class="w-100 bg-grey rounded py-3 px-4 h5 lh-lg mb-0" style="align-items: center; flex-flow: wrap;">
               <img src="./img/aix_doll-05.svg" style="height: 50px; width: 50px" class="ps-3" />
-              &emsp; \(v_5\) &ensp; is considering to join one of the currently existing groups or stay alone.
+              &emsp; \(v_5\) &ensp; is considering joining one of the currently existing groups or remaining alone.
             </Card>
           </div>
           <div class="caption">
             <b>Figure 3:</b> 
-            Introducing winning probabilities and rewards of agents in 1D representation. 
+            Introducing the winning probabilities and rewards of agents in the 1D representation. 
           </div>
         </div>
     </div>
 	  <p class="inline-math">
-      In this example, the utility \(v_1\) brings to all the agents is 
+      In this example, the utility that \(v_1\) brings to all the agents is 
       $$\langle z_1, s_1+s_2+s_3+s_4+s_5\rangle = (-0.8)\cdot (-0.8-0.1+0.1+0.2+1) = -0.32.$$
-      Similarly, we have \(v_2, v_3, v_4\) and \(v_5\) bring utility \(0.4, 0.04, -0.04,\) and \(0.08\) to all the agents respectively. 
-      Then we have the winning probability \(p_1\) of agent \(v_1\) is $$\frac{e^{-0.32}}{e^{-0.32}+e^{0.4}+e^{0.04}+e^{-0.04}+e^{0.08}} = 0.1369.$$
-      Similarly, we derive \(p_2 = 0.2813, p_3 = 0.1963, p_4 = 0.1812\), and \(p_5 = 0.2043\). So, the reward \(r_1\) of agent \(v_1\) is 
+      Similarly, we have \(v_2, v_3, v_4,\) and \(v_5\) bring utility \(0.4, 0.04, -0.04,\) and \(0.08\) to all the agents, respectively. 
+      Then, we have that the winning probability \(p_1\) of agent \(v_1\) is 
+	  $$\frac{e^{-0.32}}{e^{-0.32}+e^{0.4}+e^{0.04}+e^{-0.04}+e^{0.08}} = 0.1369.$$
+      Similarly, we derive \(p_2 = 0.2813, p_3 = 0.1963, p_4 = 0.1812\), and \(p_5 = 0.2043\). Thus, the reward \(r_1\) of agent \(v_1\) is 
       $$\begin{eqnarray*}
       r_1 &=& p_1\cdot \langle z_1, s_1\rangle + p_2\cdot \langle z_2, s_1\rangle + p_3\cdot \langle z_3, s_1\rangle + 
       p_4\cdot \langle z_4, s_1\rangle + p_4\cdot \langle z_5, s_1\rangle\\
@@ -1373,34 +1374,34 @@
       & & + 0.1812\cdot ((-0.1)\cdot (-0.8)) + 0.2043\cdot (0.2\cdot (-0.8))\\ 
       &=& -0.1713.
       \end{eqnarray*}$$ 
-      Hence, the reward for agents \(v_2, v_3, v_4\) and \(v_5\) can be similarly obtained.
+      Thus, the reward for agents \(v_2, v_3, v_4,\) and \(v_5\) can be similarly obtained.
     </p>
   <!-- Group box 2 -->
-    <h3>Group Joining: Myopic Best-Responses</h3>
+    <h3>Group Joining: Myopic Best Responses</h3>
     <p class="inline-math">
-      We consider a kind of best-response for each agent in this section. Assume that agent \(v_i\) decides to join \(G_j\) for which 
-      $$j = \arg\max_{\ell} p_{\ell}(\tau)\cdot \langle g_{\ell}, s_i\rangle.$$ We call this strategy a <i>myopic best-response</i>. 
+      We consider a type of best response for each agent in this section. Assume that agent \(v_i\) decides to join \(G_j\), for which 
+      $$j = \arg\max_{\ell} p_{\ell}(\tau)\cdot \langle g_{\ell}, s_i\rangle.$$ We call this strategy a <i>myopic best response</i>. 
       Namely, an agent joins a group by considering not only its winning probability but also the utility that the agent can get 
-      from the group before its joining. The agents do not consider the next and future states, hence the name &ldquo;myopic&rdquo; best-response.
+      from the group before joining. The agents do not consider the next and future states, thus the name &ldquo;myopic&rdquo; best response.
     </p>
     <p>
-      In the figure below, we can see the changes of the group opinions due to agent \(v_5\)'s group joining strategy. Also, we can 
-      see the final outcome as a stable state after each agent performing their myopic best-responses in parallel iteratively. 
+      In Fig. 4, we can see the changes in the group opinions due to agent \(v_5\)'s group-joining strategy. In addition, we can 
+      see the final outcome as a stable state after each agent performs its myopic best responses in parallel iteratively. 
     </p>
     <div class="framed" style="margin-bottom: 20px">
       <div class="inside">
         <div class="eyebrow">
-        Drag \(v_5\) (agent No. 5) to see the changes of the winning probabilities and reward of 
-        each agent. Moreover, try to drag \(v_5\) to be near any agent and then you will find 
-        a circled \(\oplus\) operator above the agent. Click it you can see the two agents are grouped 
+        Drag \(v_5\) (agent No. 5) to see the changes in the winning probabilities and reward of 
+        each agent. Moreover, try to drag \(v_5\) to be near any agent. You will find 
+        a circled \(\oplus\) operator above the agent. Click it, then you can see the two agents are grouped 
         with a new group opinion and updated winning probabilities and rewards of all groups. Dragging \(v_5\) to 
-        the positions elsewhere can dismiss this group. To Click the button &ldquo;Myopic Best Responses for All&ldquo; 
-        you will see the final outcome after iterations of parallel group joining actions. By clicking the 
-        button &ldquo;RESET&ldquo; you can restore the state to the very beginning.
+        positions elsewhere can dismiss this group. Click the button &ldquo;Myopic Best Responses for All,&ldquo; 
+        then you will see the final outcome after the iterations of parallel group joining actions. By clicking the 
+        button &ldquo;RESET,&ldquo; you can restore the state to the very beginning.
         </div>
       <!--<div style="height: 42vh;"> -->
         <div class="d-flex w-100 pt-4">
-          <h4 class="ps-3 pt-3 text-start">The Myopic Best Responses / Manual Join</h4>
+          <h4 class="ps-3 pt-3 text-start">Myopic Best Responses / Manual Joining</h4>
           <span class="pe-2 pb-2 ms-auto mt-auto h-25">
             <button id="best" class="btn btn-ieee py-1">
               Myopic Best Responses for All
@@ -1496,33 +1497,36 @@
 
         <div class="caption">
           <b>Figure 4:</b>
-            Myopic best-responses and manual join illustration.
+            Myopic best responses and manual joining illustration.
         </div>
       </div>
     </div>
 	<p id="group_explanation">
-    Suppose we want \(v_5\) to join \(v_2\) as a new group, say \(G_{2,5}\). Then we have four groups  
-    \(G_1 = \{v_1\}\), \(G_{2,5} = \{v_2, v_5\}\), \(G_3 = \{v_3\}\), \(G_4 = \{v_4\}\) with group opinions 
-    \(g_1 = -0.8\), \(g_{2,5} = (0.2+1.0)/2 = 0.6\), \(g_3 = 0.1\) and \(g_4 = -0.1\) respectively. 
-    Using the same approach for calculating the winning probabilities of these groups, 
-    we can derive the rewards for all the agents. 
+    Suppose we want \(v_5\) to join \(v_2\) as a new group, say \(G_{2,5}\). Then, we have four groups,  
+    \(G_1 = \{v_1\}\), \(G_{2,5} = \{v_2, v_5\}\), \(G_3 = \{v_3\}\), and \(G_4 = \{v_4\}\), with the group 
+	opinions \(g_1 = -0.8\), \(g_{2,5} = (0.2+1.0)/2 = 0.6\), \(g_3 = 0.1\), and \(g_4 = -0.1\), respectively. 
+    Using the same approach to calculate the winning probabilities of these groups, 
+    we can derive the rewards for all agents. 
 	</p>
+	
+	<div class="static">
 	<figure class="text-center">
-		<img src="img/group_merging.png" alt="group_merging" width="562" height="485">
+		<img src="img/group_merging.png" alt="group_merging" style="margin: auto auto; width: 680px; display: block">
 		<figcaption><strong>Figure 5:</strong> Join \(v_5\) with \(v_2\) to form a group.</figcaption>
 	</figure>
+	</div>
     <!-- Group box 3 -->
     <p>
-      In the figure below we can check that the final stable state is a pure-strategy Nash equilibrium. That is, 
-      the dynamics of group joining strategies of all the agents lead to a pure-strategy Nash equilibrium.  
+      In Fig. 6, we can check that the final stable state is a pure-strategy Nash equilibrium. That is, 
+      the dynamics of group-joining strategies of all the agents lead to a pure-strategy Nash equilibrium.  
     </p>
     <div class="framed" style="margin-bottom: 20px">
       <div class="inside">
         <!--<div style="height: 42vh;"> -->
 		<div class="eyebrow">
       Hover your mouse over the grouped agents to see the myopic rewards of the two options of group joining. 
-      You may want to drag an agent, for example, \(v_5\) to see if you can make it change its mind. 
-      See whether it will has the incentive to do so or not. 
+      You may want to drag an agent, for example, \(v_5\), to see if you can make it change its mind. 
+      See whether it will has the incentive to change its mind. 
 		</div>
     <div class="d-flex w-100 pt-4">
       <h4 class="ps-3 pt-3 text-start">The pure-strategy Nash equilibrium</h4>
@@ -1621,13 +1625,13 @@
         </div>
         <div style="width: 95%">
           <h5 class="ps-2 lh-md">
-            No one wants to deviate from his / her current group to the other group since the expected gain cannot be the better-off. 
-            Here comes a pure-strategy Nash equilibrium of the &ldquo;game&rdquo;.
+            No one wants to deviate from their current group to the other group because the expected gain cannot be better. 
+            This is a pure-strategy Nash equilibrium of the &ldquo;game.&rdquo;
           </h5>
         </div>
       </Card>
     </div>
-		<div class="caption">
+	  <div class="caption">
       <b>Figure 6:</b>
       Illustration of a pure-strategy Nash equilibrium.
     </div>
@@ -1643,11 +1647,11 @@
     <h2>IV. Opinion Updates by Online Gradient Ascent</h2>
     <h3>2D Representation and the Algorithm</h3>
 	  <p class="inline-math"> 
-      In this section, we consider the situation that each agent tries to maximize its own reward by 
-      &ldquo;changing its opinion&rdquo; without deviating from the group that it belongs to. 
+      In this section, we consider the situation in which each agent tries to maximize its own reward by 
+      &ldquo;changing its opinion&rdquo; without deviating from the group to which it belongs to. 
       Agents' opinions are represented as points in 
       \(\mathcal{K} = \{x\in [-1, 1]^2: \|x\|_2\leq 1\}\subset\mathbb{R}^2\). Consider the following 
-      figure as an illustrating example. We have 10 agents with their opinions which are initially 
+      figure as an example. We have 10 agents with opinions which are initially 
       their beliefs: $$
       \begin{align*}
       &z_1 = (0.3757, -0.8405),  & z_2 = (0.7536, -0.5736),\\
@@ -1657,37 +1661,39 @@
       &z_9 = (-0.6769, -0.2457), & z_{10} = (-0.6488, -0.4109).
       \end{align*}
       $$
-      Two scenarios will be considered: either the 10 agents are regarded as 10 different groups, 
+      Two scenarios will be considered: Either the 10 agents are regarded as 10 different groups, 
       or they are grouped as \(\{\textcolor{red}{v_1,v_2,v_3}\}\), \(\{\textcolor{DarkGreen}{v_4,v_5,v_6}\}\), 
       \(\{\textcolor{blue}{v_7,v_8}\}\), and \(\{\textcolor{Goldenrod}{v_9, v_{10}}\}\).
-      The 2-norm constraint that \(\|z_i\|_2, \|s_i\|_2\leq 1\) correlates both the dimensions and 
+      The 2-norm constraint that \(\|z_i\|_2, \|s_i\|_2\leq 1\) correlates the dimensions and 
       projection of the opinion is required if the constraint is not satisfied. 
 	  </p>
 	  
+	  <div class="static">
 	  <figure class="text-center">
-		  <img src="img/2D_representation.png" alt="2D_representatino" width="590" height="509">
-		  <figcaption>
+		<img src="img/2D_representation.png" alt="2D_representatino" style="margin: auto auto; width: 650px; display: block">
+		<figcaption>
         <strong>Figure 7:</strong> 
         2D Representation of Agents' Opinions.
-      </figcaption>
+		</figcaption>
 	  </figure>
+	  </div>
 	  
 	  <p class="inline-math">
-      Below we introduce the online gradient ascent algorithm. The pseudo-code is given in the figure below. Suppose that 
-      we would like to have the agent update their opinions in \(T\) iterations. At each iteration, agents update 
-      their opinion in a decentralized way. In each iteration, each agent first observes the reward resulted from 
-      the previous iteration, then compute the &ldquo;gradient&rdquo; (the symbol \(\nabla\)), which is the first derivate 
+      Below, we introduce the online gradient ascent algorithm. The pseudo-code is given in Fig. 8. Suppose that 
+      we would like to have the agents update their opinions in \(T\) iterations. At each iteration, agents update 
+      their opinions in a decentralized way. In each iteration, each agent first observes the reward resulting from 
+      the previous iteration then computes the &ldquo;gradient&rdquo; (the symbol \(\nabla\)), which is the first derivate 
       with respect to its opinion and can be regarded as &ldquo;slopes&rdquo; in each dimension of the feasible space. 
-      Then each agent updates its opinion by adding the gradient multiplied by \(\eta\), which is 
+      Then, each agent updates its opinion by adding the gradient multiplied by \(\eta\), which is 
       called the learning rate or the step size. Roughly speaking, the gradient shows the direction of improving 
-      an agent's reward and the learning rate decides how far the updating step should make at such direction. 
-	  We set a sufficiently large \(T\) as the number of total iterations \(T\) for the agents to run the algorithm.  
+      an agent's reward, and the learning rate decides how far the updating step should be made in such a direction. 
+	  We set a sufficiently large \(T\) as the number of total iterations \(T\) for the agents running the algorithm.  
 	  Whenever each agent finds that its updated opinion is exactly the same as or extremely close (by setting a small constant as a threshold) 
-	  to that in the previous iteration, we can say that none of the agent can make any improvement so that an equilibrium is reached. 
+	  to that in the previous iteration, we can say that none of the agents can make any improvement, and thus, an equilibrium is reached. 
 	  </p>
 	  
 	  <figure class="text-center">
-      <img src="img/gradient_ascent_algo.svg" alt="AlgorithmGA" width="506" height="436">
+      <img src="img/gradient_ascent_algo.svg" alt="AlgorithmGA" style="margin: auto auto; width: 520px; display: block">
       <figcaption>
         <strong>Figure 8:</strong> 
         Pseudo-code of the Multi-Agent Online Gradient Ascent Algorithm.
@@ -1702,37 +1708,37 @@
 			\frac{x}{\|x\|_2} & \mbox{ otherwise}
 			\end{array}
 			\right.$$
-      is a simple &ldquo;projection&rdquo; which projects \(x\) onto the feasible set \(\mathcal{K}\), 
-      if it is outside \(\mathcal{K}\), by dividing its 2-norm. Note that in this article, we consider constant 
-      learning rates to simplify our discussion. In fact, learning rates can be set adaptively and decay with time. 	  
+      is a simple &ldquo;projection&rdquo; that projects \(x\) onto the feasible set \(\mathcal{K}\), 
+      if it is outside \(\mathcal{K}\), by dividing its 2-norm. Note that, in this article, we consider constant 
+      learning rates to simplify our discussion. In fact, learning rates can be set adaptively and decay over time. 	  
 	  </p>
 	  <h4>Regularization</h4>
 	  <p class="inline-math">
-      Recall that each agent has its own belief. An agent can be benefited by maximizing its own reward, however, it 
-      could be not as &ldquo;happy&rdquo; as it thought at the beginning. Hence, it is interesting to consider a 
-      constraint to make it update the opinion in a more controlled way. Here we introduce the concept called 
-      &ldquo;regularization&rdquo;. 
-      The reward function for agent \(v_i\) including the regularizer is defined as 
+      Recall that each agent has its own belief. An agent can be benefited by maximizing its own reward; however, it 
+      could be not as &ldquo;happy&rdquo; as it thought at the beginning. Thus, it is interesting to consider a 
+      constraint to make the agent update the opinion in a more controlled way. We introduce the concept called 
+      &ldquo;regularization.&rdquo; 
+      The reward function for agent \(v_i\), including the regularizer, is defined as 
       $$r_i(\tau) = \sum_{j=1}^m p_j(\tau)\langle s_i, \bar{g}_j\rangle - \|z_i-s_i\|_2^2.$$ 
-	  The idea here is inspired by the online mirror descent [<a href="#ref_14">14</a>], in which a locality constraint 
+	  The idea is inspired by online mirror descent [<a href="#ref_14">14</a>], in which a locality constraint 
 	  is appended to the object to force the algorithm to iteratively update the solution in a &ldquo;moderate&rdquo; way.
-      In our application, we consider reward maximization and the regularization term is \(-\|z_i-s_i\|_2^2\). 
-	  Since \(-\|z_i-s_i\|_2^2\) is always non-positive, an agent will be forced to consider &ldquo;not being too far 
-      from its belief&rdquo;. Our experimental illustrations show that such a regularization helps the 
+      In our application, we consider reward maximization, and the regularization term is \(-\|z_i-s_i\|_2^2\). 
+	  As \(-\|z_i-s_i\|_2^2\) is always non-positive, an agent will be forced to consider &ldquo;not being too far 
+      from its belief.&rdquo; Our experimental illustrations show that such a regularization helps the 
       game converge to a stable state where the difference between the opinion and belief of each agent is moderate. 
 	  </p>
 	  
 	  <p class="inline-math">
-	  We exemplify our multi-agent online gradient ascent as follows. Let us consider the scenario that the ten agents 
+	  We exemplify our multi-agent online gradient ascent as follows. Let us consider the scenario in which the 10 agents 
 	  \(v_1,v_2,\ldots,v_{10}\) are grouped into four groups, that is, \(G_1 = \{v_1,v_2,v_3\}\), \(G_2 = \{v_4,v_5,v_6\}\), 
-	  \(G_3\{v_7,v_8\}\), and \(G_4\{v_9, v_{10}\}\). We consider regularization in the reward and focus on the first iteration 
+	  \(G_3\{v_7,v_8\}\), and \(G_4\{v_9, v_{10}\}\). We consider regularization in the reward and focus on the first iteration; 
 	  let \(\tau\) be the initial state. 
 	  Initially, \(z_i = s_i\) for each \(i\in \{1,2,\ldots, 10\}\). 
-	  The groups opinions are \(\bar{g}_1 = (0.6536, -0.6492)\), \(\bar{g}_2 = (-0.4389, -0.2344)\), \(\bar{g}_3 = (-0.5748, -0.2658)\), 
-	  \(\bar{g}_4 = (-0.6629, -0.3283)\). By computing the inner product of each group opinion and each agent's belief, we have 
+	  The groups' opinions are \(\bar{g}_1 = (0.6536, -0.6492)\), \(\bar{g}_2 = (-0.4389, -0.2344)\), \(\bar{g}_3 = (-0.5748, -0.2658)\), 
+	  and \(\bar{g}_4 = (-0.6629, -0.3283)\). By computing the inner product of each group opinion and each agent's belief, we obtain 
 	  \(e^{n_1\langle \bar{g}_1, \sum_{i=1}^{10}s_i\rangle} = 48.6975\), \(e^{n_2\langle \bar{g}_2, \sum_{i=1}^{10}s_i\rangle} = 165.8341\), 
-	  \(e^{n_3\langle \bar{g}_3, \sum_{i=1}^{10}s_i\rangle} = 63.1695\), \(e^{n_4\langle \bar{g}_4, \sum_{i=1}^{10}s_i\rangle} = 140.9458\). 
-	  So, the winning probabilities of \(G_1\), \(G_2\), \(G_3\) and \(G_4\) are 
+	  \(e^{n_3\langle \bar{g}_3, \sum_{i=1}^{10}s_i\rangle} = 63.1695\), and \(e^{n_4\langle \bar{g}_4, \sum_{i=1}^{10}s_i\rangle} = 140.9458\). 
+	  Therefore, the winning probabilities of \(G_1\), \(G_2\), \(G_3\), and \(G_4\) are 
 	  $$
 	  \begin{eqnarray*}
 	  p_1(\tau) &=& 48.6975/418.6469 = 0.1163,\\
@@ -1741,36 +1747,36 @@
 	  p_4(\tau) &=& 140.9458/418.6469 = 0.3367 
 	  \end{eqnarray*}
 	  $$
-	  respectively. Then the reward of each agent \(v_i\) can be computed. For example, 
-	  consider the two agents \(v_1\) and \(v_7\). Note that \(z_i = s_i\) for each \(i\) initially, so the regularization term has value 0 for each \(i\). 
-	  We derive that  
+	  respectively. Then, the reward of each agent \(v_i\) can be computed. For example, 
+	  consider the two agents \(v_1\) and \(v_7\). Note that \(z_i = s_i\) for each \(i\) initially, so the regularization term has a value 
+	  of 0 for each \(i\). We derive the following:  
 	  $$\begin{eqnarray*}
 	  r_1(\tau) &=& \sum_{j=1}^4 p_j(\tau)\langle s_1, \bar{g}_j\rangle = 0.1149, \\ 
 	  r_7(\tau) &=& \sum_{j=1}^4 p_j(\tau)\langle s_7, \bar{g}_j\rangle = 0.4176. 
 	  \end{eqnarray*}$$
-	  The gradients \(\nabla_{z_i}r_i(\tau)\) can be computed by a PyTorch program. For example, we have \(\nabla_{z_1}r_1(\tau) = \) \((-0.1540, -0.3859)\) and \(\nabla_{z_7}r_7(\tau) = \) \((-0.1935, -0.3279)\). 
+	  The gradients \(\nabla_{z_i}r_i(\tau)\) can be computed using a PyTorch program. For example, we have \(\nabla_{z_1}r_1(\tau) = \) \((-0.1540, -0.3859)\) and \(\nabla_{z_7}r_7(\tau) = \) \((-0.1935, -0.3279)\). 
 	  By setting the learning rate \(\eta = 0.1\), we can derive the updated opinions of \(v_1\) and \(v_7\) as \((0.3757, -0.8405)+0.1\cdot (-0.1540, -0.3859)\)
-	  \( = (0.3603, -0.8791)\) and \((-0.6936, -0.4227)+0.1\cdot (-0.1935, -0.3279)\) \( = (-0.7130, -0.4555)\), respectively. Since their 2-norms are both smaller 
+	  \( = (0.3603, -0.8791)\) and \((-0.6936, -0.4227)+0.1\cdot (-0.1935, -0.3279)\) \( = (-0.7130, -0.4555)\), respectively. As their 2-norms are smaller 
 	  than 1, no projection is needed. 
 	  
 	  </p>
 	  
 	 <h4>Computational Complexity of the Algorithm</h4>
 	 <p class="inline-math">
-	 Since the algorithm is decentralized, the \(n\) agents updates their own opinions in parallel. Below we argue that 
-	 such an update for each agent in one iteration takes \(O(kn)\) time, hence totally it takes \(O(Tkn)\) time in \(T\) 
+	 Since the algorithm is decentralized, the \(n\) agents update their own opinions in parallel. Below, we argue that 
+	 such an update for each agent in one iteration takes \(O(kn)\) time; thus the total time is \(O(Tkn)\) in \(T\) 
 	 iterations. Note that it is still open whether our algorithm converges to a stable state for a finite \(T\). So far 
    we consider a fixed value of \(T\) (e.g., \(T = 100\)) in our experiments. 
 	 </p>
 	 <p class="inline-math">
-	 To compute the reward \(r_i(\tau)\) for agent \(v_i\) in an iteration, it requires the computation of its 
-	 winning probability \(p_i(\tau)\) first, which takes \(O(kn)\) time overall to compute all inner products of existing 
+	 To compute the reward \(r_i(\tau)\) for agent \(v_i\) in an iteration, it requires to compute the 
+	 winning probability \(p_i(\tau)\) first, which takes \(O(kn)\) time overall by computing all inner products of the existing 
 	 groups' opinions and each agent's belief. 
-	 Note that each group opinion \(\bar{g}_j\) can be obtained in \(O(n_jk)\) time and then it takes \(O(k)\) to compute the 
-	 inner product of group opinion \(g_j\) and agent \(i\)'s belief \(s_i\). Thus by \(\sum_{j=1}^m n_j = n\), it takes 
-	 \(\sum_{j=1}^m (O(n_jk)+O(k)) = O(kn)\) time to compute the expected utility 
-	 where \(m\) is the number of existing groups. The regularization term requires just \(O(k)\) time to compute the norm 
-	 of the difference between the opinion and the belief of an agent. 
+	 Note that, each group opinion \(\bar{g}_j\) can be obtained in \(O(n_jk)\) time, and then it takes \(O(k)\) time to compute the 
+	 inner product of group opinion \(g_j\) and agent \(i\)'s belief \(s_i\). Thus, by \(\sum_{j=1}^m n_j = n\), it takes 
+	 \(\sum_{j=1}^m (O(n_jk)+O(k)) = O(kn)\) time to compute the expected utility, 
+	 in which \(m\) is the number of existing groups. The regularization term requires only \(O(k)\) time to compute the norm 
+	 of the difference between an agent's opinion and belief. 
 	 </p>
 	 <p class="inline-math">
 	 To update opinion \(z_i\), we need to compute the gradient \(\nabla_{z_i}r_i(\tau)\). 
@@ -1785,26 +1791,25 @@
 	 \(U_{j}:= e^{n_j\langle \bar{g}_j, \sum_{v_r\in V}s_r\rangle}\) for each \(j\). Since it takes 
 	 \(O(kn)\) time to compute \(U_{all}\) and all \(U_{j}\) for \(j\in [m], n_j\neq 0\), we derive that all 
 	 \(\nabla_{z_i} p_j(\tau)\) can be computed in \(O(kn)\) time for \(j\in [m], n_j> 0\). Thus, \(\nabla_{z_i}r_i(\tau)\) can be 
-	 computed in \(O(kn)\) time as well. Note that the projection 
-	 takes another \(O(k)\) time. Hence, overall in one iteration an agent takes \(O(kn)\) time for the opinion update.
+	 computed in \(O(kn)\) time as well. The projection, which is performed if necessary, of the updated opinion \(z_i\)
+	 takes additional \(O(k)\) time. Thus, an agent takes \(O(kn)\) time to update its opinion in one iteration overall.
 	 </p>
 
 	<h3>
-      Initially Ungrouped Agents - Reward with and without Regularization
+      Initially Ungrouped Agents: Reward with and without Regularization
     </h3>
     <p>
-      In this paragraph we consider the 10 agents regarded as 10 individual groups in 10 different colors. 
-      Let us compare the convergence results of multi-agent gradient ascent with and without regularization.
+      In this section, we consider the 10 agents regarded as 10 individual groups in 10 different colors. 
+      We compare the convergence results of the multi-agent gradient ascent with and without regularization.
     </p>
 		
 		<!-- HERE -->
 		<div class="framed" style="margin-bottom: 20px">
         <div class="inside">
 		<div class="eyebrow">
-      Choose how fast you would like to see the online gradient ascent algorithm updates the agents' opinions. 
-      The left-hand side considers regularization, while the right-hand side does not. 
-      The videos can be paused, 
-      dragged, and resumed mannually. The play speed can be adjusted, too. 
+      Choose how fast you would like to see the online gradient ascent algorithm update the agents' opinions. 
+      The left side considers regularization, while the right side does not. 
+      The videos can be paused, dragged, and resumed manually. The playing speed can also be adjusted. 
 		</div>
 		<!-- VIDEO box -->
       <h4 class="ps-3 pt-5">Initially 10 agents regarded as 10 groups</h4>
@@ -1893,32 +1898,32 @@
           </Row>
         </div>
       </div>
-			<div class="caption"><b>Figure 9:</b>The dynamics of opinion update by online gradient ascent for ungrouped agents. 
-			The left-hand side considers regularization, while the right-hand side does not. With a slight abuse of notation, 
-			the \(x\)-dimension and \(y\)-dimension in the figures denote the first dimension of opinions and beliefs respectively.</div>
+			<div class="caption"><b>Figure 9:</b>The dynamics of opinion update with the online gradient ascent for ungrouped agents. 
+			The left side considers regularization, while the right side does not. With a slight abuse of notation, 
+			the \(x\)-dimension and the \(y\)-dimension in the figures denote the first dimension of opinions and beliefs, respectively.</div>
 		</div>
 		</div>
 		<p> 
-      We find that, for example, agent \(v_1\) moves towards the botton-left direction in the feasible space, though 
-      with regularization it behaves in a more conservative way (see the figure on the left-hand side). Moreover, the learning rate, either 0.1 
-      or 0.01, seems to lead to final convergence, though the larger learning rate gives the agents faster speed of convergence 
+      We find that, for example, agent \(v_1\) moves toward the bottom-left direction in the feasible space; although 
+      with regularization the agent behaves in a more conservative way (see the figure on the left side). Moreover, the learning rate, either 0.1 
+      or 0.01, seems to lead to final convergence, although the larger learning rate gives the agents faster speed of convergence 
       in this example. 
 		</p>
 		<h3>
-      Initially Grouped Agents - Reward with and without Regularization
+      Initially Grouped Agents: Reward with and without Regularization
     </h3>
     <p>
-      In this paragraph, we consider the case that the 10 agents are regarded as 4 groups in 4 different colors. 
-      Let us compare the convergence results of multi-agent gradient ascent with and without regularization.
+      In this section, we consider the case that the 10 agents are regarded as 4 groups in 4 different colors. 
+      We compare the convergence results of the multi-agent gradient ascent with and without regularization.
     </p>
 		
 		<!-- HERE -->
 		<div class="framed" style="margin-bottom: 20px">
       <div class="inside">
       <div class="eyebrow">
-      Choose how fast you would like to see the online gradient ascent algorithm updates the agents' opinions. 
-      The left-hand side considers regularization, while the right-hand side does not. 
-      The videos can be paused, dragged, and resumed mannually. The play speed can be adjusted, too. 
+      Choose how fast you would like to see the online gradient ascent algorithm update the agents' opinions. 
+      The left side considers regularization, while the right side does not. 
+      The videos can be paused, dragged, and resumed manually. The playing speed can also be adjusted. 
 		</div>
 
 		<!-- VIDEO box -->
@@ -2007,45 +2012,45 @@
           </Row>
         </div>
       </div>
-			<div class="caption"><b>Figure 10:</b>The dynamics of opinion update by online gradient ascent for grouped agents. 
-        The left-hand side considers regularization, while the right-hand side does not. With a slight abuse of notation, 
-        the \(x\)-dimension and \(y\)-dimension in the figures denote the first dimension of opinions and beliefs respectively.</div>
+			<div class="caption"><b>Figure 10:</b>The dynamics of opinion update with the online gradient ascent for grouped agents. 
+        The left side considers regularization, while the right side does not. With a slight abuse of notation, 
+        the \(x\)-dimension and the \(y\)-dimension in the figures denote the first dimension of opinions and beliefs respectively.</div>
 		</div>
 		</div>
 		
 		<p>
-		Like what we have already seen in the previous figures, online gradient ascent for grouped agents still 
+		As we have seen in the previous figures, online gradient ascent for grouped agents still 
 		results in the final convergence in this case. One can observe that agents in the same group update their opinions 
-		roughly in the same direction. The reason is that their grouped opinion matters, which affects their winning probability 
+		roughly in the same direction. The reason is that their grouped opinion matters, which affects their winning probability, 
 		as well as the reward. 	
 		</p>
 		
 		<p>
-		Here is an interesting observation. In the figure above on the left-hand side, agents \(v_4, v_5, v_6, v_9\) 
+		Here is an interesting observation. On the left of Fig. 10, agents \(v_4, v_5, v_6, v_9,\) 
 		and \(v_{10}\), which belong to the green group and the yellow group, move downward to maximize their own rewards. 
-		Yet, using the learning rate 0.1, we can see that agents 
+		However, using the learning rate of 0.1, we can see that agents 
 		\(v_9\) and \(v_{10}\) &ldquo;fall back&rdquo; in the upward direction. This phenomenon can be explained 
-		as the green group, which is beneficial to the yellow group, has higher odds to win and also the updates 
-		of the opinions are constrained by the regularization term. Hence, eventually the agents in the yellow group 
+		as the green group, which is beneficial to the yellow group, has higher odds of winning, and the updates 
+		of the opinions are constrained by the regularization term. Therefore, eventually, the agents in the yellow group 
 		try to minimize the loss from deviating their beliefs.
 		</p>
 		
 		<h3>Reward Function Image Changes and Dynamics of the Opinion Updates</h3>
       <p>
-        In this paragraph, we look into the changes of the reward function image. Our goal here 
-        is to stress on the fact that the reward function of each agent actually changes due to 
-        the updates of the other agents. Indeed, as we have illustrated in the first section, each 
+        In this section, we look into the changes in the reward function image. Our goal 
+        is to stress that the reward function of each agent actually changes due to 
+        the updates of the other agents. As we have illustrated in the first section, each 
         agent's winning probability is affected not only by its own opinion but also by the other 
-        agents' opinions. Due to this reason, each agent is dealing with a time-varying 
+        agents' opinions. Due to this reason, each agent deals with a time-varying 
         reward function. 
 		</p> 
 		<p> 
-      Here we consider the previous example of 10 agents in 4 groups and focus on the two agents 
-      \(v_4\) and \(v_9\), which are in the green group and yellow group, respectively. From the previous 
-      paragraph, we have already observed the peculiar behavior of agent \(v_9\) and \(v_{10}\) in the 
-      yellow group: they move downward at the beginning but fall back afterwards to the positions close to their 
-      beliefs. In addition to the dynamics of their opinion updates, let us look into the changes of their 
-      reward function images as well. By the following interactive illustration, we reveal the fact 
+      We consider the previous example of 10 agents in 4 groups and focus on the 2 agents 
+      \(v_4\) and \(v_9\), which are in the green group and yellow group, respectively. In the previous 
+      section, we have observed the peculiar behavior of agents \(v_9\) and \(v_{10}\) in the 
+      yellow group: They move downward at the beginning but fall back afterward to the positions close to their 
+      beliefs. In addition to the dynamics of their opinion updates, let us look into the changes in their 
+      reward function images as well. With the following interactive illustration, we reveal 
       that the reward function images with or without regularization are quite different. 
     </p>
 		
@@ -2054,9 +2059,9 @@
 		<div class="framed" style="margin-bottom: 20px">
       <div class="inside">
       <div class="eyebrow">
-        Choose whether you want to see the reward function with or without regularization. By playing or pause the videos, 
-        you will be able to observe the reward function image changes, like environmental changes, as well as the dynamics 
-        of the opinion updates. Do they really move to the desired directions? 	
+        Choose whether you want to see the reward function with or without regularization. By playing or pausing the videos, 
+        you will be able to observe the reward function image changes, such as environmental changes, as well as the dynamics 
+        of the opinion updates. Do they really move in the desired directions? 	
       </div>
 		<!-- VIDEO box -->
       <h4 class="ps-3 pt-5">Reward function image changes and opinion updates of \(v_4\) and \(v_9\).</h4>
@@ -2145,16 +2150,16 @@
           </Row>
         </div>
       </div>
-			<div class="caption"><b>Figure 11:</b>The dynamics of the reward function images and the opinion updates by multi-agent 
+			<div class="caption"><b>Figure 11:</b>The dynamics of the reward function images and the opinion updates with multi-agent 
         online gradient ascent for \(v_4\) and \(v_9\) in two different groups. The reward functions of the two agents can be 
-        either with or without the regularization. 
+        either with or without regularization. 
 			</div>
 		</div>
 		</div>
 		<p>
       As we can observe from the above figures, without the regularization, an agent is more likely to have its opinion eventually to 
-      fall into the one leading to a local maximum reward. While in the case of considering regularization, an agent somehow 
-      will eventually express an opinion which gives reward close to global maximum.   
+      fall into the one leading to a local maximum reward. However, in the case of considering regularization, an agent somehow 
+      will eventually express an opinion that provides a reward close to the global maximum.   
 		</p>
 	</section>
 </div>
@@ -2166,22 +2171,22 @@
     <h2>V. Discussion</h2>
 
     <p class="inline-math"> 
-      As to the setting of group joining, each agent has a finite number of existing groups to join as a finite  
+      Regarding the group-joining setting, each agent has a finite number of existing groups to join as a finite  
       number of pure strategies to play. However, a pure-strategy Nash equilibrium does not always exist in 
       a non-cooperative game, and finding such an equilibrium can be computationally difficult [<a href="#ref_1">1</a>].
-      Whenever a game in our setting here does not have a pure-strategy Nash equilibrium, the dynamics of myopic best-responses
+      Whenever a game in our setting does not have a pure-strategy Nash equilibrium, the dynamics of the myopic best responses
       of the agents will never reach a stable state. As the number of possible states is upper bounded by \(n^n\), which corresponds  
       to the number of possible ways of throwing \(n\) balls into \(n\) bins, the dynamics must eventually visit a state 
-      which has been reached before, hence a cycle of the dynamics occurs. 
+      that has been reached before; therefore, a cycle of the dynamics occurs. 
     </p>
     
     <p class="inline-math"> 
-      When each agent is assumed to play the online gradient ascent algorithm, the number of possible pure-strategies of it is 
-      infinitely many. Indeed, all real vectors in \(\{ x\in [-1, 1]^k: \|x\|_2\leq 1\}\subset\mathbb{R}^k\) are feasible. So far 
+      When each agent is assumed to play the online gradient ascent algorithm, the number of possible pure-strategies is 
+      infinite. Indeed, all real vectors in \(\{ x\in [-1, 1]^k: \|x\|_2\leq 1\}\subset\mathbb{R}^k\) are feasible. So far, 
       it is still unclear whether such a game in our setting &ldquo;always&rdquo; has a pure-strategy Nash equilibrium. However, 
-      base on the numerical simulations we have conducted, we have not found any game instance which does not converge to a stable 
+      based on the numerical simulations we have conducted, we have not found any game instance that does not converge to a stable 
       state. Note that a stable state reached by agents' simultaneously playing online gradient ascent algorithms is not necessarily 
-      a pure-strategy Nash equilibrium. This is because the update of the opinion only considers the local deviations, so it is 
+      a pure-strategy Nash equilibrium. This is because the update of the opinion considers only the local deviations; thus, it is 
       merely locally stable.
     </p>
 	</section>
@@ -2196,17 +2201,17 @@
   <h2>VI. Conclusion</h2>
     <p> 
       This article presents a preliminary study on the dynamics of group formation. From the illustrations, 
-      readers can realize what a pure-strategy Nash equilibrium in a system of multi-agents is and also learn 
+      readers can realize what a pure-strategy Nash equilibrium in a system of multi-agents is and learn 
       how online gradient ascent algorithms can help reach a stable state of the game. 
     </p>       
     <p>
       In the future, we plan to prove our multi-agent online gradient ascent algorithm will stabilize the system and also 
-      analyze the speed of convergence. The other online learning algorithms, such as follow-the-regularized leader, 
-      multiplicative-weight update, mirror ascent, etc., can be also applied (see [<a href="#ref_14">14</a>]). Moreover, 
-      it will be also interesting to consider myopic best-responses and online gradient ascent together as the strategies 
-      that agents can play, instead of considering each one of them separately as different settings. 
-      We are also curious about the other types of best-response. For example, an agent can quit the group it belongs 
-      to in any iteration. 
+      analyze the speed of convergence. Other online learning algorithms, such as follow-the-regularized leader, 
+      multiplicative-weight update, mirror ascent, etc., can also be applied (see [<a href="#ref_14">14</a>]). Moreover, 
+      it will also be interesting to consider myopic best responses and the online gradient ascent together as strategies 
+      that agents can play, instead of considering each one separately as different settings. 
+      We are also curious about the other types of best response. For example, an agent can quit the group to which it 
+	  belongs in any iteration. 
     </p>
 	</section>
 </div>
@@ -2215,11 +2220,11 @@
 <div class="container mt-lg">
   <!-- Anchor ID -->
   <section id="acknowledgement">
-    <h3>Acknowledgment</h3>
+    <h3>Acknowledgments</h3>
       <p id="Acknowledgment" class="inline-math">
-        This work is supported by the Taiwan Ministry of Science and Technology under grant no. NSTC 110-2222-E-032-002-MY2, 
+        This work is supported by the Taiwan Ministry of Science and Technology under grant nos. NSTC 110-2222-E-032-002-MY2, 
         NSTC 111-2221-E-005-047- and NSTC 111-2410-H-A49-022-MY2. The authors also thank Victorien Yen for helping implement 
-        the Javascript codes in the immersive article. 
+        the JavaScript codes in the immersive article. 
       </p>
   </section>
 </div>
