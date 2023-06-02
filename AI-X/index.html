@@ -466,41 +466,41 @@
         <!-- Section title -->
         <h2>II. The Game Setting</h2>
 		<p class="inline-math">
-			In a human society, an individual has his or her own preferences on various issues. 
-			With respect to an issue, for example, supporting or opposing the green energy, 
-			supporting and opposing the death penalty, increasing or decreasing tax, etc., 
-			an individual can be sometimes regarded as a leftist or a rightist. Due to the pressure coming 
-			from the peers or the social network, an individual may hide his or her own true preferences, 
+			In a human society, an individual has his or her own preferences for various issues. 
+			With respect to an issue, for example, supporting or opposing green energy, 
+			supporting or opposing the death penalty, increasing or decreasing taxes, etc., 
+			an individual can sometimes be regarded as a leftist or a rightist. Due to the pressure 
+			from peers or the social network, an individual may hide his or her own true preferences, 
 			which are true and private, and might express different ones, which are public 
 			to the whole society. To quantify the degree 
-			how an individual agrees or disagrees with an issue, it is natural to consider such preferences
-			as &ldquo;real vectors&rdquo; such that a negative value and a positive value 
-			in a dimension shows the degree of disagreement and agreement with a corresponding issue, 
+			to which an individual agrees or disagrees with an issue, it is natural to consider such preferences
+			as &ldquo;real vectors,&rdquo; such that a negative value and a positive value 
+			in a dimension show the degree of disagreement and agreement with a corresponding issue, 
 			respectively. 
 		</p>	
 		<p class="inline-math">	
-			In the proposed game setting, we are given a set \(V\) of \(n\) agents \(v_1,v_2,\ldots,v_n\), 
-			each agent \(v_i\) is represented as a <i>public preference vector</i> \(z_i\) and a <i>private 
+			In the proposed game setting, we are given a set \(V\) of \(n\) agents \(v_1,v_2,\ldots,v_n\).  
+			Each agent \(v_i\) is represented as a <i>public preference vector</i> \(z_i\) and a <i>private 
 			preference vector</i> \(s_i\), such that the former (we call it an <i>opinion</i>) 
-			corresponds to the preference revealed to all the agents while the latter corresponds 
-			to its <i>belief</i> which is unchangeable. For a vector \(x = (x_1,x_2,\ldots,x_k)\in 
+			corresponds to the preference revealed to all the agents, while the latter corresponds 
+			to its <i>belief</i>, which is unchangeable. For a vector \(x = (x_1,x_2,\ldots,x_k)\in 
 			\mathbb{R}^k\), the 2-norm of \(x\) is defined as \(\|x\|_2 = \sqrt{\sum_{i=1}^k x_i^2}\). 			
 			We consider \(s_i,z_i\in\mathcal{K}\) such that 
 			\(\mathcal{K}:=\{x\in [-1,1]^k: \|x\|_2\leq 1\}\subset\mathbb{R}^k\) is the feasible set. 
-			One can realize that each dimension of the domain stands for a certain social issue such 
-			that \(-1\) maps to the far-left politics while \(1\) maps to the far-right politics. 
-			The bounded 2-norm constraint is in line with the bounded rationality of a person, or 
+			One can realize that each dimension of the domain stands for a certain social issue, such 
+			that \(-1\) maps to far-left politics, while \(1\) maps to far-right politics. 
+			The bounded 2-norm constraint is in line with the bounded rationality of a person, or the 
 			bounded budget for a group.
 			We use \(\mathbf{z} = (z_1,z_2,\ldots,z_n)\) and \(\mathbf{s} = (s_1,s_2,\ldots,s_n)\) to 
-			denote two profiles which include each agent's opinion and belief, respectively. 
+			denote two profiles that include each agent's opinion and belief, respectively. 
 			Each agent is initially regarded as a group. The <i>opinion of a group</i> is the average 
-			of the opinions of its members. Like the <i>monotone</i> setting in 
+			of the opinions of its members. Similar to the <i>monotone</i> setting in 
 			[<a href="#ref_11">11</a>, <a href="#ref_12">12</a>], a group wins with higher odds if its opinion 
-			brings more utility to all of the agents. The <i>reward</i> (i.e., payoff) of an agent is the 
-			expected utility it can get from all the groups. Specifically, assume that we have currently 
+			brings more utility to all the agents. The <i>reward</i> (i.e., payoff) of an agent is the 
+			expected utility that it can get from all the groups. Specifically, assume that we currently have 
 			\(m\leq n\) groups \(G_1,G_2,\ldots,G_m\), and denote by \(|G_i| = n_i\) the number 
 			of members in group \(G_i\). Let \(\mathcal{G} = (G_1,G_2,\ldots,G_m)\) denote the 
-			profile of groups. To ease the notation, we denote by 
+			profile of the groups. To ease the notation, we denote with 
 			\(\tau = (\mathbf{z}, \mathbf{s}, \mathcal{G})\) the <i>state</i> of the game. 
 			The reward function of agent \(i\) is 
 			$$r_i(\tau) = \sum_{j=1}^m p_j(\tau)\langle s_i, \bar{g}_j\rangle,$$ 
@@ -509,27 +509,27 @@
 			group \(j\) is defined as 
 			$$p_j(\tau) = \frac{e^{n_j\langle\bar{g}_j, \sum_{v_r\in V} s_r\rangle}}{\sum_{i\in [m]; n_i>0} e^{n_i\langle\bar{g}_i, 
 			\sum_{v_r\in V} s_r\rangle}},$$ where \([m]\) denotes the set \(\{1,2,\ldots, m\}\). 
-			Namely, \(p_j(\tau)\) is the softmax function which 
+			Namely, \(p_j(\tau)\) is the softmax function that 
 			is widely used to impose a probability distribution over the possible outcomes. 
-			Moreover, \(p_j(\tau)\) increases either when the size of group \(G_j\) gets larger 
-			or it can bring more total utility for all the agents in terms of larger sum of 
+			Moreover, \(p_j(\tau)\) increases either when the size of group \(G_j\) increases 
+			or it can bring more total utility for all the agents in terms of a  larger sum of 
 			inner products of the group opinion and each agent's belief. 
 		</p>
 		
 		<p> 
 			We will consider the following strategic behaviors of an agent in such a game:
 			<ul>
-			<li><strong>Group Joining:</strong> Seeking for a specific group which 
-			hopefully maximizes the agent's reward and join the group (See Fig. 1).
+			<li><strong>Group Joining:</strong> Seeking a specific group that 
+			hopefully maximizes the agent's reward and joins the group (see Fig. 1).
 			</li>
-			<li><strong>Opinion Updating Without Regularization:</strong>
-			Each agent in a certain group tries to maximize its reward through 
-			changing its opinion (See Fig. 2). 
+			<li><strong>Opinion Updating without Regularization:</strong>
+			Each agent in a certain group tries to maximize its reward by 
+			changing its opinion (see Fig. 2). 
 			</li>
-			<li><strong>Opinion Updating With Regularization:</strong>
-			Each agent in a certain group tries to maximize its reward through 
+			<li><strong>Opinion Updating with Regularization:</strong>
+			Each agent in a certain group tries to maximize its reward by 
 			changing its opinion, while the reward subtracts 
-			the distance \(\|s_i-z_i\|_2^2\) which serves as a regularizer. Adding 
+			the distance \(\|s_i-z_i\|_2^2\), which serves as a regularizer. Adding 
 			such a regularizer hopefully limits how strategic an agent can be by 
 			preventing it from moving too far from its own belief (See Fig. 2).  
 			</li>
@@ -1289,7 +1289,7 @@
         </div>
         <!--  <div style="height: 42vh;">-->
           <div class="d-flex w-100">
-            <h4 class="ps-3 pt-3 text-start">Policy Dimenson = 1</h4>
+            <h4 class="ps-3 pt-3 text-start">Policy Dimension = 1</h4>
             <span class="pe-3 pb-2 ms-auto mt-auto h-25">
               <button id="reset" class="btn btn-secondary py-1">RESET</button>
             </span>
