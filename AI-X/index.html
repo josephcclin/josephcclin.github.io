@@ -504,11 +504,11 @@
 			\(\tau = (\mathbf{z}, \mathbf{s}, \mathcal{G})\) the <i>state</i> of the game. 
 			The reward function of agent \(i\) is 
 			$$r_i(\tau) = \sum_{j=1}^m p_j(\tau)\langle s_i, \bar{g}_j\rangle,$$ 
-			where \(\bar{g}_j = \sum_{v\in G_j}z_i/|n_j|\) and \(\langle x, y\rangle\) denote the 
+			where \(\bar{g}_j = \sum_{v_i\in G_j}z_i/|n_j|\) and \(\langle x, y\rangle\) denote the 
 			inner product of two vectors \(x\) and \(y\). The winning probability of
 			group \(j\) is defined as 
-			$$p_j(\tau) = \frac{e^{n_j\langle\bar{g}_j, \sum_{v\in V} s_v\rangle}}{\sum_{i\in [m]; n_i>0} e^{n_i\langle\bar{g}_i, 
-			\sum_{v\in V} s_v\rangle}},$$ where \([m]\) denotes the set \(\{1,2,\ldots, m\}\). 
+			$$p_j(\tau) = \frac{e^{n_j\langle\bar{g}_j, \sum_{v_r\in V} s_r\rangle}}{\sum_{i\in [m]; n_i>0} e^{n_i\langle\bar{g}_i, 
+			\sum_{v_r\in V} s_r\rangle}},$$ where \([m]\) denotes the set \(\{1,2,\ldots, m\}\). 
 			Namely, \(p_j(\tau)\) is the softmax function which 
 			is widely used to impose a probability distribution over the possible outcomes. 
 			Moreover, \(p_j(\tau)\) increases either when the size of group \(G_j\) gets larger 
@@ -1759,13 +1759,32 @@
 	 <p class="inline-math">
 	 Since the algorithm is decentralized, the \(n\) agents updates their own opinions in parallel. Below we argue that 
 	 such an update for each agent in one iteration takes \(O(kn)\) time, hence totally it takes \(O(Tkn)\) time in \(T\) 
-	 iterations. To compute the reward \(r_i(\tau)\) for agent \(v_i\) in an iteration, it requires the computation of its 
+	 iterations. 
+	 </p>
+	 <p class="inline-math">
+	 To compute the reward \(r_i(\tau)\) for agent \(v_i\) in an iteration, it requires the computation of its 
 	 winning probability \(p_i(\tau)\) first, which takes \(O(kn)\) time overall to compute all inner products of existing 
 	 groups' opinions and each agent's belief. 
-	 Note that all group opinions can be obtained in \(O(kn)\) time and then it takes \(O(k)\) to compute the inner product 
-	 of a group opinion and an agent's belief. Then, it takes another \(O(km) = O(kn)\) time to compute the expected utility 
+	 Note that each group opinion \(\bar{g}_j\) can be obtained in \(O(n_jk)\) time and then it takes \(O(k)\) to compute the 
+	 inner product of group opinion \(g_j\) and agent \(i\)'s belief \(s_i\). Thus by \(\sum_{j=1}^m n_j = n\), it takes 
+	 \(\sum_{j=1}^m (O(n_jk)+O(k)) = O(kn)\) time to compute the expected utility 
 	 where \(m\) is the number of existing groups. The regularization term requires just \(O(k)\) time to compute the norm 
-	 of the difference between the opinion and the belief of an agent. The gradient computation as well as the projection 
+	 of the difference between the opinion and the belief of an agent. 
+	 </p>
+	 <p class="inline-math">
+	 To update opinion \(z_i\), we need to compute the gradient \(\nabla_{z_i}r_i(\tau)\). 
+	 Suppose that \(v_i\in G_{\ell}\), then we have 
+	 $$
+	 \nabla_{z_i}r_i(\tau) = p_{\ell}(\tau)\cdot \frac{s_i}{n_{\ell}} + \sum_{j\in [m], n_j\neq 0} \langle s_i, \bar{g}_j\rangle 
+	 \nabla_{z_i} p_j(\tau) - 2(z_i-s_i), 
+	 $$
+	 where \(\nabla_{z_i} p_j(\tau)=\frac{-U_{j}U_{\ell}\sum_{v_r\in V}s_r}{U_{all}^2}\) for \(j\neq\ell\), 
+	 \(\nabla_{z_i} p_{\ell}(\tau)=\left(\frac{U_{\ell}}{U_{all}}-\frac{U_{\ell}^2}{U_{all}^2}\right)\sum_{v_r\in V}s_r\), 
+	 and we denote by \(U_{all}:= \sum_{h\in[m], n_h\neq 0}e^{n_h\langle \bar{g}_h, \sum_{v_r\in V}s_r\rangle}\) and  
+	 \(U_{j}:= e^{n_j\langle \bar{g}_j, \sum_{v_r\in V}s_r\rangle}\) for each \(j\). Since it takes 
+	 \(O(kn)\) time to compute \(U_{all}\) and \(U_{j}\) for all \(j\in [m], n_j\neq 0\), we derive that 
+	 \(\nabla_{z_i} p_j(\tau)\) can be computed in \(O(kn)\) time for each \(j\). Thus, \(\nabla_{z_i}r_i(\tau)\) can be 
+	 computed in \(O(kn)\) time as well. Note that the projection 
 	 takes another \(O(k)\) time. Hence, overall in one iteration an agent takes \(O(kn)\) time for the opinion update.
 	 </p>
 
@@ -2321,7 +2340,7 @@
           On the Efficiency of an Election Game of Two or More Parties: How Bad Can It Be?
           <br />
           <span>
-          Lin, C.-C., Lu, C.J. and Chen, P.-A., 2023. arXiv:2303.14405. 
+          Lin, C.-C., Lu, C.-J. and Chen, P.-A., 2023. arXiv:2303.14405. 
           DOI: 
           <a href="https://doi.org/10.48550/arXiv.2303.14405" target="_blank">10.48550/arXiv.2303.14405</a>
           </span>
