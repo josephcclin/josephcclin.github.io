@@ -413,49 +413,49 @@
 		<p class="inline-math">
 		In some other specific class of games, gradient descent/ascent ideas for individual cost minimization/utility 
 		maximization can have an analytical form of the update rule. For &ldquo;opinion formation&rdquo; 
-		games in a social network, Bindel et al. [<a href="#ref_3">3</a>] viewed the strategy updating rule 
+		games in a social network, Bindel et al. [<a href="#ref_3">3</a>] viewed the strategy-updating rule 
 		equivalently as each player updating her opinion to minimize her quadratic individual cost function, 
-		which is done by solving a system of equations representing the first-order conditions. The authors then 
+		which was done by solving a system of equations representing the first-order conditions. The authors then 
 		analyzed how socially good or bad the system can be at equilibrium compared to the optimum solution in 
-		terms of the price of anarchy [<a href="#ref_10">10</a>]. On the other hand, in [<a href="#ref_4">4</a>], 
-		one can view the problem of finding the &ldquo;minimax&rdquo; strategy and the &ldquo;maximin&rdquo; strategy 
+		terms of the price of anarchy [<a href="#ref_10">10</a>]. In [<a href="#ref_4">4</a>], Chen et al. 
+		regarded the problem of finding the &ldquo;minimax&rdquo; strategy and the &ldquo;maximin&rdquo; strategy 
 		as a multiagent extension of online learning/online convex optimization. Note that using generic or specific 
-		no-regret algorithms is also a common approach to reach certain equilibria on average in repeated 
-		games [<a href="#ref_13">13</a>, Chapter 4]. There, the authors adapted the Optimistic Gradient Descent Ascent 
-		algorithm for the specific problem structure of competitive opinion optimization to derive the dynamics for 
-		both the min and max players and analyze the convergence to equilibria in the simultaneous version of competitive 
+		no-regret algorithms is also a common approach to attain certain equilibria on in repeated 
+		games [<a href="#ref_13">13</a>, Chapter 4]. The authors adapted the optimistic gradient descent ascent 
+		algorithm (OGDA) for the specific problem structure of competitive opinion optimization to derive the dynamics for 
+		both the min and max players and analyzed the convergence to equilibria in the simultaneous version of competitive 
 		opinion optimization with a convergence rate.
 		</p>
 		<h4>Satisfaction Game</h4>
 		<p class="inline-math"> 
-		The so-called satisfaction game of [<a href="#ref_15">15</a>] and its induced solution concept of 
-		&ldquo;satisfaction equilibrium&rdquo;, where each player targets satisfaction of quality of service requirements 
+		The so-called satisfaction game proposed by Papavassiliou et al.  [<a href="#ref_15">15</a>] and its induced solution concept of 
+		&ldquo;satisfaction equilibrium,&rdquo; where each player targets satisfaction of quality of service requirements 
 		(rather than individual utility maximization), were largely motivated by proposing/designing paradigms or mechanisms 
-		to incentivize strategic players to think not only from an individual perspective but also a system point of view 
-		in a resource allocation problem, which can be thought of as a social choice. While this is claimed to be more 
+		to incentivize strategic players to think not only from an individual perspective but also from a system point of view 
+		in a resource allocation problem, which can be thought of as a social choice. Although this is claimed to be more 
 		socially beneficial as a whole than the standard utility maximization model, it is not applicable in our case of 
-		group formation since our players in the group formation game may happen to be completely self-interested rather 
+		group formation because our players in the group formation game may happen to be completely self-interested rather 
 		than being able to care from a system point of view due to the nature of such a game.
 		</p>
 		
-		<h4>Multiagent Online Learning</h4>
+		<h4>Multi-agent Online Learning</h4>
 		<p class="inline-math">
-		Arguably, our work is most relevant to the paradigm of multiagent online learning. Tampuu et al. 
-		[<a href="#ref_17">17</a>] considered evolution of cooperation and competition of multiagents. They showed 
-		the robustness of agents' strategies each of which is built on a deep Q-networks (DQN), so that each agent plays 
-		against other agents which can react adaptively and the environment can be high-dimensional. In our work, 
+		Arguably, our work is most relevant to the paradigm of multi-agent online learning. Tampuu et al. 
+		[<a href="#ref_17">17</a>] considered the evolution of cooperation and competition of multiple agents. They showed 
+		the robustness of agents' strategies, each of which is built on a deep Q-network (DQN), so that each agent plays 
+		against other agents who can react adaptively, and the environment can be high-dimensional. In our work, 
 		the uncertainty (i.e., randomness) of each agent's reward arises from the competition of the groups in terms of 
 		the winning probability, which is different from the setting in [<a href="#ref_17">17</a>]. Our work conceptually 
 		fits the election campaign of parties (e.g., refer to our previous work [<a href="#ref_11">11</a>, <a href="#ref_12">12</a>]) 
-		such that each party can be initially an individual. 
+		such that each party can initially be an individual. 
 		</p>
 		<p class="inline-math">
-		Our proposed distributed algorithm for opinion updates is also related to those so-called block-coordinate gradient 
+		Our proposed distributed algorithm for opinion updates is also related to the so-called block-coordinate gradient 
 		descent/ascent (with/without projection) algorithm and alternating optimization algorithms [<a href="#ref_2">2</a>] 
 		in continuous optimization. If an agent’s opinion is seen as a block of variables, our algorithm can distributedly 
-		update each agent’s opinion in parallel, compared to the sequential updates of blocks, a limitation in some sense, 
-		using gradient descent/ascent or directly optimization. Gradient updates tend to help with stabilization of dynamics 
-		as well in comparison with one-step optimization’s more abrupt update, which can be thought of as best responses. 
+		update each agent’s opinion in parallel compared to the sequential updates of blocks, a limitation in some sense, 
+		using gradient descent/ascent or direct optimization. Gradient updates tend to help with stabilization of the dynamics 
+		as well as in comparison with one-step optimization’s more abrupt update, which can be thought of as the best responses. 
 		</p>
       </section>
 	</div>
