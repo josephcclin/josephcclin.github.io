@@ -372,9 +372,8 @@
           other agent changes its strategy.
         </p>  
         <p class="inline-math">
-          In this article, we consider the group formation of strategic agents as an example to 
-		  demonstrate the strategic behaviors of the agents and delve into the 
-          eventual outcome of the game to study the group formation of a society. 
+          This article examines the group formation of strategic agents to illustrate their strategic behaviors
+          and the eventual outcome of the game to study the group formation of a society. 
           The theoretical techniques used in this article include identifying a 
           pure-strategy Nash equilibrium and gradient 
           ascent algorithms with and without regularizers.
@@ -382,30 +381,31 @@
           A strategic agent can either join a group or change its opinion to 
           maximize its reward. The eventual equilibrium of the game hopefully suggests predictable 
           outcomes for the whole society. For the case in which agents apply group-joining strategies, 
-          we consider <i>pure-strategy Nash equilibria</i> as the solution concept, where a pure 
+          the <i>pure-strategy Nash equilibrium</i> is considered as the solution concept, where a pure 
           strategy means a strategy played with a probability of 1. For the case in which agents change 
-		  their opinions, we assume that each agent plays an <i>online gradient ascent algorithm</i>, 
-		  which guarantees the time-average convergence to a hindsight optimum for a single agent 
-		  (e.g., see [<a href="#ref_8">8</a>, <a href="#ref_14">14</a>] for the cost-minimization case), 
-		  in a decentralized way, and then we examine the possibly convergent state of the system. 
+		      their opinions, each agent executes an <i>online gradient ascent algorithm</i>, 
+		      which guarantees the time-average convergence to a hindsight optimum for a single agent 
+		      (e.g., see [<a href="#ref_8">8</a>, <a href="#ref_14">14</a>] for the cost-minimization case), 
+		      in a decentralized way, and then the possibly convergent state of the system is examined. 
         </p>	
 		<h3>RELATED WORK</h3>
 		<h4>Group Formation and Collective Behavior</h4>
 		<p class="inline-math">
-		Gueron and Levin [<a href="#ref_7">7</a>] investigated a general continuous model for animal group size 
-		distribution. They related group size distribution to the function of the rates of fusion and fission. 
+		Gueron and Levin [<a href="#ref_7">7</a>] investigated a general continuous model for the distribution in 
+    animal group size. They related group size distribution to the function of the rates of fusion and fission. 
 		Their work showed that the stationary distribution on the group size has a peak value that is endogenous 
 		from the dynamics of group formation. Griesser et al. [<a href="#ref_6">6</a>] also focused on animal 
-		group size varation, and they investigated the factors of group size distribution using observations of 
-		House Sparrows. Although [<a href="#ref_6">6</a>, <a href="#ref_7">7</a>] are relevant to our work, yet we consider preference vectors and beliefs, which are 
-		different from collective concepts, such as group size.  
+		group size variation, and investigated the factors of group size distribution using observations of 
+		House Sparrows. Although the studies [<a href="#ref_6">6</a>, <a href="#ref_7">7</a>] are relevant to our work, 
+    they do not focus on preference vectors and beliefs, which are different from collective concepts, such as 
+    the group size.  
 		</p>
 		
 		<p class="inline-math">
 		There are studies on social grouping that focus on the collective behavior of animals [<a href="#ref_9">9</a>, <a href="#ref_16">16</a>]. 
 		How animal groups form and function, as well as how the phenotypic variation of individuals affects or propels
 		collective behavior, are investigated. Our work does not emphasize collective behavior. Instead, 
-		we consider each agent as a self-interested player in a &ldquo;non-cooperative game&rdquo;, although 
+		each agent is considered as a self-interested player in a &ldquo;non-cooperative game&rdquo;, although 
 		each agent's reward is affected by other agents. 
 		</p>
 		
@@ -428,13 +428,13 @@
 		</p>
 		<h4>Satisfaction Game</h4>
 		<p class="inline-math"> 
-		The so-called satisfaction game proposed by Papavassiliou et al.  [<a href="#ref_15">15</a>] and its induced solution concept of 
-		&ldquo;satisfaction equilibrium,&rdquo; where each player targets satisfaction of quality of service requirements 
-		(rather than individual utility maximization), were largely motivated by proposing/designing paradigms or mechanisms 
-		to incentivize strategic players to think not only from an individual perspective but also from a system point of view 
-		in a resource allocation problem, which can be thought of as a social choice. Although this is claimed to be more 
+		The so-called satisfaction game, proposed by Papavassiliou et al. [<a href="#ref_15">15</a>], focuses on achieving 
+    &ldquo;satisfaction equilibrium.&rdquo; This solution concept targets satisfaction of quality of service requirements 
+    rather than individual utility maximization. The motivation behind this game and the satisfaction equilibrium is to 
+    encourage strategic players to consider both individual and system perspectives in resource allocation, which can be 
+    seen as a social choice. Although this is claimed to be more 
 		socially beneficial as a whole than the standard utility maximization model, it is not applicable in our case of 
-		group formation because our players in the group formation game may happen to be completely self-interested rather 
+		group formation, because our players in the group formation game may happen to be completely self-interested rather 
 		than being able to care from a system point of view due to the nature of such a game.
 		</p>
 		
@@ -447,15 +447,15 @@
 		the uncertainty (i.e., randomness) of each agent's reward arises from the competition of the groups in terms of 
 		the winning probability, which is different from the setting in [<a href="#ref_17">17</a>]. Our work conceptually 
 		fits the election campaign of parties (e.g., refer to our previous work [<a href="#ref_11">11</a>, <a href="#ref_12">12</a>]) 
-		such that each party can initially be an individual. 
+		such that each party can be initially set as an individual. 
 		</p>
 		<p class="inline-math">
 		Our proposed distributed algorithm for opinion updates is also related to the so-called block-coordinate gradient 
 		descent/ascent (with/without projection) algorithm and alternating optimization algorithms [<a href="#ref_2">2</a>] 
 		in continuous optimization. If an agent’s opinion is seen as a block of variables, our algorithm can distributedly 
 		update each agent’s opinion in parallel compared to the sequential updates of blocks, a limitation in some sense, 
-		using gradient descent/ascent or direct optimization. Gradient updates tend to help with stabilization of the dynamics 
-		as well as in comparison with one-step optimization’s more abrupt update, which can be thought of as the best responses. 
+		using gradient descent/ascent or direct optimization. Gradient updates tend to help with the stabilization of dynamics 
+    and compare with the abrupt update of one-step optimization, which is deemed the best response.  
 		</p>
       </section>
 	</div>
