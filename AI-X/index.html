@@ -1264,13 +1264,13 @@
 	  </p>
     <p class="inline-math">
       We point out that changes in the opinion of an agent affect not only its own winning probability but also 
-      those of the others. This is intuitively true when we consider competitions in real world. This observation 
-	  is captured in our definition of the winning probability. The changes in the opinion of a 
+      those of the others. This is intuitively true when we consider competitions in the real world. This observation 
+	    is captured in our definition of the winning probability. The changes in the opinion of a 
       single agent will contribute to the denominator of the formula. 
     </p>
     <p class="inline-math">
       For example, consider the following figure. We have five agents \(v_1,v_2,v_3,v_4\), and \(v_5\) such that each agent is 
-      regarded as a group individually. Assume their beliefs are \(s_1 = -0.8, s_2 = 1.0, s_3 = 0.1, s_4 = -0.1, s_5 = 0.2,\) 
+      regarded as a group individually. Assume their beliefs are \(s_1 = -0.8, s_2 = 1.0, s_3 = 0.1, s_4 = -0.1\), and \(s_5 = 0.2,\) 
       respectively. We assume that \(z_i = s_i\) for each \(i\) to simplify our discussion. 
       By assuming that \(v_1,v_2,v_3\), and \(v_4\) have their opinions \(z_1,z_2,z_3\), and \(z_4\) fixed, we can observe 
 	  the changes in the winning probability of \(v_5\) by moving \(z_5\) from \(-1\) to \(1\), as well as the changes in the 
@@ -1525,7 +1525,7 @@
 		<div class="eyebrow">
       Hover your mouse over the grouped agents to see the myopic rewards of the two options of group joining. 
       You may want to drag an agent, for example, \(v_5\), to see if you can make it change its mind. 
-      See whether it will has the incentive to change its mind. 
+      See whether it will have the incentive to change its mind. 
 		</div>
     <div class="d-flex w-100 pt-4">
       <h4 class="ps-3 pt-3 text-start">The pure-strategy Nash equilibrium</h4>
@@ -1679,9 +1679,9 @@
 	  
 	  <p class="inline-math">
       Below, we introduce the online gradient ascent algorithm. The pseudo-code is given in Fig. 8. Suppose that 
-      we would like to have the agents update their opinions in \(T\) iterations. At each iteration, agents update 
+      we have the agents update their opinions in \(T\) iterations. At each iteration, agents update 
       their opinions in a decentralized way. In each iteration, each agent first observes the reward resulting from 
-      the previous iteration then computes the &ldquo;gradient&rdquo; (the symbol \(\nabla\)), which is the first derivate 
+      the previous iteration and then computes the &ldquo;gradient&rdquo; (the symbol \(\nabla\)), which is the first derivate 
       with respect to its opinion and can be regarded as &ldquo;slopes&rdquo; in each dimension of the feasible space. 
       Then, each agent updates its opinion by adding the gradient multiplied by \(\eta\), which is 
       called the learning rate or the step size. Roughly speaking, the gradient shows the direction of improving 
@@ -1714,7 +1714,7 @@
 	  <h4>Regularization</h4>
 	  <p class="inline-math">
       Recall that each agent has its own belief. An agent can be benefited by maximizing its own reward; however, it 
-      could be not as &ldquo;happy&rdquo; as it thought at the beginning. Thus, it is interesting to consider a 
+      could be not as &ldquo;happy&rdquo; as it assumed at the beginning. Thus, it is interesting to consider a 
       constraint to make the agent update the opinion in a more controlled way. We introduce the concept called 
       &ldquo;regularization.&rdquo; 
       The reward function for agent \(v_i\), including the regularizer, is defined as 
@@ -1903,8 +1903,8 @@
 		</div>
 		</div>
 		<p> 
-      We find that, for example, agent \(v_1\) moves toward the bottom-left direction in the feasible space; although 
-      with regularization the agent behaves in a more conservative way (see the figure on the left side). Moreover, the learning rate, either 0.1 
+      We find that, for example, agent \(v_1\) moves toward the bottom-left direction in the feasible space; even though the agent 
+      behaves more conservatively with regularization (see the figure on the left side). Moreover, the learning rate, either 0.1 
       or 0.01, seems to lead to final convergence, although the larger learning rate gives the agents faster speed of convergence 
       in this example. 
 		</p>
@@ -1912,7 +1912,7 @@
       Initially Grouped Agents: Reward with and without Regularization
     </h3>
     <p>
-      In this section, we consider the case that the 10 agents are regarded as 4 groups in 4 different colors. 
+      In this section, we consider the case that the 10 agents are regarded as four groups in four different colors. 
       We compare the convergence results of the multi-agent gradient ascent with and without regularization.
     </p>
 		
@@ -2044,7 +2044,7 @@
         reward function. 
 		</p> 
 		<p> 
-      We consider the previous example of 10 agents in 4 groups and focus on the 2 agents 
+      We consider the previous example of 10 agents in four groups and focus on the two agents 
       \(v_4\) and \(v_9\), which are in the green group and yellow group, respectively. In the previous 
       section, we have observed the peculiar behavior of agents \(v_9\) and \(v_{10}\) in the 
       yellow group: They move downward at the beginning but fall back afterward to the positions close to their 
@@ -2175,7 +2175,7 @@
       a non-cooperative game, and finding such an equilibrium can be computationally difficult [<a href="#ref_1">1</a>].
       Whenever a game in our setting does not have a pure-strategy Nash equilibrium, the dynamics of the myopic best responses
       of the agents will never reach a stable state. As the number of possible states is upper bounded by \(n^n\), which corresponds  
-      to the number of possible ways of throwing \(n\) balls into \(n\) bins, the dynamics must eventually visit a state 
+      to the number of possible ways of throwing \(n\) balls into \(n\) bins, the dynamics must eventually get into a state 
       that has been reached before; therefore, a cycle of the dynamics occurs. 
     </p>
     
@@ -2200,7 +2200,7 @@
   <h2>VI. Conclusion</h2>
     <p> 
       This article presents a preliminary study on the dynamics of group formation. From the illustrations, 
-      readers can realize what a pure-strategy Nash equilibrium in a system of multi-agents is and learn 
+      readers can have a better grasp of what a pure-strategy Nash equilibrium in a system of multi-agents is and learn 
       how online gradient ascent algorithms can help reach a stable state of the game. 
     </p>       
     <p>
@@ -2208,9 +2208,9 @@
       analyze the speed of convergence. Other online learning algorithms, such as follow-the-regularized leader, 
       multiplicative-weight update, mirror ascent, etc., can also be applied (see [<a href="#ref_14">14</a>]). Moreover, 
       it will also be interesting to consider myopic best responses and the online gradient ascent together as strategies 
-      that agents can play, instead of considering each one separately as different settings. 
-      We are also curious about the other types of best response. For example, an agent can quit the group to which it 
-	  belongs in any iteration. 
+      that agents can play instead of considering each separately as different settings. 
+      We are also curious about the other types of the best response. For example, an agent can quit the group to which it 
+	    belongs in any iteration. 
     </p>
 	</section>
 </div>
@@ -2223,7 +2223,7 @@
       <p id="Acknowledgment" class="inline-math">
         This work is supported by the Taiwan Ministry of Science and Technology under grant nos. NSTC 110-2222-E-032-002-MY2, 
         NSTC 111-2221-E-005-047- and NSTC 111-2410-H-A49-022-MY2. The authors also thank Victorien Yen for helping implement 
-        the JavaScript codes in the immersive article. 
+        the JavaScript codes in this immersive article. 
       </p>
   </section>
 </div>
