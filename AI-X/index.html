@@ -466,42 +466,41 @@
         <!-- Section title -->
         <h2>II. The Game Setting</h2>
 		<p class="inline-math">
-			In a human society, an individual has his or her own preferences for various issues. 
-			With respect to an issue, for example, supporting or opposing green energy, 
-			supporting or opposing the death penalty, increasing or decreasing taxes, etc., 
-			an individual can sometimes be regarded as a leftist or a rightist. Due to the pressure 
-			from peers or the social network, an individual may hide his or her own true preferences, 
-			which are true and private, and might express different ones, which are public 
-			to the whole society. To quantify the degree 
-			to which an individual agrees or disagrees with an issue, it is natural to consider such preferences
-			as &ldquo;real vectors,&rdquo; such that a negative value and a positive value 
+			Within a human society, each individual possesses their own preferences regarding numerous matters. 
+			The preference, for instance, can be their stance on a topic such as endorsing or opposing green energy, 
+			supporting or rejecting the death penalty, or advocating for tax increases or decreases, etc. 
+			Based on their positions, an individual can occasionally be regarded as either left-leaning or right-leaning. 
+      Due to peer pressure or social network influence, an individual may disguise his or her own preferences, 
+			which are true and private, and instead talk around it with viewpoints following the crowd. 
+      To quantify the degree to which an individual agrees or disagrees with an issue, it is natural to consider 
+      such preferences as &ldquo;real vectors,&rdquo; such that a negative value and a positive value 
 			in a dimension show the degree of disagreement and agreement with a corresponding issue, 
 			respectively. 
 		</p>	
 		<p class="inline-math">	
-			In the proposed game setting, we are given a set \(V\) of \(n\) agents \(v_1,v_2,\ldots,v_n\).  
+			In the proposed game setting, a set \(V\) of \(n\) agents \(v_1,v_2,\ldots,v_n\) is given.  
 			Each agent \(v_i\) is represented as a <i>public preference vector</i> \(z_i\) and a <i>private 
-			preference vector</i> \(s_i\), such that the former (we call it an <i>opinion</i>) 
+			preference vector</i> \(s_i\), such that the former (i.e., an <i>opinion</i>) 
 			corresponds to the preference revealed to all the agents, while the latter corresponds 
 			to its <i>belief</i>, which is unchangeable. For a vector \(x = (x_1,x_2,\ldots,x_k)\in 
 			\mathbb{R}^k\), the 2-norm of \(x\) is defined as \(\|x\|_2 = \sqrt{\sum_{i=1}^k x_i^2}\). 			
-			We consider \(s_i,z_i\in\mathcal{K}\) such that 
+			Consider \(s_i,z_i\in\mathcal{K}\) such that 
 			\(\mathcal{K}:=\{x\in [-1,1]^k: \|x\|_2\leq 1\}\subset\mathbb{R}^k\) is the feasible set. 
-			One can realize that each dimension of the domain stands for a certain social issue, such 
+			Each dimension of the domain stands for a certain social issue, such 
 			that \(-1\) maps to far-left politics, while \(1\) maps to far-right politics. 
 			The bounded 2-norm constraint is in line with the bounded rationality of a person, or the 
 			bounded budget for a group.
-			We use \(\mathbf{z} = (z_1,z_2,\ldots,z_n)\) and \(\mathbf{s} = (s_1,s_2,\ldots,s_n)\) to 
-			denote two profiles that include each agent's opinion and belief, respectively. 
+			Denote by \(\mathbf{z} = (z_1,z_2,\ldots,z_n)\) and \(\mathbf{s} = (s_1,s_2,\ldots,s_n)\) the 
+      two profiles that include each agent's opinion and belief, respectively. 
 			Each agent is initially regarded as a group. The <i>opinion of a group</i> is the average 
 			of the opinions of its members. Similar to the <i>monotone</i> setting in 
 			[<a href="#ref_11">11</a>, <a href="#ref_12">12</a>], a group wins with higher odds if its opinion 
 			brings more utility to all the agents. The <i>reward</i> (i.e., payoff) of an agent is the 
-			expected utility that it can get from all the groups. Specifically, assume that we currently have 
+			expected utility that it can get from all the groups. Specifically, assume that there are currently  
 			\(m\leq n\) groups \(G_1,G_2,\ldots,G_m\), and denote by \(|G_i| = n_i\) the number 
 			of members in group \(G_i\). Let \(\mathcal{G} = (G_1,G_2,\ldots,G_m)\) denote the 
-			profile of the groups. To ease the notation, we denote with 
-			\(\tau = (\mathbf{z}, \mathbf{s}, \mathcal{G})\) the <i>state</i> of the game. 
+			profile of the groups. To ease the notation, let  
+			\(\tau = (\mathbf{z}, \mathbf{s}, \mathcal{G})\) denote the <i>state</i> of the game. 
 			The reward function of agent \(i\) is 
 			$$r_i(\tau) = \sum_{j=1}^m p_j(\tau)\langle s_i, \bar{g}_j\rangle,$$ 
 			where \(\bar{g}_j = \sum_{v_i\in G_j}z_i/|n_j|\) and \(\langle x, y\rangle\) denote the 
