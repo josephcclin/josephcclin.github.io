@@ -1362,10 +1362,10 @@
 	  <p class="inline-math">
       In this example, the utility that \(v_1\) brings to all the agents is 
       $$\langle z_1, s_1+s_2+s_3+s_4+s_5\rangle = (-0.8)\cdot (-0.8-0.1+0.1+0.2+1) = -0.32.$$
-      Similarly, we have \(v_2, v_3, v_4,\) and \(v_5\) bring utility \(0.4, 0.04, -0.04,\) and \(0.08\) to all the agents, respectively. 
+      Similarly, there are \(v_2, v_3, v_4,\) and \(v_5\) bringing utilities \(0.4, 0.04, -0.04,\) and \(0.08\) to all the agents, respectively. 
       Then, we have that the winning probability \(p_1\) of agent \(v_1\) is 
 	  $$\frac{e^{-0.32}}{e^{-0.32}+e^{0.4}+e^{0.04}+e^{-0.04}+e^{0.08}} = 0.1369.$$
-      Similarly, we derive \(p_2 = 0.2813, p_3 = 0.1963, p_4 = 0.1812\), and \(p_5 = 0.2043\). Thus, the reward \(r_1\) of agent \(v_1\) is 
+      Similarly, one can derive \(p_2 = 0.2813, p_3 = 0.1963, p_4 = 0.1812\), and \(p_5 = 0.2043\). Thus, the reward \(r_1\) of agent \(v_1\) is 
       $$\begin{eqnarray*}
       r_1 &=& p_1\cdot \langle z_1, s_1\rangle + p_2\cdot \langle z_2, s_1\rangle + p_3\cdot \langle z_3, s_1\rangle + 
       p_4\cdot \langle z_4, s_1\rangle + p_4\cdot \langle z_5, s_1\rangle\\
@@ -1378,14 +1378,14 @@
   <!-- Group box 2 -->
     <h3>Group Joining: Myopic Best Responses</h3>
     <p class="inline-math">
-      We consider a type of best response for each agent in this section. Assume that agent \(v_i\) decides to join \(G_j\), for which 
-      $$j = \arg\max_{\ell} p_{\ell}(\tau)\cdot \langle \bar{g}_{\ell}, s_i\rangle.$$ We call this strategy a <i>myopic best response</i>. 
+      A type of best response is considered for each agent in this section. Assume that agent \(v_i\) decides to join \(G_j\), for which 
+      $$j = \arg\max_{\ell} p_{\ell}(\tau)\cdot \langle \bar{g}_{\ell}, s_i\rangle.$$ This strategy is the so-called <i>myopic best response</i>. 
       Namely, an agent joins a group by considering not only its winning probability but also the utility that the agent can get 
       from the group before joining. The agents do not consider the next and future states, thus the name &ldquo;myopic&rdquo; best response.
     </p>
     <p>
-      In Fig. 4, we can see the changes in the group opinions due to agent \(v_5\)'s group-joining strategy. In addition, we can 
-      see the final outcome as a stable state after each agent performs its myopic best responses in parallel iteratively. 
+      In Fig. 4, the changes in the group opinions can be seen due to agent \(v_5\)'s group-joining strategy. 
+	    In addition, a stable state is the final outcome after each agent performs its myopic best response in parallel iteratively. 
     </p>
     <div class="framed" style="margin-bottom: 20px">
       <div class="inside">
