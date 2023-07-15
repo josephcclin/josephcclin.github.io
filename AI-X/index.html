@@ -1646,11 +1646,11 @@
     <h2>IV. Opinion Updates by Online Gradient Ascent</h2>
     <h3>2D Representation and the Algorithm</h3>
 	  <p class="inline-math"> 
-      In this section, we consider the situation in which each agent tries to maximize its own reward by 
+      In this section, the focus is the situation in which each agent tries to maximize its own reward by 
       &ldquo;changing its opinion&rdquo; without deviating from the group to which it belongs to. 
       Agents' opinions are represented as points in 
       \(\mathcal{K} = \{x\in [-1, 1]^2: \|x\|_2\leq 1\}\subset\mathbb{R}^2\). Consider the following 
-      figure as an example. We have 10 agents with opinions which are initially 
+      figure as an example. There are 10 agents with opinions which are initially 
       their beliefs: $$
       \begin{align*}
       &z_1 = (0.3757, -0.8405),  & z_2 = (0.7536, -0.5736),\\
@@ -1678,17 +1678,17 @@
 	  </div>
 	  
 	  <p class="inline-math">
-      Below, we introduce the online gradient ascent algorithm. The pseudo-code is given in Fig. 8. Suppose that 
-      we have the agents update their opinions in \(T\) iterations. At each iteration, agents update 
+      Below, the online gradient ascent algorithm is introduced. The pseudo-code is given in Fig. 8. Suppose that 
+      the agents update their opinions in \(T\) iterations. At each iteration, agents update 
       their opinions in a decentralized way. In each iteration, each agent first observes the reward resulting from 
       the previous iteration and then computes the &ldquo;gradient&rdquo; (the symbol \(\nabla\)), which is the first derivate 
       with respect to its opinion and can be regarded as &ldquo;slopes&rdquo; in each dimension of the feasible space. 
       Then, each agent updates its opinion by adding the gradient multiplied by \(\eta\), which is 
       called the learning rate or the step size. Roughly speaking, the gradient shows the direction of improving 
       an agent's reward, and the learning rate decides how far the updating step should be made in such a direction. 
-	  We set a sufficiently large \(T\) as the number of total iterations \(T\) for the agents running the algorithm.  
+	  The number of total iterations \(T\) is set sufficiently large for the agents running the algorithm.  
 	  Whenever each agent finds that its updated opinion is exactly the same as or extremely close (by setting a small constant as a threshold) 
-	  to that in the previous iteration, we can say that none of the agents can make any improvement, and thus, an equilibrium is reached. 
+	  to that in the previous iteration, none of the agents can make any improvement, and thus, an equilibrium is reached. 
 	  </p>
 	  
 	  <figure class="text-center">
@@ -1708,8 +1708,8 @@
 			\end{array}
 			\right.$$
       is a simple &ldquo;projection&rdquo; that projects \(x\) onto the feasible set \(\mathcal{K}\), 
-      if it is outside \(\mathcal{K}\), by dividing its 2-norm. Note that, in this article, we consider constant 
-      learning rates to simplify our discussion. In fact, learning rates can be set adaptively and decay over time. 	  
+      if it is outside \(\mathcal{K}\), by dividing its 2-norm. Note that, in this article, 
+		  constant learning rates are considered to simplify our discussion. In fact, learning rates can be set adaptively and decay over time. 	  
 	  </p>
 	  <h4>Regularization</h4>
 	  <p class="inline-math">
