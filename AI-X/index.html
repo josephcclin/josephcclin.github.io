@@ -1715,26 +1715,25 @@
 	  <p class="inline-math">
       Recall that each agent has its own belief. An agent can be benefited by maximizing its own reward; however, it 
       could be not as &ldquo;happy&rdquo; as it assumed at the beginning. Thus, it is interesting to consider a 
-      constraint to make the agent update the opinion in a more controlled way. We introduce the concept called 
-      &ldquo;regularization.&rdquo; 
+      constraint to make the agent update the opinion in a more controlled way. The concept called &ldquo;regularization&rdquo; is introduced. 
       The reward function for agent \(v_i\), including the regularizer, is defined as 
       $$r_i(\tau) = \sum_{j=1}^m p_j(\tau)\langle s_i, \bar{g}_j\rangle - \|z_i-s_i\|_2^2.$$ 
 	  The idea is inspired by online mirror descent [<a href="#ref_14">14</a>], in which a locality constraint 
 	  is appended to the object to force the algorithm to iteratively update the solution in a &ldquo;moderate&rdquo; way.
-      In our application, we consider reward maximization, and the regularization term is \(-\|z_i-s_i\|_2^2\). 
+      In our application, reward maximization is considered, and the regularization term is \(-\|z_i-s_i\|_2^2\). 
 	  As \(-\|z_i-s_i\|_2^2\) is always non-positive, an agent will be forced to consider &ldquo;not being too far 
       from its belief.&rdquo; Our experimental illustrations show that such a regularization helps the 
       game converge to a stable state where the difference between the opinion and belief of each agent is moderate. 
 	  </p>
 	  
 	  <p class="inline-math">
-	  We exemplify our multi-agent online gradient ascent as follows. Let us consider the scenario in which the 10 agents 
+	  Our multi-agent online gradient ascent is exemplified as follows. Let us consider the scenario in which the 10 agents 
 	  \(v_1,v_2,\ldots,v_{10}\) are grouped into four groups, that is, \(G_1 = \{v_1,v_2,v_3\}\), \(G_2 = \{v_4,v_5,v_6\}\), 
-	  \(G_3\{v_7,v_8\}\), and \(G_4\{v_9, v_{10}\}\). We consider regularization in the reward and focus on the first iteration; 
+	  \(G_3\{v_7,v_8\}\), and \(G_4\{v_9, v_{10}\}\). Regularization is considered in the reward, and the focus is on the first iteration; 
 	  let \(\tau\) be the initial state. 
 	  Initially, \(z_i = s_i\) for each \(i\in \{1,2,\ldots, 10\}\). 
 	  The groups' opinions are \(\bar{g}_1 = (0.6536, -0.6492)\), \(\bar{g}_2 = (-0.4389, -0.2344)\), \(\bar{g}_3 = (-0.5748, -0.2658)\), 
-	  and \(\bar{g}_4 = (-0.6629, -0.3283)\). By computing the inner product of each group opinion and each agent's belief, we obtain 
+	  and \(\bar{g}_4 = (-0.6629, -0.3283)\). By computing the inner product of each group opinion and each agent's belief, it is obtained 
 	  \(e^{n_1\langle \bar{g}_1, \sum_{i=1}^{10}s_i\rangle} = 48.6975\), \(e^{n_2\langle \bar{g}_2, \sum_{i=1}^{10}s_i\rangle} = 165.8341\), 
 	  \(e^{n_3\langle \bar{g}_3, \sum_{i=1}^{10}s_i\rangle} = 63.1695\), and \(e^{n_4\langle \bar{g}_4, \sum_{i=1}^{10}s_i\rangle} = 140.9458\). 
 	  Therefore, the winning probabilities of \(G_1\), \(G_2\), \(G_3\), and \(G_4\) are 
@@ -1748,13 +1747,13 @@
 	  $$
 	  respectively. Then, the reward of each agent \(v_i\) can be computed. For example, 
 	  consider the two agents \(v_1\) and \(v_7\). Note that \(z_i = s_i\) for each \(i\) initially, so the regularization term has a value 
-	  of 0 for each \(i\). We derive the following:  
+	  of 0 for each \(i\). The following is derived:  
 	  $$\begin{eqnarray*}
 	  r_1(\tau) &=& \sum_{j=1}^4 p_j(\tau)\langle s_1, \bar{g}_j\rangle = 0.1149, \\ 
 	  r_7(\tau) &=& \sum_{j=1}^4 p_j(\tau)\langle s_7, \bar{g}_j\rangle = 0.4176. 
 	  \end{eqnarray*}$$
-	  The gradients \(\nabla_{z_i}r_i(\tau)\) can be computed using a PyTorch program. For example, we have \(\nabla_{z_1}r_1(\tau) = \) \((-0.1540, -0.3859)\) and \(\nabla_{z_7}r_7(\tau) = \) \((-0.1935, -0.3279)\). 
-	  By setting the learning rate \(\eta = 0.1\), we can derive the updated opinions of \(v_1\) and \(v_7\) as \((0.3757, -0.8405)+0.1\cdot (-0.1540, -0.3859)\)
+	  The gradients \(\nabla_{z_i}r_i(\tau)\) can be computed using a PyTorch program. For example, one has \(\nabla_{z_1}r_1(\tau) = \) \((-0.1540, -0.3859)\) and \(\nabla_{z_7}r_7(\tau) = \) \((-0.1935, -0.3279)\). 
+	  By setting the learning rate \(\eta = 0.1\), it can be derived that the updated opinions of \(v_1\) and \(v_7\) are \((0.3757, -0.8405)+0.1\cdot (-0.1540, -0.3859)\)
 	  \( = (0.3603, -0.8791)\) and \((-0.6936, -0.4227)+0.1\cdot (-0.1935, -0.3279)\) \( = (-0.7130, -0.4555)\), respectively. As their 2-norms are smaller 
 	  than 1, no projection is needed. 
 	  
