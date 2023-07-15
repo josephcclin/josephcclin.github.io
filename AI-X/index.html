@@ -1761,10 +1761,10 @@
 	  
 	 <h4>Computational Complexity of the Algorithm</h4>
 	 <p class="inline-math">
-	 Since the algorithm is decentralized, the \(n\) agents update their own opinions in parallel. Below, we argue that 
+	 Since the algorithm is decentralized, the \(n\) agents update their own opinions in parallel. Below, it is argued that 
 	 such an update for each agent in one iteration takes \(O(kn)\) time; thus the total time is \(O(Tkn)\) in \(T\) 
 	 iterations. Note that it is still open whether our algorithm converges to a stable state within \(T\) iterations. So far 
-   we consider a fixed value of \(T\) (e.g., \(T = 100\)) in our experiments. 
+   a fixed value of \(T\) (e.g., \(T=100\)) is used in our experiments. 
 	 </p>
 	 <p class="inline-math">
 	 To compute the reward \(r_i(\tau)\) for agent \(v_i\) in an iteration, it requires to compute the 
@@ -1777,17 +1777,17 @@
 	 of the difference between an agent's opinion and belief. 
 	 </p>
 	 <p class="inline-math">
-	 To update opinion \(z_i\), we need to compute the gradient \(\nabla_{z_i}r_i(\tau)\). 
-	 Suppose that \(v_i\in G_{\ell}\), then we have 
+	 To update opinion \(z_i\), the gradient \(\nabla_{z_i}r_i(\tau)\) needs to be computed. 
+	 Suppose that \(v_i\in G_{\ell}\), then one can have 
 	 $$
 	 \nabla_{z_i}r_i(\tau) = p_{\ell}(\tau)\cdot \frac{s_i}{n_{\ell}} + \sum_{j\in [m], n_j> 0} \langle s_i, \bar{g}_j\rangle 
 	 \nabla_{z_i} p_j(\tau) - 2(z_i-s_i), 
 	 $$
 	 where \(\nabla_{z_i} p_j(\tau)=\frac{-U_{j}U_{\ell}\sum_{v_r\in V}s_r}{U_{all}^2}\) for \(j\neq\ell\), 
 	 \(\nabla_{z_i} p_{\ell}(\tau)=\left(\frac{U_{\ell}}{U_{all}}-\frac{U_{\ell}^2}{U_{all}^2}\right)\sum_{v_r\in V}s_r\), 
-	 and we denote by \(U_{all}:= \sum_{h\in[m], n_h> 0}e^{n_h\langle \bar{g}_h, \sum_{v_r\in V}s_r\rangle}\) and  
+	 and note \(U_{all}:= \sum_{h\in[m], n_h> 0}e^{n_h\langle \bar{g}_h, \sum_{v_r\in V}s_r\rangle}\) and  
 	 \(U_{j}:= e^{n_j\langle \bar{g}_j, \sum_{v_r\in V}s_r\rangle}\) for each \(j\). Since it takes 
-	 \(O(kn)\) time to compute \(U_{all}\) and all \(U_{j}\) for \(j\in [m], n_j\neq 0\), we derive that all 
+	 \(O(kn)\) time to compute \(U_{all}\) and all \(U_{j}\) for \(j\in [m], n_j\neq 0\), it is derived that all 
 	 \(\nabla_{z_i} p_j(\tau)\) can be computed in \(O(kn)\) time for \(j\in [m], n_j> 0\). Thus, \(\nabla_{z_i}r_i(\tau)\) can be 
 	 computed in \(O(kn)\) time as well. The projection, which is performed if necessary, of the updated opinion \(z_i\)
 	 takes additional \(O(k)\) time. Thus, an agent takes \(O(kn)\) time to update its opinion in one iteration overall.
@@ -1797,8 +1797,8 @@
       Initially Ungrouped Agents: Reward with and without Regularization
     </h3>
     <p>
-      In this section, we consider the 10 agents regarded as 10 individual groups in 10 different colors. 
-      We compare the convergence results of the multi-agent gradient ascent with and without regularization.
+      In this section, 10 agents are regarded as 10 individual groups in 10 different colors. 
+      The convergence results of the multi-agent gradient ascent with regularization are compared with those without regularization.
     </p>
 		
 		<!-- HERE -->
@@ -1902,7 +1902,7 @@
 		</div>
 		</div>
 		<p> 
-      We find that, for example, agent \(v_1\) moves toward the bottom-left direction in the feasible space; even though the agent 
+      It is found that, for example, agent \(v_1\) moves toward the bottom-left direction in the feasible space; even though the agent 
       behaves more conservatively with regularization (see the figure on the left side). Moreover, the learning rate, either 0.1 
       or 0.01, seems to lead to final convergence, although the larger learning rate gives the agents faster speed of convergence 
       in this example. 
@@ -1911,8 +1911,8 @@
       Initially Grouped Agents: Reward with and without Regularization
     </h3>
     <p>
-      In this section, we consider the case that the 10 agents are regarded as four groups in four different colors. 
-      We compare the convergence results of the multi-agent gradient ascent with and without regularization.
+      In this section, the 10 agents are regarded as four groups in four different colors. 
+      The convergence results of the multi-agent gradient ascent with regularization are compared with those without regularization.
     </p>
 		
 		<!-- HERE -->
@@ -2017,7 +2017,7 @@
 		</div>
 		
 		<p>
-		As we have seen in the previous figures, online gradient ascent for grouped agents still 
+		As what has been seen in the previous figures, online gradient ascent for grouped agents still 
 		results in the final convergence in this case. One can observe that agents in the same group update their opinions 
 		roughly in the same direction. The reason is that their grouped opinion matters, which affects their winning probabilities, 
 		as well as the rewards. 	
@@ -2026,7 +2026,7 @@
 		<p>
 		Here is an interesting observation. On the left of Fig. 10, agents \(v_4, v_5, v_6, v_9,\) 
 		and \(v_{10}\), which belong to the green group and the yellow group, move downward to maximize their own rewards. 
-		However, using the learning rate of 0.1, we can see that agents 
+		However, using the learning rate of 0.1, one can see that agents 
 		\(v_9\) and \(v_{10}\) &ldquo;fall back&rdquo; in the upward direction. This phenomenon can be explained 
 		as the green group, which is beneficial to the yellow group, has higher odds of winning, and the updates 
 		of the opinions are constrained by the regularization term. Therefore, eventually, the agents in the yellow group 
