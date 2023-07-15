@@ -2036,21 +2036,21 @@
 		
 		<h3>Reward Function Image Changes and Dynamics of the Opinion Updates</h3>
       <p>
-        In this section, we look into the changes in the reward function image. Our goal 
+        In this section, the changes in the reward function image are studied. Our goal 
         is to stress that the reward function of each agent actually changes due to 
-        the updates of the other agents. As we have illustrated in the first section, each 
+        the updates of the other agents. As what has been illustrated in the first section, each 
         agent's winning probability is affected not only by its own opinion but also by the other 
         agents' opinions. Due to this reason, each agent deals with a time-varying 
         reward function. 
 		</p> 
 		<p> 
-      We consider the previous example of 10 agents in four groups and focus on the two agents 
-      \(v_4\) and \(v_9\), which are in the green group and yellow group, respectively. In the previous 
-      section, we have observed the peculiar behavior of agents \(v_9\) and \(v_{10}\) in the 
-      yellow group: They move downward at the beginning but fall back afterward to the positions close to their 
+      The previous example of 10 agents in four groups is considered, and the two agents \(v_4\) and \(v_9\) are focused on, 
+			which are in the green group and yellow group, respectively. In the previous 
+      section, The peculiar behavior of agents \(v_9\) and \(v_10\) in the yellow group has been observed: 
+			They move downward at the beginning but fall back afterward to the positions close to their 
       beliefs. In addition to the dynamics of their opinion updates, let us look into the changes in their 
-      reward function images as well. With the following interactive illustration, we reveal 
-      that the reward function images with or without regularization are quite different. 
+      reward function images as well. With the following interactive illustration, it is revealed that 
+			the reward function images with or without regularization are quite different. 
     </p>
 		
 		
@@ -2156,7 +2156,7 @@
 		</div>
 		</div>
 		<p>
-      As we can observe from the above figures, without the regularization, an agent is more likely to have its opinion eventually to 
+      As what can be observed from the above figures, without the regularization, an agent is more likely to have its opinion eventually to 
       fall into the one leading to a local maximum reward. However, in the case of considering regularization, an agent somehow 
       will eventually express an opinion that provides a reward close to the global maximum.   
 		</p>
@@ -2204,12 +2204,11 @@
       how online gradient ascent algorithms can help reach a stable state of the game. 
     </p>       
     <p>
-      In the future, we plan to prove our multi-agent online gradient ascent algorithm will stabilize the system and also 
-      analyze the speed of convergence. Other online learning algorithms, such as follow-the-regularized leader, 
+      In the future, proving the system stabilization by running our multi-agent online gradient ascent algorithm and also analyzing the convergence speed is planned. Other online learning algorithms, such as follow-the-regularized leader, 
       multiplicative-weight update, mirror ascent, etc., can also be applied (see [<a href="#ref_14">14</a>]). Moreover, 
       it will also be interesting to consider myopic best responses and the online gradient ascent together as strategies 
       that agents can play instead of considering each separately as different settings. 
-      We are also curious about the other types of the best response. For example, an agent can quit the group to which it 
+      One might also be curious about the other types of the best response. For example, an agent can quit the group to which it 
 	    belongs in any iteration. 
     </p>
 	</section>
