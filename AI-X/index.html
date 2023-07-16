@@ -503,9 +503,9 @@
 			\(\tau = (\mathbf{z}, \mathbf{s}, \mathcal{G})\) denote the <i>state</i> of the game. 
 			The reward function of agent \(i\) is 
 			$$r_i(\tau) = \sum_{j=1}^m p_j(\tau)\langle s_i, \bar{g}_j\rangle,$$ 
-			where \(\bar{g}_j = \sum_{v_i\in G_j}z_i/|n_j|\) and \(\langle x, y\rangle\) denote the 
-			inner product of two vectors \(x\) and \(y\). The winning probability of
-			group \(j\) is defined as 
+			where \(\bar{g}_j = \sum_{v_i\in G_j}z_i/|n_j|\) the opinion of group \(G_j\) and 
+			\(\langle x, y\rangle\) denotes the inner product of two vectors \(x\) and \(y\). 
+			The winning probability of group \(G_j\) is defined as 
 			$$p_j(\tau) = \frac{e^{n_j\langle\bar{g}_j, \sum_{v_r\in V} s_r\rangle}}{\sum_{i\in [m]; n_i>0} e^{n_i\langle\bar{g}_i, 
 			\sum_{v_r\in V} s_r\rangle}},$$ where \([m]\) denotes the set \(\{1,2,\ldots, m\}\). 
 			Namely, \(p_j(\tau)\) is the softmax function that 
