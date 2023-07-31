@@ -285,19 +285,20 @@ for t in range(steps):
     #plt.ylabel("y-dimension")
     
     Z = reward_z8(X, Y, z9.detach(), s8, s9, g0.detach(), g1.detach(), g2.detach(), s_voters, isRegularized)
-        
-    fig = plt.figure(figsize = (15,10))
-    plt.imshow(Z, extent = [-1,1,-1,1], cmap = 'jet', alpha = 1)    
     
-    plt.plot(trace_X, trace_Y)
-    plt.plot(trace_X[-1], trace_Y[-1], '*', markersize=14, label = "reward of v9")
-
-    plt.xlabel('x-dimension')
-    plt.ylabel('y-dimension')
-    plt.colorbar()
-    plt.legend(loc = "upper right")
-    plt.savefig('tmp_'+str(t+1)+'_'+label+'.png')
-    plt.close()
+    if (t>=99):    
+        fig = plt.figure(figsize = (15,10))
+        plt.imshow(Z, extent = [-1,1,-1,1], cmap = 'jet', alpha = 1)    
+        
+        plt.plot(trace_X, trace_Y)
+        plt.plot(trace_X[-1], trace_Y[-1], '*', markersize=14, label = "reward of v9")
+    
+        plt.xlabel('x-dimension')
+        plt.ylabel('y-dimension')
+        plt.colorbar()
+        plt.legend(loc = "upper right")
+        plt.savefig('tmp_'+str(t+1)+'_'+label+'.png', dpi=600)
+        plt.close()
     #print("\nFinal gradients: ")
     #print(gradient0, gradient1, gradient2, gradient3, gradient4, gradient5, gradient6, gradient7, gradient8, gradient9)
 

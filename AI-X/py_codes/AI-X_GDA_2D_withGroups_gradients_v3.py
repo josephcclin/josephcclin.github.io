@@ -24,7 +24,7 @@ learn_rate = torch.tensor(0.1)
 steps = 100
 time = list(np.arange(steps))
 label = 'reward'
-isRegularized = False
+isRegularized = True
 if (isRegularized == True):
     label += '_regularized'
     
