@@ -665,7 +665,6 @@
               .range([0, 1000])
           const axis = line.call(d3.axisBottom(x))
           const ticks = axis.selectAll(".tick").style("font-size",".85rem")
-          console.log(ticks)
           ticks.each(function() { d3.select(this).append("circle").attr("r", 5).attr("fill", "black"); })
           ticks.selectAll("line").remove()
           const ps = [-0.8, 1, 0.1, -0.1]
@@ -776,7 +775,6 @@
 
           const range = [6, 7, 8, 9, 10]
           range.forEach((i) => {
-            console.log(i)
             d3.select(`#t0${i}`)
               .style("left", `${500 * (tp[i - 6] + 1) - tipWidth / 2}px`)
               .attr("transform", `translate(${500 * (tp[i - 6] + 1)}, 0)`)
@@ -821,7 +819,6 @@
           d3.selectAll('.extraLabel').remove()
           group.forEach((g, i) => {
             g.forEach((e, j) => {
-              console.log(`#s0${e + 5}`)
               d3.select(`#s0${e + 5}`)
                 .transition()
                 .duration(1000)
@@ -852,7 +849,6 @@
                   .attr('class', "my-auto small lh-sm")
                   .node()
                   .innerHTML = `reward of ${n}. ${r[n - 1]}`
-                console.log(n + 5)
                 d3.select(`#t0${n + 5}`).style('display', 'none')
               })
               const colors = {
@@ -1086,7 +1082,6 @@
 
           const range = [11, 12, 13, 14, 15]
           range.forEach((i) => {
-            console.log(i)
             d3.select(`#t0${i}`)
               .style("left", `${500 * (tp[i - 11] + 1) - tipWidth / 2}px`)
               .attr("transform", `translate(${500 * (tp[i - 11] + 1)}, 0)`)
@@ -1131,7 +1126,6 @@
           d3.selectAll('.extraLabel').remove()
           group.forEach((g, i) => {
             g.forEach((e, j) => {
-              console.log(`#s0${e + 10}`)
               d3.select(`#s0${e + 10}`)
                 .transition()
                 .duration(1000)
