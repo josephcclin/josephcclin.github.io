@@ -473,25 +473,25 @@
       Due to peer pressure or social network influence, an individual may disguise his or her own preferences, 
 			which are true and private, and instead talk around it with viewpoints following the crowd. 
       To quantify the degree to which an individual agrees or disagrees with an issue, it is natural to consider 
-      such preferences as &ldquo;real vectors,&rdquo; such that a negative value and a positive value 
+      such preferences as &ldquo;real vectors,&rdquo; where a negative value and a positive value 
 			in a dimension show the degree of disagreement and agreement with a corresponding issue, 
 			respectively. 
 		</p>	
 		<p class="inline-math">	
 			In the proposed game setting, a set \(V\) of \(n\) agents \(v_1,v_2,\ldots,v_n\) is given.  
-			Each agent \(v_i\) is represented as a <i>public preference vector</i> \(z_i\) and a <i>private 
+			Each agent \(v_i\) is represented by a <i>public preference vector</i> \(z_i\) and a <i>private 
 			preference vector</i> \(s_i\), such that the former (i.e., an <i>opinion</i>) 
 			corresponds to the preference revealed to all the agents, while the latter corresponds 
 			to its <i>belief</i>, which is unchangeable. For a vector \(x = (x_1,x_2,\ldots,x_k)\in 
 			\mathbb{R}^k\), the 2-norm of \(x\) is defined as \(\|x\|_2 = \sqrt{\sum_{i=1}^k x_i^2}\). 			
 			Consider \(s_i,z_i\in\mathcal{K}\) such that 
 			\(\mathcal{K}:=\{x\in [-1,1]^k: \|x\|_2\leq 1\}\subset\mathbb{R}^k\) is the feasible set. 
-			Each dimension of the domain stands for a certain social issue, such 
-			that \(-1\) maps to far-left politics, while \(1\) maps to far-right politics. 
+			Each dimension of the domain stands for a certain social issue, where \(-1\) maps to 
+      far-left politics, while \(1\) maps to far-right politics. 
 			The bounded 2-norm constraint is in line with the bounded rationality of a person, or the 
 			bounded budget for a group.
 			Denote by \(\mathbf{z} = (z_1,z_2,\ldots,z_n)\) and \(\mathbf{s} = (s_1,s_2,\ldots,s_n)\) the 
-      		two profiles that include each agent's opinion and belief, respectively. 
+      two profiles that include each agent's opinion and belief, respectively. 
 			Each agent is initially regarded as a group. The <i>opinion of a group</i> is the average 
 			of the opinions of its members. Similar to the <i>monotone</i> setting in 
 			[<a href="#ref_11">11</a>, <a href="#ref_12">12</a>], a group wins with higher odds if its opinion 
@@ -511,7 +511,7 @@
 			Namely, \(p_j(\tau)\) is the softmax function that 
 			is widely used to impose a probability distribution over the possible outcomes. 
 			Moreover, \(p_j(\tau)\) increases either when the size of group \(G_j\) increases 
-			or it can bring more total utility for all the agents in terms of a  larger sum of 
+			or when it can bring more total utility for all the agents in terms of a  larger sum of 
 			inner products of the group opinion and each agent's belief. 
 		</p>
 		
@@ -529,7 +529,7 @@
 			<li><strong>Opinion Updating with Regularization:</strong>
 			Each agent \(v_i\) in a certain group tries to maximize its reward by 
 			changing its opinion, while the reward subtracts 
-			the distance \(\|s_i-z_i\|_2^2\), which serves as a regularizer. Adding 
+			the squared distance \(\|s_i-z_i\|_2^2\), which serves as a regularizer. Adding 
 			such a regularizer hopefully limits how strategic an agent can be by 
 			preventing it from moving too far from its own belief (See Fig. 2).  
 			</li>
@@ -1393,10 +1393,10 @@
         <div class="eyebrow">
         Drag \(v_5\) (agent No. 5) to see the changes in the winning probabilities and reward of 
         each agent. Moreover, try to drag \(v_5\) to be near any agent. You will find 
-        a circled \(\oplus\) operator above the agent. Click it, then you can see the two agents are grouped 
+        a circled \(\oplus\) operator above the agent. Click it, and then you can see the two agents are grouped 
         with a new group opinion and updated winning probabilities and rewards of all groups. Dragging \(v_5\) to 
         positions elsewhere can dismiss this group. Click the button &ldquo;Myopic Best Responses for All,&ldquo; 
-        then you will see the final outcome after the iterations of parallel group joining actions. By clicking the 
+        and then you will see the final outcome after the iterations of parallel group joining actions. By clicking the 
         button &ldquo;RESET,&ldquo; you can restore the state to the very beginning.
         </div>
       <!--<div style="height: 42vh;"> -->
@@ -1525,9 +1525,9 @@
       <div class="inside">
         <!--<div style="height: 42vh;"> -->
 		<div class="eyebrow">
-      Hover your mouse over the grouped agents to see the myopic rewards of the two options of group joining. 
+      Hover your mouse over the grouped agents to see the myopic rewards of the two options for group joining. 
       You may want to drag an agent, for example, \(v_5\), to see if you can make it change its mind. 
-      See whether it will have the incentive to change its mind. 
+      Observe whether it will have the incentive to change its mind. 
 		</div>
     <div class="d-flex w-100 pt-4">
       <h4 class="ps-3 pt-3 text-start">The pure-strategy Nash equilibrium</h4>
@@ -1665,7 +1665,7 @@
       Two scenarios will be considered: Either the 10 agents are regarded as 10 different groups, 
       or they are grouped as \(\{\textcolor{red}{v_1,v_2,v_3}\}\), \(\{\textcolor{DarkGreen}{v_4,v_5,v_6}\}\), 
       \(\{\textcolor{blue}{v_7,v_8}\}\), and \(\{\textcolor{Goldenrod}{v_9, v_{10}}\}\).
-      The 2-norm constraint that \(\|z_i\|_2, \|s_i\|_2\leq 1\) correlates the dimensions and 
+      The 2-norm constraint, \(\|z_i\|_2, \|s_i\|_2\leq 1\), correlates the dimensions, and 
       projection of the opinion is required if the constraint is not satisfied. 
 	  </p>
 	  
@@ -1683,14 +1683,14 @@
       Below, the online gradient ascent algorithm is introduced. The pseudo-code is given in Fig. 8. Suppose that 
       the agents update their opinions in \(T\) iterations. At each iteration, agents update 
       their opinions in a decentralized way. In each iteration, each agent first observes the reward resulting from 
-      the previous iteration and then computes the &ldquo;gradient&rdquo; (the symbol \(\nabla\)), which is the first derivate 
+      the previous iteration and then computes the &ldquo;gradient&rdquo; (the symbol \(\nabla\)), which is the first derivative 
       with respect to its opinion and can be regarded as &ldquo;slopes&rdquo; in each dimension of the feasible space. 
       Then, each agent updates its opinion by adding the gradient multiplied by \(\eta\), which is 
       called the learning rate or the step size. Roughly speaking, the gradient shows the direction of improving 
       an agent's reward, and the learning rate decides how far the updating step should be made in such a direction. 
-	  The number of total iterations \(T\) is set sufficiently large for the agents running the algorithm.  
-	  Whenever each agent finds that its updated opinion is exactly the same as or extremely close (by setting a small constant as a threshold) 
-	  to that in the previous iteration, none of the agents can make any improvement, and thus, an equilibrium is reached. 
+	    The number of total iterations \(T\) is set sufficiently large for the agents running the algorithm.  
+	    Whenever each agent finds that its updated opinion is exactly the same as or extremely close (by setting a small constant as a threshold) 
+	    to that in the previous iteration, none of the agents can make any improvement, and thus, an equilibrium is reached. 
 	  </p>
 	  
 	  <figure class="text-center">
@@ -1716,15 +1716,15 @@
 	  <h4>Regularization</h4>
 	  <p class="inline-math">
       Recall that each agent has its own belief. An agent can be benefited by maximizing its own reward; however, it 
-      could be not as &ldquo;happy&rdquo; as it assumed at the beginning. Thus, it is interesting to consider a 
-      constraint to make the agent update the opinion in a more controlled way. The concept called &ldquo;regularization&rdquo; is introduced. 
-      The reward function for agent \(v_i\), including the regularizer, is defined as 
+      may not be as &ldquo;happy&rdquo; as it assumed at the beginning. Thus, it is interesting to consider a 
+      constraint to make the agent update the opinion in a more controlled way. The concept called &ldquo;regularization&rdquo; 
+      is introduced. The reward function for agent \(v_i\), including the regularizer, is defined as 
       $$r_i(\tau) = \sum_{j=1}^m p_j(\tau)\langle s_i, \bar{g}_j\rangle - \|z_i-s_i\|_2^2.$$ 
-	  The idea is inspired by online mirror descent [<a href="#ref_14">14</a>], in which a locality constraint 
-	  is appended to the object to force the algorithm to iteratively update the solution in a &ldquo;moderate&rdquo; way.
+	    The idea is inspired by online mirror descent [<a href="#ref_14">14</a>], in which a locality constraint 
+	    is appended to the object to force the algorithm to iteratively update the solution in a &ldquo;moderate&rdquo; way.
       In our application, reward maximization is considered, and the regularization term is \(-\|z_i-s_i\|_2^2\). 
-	  As \(-\|z_i-s_i\|_2^2\) is always non-positive, an agent will be forced to consider &ldquo;not being too far 
-      from its belief.&rdquo; Our experimental illustrations show that such a regularization helps the 
+	    As \(-\|z_i-s_i\|_2^2\) is always non-positive, an agent will be forced to consider &ldquo;not being too far 
+      from its belief.&rdquo; Our experimental illustrations show that such regularization helps the 
       game converge to a stable state where the difference between the opinion and belief of each agent is moderate. 
 	  </p>
 	  
@@ -1764,12 +1764,12 @@
 	 <h4>Computational Complexity of the Algorithm</h4>
 	 <p class="inline-math">
 	 Since the algorithm is decentralized, the \(n\) agents update their own opinions in parallel. Below, it is argued that 
-	 such an update for each agent in one iteration takes \(O(kn)\) time; thus the total time is \(O(Tkn)\) in \(T\) 
-	 iterations. Note that it is still open whether our algorithm converges to a stable state within \(T\) iterations. So far 
+	 such an update for each agent in one iteration takes \(O(kn)\) time; thus the total time is \(O(Tkn)\) over \(T\) 
+	 iterations. Note that it is still open whether our algorithm converges to a stable state within \(T\) iterations. So far, 
    a fixed value of \(T\) (e.g., \(T=100\)) is used in our experiments. 
 	 </p>
 	 <p class="inline-math">
-	 To compute the reward \(r_i(\tau)\) for agent \(v_i\) in an iteration, it requires to compute the 
+	 To compute the reward \(r_i(\tau)\) for agent \(v_i\) in an iteration, it requires computing the 
 	 winning probability \(p_i(\tau)\) first, which takes \(O(kn)\) time overall by computing all inner products of the existing 
 	 groups' opinions and each agent's belief. 
 	 Note that, each group opinion \(\bar{g}_j\) can be obtained in \(O(n_jk)\) time, and then it takes \(O(k)\) time to compute the 
@@ -1792,7 +1792,7 @@
 	 \(O(kn)\) time to compute \(U_{all}\) and all \(U_{j}\) for \(j\in [m], n_j\neq 0\), it is derived that all 
 	 \(\nabla_{z_i} p_j(\tau)\) can be computed in \(O(kn)\) time for \(j\in [m], n_j> 0\). Thus, \(\nabla_{z_i}r_i(\tau)\) can be 
 	 computed in \(O(kn)\) time as well. The projection, which is performed if necessary, of the updated opinion \(z_i\)
-	 takes additional \(O(k)\) time. Thus, an agent takes \(O(kn)\) time to update its opinion in one iteration overall.
+	 takes additional \(O(k)\) time. Thus, an agent takes \(O(kn)\) time to update its opinion in one iteration.
 	 </p>
 
 	<h3>
@@ -2045,13 +2045,13 @@
         reward function. 
 		</p> 
 		<p> 
-      	The previous example of 10 agents in four groups is considered, and the two agents \(v_4\) and \(v_9\) are focused on, 
-		which are in the green group and yellow group, respectively. In the previous 
+      	The previous example of 10 agents in four groups is considered, and the two agents \(v_4\) and \(v_9\) are 
+        focused on, which are in the green group and yellow group, respectively. In the previous 
       	section, the peculiar behavior of agents \(v_9\) and \(v_{10}\) in the yellow group has been observed: 
-		They move downward at the beginning but fall back afterward to the positions close to their 
+		    They move downward at the beginning but fall back afterward to the positions close to their 
       	beliefs. In addition to the dynamics of their opinion updates, let us look into the changes in their 
       	reward function images as well. With the following interactive illustration, it is revealed that 
-		the reward function images with or without regularization are quite different. 
+		    the reward function images with or without regularization are quite different. 
     </p>
 		
 		
@@ -2185,7 +2185,7 @@
       infinite. Indeed, all real vectors in \(\{ x\in [-1, 1]^k: \|x\|_2\leq 1\}\subset\mathbb{R}^k\) are feasible. So far, 
       it is still unclear whether such a game in our setting &ldquo;always&rdquo; has a pure-strategy Nash equilibrium. However, 
       based on the numerical simulations we have conducted, every game instance converges to a stable state. 
-      Note that a stable state reached by agents' simultaneously playing online gradient ascent algorithms is not necessarily 
+      Note that a stable state reached by agents simultaneously playing online gradient ascent algorithms is not necessarily 
       a pure-strategy Nash equilibrium. This is because the update of the opinion considers only the local deviations; thus, it is 
       merely locally stable.
     </p>
@@ -2201,7 +2201,7 @@
   <h2>VI. Conclusion</h2>
     <p> 
       This article presents a preliminary study on the dynamics of group formation. From the illustrations, 
-      readers can have a better grasp of what a pure-strategy Nash equilibrium in a system of multi-agents is and learn 
+      readers can have a better grasp of what a pure-strategy Nash equilibrium in a system of multi-agents is, and learn 
       how an online gradient ascent algorithm can help reach a stable state of the game. 
     </p>       
     <p>
