@@ -18,6 +18,11 @@ import matplotlib.animation as animation
 import matplotlib.cm as cm
 import imageio
 
+font = {'family' : 'normal',
+        'weight' : 'bold',
+        'size'   : 28}
+
+plt.rcParams.update({'font.size': 28})
 
 
 learn_rate = torch.tensor(0.1)
@@ -120,11 +125,12 @@ g1 = z3+z4+z5#/3
 g2 = z6+z7#/2
 g3 = z8+z9#/2
 Z = reward_z8(X, Y, z9.detach(), s8, s9, g0.detach(), g1.detach(), g2.detach(), s_voters, isRegularized)
-fig = plt.figure(figsize = (15,10))
+fig = plt.figure(figsize = (24,16))
+plt.rc('axes', labelsize=32)    # fontsize of the x and y labels
 
 plt.imshow(Z, extent = [-1,1,-1,1], cmap = 'jet', alpha = 1)    
 plt.plot(trace_X, trace_Y)
-plt.plot(trace_X[-1], trace_Y[-1], '*', markersize=14, label = "reward of v8")
+plt.plot(trace_X[-1], trace_Y[-1], '*', markersize=20, label = "reward of v8")
 plt.xlabel('x-dimension')
 plt.ylabel('y-dimension')
 plt.colorbar()
@@ -286,21 +292,24 @@ for t in range(steps):
     
     Z = reward_z8(X, Y, z9.detach(), s8, s9, g0.detach(), g1.detach(), g2.detach(), s_voters, isRegularized)
     
-    if (t>=99):    
-        fig = plt.figure(figsize = (15,10))
+    if (t>=steps-1):    
+        fig = plt.figure(figsize = (24,16))
+        plt.rc('axes', labelsize=32)    # fontsize of the x and y labels
         plt.imshow(Z, extent = [-1,1,-1,1], cmap = 'jet', alpha = 1)    
         
         plt.plot(trace_X, trace_Y)
-        plt.plot(trace_X[-1], trace_Y[-1], '*', markersize=14, label = "reward of v9")
+        plt.plot(trace_X[-1], trace_Y[-1], '*', markersize=20, label = "reward of v9")
     
         plt.xlabel('x-dimension')
         plt.ylabel('y-dimension')
         plt.colorbar()
         plt.legend(loc = "upper right")
-        plt.savefig('tmp_'+str(t+1)+'_'+label+'.png', dpi=600)
+        plt.savefig('tmp_'+str(t+1)+'_'+label+'.png', dpi=500)
         plt.close()
     #print("\nFinal gradients: ")
     #print(gradient0, gradient1, gradient2, gradient3, gradient4, gradient5, gradient6, gradient7, gradient8, gradient9)
+
+"""
 
 #plt.show()
 frames = []
@@ -311,6 +320,8 @@ for t in time:
 imageio.mimsave('./party_formation_gradient_demo_'+label+'.gif', # output gif
                 frames,          # array of input frames
                 fps = 5) 
+
+"""
 
 """
 g1=(s1+s4)/2

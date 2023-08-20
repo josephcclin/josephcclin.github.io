@@ -301,6 +301,7 @@ for t in range(steps):
     #print(gradient0, gradient1, gradient2, gradient3, gradient4, gradient5, gradient6, gradient7, gradient8, gradient9)
 
 #plt.show()
+
 frames = []
 for t in time:
     image = imageio.v2.imread('tmp_'+str(t)+'_'+tag+'.png')
