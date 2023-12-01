@@ -1,0 +1,16 @@
+Response to Reviewer #1: 
+
+We thank the reviewer for the affirmation and comments. Below we give responses to the questions
+
+1. "One comment, in the contribution section, it would be nice if research goals and findings could be lined up.  There are 3 goals, and four findings...." 
+
+Response: Thanks for pointing out this. Here it simply presents that we obtain even more findings that are beyond our original goals. 
+
+2. Question for Authors: Could you please publish a github location for the code that you used to compute all the numbers.
+
+Response: Thanks for the commnet. We will provide a github location for the codes of generating the experimental simulations after the paper is accepted. 
+
+
+Response to Reviewer #2: 
+
+We thank the reviewer for the valuable comments. 
