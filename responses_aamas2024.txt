@@ -8,7 +8,7 @@ We thank the reviewer for the affirmation and comments. Below we give responses 
 
 2. Question for Authors: Could you please publish a github location for the code that you used to compute all the numbers.
 
->Response: Thanks for the commnet. We will provide a github location for the codes of generating the experimental simulations after the paper is accepted. 
+>Response: Thanks for the comment. We will provide a github location for the codes of generating the experimental simulations after the paper is accepted. 
 
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 Response to Reviewer #2: 
