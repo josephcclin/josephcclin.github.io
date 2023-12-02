@@ -33,7 +33,7 @@ We thank the reviewer for the valuable comments. We respond to the comments as f
 
 5. The proofs of most technical results are only sketched unconvincingly or relegated to an appendix, which limits the scope for proper scrutiny of accuracy and validity of claims made in a conference paper under tight peer reviewing timelines.  Such concerns can be moderated by consistent accuracy and rigour of all technical statements made within the page limits of the main paper, but this is unfortunately not the case with this paper. 
 
->Response: Thanks for the comments. Due to the page limit, though we omit the technical proofs, we give concise explanations of the Theorems. For example, before Theorem 3.1, we stated that “The proof of the NP-completeness of determining PNE existence in an egoistic election game is built upon a reduction from the Satisfiability problem, which resembles the arguments in [1] but is revised elaborately to deal with the egoistic property and monotonicity”. 
+>Response: Thanks for the comments. Due to the page limit, though we omitted the technical proofs and put them into the appendix, we give concise explanations of the Theorems. For example, before Theorem 3.1, we stated that “The proof of the NP-completeness of determining PNE existence in an egoistic election game is built upon a reduction from the Satisfiability problem, which resembles the arguments in [1] but is revised elaborately to deal with the egoistic property and monotonicity”. 
 
 6. Your paper could benefit from some friendly proof-reading by a fluent English speaker/writer. 
 
