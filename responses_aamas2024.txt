@@ -41,7 +41,7 @@ We thank the reviewer for the valuable comments. We respond to the comments as f
 
 7. Can you simplify the examples (which you seem to have come up with using computer simulations!?), for example by replacing arbitrary numbers with simpler ones?  Examples and counterexamples should illustrate concepts that you want to exhibit or highlight in a clearest possible way, rather than obscure them by the presence of arbitrary numbers.
 
->Response: Thanks for the suggestion and comments. We have responded in (4.). Since it is not easy to come up with such counterexamples by hand and such examples are rare, we wrote a program to simulate the game instances to find them.  
+>Response: Thanks for the suggestion and comments. We have responded in (4.). Since it is not easy to come up with such rare counterexamples by hand, we wrote a program to simulate the game instances to find them.  
 
 
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
