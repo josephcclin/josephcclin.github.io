@@ -25,7 +25,7 @@ We thank the reviewer for the valuable comments. We respond to the comments as f
 
 3. Another example of a flawed, and hence incoherent, definition the definition of fixed-parameter tractability, in which no explanation is given for what the meaning of variable n is. 
 
->Response: Thanks for pointing out this. In Sect. 2 (Preliminaries), n = max_i n_i has been defined as the maximum number of candidates in a party. Nevertheless, readers might forget the definitions of variables when there are many of them. We will consider to add a remark or a table of defined variables in the future journal version.  
+>Response: Thanks for pointing out this. In Sect. 2 (Preliminaries), n = max_i n_i has been defined as the maximum number of candidates in a party. Nevertheless, readers might forget the definitions of variables when there are many of them. We will consider to add a remark or a table of defined variables when we revise our paper.  
 
 4. When examples of games are given (for example, as described in Tables 1-3), they are claimed to have been obtained “through program simulations” (what does it mean?!), and they are full of rather arbitrary numbers, significantly obscuring what concepts and phenomena they are meant to illustrate. 
 
@@ -37,7 +37,7 @@ We thank the reviewer for the valuable comments. We respond to the comments as f
 
 6. Your paper could benefit from some friendly proof-reading by a fluent English speaker/writer. 
 
->Response: Thanks for the suggestion. In the future journal version, we will consider professional English editing service to polish our manuscript. 
+>Response: Thanks for the suggestion. When we revise the manuscript, we will consider professional English editing service to polish our manuscript. 
 
 7. Can you simplify the examples (which you seem to have come up with using computer simulations!?), for example by replacing arbitrary numbers with simpler ones?  Examples and counterexamples should illustrate concepts that you want to exhibit or highlight in a clearest possible way, rather than obscure them by the presence of arbitrary numbers.
 
@@ -55,7 +55,7 @@ Could you please address the comment about how restrictive the natural function 
 
 >Response: Thanks for the comments. Natural functions, softmax functions, hardmax functions, etc., are illustrated as the winning probability functions which make the election game “monotone”. Assuming the use of these winning probability functions, we can even find some game instances in which no pure-strategy Nash equilibrium exists when the game involves three or more parties. However, in the previous work, the authors showed that the two-party election game under the egoistic and monotone guarantee always has a pure-strategy Nash equilibrium when the winning probablity function is defined as a softmax or a linear function. So we can conclude that the election game is unstable when there are more than two parties. Moreover, as mentioned by the reviewer, from the point of view of price of anarchy, election game of more parties has higher price of anarchy. Due to these reasons, we claim that our results provide an alternative explanation of Duverger's law. 
 
-As to the natural function, it only serves as an example of winning probability function. In Sect. 5.2, we provide the general result, which considers all monotone winning probability funtions in general. So, yes, the natural function is restrictive, but is clear to exemplify the monotone election game. Thanks again for giving these comments and we will clarify these points better in the future journal version. 
+As to the natural function, it only serves as an example of winning probability function. In Sect. 5.2, we provide the general result, which considers all monotone winning probability funtions in general. So, yes, the natural function is restrictive, but is clear to exemplify the monotone election game. Thanks again for giving these comments and we will clarify these points better when we revise the manuscript. 
 
 
 
