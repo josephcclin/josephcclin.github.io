@@ -4,11 +4,11 @@ We thank the reviewer for the affirmation and comments. Below we give responses 
 
 1. "There are 3 goals, and four findings...." 
 
->Response: Thanks for pointing out this. Here it simply states that we obtain even more findings that are beyond our original goals. 
+>Response: Thanks. Here it means that we obtain even more findings that are beyond our original goals. 
 
 2. “Could you please publish a github location for the code that you used to compute all the numbers.”
 
->Response: Thanks for the comment. We will put a footnote including the code's GitHub location somewhere near the experimental simulations when we revise our paper. 
+>Response: No problem. We will put a footnote including the code's GitHub location somewhere near the experimental simulations when we revise our paper. 
 
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 Response to Reviewer #2: 
