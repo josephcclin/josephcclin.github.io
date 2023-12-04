@@ -10,7 +10,7 @@ We thank the reviewer for the affirmation and comments. Below we give responses 
 
 >Response: No problem. We will put a footnote including the code's GitHub location somewhere near the experimental simulations when we revise our paper. 
 
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++
 Response to Reviewer #2: 
 
 We thank the reviewer for the valuable comments. We respond to the comments as follows. 
@@ -41,7 +41,7 @@ We thank the reviewer for the valuable comments. We respond to the comments as f
 
 As responded in (4.), we wrote a program to generate the game instances to find them. A footnote including the code's GitHub location will be put somewhere near the experimental simulations when we revise our paper. 
 
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++
 Response to Reviewer #3: 
 
 We thank the reviewer for the affirmation and comments. We respond to the comments as follows. 
@@ -49,6 +49,7 @@ We thank the reviewer for the affirmation and comments. We respond to the commen
 1. The author(s) claim that their results on price of anarchy provide an explanation alternative to Duverger's law. But I think more clarification is needed here, for instance, why the natural function is not too restrictive. 
 Could you please address the comment about how restrictive the natural function assumption may be?
 
->Response: Thanks for the comments. The natural function only serves as an example of winning probability function. Our general result considers any monotone winning probability functions in general. Together with the counterexamples that the election game with three or more parties do not always have a pure-strategy Nash equilibrium, we claim that our results provide an alternative explanation of Duverger's law since the two-party election game is more stable and has the smallest price of anarchy. Thanks again for giving these comments and we will clarify these points better when we revise the manuscript. 
+>Response: Thanks for the comments. The natural function only serves as an example of winning probability function. Our general result considers any monotone winning probability functions in general. Together with the counterexamples that the election game with three or more parties do not always have a pure-strategy Nash equilibrium, we claim that our results provide an alternative explanation of Duverger's law since the two-party election game is more stable and has the smallest price of anarchy. 
+We will clarify these points better when we revise the manuscript. 
 
 
