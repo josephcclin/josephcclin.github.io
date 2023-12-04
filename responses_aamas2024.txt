@@ -15,7 +15,7 @@ For Reviewer #2:
 
 1. In the "general form" representation of an EG, it is not made clear what the "deterministic Turing machine" is meant to represent, or what computational restrictions are imposed on it. 
 
->Response: The deterministic Turing machine here simply denotes a deterministic algorithm. In our manuscript, the payoff of a player needs to be computed and is not provided in the input. 
+>Response: The deterministic Turing machine here simply denotes a deterministic algorithm. The payoff of a player needs to be computed and is not provided in the input, so that the computational hardness makes sense. 
 
 2. Another example of a flawed, and hence incoherent, definition the definition of fixed-parameter tractability, in which no explanation is given for what the meaning of variable n is. 
 
@@ -23,7 +23,7 @@ For Reviewer #2:
 
 3. When examples of games are given (for example, as described in Tables 1-3), they are claimed to have been obtained "through program simulations" (what does it mean?!), and they are full of rather arbitrary numbers, significantly obscuring what concepts and phenomena they are meant to illustrate. 
 
->Response: The purpose of program simulations is to establish the existence of an instance in which there is no pure-strategy Nash equilibrium (PNE). So far it is still unclear under what sufficient condition the game does not have a PNE.
+>Response: The purpose of program simulations is to establish the existence of an instance in which there is no pure-strategy Nash equilibrium (PNE). So far, it is still unclear under what sufficient condition the election game does not have a PNE.
 
 4. The proofs of most technical results are only sketched unconvincingly or relegated to an appendix, which limits the scope for proper scrutiny of accuracy and validity of claims made in a conference paper under tight peer reviewing timelines. 
 
@@ -31,11 +31,11 @@ For Reviewer #2:
 
 5. Your paper could benefit from some friendly proof-reading by a fluent English speaker/writer. Can you simplify the examples (which you seem to have come up with using computer simulations!?), for example by replacing arbitrary numbers with simpler ones?  Examples and counterexamples should illustrate concepts that you want to exhibit or highlight in a clearest possible way, rather than obscure them by the presence of arbitrary numbers.
 
->Response: When we revise the manuscript, we will consider professional English editing service to polish our manuscript. As the responses in (3.), the simple examples are not easy to find so we generate counterexamples by a program. 
+>Response: We will consider professional English editing service to polish our manuscript. As the responses in (3.), the simple examples are not easy to find so we generate counterexamples by a program. 
 
 +++++++++++++++++++++++++++++++++++++++
 For Reviewer #3: 
 
 1. The author(s) claim that their results on price of anarchy provide an explanation alternative to Duverger's law. But I think more clarification is needed here, for instance, why the natural function is not too restrictive. Could you please address the comment about how restrictive the natural function assumption may be?
 
->Response: The natural function only serves as an example by which the game is monotone. Our result on the price of anarchy holds for any monotone winning probability function. Together with the instances of three or more parties which do not have any PNE, we claim that our results provide an alternative explanation of Duverger's law since the two-party election game is more stable and has the smallest price of anarchy. 
+>Response: The natural function only serves as an example by which the game is monotone. Our result on the price of anarchy holds for any monotone winning probability function. Together with the instances of three or more parties which do not have any PNE, we claim that our results provide an alternative explanation of Duverger's law since the two-party election game is more stable (in the previous work) and has the smallest price of anarchy. 
