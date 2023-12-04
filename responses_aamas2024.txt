@@ -29,7 +29,7 @@ We thank the reviewer for the valuable comments. We respond to the comments as f
 
 4. When examples of games are given (for example, as described in Tables 1-3), they are claimed to have been obtained “through program simulations” (what does it mean?!), and they are full of rather arbitrary numbers, significantly obscuring what concepts and phenomena they are meant to illustrate. 
 
->Response: Thanks for pointing out this. The purpose of program simulations is to establish the existence of an election game instance which does not possess any pure-strategy Nash equilibrium. We will put a footnote including the code's GitHub location somewhere near the experimental simulations when we revise our paper. 
+>Response: Thanks for pointing out this. The purpose of program simulations is to establish the existence of an election game instance which does not possess any pure-strategy Nash equilibrium (PNE). We will put a footnote including the code's GitHub location somewhere near the experimental simulations when we revise our paper. 
 
 5. The proofs of most technical results are only sketched unconvincingly or relegated to an appendix, which limits the scope for proper scrutiny of accuracy and validity of claims made in a conference paper under tight peer reviewing timelines. 
 
@@ -37,9 +37,7 @@ We thank the reviewer for the valuable comments. We respond to the comments as f
 
 6. Your paper could benefit from some friendly proof-reading by a fluent English speaker/writer. Can you simplify the examples (which you seem to have come up with using computer simulations!?), for example by replacing arbitrary numbers with simpler ones?  Examples and counterexamples should illustrate concepts that you want to exhibit or highlight in a clearest possible way, rather than obscure them by the presence of arbitrary numbers.
 
->Response: Thanks for the suggestion. When we revise the manuscript, we will consider professional English editing service to polish our manuscript. 
-
-As responded in (4.), we wrote a program to generate the game instances to find them. A footnote including the code's GitHub location will be put somewhere near the experimental simulations when we revise our paper. 
+>Response: When we revise the manuscript, we will consider professional English editing service to polish our manuscript. As responded in (4.), a footnote including the code's GitHub location will be placed when we revise our paper. 
 
 +++++++++++++++++++++++++++++++++++++++
 Response to Reviewer #3: 
