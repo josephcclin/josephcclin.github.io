@@ -21,7 +21,7 @@ We thank the reviewer for the valuable comments. We respond to the comments as f
 
 2. In the “general form” representation of an EG, it is not made clear what the “deterministic Turing machine” is meant to represent, or what computational restrictions are imposed on it. 
 
->Response: Thanks for the comments. The deterministic Turing machine here, which follows \`{A}lvarez et al.'s work, simply denotes a deterministic algorithm. As stated in our manuscript, the payoff of a player needs to be computed and is not directly provided in the input. 
+>Response: Thanks for the comments. The deterministic Turing machine here, which follows \`{A}lvarez et al.'s work, simply denotes a deterministic algorithm. As stated in our manuscript, the payoff of a player needs to be computed and is not directly provided in the input so that the computational hardness makes sense. 
 
 3. Another example of a flawed, and hence incoherent, definition the definition of fixed-parameter tractability, in which no explanation is given for what the meaning of variable n is. 
 
