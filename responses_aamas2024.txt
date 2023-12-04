@@ -49,5 +49,3 @@ Could you please address the comment about how restrictive the natural function 
 
 >Response: Thanks for the comments. The natural function only serves as an example of winning probability function. Our general result considers any monotone winning probability functions in general. Together with the counterexamples that the election game with three or more parties do not always have a pure-strategy Nash equilibrium, we claim that our results provide an alternative explanation of Duverger's law since the two-party election game is more stable and has the smallest price of anarchy. 
 We will clarify these points better when we revise the manuscript. 
-
-
