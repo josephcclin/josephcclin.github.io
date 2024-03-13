@@ -1,0 +1,2428 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags for IEEE Xplore immersive article -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description"
+    content="An interactive article using game theoretic approach and gradient ascent to demostrate strategic behaviors of group formation. 
+	Learn how the choices of coaltion of agents lead to a pure-strategy Nash equilibrium and how updating revealed preferences eventually affects group formation.">
+  <meta charset="utf-8">
+  <title>Group Formation by Group Joining and Opinion Updates via Multi-Agent Online Gradient Ascent
+  </title>
+
+  <!-- Stylesheet for IEEE Xplore immersive article -->
+  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
+  <link rel="stylesheet" href="fonts/stylesheet.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="text/html" href="path/to/font-awesome/css/font-awesome.min.css">
+  
+  <!-- MathJax javascript library and implementation file/s -->
+  <!--<script type="text/javascript" async
+  src="https://xploreqa.ieee.org/xploreAssets/MathJax-274/MathJax.js?config=default">
+  </script>-->
+  <script id="MathJax-script" defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+  <script defer src="fontawesome.min.js"></script>
+  <script defer src="all.min.js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> -->
+  <script type="text/javascript">
+    const tipWidth = 160
+    const replace = (id, name) => d3.select(id).attr('src', `./images/${name}.gif`)
+    const replaceVideo = (id, name) => d3.select(id).attr('src', `./img/${name}.mp4`)
+    const data = {
+        "1": [0.2883, 0.2881, 0.2877, 0.2871, 0.2864, 0.2856, 0.2846, 0.2835,
+        0.2822, 0.2809, 0.2794, 0.2778, 0.276 , 0.2742, 0.2723, 0.2703,
+        0.2681, 0.2659, 0.2637, 0.2613, 0.2588, 0.2563, 0.2538, 0.2511,
+        0.2484, 0.2457, 0.2429, 0.24  , 0.2371, 0.2342, 0.2312, 0.2282,
+        0.2251, 0.2221, 0.219 , 0.2159, 0.2127, 0.2096, 0.2064, 0.2032,
+        0.2   , 0.1968, 0.1936, 0.1904, 0.1872, 0.1839, 0.1807, 0.1775,
+        0.1743, 0.1711, 0.1679, 0.1648, 0.1616, 0.1585, 0.1553, 0.1522,
+        0.1491, 0.146 , 0.143 , 0.1399, 0.1369, 0.1339, 0.131 , 0.128 ,
+        0.1251, 0.1222, 0.1194, 0.1166, 0.1138, 0.111 , 0.1083, 0.1056,
+        0.1029, 0.1002, 0.0976, 0.0951, 0.0925, 0.09  , 0.0875, 0.0851,
+        0.0827, 0.0803, 0.078 , 0.0757, 0.0735, 0.0712, 0.0691, 0.0669,
+        0.0648, 0.0627, 0.0607, 0.0587, 0.0567, 0.0548, 0.0529, 0.0511,
+        0.0493, 0.0475, 0.0457, 0.044 , 0.0424],
+        "2": [0.0683, 0.0708, 0.0733, 0.0758, 0.0784, 0.081 , 0.0837, 0.0864,
+        0.0892, 0.092 , 0.0949, 0.0978, 0.1007, 0.1037, 0.1068, 0.1099,
+        0.113 , 0.1162, 0.1194, 0.1227, 0.126 , 0.1293, 0.1327, 0.1362,
+        0.1396, 0.1432, 0.1467, 0.1503, 0.1539, 0.1576, 0.1613, 0.165 ,
+        0.1688, 0.1726, 0.1764, 0.1803, 0.1842, 0.1881, 0.192 , 0.196 ,
+        0.2   , 0.204 , 0.208 , 0.2121, 0.2161, 0.2202, 0.2243, 0.2284,
+        0.2325, 0.2366, 0.2407, 0.2448, 0.2489, 0.253 , 0.2571, 0.2612,
+        0.2653, 0.2693, 0.2733, 0.2773, 0.2813, 0.2853, 0.2892, 0.2931,
+        0.2969, 0.3007, 0.3044, 0.3081, 0.3117, 0.3153, 0.3188, 0.3222,
+        0.3256, 0.3288, 0.332 , 0.3351, 0.3381, 0.341 , 0.3438, 0.3465,
+        0.3491, 0.3515, 0.3539, 0.356 , 0.3581, 0.36  , 0.3618, 0.3634,
+        0.3648, 0.3661, 0.3672, 0.3681, 0.3688, 0.3694, 0.3697, 0.3699,
+        0.3698, 0.3695, 0.369 , 0.3683, 0.3674],
+        "3": [0.1403, 0.1428, 0.1452, 0.1475, 0.1498, 0.1521, 0.1543, 0.1565,
+        0.1587, 0.1608, 0.1628, 0.1648, 0.1668, 0.1687, 0.1705, 0.1723,
+        0.1741, 0.1758, 0.1774, 0.179 , 0.1806, 0.1821, 0.1835, 0.1849,
+        0.1863, 0.1875, 0.1888, 0.1899, 0.191 , 0.1921, 0.1931, 0.1941,
+        0.1949, 0.1958, 0.1966, 0.1973, 0.1979, 0.1985, 0.1991, 0.1996,
+        0.2   , 0.2004, 0.2007, 0.2009, 0.2011, 0.2013, 0.2013, 0.2014,
+        0.2013, 0.2012, 0.2011, 0.2008, 0.2006, 0.2002, 0.1998, 0.1994,
+        0.1989, 0.1983, 0.1977, 0.197 , 0.1963, 0.1955, 0.1946, 0.1937,
+        0.1927, 0.1917, 0.1906, 0.1895, 0.1883, 0.1871, 0.1858, 0.1844,
+        0.183 , 0.1816, 0.18  , 0.1785, 0.1769, 0.1752, 0.1735, 0.1717,
+        0.1699, 0.1681, 0.1662, 0.1642, 0.1622, 0.1602, 0.1581, 0.1559,
+        0.1538, 0.1515, 0.1493, 0.147 , 0.1447, 0.1423, 0.1399, 0.1374,
+        0.135 , 0.1325, 0.1299, 0.1273, 0.1248],
+        "4": [0.1647, 0.1669, 0.169 , 0.1711, 0.173 , 0.175 , 0.1768, 0.1786,
+        0.1803, 0.182 , 0.1836, 0.1851, 0.1865, 0.1879, 0.1892, 0.1905,
+        0.1916, 0.1927, 0.1938, 0.1947, 0.1956, 0.1965, 0.1972, 0.1979,
+        0.1986, 0.1991, 0.1996, 0.2001, 0.2004, 0.2007, 0.201 , 0.2012,
+  0.2013, 0.2013, 0.2013, 0.2013, 0.2011, 0.2009, 0.2007, 0.2004,
+        0.2   , 0.1996, 0.1991, 0.1985, 0.1979, 0.1973, 0.1966, 0.1958,
+        0.195 , 0.1941, 0.1932, 0.1922, 0.1912, 0.1901, 0.189 , 0.1878,
+        0.1866, 0.1853, 0.184 , 0.1826, 0.1812, 0.1797, 0.1782, 0.1767,
+        0.1751, 0.1735, 0.1718, 0.1701, 0.1684, 0.1666, 0.1648, 0.1629,
+        0.161 , 0.1591, 0.1572, 0.1552, 0.1532, 0.1511, 0.149 , 0.1469,
+        0.1448, 0.1426, 0.1405, 0.1383, 0.136 , 0.1338, 0.1315, 0.1292,
+        0.1269, 0.1246, 0.1222, 0.1199, 0.1175, 0.1151, 0.1127, 0.1103,
+        0.1079, 0.1054, 0.103 , 0.1006, 0.0981],
+        "5": [0.3383, 0.3315, 0.3249, 0.3185, 0.3123, 0.3063, 0.3005, 0.2949,
+        0.2896, 0.2844, 0.2794, 0.2746, 0.2699, 0.2655, 0.2612, 0.2571,
+        0.2531, 0.2494, 0.2457, 0.2423, 0.2389, 0.2358, 0.2328, 0.2299,
+        0.2271, 0.2245, 0.222 , 0.2197, 0.2175, 0.2154, 0.2134, 0.2116,
+        0.2098, 0.2082, 0.2067, 0.2053, 0.204 , 0.2029, 0.2018, 0.2009,
+        0.2   , 0.1993, 0.1986, 0.1981, 0.1976, 0.1973, 0.197 , 0.1969,
+        0.1969, 0.1969, 0.1971, 0.1973, 0.1977, 0.1982, 0.1987, 0.1994,
+        0.2002, 0.201 , 0.202 , 0.2031, 0.2043, 0.2056, 0.207 , 0.2085,
+        0.2101, 0.2119, 0.2137, 0.2157, 0.2178, 0.2201, 0.2224, 0.2249,
+        0.2275, 0.2303, 0.2331, 0.2362, 0.2393, 0.2426, 0.2461, 0.2497,
+        0.2535, 0.2574, 0.2615, 0.2658, 0.2702, 0.2748, 0.2796, 0.2846,
+        0.2897, 0.2951, 0.3006, 0.3064, 0.3123, 0.3184, 0.3248, 0.3313,
+        0.3381, 0.3451, 0.3523, 0.3597, 0.3674]
+
+      }
+      const rs = {
+      "1": [0.4025,  0.3896,  0.3769,  0.3645,  0.3523,  0.3403,  0.3286,
+        0.317 ,  0.3056,  0.2944,  0.2834,  0.2725,  0.2618,  0.2512,
+        0.2408,  0.2305,  0.2203,  0.2103,  0.2003,  0.1905,  0.1808,
+        0.1711,  0.1616,  0.1521,  0.1427,  0.1334,  0.1242,  0.115 ,
+        0.1059,  0.0969,  0.0878,  0.0789,  0.07  ,  0.0611,  0.0523,
+        0.0435,  0.0347,  0.026 ,  0.0173,  0.0087, -0.    , -0.0086,
+        -0.0172, -0.0258, -0.0344, -0.043 , -0.0515, -0.0601, -0.0686,
+        -0.0772, -0.0857, -0.0943, -0.1028, -0.1113, -0.1199, -0.1284,
+        -0.137 , -0.1455, -0.1541, -0.1627, -0.1713, -0.1799, -0.1886,
+        -0.1972, -0.2059, -0.2146, -0.2233, -0.2321, -0.2409, -0.2497,
+        -0.2586, -0.2675, -0.2765, -0.2854, -0.2945, -0.3036, -0.3127,
+        -0.322 , -0.3312, -0.3406, -0.35  , -0.3595, -0.3691, -0.3788,
+        -0.3886, -0.3984, -0.4084, -0.4185, -0.4287, -0.439 , -0.4495,
+        -0.4601, -0.4708, -0.4817, -0.4927, -0.5039, -0.5153, -0.5269,
+        -0.5387, -0.5506, -0.5628],
+        "2": [-0.5031, -0.487 , -0.4712, -0.4557, -0.4404, -0.4254, -0.4107,
+        -0.3962, -0.382 , -0.368 , -0.3542, -0.3406, -0.3272, -0.314 ,
+        -0.301 , -0.2881, -0.2754, -0.2628, -0.2504, -0.2381, -0.226 ,
+        -0.2139, -0.202 , -0.1902, -0.1784, -0.1668, -0.1552, -0.1438,
+        -0.1324, -0.1211, -0.1098, -0.0986, -0.0875, -0.0764, -0.0654,
+        -0.0544, -0.0434, -0.0325, -0.0217, -0.0108, -0.    ,  0.0108,
+        0.0216,  0.0323,  0.043 ,  0.0537,  0.0644,  0.0751,  0.0858,
+        0.0965,  0.1072,  0.1178,  0.1285,  0.1392,  0.1498,  0.1605,
+        0.1712,  0.1819,  0.1927,  0.2034,  0.2141,  0.2249,  0.2357,
+        0.2465,  0.2574,  0.2683,  0.2792,  0.2901,  0.3011,  0.3122,
+        0.3232,  0.3344,  0.3456,  0.3568,  0.3681,  0.3795,  0.3909,
+        0.4025,  0.4141,  0.4257,  0.4375,  0.4494,  0.4614,  0.4735,
+        0.4857,  0.498 ,  0.5105,  0.5231,  0.5358,  0.5488,  0.5618,
+        0.5751,  0.5885,  0.6021,  0.6159,  0.6299,  0.6442,  0.6586,
+        0.6733,  0.6883,  0.7035],
+        "3": [-0.0503, -0.0487, -0.0471, -0.0456, -0.044 , -0.0425, -0.0411,
+        -0.0396, -0.0382, -0.0368, -0.0354, -0.0341, -0.0327, -0.0314,
+        -0.0301, -0.0288, -0.0275, -0.0263, -0.025 , -0.0238, -0.0226,
+        -0.0214, -0.0202, -0.019 , -0.0178, -0.0167, -0.0155, -0.0144,
+        -0.0132, -0.0121, -0.011 , -0.0099, -0.0087, -0.0076, -0.0065,
+        -0.0054, -0.0043, -0.0033, -0.0022, -0.0011,  0.    ,  0.0011,
+        0.0022,  0.0032,  0.0043,  0.0054,  0.0064,  0.0075,  0.0086,
+        0.0096,  0.0107,  0.0118,  0.0128,  0.0139,  0.015 ,  0.0161,
+        0.0171,  0.0182,  0.0193,  0.0203,  0.0214,  0.0225,  0.0236,
+        0.0247,  0.0257,  0.0268,  0.0279,  0.029 ,  0.0301,  0.0312,
+        0.0323,  0.0334,  0.0346,  0.0357,  0.0368,  0.0379,  0.0391,
+        0.0402,  0.0414,  0.0426,  0.0438,  0.0449,  0.0461,  0.0473,
+        0.0486,  0.0498,  0.051 ,  0.0523,  0.0536,  0.0549,  0.0562,
+        0.0575,  0.0588,  0.0602,  0.0616,  0.063 ,  0.0644,  0.0659,
+        0.0673,  0.0688,  0.0704],
+        "4": [ 0.0503,  0.0487,  0.0471,  0.0456,  0.044 ,  0.0425,  0.0411,
+        0.0396,  0.0382,  0.0368,  0.0354,  0.0341,  0.0327,  0.0314, 
+        0.0301,  0.0288,  0.0275,  0.0263,  0.025 ,  0.0238,  0.0226,
+        0.0214,  0.0202,  0.019 ,  0.0178,  0.0167,  0.0155,  0.0144,
+        0.0132,  0.0121,  0.011 ,  0.0099,  0.0087,  0.0076,  0.0065,
+        0.0054,  0.0043,  0.0033,  0.0022,  0.0011, -0.    , -0.0011,
+        -0.0022, -0.0032, -0.0043, -0.0054, -0.0064, -0.0075, -0.0086,
+        -0.0096, -0.0107, -0.0118, -0.0128, -0.0139, -0.015 , -0.0161,
+        -0.0171, -0.0182, -0.0193, -0.0203, -0.0214, -0.0225, -0.0236,
+        -0.0247, -0.0257, -0.0268, -0.0279, -0.029 , -0.0301, -0.0312,
+        -0.0323, -0.0334, -0.0346, -0.0357, -0.0368, -0.0379, -0.0391,
+        -0.0402, -0.0414, -0.0426, -0.0438, -0.0449, -0.0461, -0.0473,
+        -0.0486, -0.0498, -0.051 , -0.0523, -0.0536, -0.0549, -0.0562,
+        -0.0575, -0.0588, -0.0602, -0.0616, -0.063 , -0.0644, -0.0659,
+        -0.0673, -0.0688, -0.0704], 
+      "5": [ 0.5031,  0.4773,  0.4523,  0.4283,  0.4052,  0.3829,  0.3614,
+        0.3408,  0.3209,  0.3018,  0.2834,  0.2657,  0.2487,  0.2324,
+        0.2167,  0.2017,  0.1873,  0.1735,  0.1603,  0.1476,  0.1356,
+        0.1241,  0.1131,  0.1027,  0.0928,  0.0834,  0.0745,  0.0661,
+        0.0582,  0.0508,  0.0439,  0.0375,  0.0315,  0.026 ,  0.0209,
+        0.0163,  0.0122,  0.0085,  0.0052,  0.0024, -0.    , -0.0019,
+        -0.0034, -0.0045, -0.0052, -0.0054, -0.0052, -0.0045, -0.0034,
+        -0.0019,  0.    ,  0.0024,  0.0051,  0.0084,  0.012 ,  0.0161,
+        0.0205,  0.0255,  0.0308,  0.0366,  0.0428,  0.0495,  0.0566,
+        0.0641,  0.0721,  0.0805,  0.0893,  0.0986,  0.1084,  0.1186,
+        0.1293,  0.1404,  0.152 ,  0.1641,  0.1767,  0.1897,  0.2033,
+        0.2173,  0.2319,  0.2469,  0.2625,  0.2786,  0.2953,  0.3125,
+        0.3303,  0.3486,  0.3676,  0.3871,  0.4072,  0.428 ,  0.4495,
+        0.4716,  0.4943,  0.5178,  0.542 ,  0.5669,  0.5926,  0.6191,
+        0.6464,  0.6745,  0.7035],
+      }
+
+      const positions = [
+        -1, -0.98, -0.96, -0.94, -0.92, -0.9, -0.88, -0.86, -0.84,
+        -0.82, -0.8, -0.78, -0.76, -0.74, -0.72, -0.7, -0.68, -0.66,
+        -0.64, -0.62, -0.6, -0.58, -0.56, -0.54, -0.52, -0.5, -0.48,
+        -0.46, -0.44, -0.42, -0.4, -0.38, -0.36, -0.34, -0.32, -0.3,
+        -0.28, -0.26, -0.24, -0.22, -0.2 , -0.18, -0.16, -0.14, -0.12,
+        -0.1, -0.08, -0.06, -0.04, -0.02, 0, 0.02, 0.04, 0.06,
+        0.08, 0.1, 0.12, 0.14, 0.16, 0.18, 0.2, 0.22, 0.24,
+        0.26, 0.28, 0.3, 0.32, 0.34, 0.36, 0.38, 0.4, 0.42,
+        0.44, 0.46, 0.48, 0.5, 0.52, 0.54, 0.56, 0.58, 0.6,
+        0.62, 0.64, 0.66, 0.68, 0.7, 0.72, 0.74, 0.76, 0.78,
+        0.8, 0.82, 0.84, 0.86, 0.88, 0.9, 0.92, 0.94, 0.96,
+        0.98, 1
+      ]
+
+      const combinations = {
+        "1": {
+          group: [[1, 5], [4], [3], [2]],
+          position: [-0.3, -0.1, 0.1, 1],
+          tp: [-0.58, -0.12, 0.3, 1],
+          wp: [0.1838, 0.2245, 0.2432, 0.3486],
+          r: [-0.2362, 0.0591, 0.2953, 0.0295, -0.0295],
+        },
+        "2": {
+          group: [[1], [4], [3], [2, 5]],
+          position: [-0.8, -0.1, 0.1, 0.6],
+          tp: [-0.8, -0.22, 0.22, 0.62],
+          wp: [0.1672, 0.2212, 0.2396, 0.3720],
+          r: [0.0913, 0.0913, 0.0091, -0.0091, 0.0183],
+        },
+        "3": {
+          group: [[1], [4], [3, 5], [2]],
+          position: [-0.8, -0.1, 0.15, 1],
+          tp: [-0.8, -0.22, 0.22, 1],
+          wp: [0.1686, 0.2231, 0.2618, 0.3464],
+          r: [-0.1828, 0.2700, 0.0228, -0.0228, 0.2618],
+        },
+        "4": {
+          group: [[1], [4, 5], [3], [2]],
+          position: [-0.8, 0.05, 0.1, 1],
+          tp: [-0.8, -0.22, 0.22, 1],
+          wp: [0.1689, 0.2421, 0.3470, 0.2421],
+          r: [-0.1985, 0.2482, 0.0248, -0.0248, 0.0496],
+        },
+        "5": {
+          group: [[1, 4], [2, 3, 5]],
+          position: [-0.45, 0.4333],
+          tp: [-0.45, 0.4333],
+          wp: [0.2932, 0.7068],
+          r: [-0.1395, 0.1744, 0.0174, -0.0174, 0.0349],
+        },
+      }
+
+      const getClosest = (val1, val2, target) => {
+          if (target - val1 >= val2 - target)
+              return 1
+          return 0
+      }
+
+      const findClosest = (arr, target) => {
+        let n = arr.length
+
+        if (target <= arr[0])
+            return 0
+        if (target >= arr[n - 1])
+            return n - 1
+
+        let i = 0, j = n, mid = 0
+        while (i < j) {
+            mid = parseInt((i + j) / 2)
+            if (arr[mid] == target)
+                return mid
+            if (target < arr[mid]) {
+                if (mid > 0 && target > arr[mid - 1])
+                    return mid + getClosest(arr[mid - 1], arr[mid], target)
+                j = mid
+            } else {
+                if (mid < n - 1 && target < arr[mid + 1])
+                    return mid + getClosest(arr[mid], arr[mid + 1], target)
+                i = mid + 1
+            }
+        }
+        return mid
+      }
+      // ➀➁➂➃➄ #d04a5c23 #4a6bd023 #ffc1073b #02798c33 #bababa69
+      const justifyTips = () => {
+        // 
+      }
+  </script>
+</head>
+
+<body>
+  <!-- Article with large top spacing -->
+  <article class="mt-lg">
+    <header>
+      <!-- Page container -->
+      <div class="container">
+        <!-- Page title -->
+        <h1>
+          Group Formation by Group Joining and Opinion Updates via Multi-Agent Online Gradient Ascent
+        </h1>
+        <!-- Subheading -->
+        <p class="subhead">
+          An interactive article illustrating group joining strategies and opinion updates via an online gradient ascent to analyze group formation 
+          dynamics. Learn how the choices of a coaltion of agents lead to a pure-strategy Nash equilibrium and how updating agents' opinions eventually 
+		  stabilizes the group formation.
+        </p>
+        <!-- Header info general wrapper -->
+        <div class="header-info">
+          <!-- Header left info box -->
+          <div class="header-left box">
+            <!-- Header authors section -->
+            <div class="header-authors">
+              <h2>Authors</h2>
+              <ul>
+                <li>Chuang-Chieh Lin | Tamkang University, Taiwan</li>
+                <li>Chih-Chieh Hung | National Chung Hsing University, Taiwan</li>
+                <li>Chi-Jen Lu | Academia Sinica, Taiwan</li>
+                <li>Po-An Chen | National Yang Ming Chiao Tung University, Taiwan</li>
+              </ul>
+            </div>
+            <!-- Published info section -->
+            <div class="header-published">
+              <h2>Published</h2>
+              <p>XXX. X, 2023</p>
+            </div>
+          </div>
+          <!-- Header legend section -->
+          <div class="header-legend">
+            <svg class="click-icon" data-name="Click"
+              xmlns="http://www.w3.org/2000/svg" viewBox="0 0 83.62 122.88">
+              <title>Click</title>
+              <path
+                d="M40.59,14.63a3.36,3.36,0,0,1-1,2.39l0,0a3.39,3.39,0,0,1-4.77,0,3.42,3.42,0,0,1-1-2.4V3.39A3.4,3.4,0,0,1,37.2,0a3.34,3.34,0,0,1,2.39,1,3.39,3.39,0,0,1,1,2.4V14.63Zm25,76.65a1.89,1.89,0,0,1,3.77,0V99.9a1.89,1.89,0,1,1-3.77,0V91.28ZM54.46,87.47a1.89,1.89,0,0,1,3.77,0V99.9a1.89,1.89,0,1,1-3.77,0V87.47Zm-28-7.63a1.92,1.92,0,0,1-.35-.23q-5.24-4.24-10.44-8.53a8.36,8.36,0,0,0-3.57-1.79,3.54,3.54,0,0,0-2,.09A2,2,0,0,0,9,70.49a6.9,6.9,0,0,0-.4,3.24,12.47,12.47,0,0,0,1.11,4,26.49,26.49,0,0,0,2.92,4.94l17.68,26.74a2.37,2.37,0,0,1,.36,1,15.28,15.28,0,0,0,1.87,6.4,2.89,2.89,0,0,0,2.57,1.46c9,0,18.62-.34,27.53,0a8.33,8.33,0,0,0,4.69-1.51,15,15,0,0,0,4.29-5l.34-.57c3.4-5.87,6.71-11.57,7-18.33L78.85,85l0-.33,0-1.84c.06-5.74.16-14.54-4.62-15.4H71.14c.09,2.46,0,5-.18,7.3-.08,1.36-.15,2.63-.15,3.79a2.31,2.31,0,1,1-4.62,0c0-1.1.08-2.52.17-4,.32-5.73.75-13.38-3.24-14.14h-3a2.2,2.2,0,0,1-.58-.07,69.07,69.07,0,0,1-.13,8.29c-.07,1.36-.15,2.63-.15,3.79a2.31,2.31,0,1,1-4.61,0c0-1.1.08-2.52.16-4,.33-5.73.76-13.38-3.24-14.14h-3a2,2,0,0,1-.6-.08V66a2.31,2.31,0,1,1-4.61,0V42c0-4-1.64-6.55-3.73-7.61a5.32,5.32,0,0,0-4.71-.06l-.1.06c-2.07,1-3.69,3.59-3.69,7.7v42a2.31,2.31,0,1,1-4.62,0V79.84Zm44.14-17a2.49,2.49,0,0,1,.61-.08h3.19a2.33,2.33,0,0,1,.53.06c8.73,1.4,8.61,12.65,8.52,20,0,3.4.14,6.78.18,10.17-.39,7.91-4,14.1-7.67,20.47l-.32.55A19.49,19.49,0,0,1,70,120.55a12.88,12.88,0,0,1-7.29,2.32H35.17a7.23,7.23,0,0,1-6.44-3.5,19,19,0,0,1-2.56-7.88L8.94,85.42A31,31,0,0,1,5.5,79.58,16.88,16.88,0,0,1,4,74a11.42,11.42,0,0,1,.8-5.42,6.54,6.54,0,0,1,3.55-3.49A8.05,8.05,0,0,1,13,64.76a13.19,13.19,0,0,1,5.61,2.77L26.45,74V42.09c0-6.1,2.73-10,6.22-11.82l.15-.06a9.81,9.81,0,0,1,4.33-1,10,10,0,0,1,4.49,1.07C45.16,32.06,47.91,36,47.91,42v7.6a2.41,2.41,0,0,1,.6-.08H51.7a2.33,2.33,0,0,1,.53.06c3.82.61,5.73,3.16,6.63,6.47a2.25,2.25,0,0,1,1.23-.36h3.18a2.26,2.26,0,0,1,.53.06c4.07.65,6,3.49,6.79,7.11ZM14.63,37A3.33,3.33,0,0,1,17,38a3.39,3.39,0,0,1-2.39,5.79H3.39a3.36,3.36,0,0,1-2.39-1A3.4,3.4,0,0,1,3.39,37ZM23,20.55a3.39,3.39,0,0,1-2.4,5.79,3.4,3.4,0,0,1-2.4-1l-7.91-7.94a3.42,3.42,0,0,1-1-2.4,3.39,3.39,0,0,1,5.79-2.4L23,20.55ZM59.2,43.81a3.41,3.41,0,0,1-3.4-3.4A3.41,3.41,0,0,1,59.2,37H70.43a3.35,3.35,0,0,1,2.4,1,3.4,3.4,0,0,1-2.4,5.79ZM55.62,24.74a3.39,3.39,0,0,1-4.8-4.8l7.91-8a3.39,3.39,0,0,1,4.8,4.8l-7.91,8Z" />
+            </svg>
+            <p>Indicates interactive elements</p>
+          </div>
+        </div>
+        <!-- Box of anchored links -->
+        <div class="contents box">
+          <h2>Contents:</h2>
+          <ul>
+            <li>
+              <a href="#introduction">Introduction</a>
+              <span class="separator">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+            </li>
+            <li>
+              <a href="#game_setting">The Game Setting</a>
+              <span class="separator">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+            </li>
+            <li>
+              <a href="#group_join">Group Joining</a>
+              <span class="separator">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+            </li>
+            <li>
+              <a href="#online_learning">Opinion Updates by Online Gradient Ascent</a>
+              <span class="separator">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+            </li>
+			      <li>
+              <a href="#discussion">Discussion</a>
+			        <span class="separator">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+            </li>
+            <li>
+              <a href="#conclusion">Conclusion</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <!-- Content container with large top spacing -->
+    <div class="container mt-lg">
+      <!-- Anchor ID -->
+      <section id="introduction">
+        <!-- Section title -->
+        <h2>I. Introduction</h2>
+        <p class="inline-math">
+          Game theory has been applied in a variety of situations due to its predictability 
+          of outcomes in the real world. Furthermore, it can be used in solving problems, such as 
+          saddle-point optimization which has been used extensively in generative 
+          adversarial network models [<a href="#ref_5">5</a>]. 
+          A game consists of strategic agents, each of which acts rationally to maximize its 
+          own reward (or utility) or minimize its cost. A Nash equilibrium is a stable state 
+          composed of the strategies of all agents such that none of the agents wants to change its 
+          own strategy to another one unilaterally. Therefore, such a state is possibly achievable 
+          because no agent wants to change its mind when the other ones hold on their current 
+          strategies. However, how to achieve a Nash equilibrium in a game may not be quite 
+          straightforward, especially when agents behave in a &ldquo;decentralized&rdquo; way. 
+          Indeed, when an agent's reward function depends on the strategies of the 
+          other agents, a maximizer of one agent's reward function is not necessarily a 
+          maximizer for any other agent. 
+          The maximizer of one agent’s reward function may change whenever any 
+          other agent changes its strategy.
+        </p>  
+        <p class="inline-math">
+          This article examines the group formation of strategic agents to illustrate their strategic behaviors
+          and the eventual outcome of the game to study the group formation of a society. 
+          The theoretical techniques used in this article include identifying a 
+          pure-strategy Nash equilibrium and gradient 
+          ascent algorithms with and without regularizers.
+        
+          A strategic agent can either join a group or change its opinion to 
+          maximize its reward. The eventual equilibrium of the game hopefully suggests predictable 
+          outcomes for the whole society. For the case in which agents apply group-joining strategies, 
+          the <i>pure-strategy Nash equilibrium</i> is considered as the solution concept, where a pure 
+          strategy means a strategy played with a probability of 1. For the case in which agents change 
+		      their opinions, each agent executes an <i>online gradient ascent algorithm</i>, 
+		      which guarantees the time-average convergence to a hindsight optimum for a single agent 
+		      (e.g., see [<a href="#ref_8">8</a>, <a href="#ref_14">14</a>] for the cost-minimization case), 
+		      in a decentralized way, and then the possibly convergent state of the system is examined. 
+        </p>	
+		<h3>RELATED WORK</h3>
+		<h4>Group Formation and Collective Behavior</h4>
+		<p class="inline-math">
+		Gueron and Levin [<a href="#ref_7">7</a>] investigated a general continuous model for the distribution in 
+    animal group size. They related group size distribution to the function of the rates of fusion and fission. 
+		Their work showed that the stationary distribution on the group size has a peak value that is endogenous 
+		from the dynamics of group formation. Griesser et al. [<a href="#ref_6">6</a>] also focused on animal 
+		group size variation, and investigated the factors of group size distribution using observations of 
+		House Sparrows. Although the studies [<a href="#ref_6">6</a>, <a href="#ref_7">7</a>] are relevant to our work, 
+    they do not focus on preference vectors and beliefs, which are different from collective concepts, such as 
+    the group size.  
+		</p>
+		
+		<p class="inline-math">
+		There are studies on social grouping that focus on the collective behavior of animals [<a href="#ref_9">9</a>, <a href="#ref_16">16</a>]. 
+		How animal groups form and function, as well as how the phenotypic variation of individuals affects or propels
+		collective behavior, are investigated. Our work does not emphasize collective behavior. Instead, 
+		each agent is considered as a self-interested player in a &ldquo;non-cooperative game&rdquo;, although 
+		each agent's reward is affected by other agents. 
+		</p>
+		
+		<h4>Opinion Formation</h4>
+		<p class="inline-math">
+		In some other specific class of games, gradient descent/ascent ideas for individual cost minimization/utility 
+		maximization can have an analytical form of the update rule. For &ldquo;opinion formation&rdquo; 
+		games in a social network, Bindel et al. [<a href="#ref_3">3</a>] viewed the strategy-updating rule 
+		equivalently as each player updating her opinion to minimize her quadratic individual cost function, 
+		which was done by solving a system of equations representing the first-order conditions. The authors then 
+		analyzed how socially good or bad the system can be at equilibrium compared to the optimum solution in 
+		terms of the price of anarchy [<a href="#ref_10">10</a>]. In [<a href="#ref_4">4</a>], Chen et al. 
+		regarded the problem of finding the &ldquo;minimax&rdquo; strategy and the &ldquo;maximin&rdquo; strategy 
+		as a multiagent extension of online learning/online convex optimization. Note that using generic or specific 
+		no-regret algorithms is also a common approach to attain certain equilibria on in repeated 
+		games [<a href="#ref_13">13</a>, Chapter 4]. The authors adapted the optimistic gradient descent ascent 
+		algorithm (OGDA) for the specific problem structure of competitive opinion optimization to derive the dynamics for 
+		both the min and max players and analyzed the convergence to equilibria in the simultaneous version of competitive 
+		opinion optimization with a convergence rate.
+		</p>
+		<h4>Satisfaction Game</h4>
+		<p class="inline-math"> 
+		The so-called satisfaction game, proposed by Papavassiliou et al. [<a href="#ref_15">15</a>], focuses on achieving 
+    &ldquo;satisfaction equilibrium.&rdquo; This solution concept targets satisfaction of quality of service requirements 
+    rather than individual utility maximization. The motivation behind this game and the satisfaction equilibrium is to 
+    encourage strategic players to consider both individual and system perspectives in resource allocation, which can be 
+    seen as a social choice. Although this is claimed to be more 
+		socially beneficial as a whole than the standard utility maximization model, it is not applicable in our case of 
+		group formation, because our players in the group formation game may happen to be completely self-interested rather 
+		than being able to care from a system point of view due to the nature of such a game.
+		</p>
+		
+		<h4>Multi-agent Online Learning</h4>
+		<p class="inline-math">
+		Arguably, our work is most relevant to the paradigm of multi-agent online learning. Tampuu et al. 
+		[<a href="#ref_17">17</a>] considered the evolution of cooperation and competition of multiple agents. They showed 
+		the robustness of agents' strategies, each of which is built on a deep Q-network (DQN), so that each agent plays 
+		against other agents who can react adaptively, and the environment can be high-dimensional. In our work, 
+		the uncertainty (i.e., randomness) of each agent's reward arises from the competition of the groups in terms of 
+		the winning probability, which is different from the setting in [<a href="#ref_17">17</a>]. Our work conceptually 
+		fits the election campaign of parties (e.g., refer to our previous work [<a href="#ref_11">11</a>, <a href="#ref_12">12</a>]) 
+		such that each party can be initially set as an individual. 
+		</p>
+		<p class="inline-math">
+		Our proposed distributed algorithm for opinion updates is also related to the so-called block-coordinate gradient 
+		descent/ascent (with/without projection) algorithm and alternating optimization algorithms [<a href="#ref_2">2</a>] 
+		in continuous optimization. If an agent’s opinion is seen as a block of variables, our algorithm can distributedly 
+		update each agent’s opinion in parallel compared to the sequential updates of blocks, a limitation in some sense, 
+		using gradient descent/ascent or direct optimization. Gradient updates tend to help stabilize the dynamics 
+    compared to the abrupt update of one-step optimization, which is deemed the best response.  
+		</p>
+      </section>
+	</div>
+	<!-- Content container with large top spacing -->
+	<div class="container mt-lg">
+		<!-- Anchor ID -->
+		<section id="game_setting">
+        <!-- Section title -->
+        <h2>II. The Game Setting</h2>
+		<p class="inline-math">
+			Within a human society, each individual possesses their own preferences regarding numerous matters. 
+			The preference, for instance, can be their stance on a topic such as endorsing or opposing green energy, 
+			supporting or rejecting the death penalty, or advocating for tax increases or decreases, etc. 
+			Based on their positions, an individual can occasionally be regarded as either left-leaning or right-leaning. 
+      Due to peer pressure or social network influence, an individual may disguise his or her own preferences, 
+			which are true and private, and instead talk around it with viewpoints following the crowd. 
+      To quantify the degree to which an individual agrees or disagrees with an issue, it is natural to consider 
+      such preferences as &ldquo;real vectors,&rdquo; where a negative value and a positive value 
+			in a dimension show the degree of disagreement and agreement with a corresponding issue, 
+			respectively. 
+		</p>	
+		<p class="inline-math">	
+			In the proposed game setting, a set \(V\) of \(n\) agents \(v_1,v_2,\ldots,v_n\) is given.  
+			Each agent \(v_i\) is represented by a <i>public preference vector</i> \(z_i\) and a <i>private 
+			preference vector</i> \(s_i\), such that the former (i.e., an <i>opinion</i>) 
+			corresponds to the preference revealed to all the agents, while the latter corresponds 
+			to its <i>belief</i>, which is unchangeable. For a vector \(x = (x_1,x_2,\ldots,x_k)\in 
+			\mathbb{R}^k\), the 2-norm of \(x\) is defined as \(\|x\|_2 = \sqrt{\sum_{i=1}^k x_i^2}\). 			
+			Consider \(s_i,z_i\in\mathcal{K}\) such that 
+			\(\mathcal{K}:=\{x\in [-1,1]^k: \|x\|_2\leq 1\}\subset\mathbb{R}^k\) is the feasible set. 
+			Each dimension of the domain stands for a certain social issue, where \(-1\) maps to 
+      far-left politics, while \(1\) maps to far-right politics. 
+			The bounded 2-norm constraint is in line with the bounded rationality of a person, or the 
+			bounded budget for a group.
+			Denote by \(\mathbf{z} = (z_1,z_2,\ldots,z_n)\) and \(\mathbf{s} = (s_1,s_2,\ldots,s_n)\) the 
+      two profiles that include each agent's opinion and belief, respectively. 
+			Each agent is initially regarded as a group. The <i>opinion of a group</i> is the average 
+			of the opinions of its members. Similar to the <i>monotone</i> setting in 
+			[<a href="#ref_11">11</a>, <a href="#ref_12">12</a>], a group wins with higher odds if its opinion 
+			brings more utility to all the agents. The <i>reward</i> (i.e., payoff) of an agent is the 
+			expected utility that it can get from all the groups. Specifically, assume that there are currently  
+			\(m\leq n\) groups \(G_1,G_2,\ldots,G_m\), and denote by \(|G_i| = n_i\) the number 
+			of members in group \(G_i\). Let \(\mathcal{G} = (G_1,G_2,\ldots,G_m)\) denote the 
+			profile of the groups. To ease the notation, let  
+			\(\tau = (\mathbf{z}, \mathbf{s}, \mathcal{G})\) denote the <i>state</i> of the game. 
+			The reward function of agent \(i\) is 
+			$$r_i(\tau) = \sum_{j=1}^m p_j(\tau)\langle s_i, \bar{g}_j\rangle,$$ 
+			where \(\bar{g}_j = \sum_{v_i\in G_j}z_i/|n_j|\) is the opinion of group \(G_j\) and 
+			\(\langle x, y\rangle\) denotes the inner product of two vectors \(x\) and \(y\). 
+			The winning probability of group \(G_j\) is defined as 
+			$$p_j(\tau) = \frac{e^{n_j\langle\bar{g}_j, \sum_{v_r\in V} s_r\rangle}}{\sum_{i\in [m]; n_i>0} e^{n_i\langle\bar{g}_i, 
+			\sum_{v_r\in V} s_r\rangle}},$$ where \([m]\) denotes the set \(\{1,2,\ldots, m\}\). 
+			Namely, \(p_j(\tau)\) is the softmax function that 
+			is widely used to impose a probability distribution over the possible outcomes. 
+			Moreover, \(p_j(\tau)\) increases either when the size of group \(G_j\) increases 
+			or when it can bring more total utility for all the agents in terms of a  larger sum of 
+			inner products of the group opinion and each agent's belief. 
+		</p>
+		
+		<p> 
+			The following strategic behaviors of an agent in such a game will be taken into consideration. 
+			<ul>
+			<li><strong>Group Joining:</strong>
+			Each agent seeks a specific group that 
+			hopefully maximizes its reward and then joins the group (see Fig. 1).
+			</li>
+			<li><strong>Opinion Updating without Regularization:</strong>
+			Each agent in a certain group tries to maximize its reward by 
+			changing its opinion (see Fig. 2). 
+			</li>
+			<li><strong>Opinion Updating with Regularization:</strong>
+			Each agent \(v_i\) in a certain group tries to maximize its reward by 
+			changing its opinion, while the reward subtracts 
+			the squared distance \(\|s_i-z_i\|_2^2\), which serves as a regularizer. Adding 
+			such a regularizer hopefully limits how strategic an agent can be by 
+			preventing it from moving too far from its own belief (See Fig. 2).  
+			</li>
+			</ul>
+		<figure class="text-center">
+		<img src="img/FlowchartGroupJoining.svg" alt="Algorithm1" width="562" height="485">
+		<figcaption><strong>Figure 1:</strong> Flowchart of Group Joining.</figcaption>
+		</figure>
+
+		<figure class="text-center">
+		<img src="img/FlowchartGAA.svg" alt="Algorithm2" width="562" height="485">
+		<figcaption><strong>Figure 2:</strong> Flowchart of Opinion Updating.</figcaption>
+		</figure>
+		</p>
+		
+        </section>
+	</div>
+
+	<div class="container mt-lg">
+      <!-- D3.js -->
+      <script src="https://d3js.org/d3.v4.js"></script>
+      <script type="module">
+          const line = d3.select("#Viz_area")
+          const svg1 = d3.select("#s01")
+          const svg2 = d3.select("#s02")
+          const svg3 = d3.select("#s03")
+          const svg4 = d3.select("#s04")
+          const svg5 = d3.select("#s05")
+          svg1.style("left", `${500 * (-0.8 + 1) - 57.59 / 2}px`).style("bottom", '20%')
+          svg2.style("left", `${500 * (1 + 1) - 57.59 / 2}px`).style("bottom", '20%')
+          svg3.style("left", `${500 * (0.1 + 1) - 57.59 / 2}px`).style("bottom", '20%')
+          svg4.style("left", `${500 * (-0.1 + 1) - 57.59 / 2}px`).style("bottom", '20%')
+          svg5.style("left", `${500 * (0.2 + 1) - 57.59 / 2}px`).style("bottom", '20%')
+          d3.select(`#t01`)
+              .style("left", `${500 * (-0.8 + 1) - tipWidth / 2}px`)
+              .attr("transform", `translate(${500 * (-0.8 + 1)}, 0)`)
+          d3.select(`#t02`)
+              .style("left", `${500 * (1.1 + 1) - tipWidth / 2}px`)
+              .attr("transform", `translate(${500 * (1 + 1)}, 0)`)
+          d3.select(`#t03`)
+              .style("left", `${500 * (0.3 + 1) - tipWidth / 2}px`)
+              .attr("transform", `translate(${500 * (0.1 + 1)}, 0)`)
+          d3.select(`#t04`)
+              .style("left", `${500 * (-0.1 + 1) - tipWidth / 2}px`)
+              .attr("transform", `translate(${500 * (-0.1 + 1)}, 0)`)
+
+          const wp1 = d3.select("#wp1")
+          const wp2 = d3.select("#wp2")
+          const wp3 = d3.select("#wp3")
+          const wp4 = d3.select("#wp4")
+          const wp5 = d3.select("#wp5")
+          const r1 = d3.select("#r1")
+          const r2 = d3.select("#r2")
+          const r3 = d3.select("#r3")
+          const r4 = d3.select("#r4")
+          const r5 = d3.select("#r5")
+
+          const setPosition = (arr, target) => {
+            const mid = findClosest(positions, target)
+            wp1.node().innerHTML = `win. prob. ${data[1][mid]}`
+            wp2.node().innerHTML = `win. prob. ${data[2][mid]}`
+            wp3.node().innerHTML = `win. prob. ${data[3][mid]}`
+            wp4.node().innerHTML = `win. prob. ${data[4][mid]}`
+            wp5.node().innerHTML = `win. prob. ${data[5][mid]}`
+            r1.node().innerHTML = `reward ${rs[1][mid]}`
+            r2.node().innerHTML = `reward ${rs[2][mid]}`
+            r3.node().innerHTML = `reward ${rs[3][mid]}`
+            r4.node().innerHTML = `reward ${rs[4][mid]}`
+            r5.node().innerHTML = `reward ${rs[5][mid]}`
+
+          let tp = [0, 0, 0, 0, 0]
+          if (positions[mid] < -0.8) tp = [-0.48, 0.9, 0.3, -0.1, -0.8]
+          else if (positions[mid] < -0.1) tp = [-0.8, 0.9, 0.34, -0.08, -0.48]
+          else if (positions[mid] < 0.1) tp = [-0.8, 0.9, 0.4, -0.4, 0]
+          else tp = [-0.8, 0.9, 0.13, -0.3, 0.55]
+
+            const range = [1, 2, 3, 4, 5]
+            range.forEach((i) => {
+              d3.select(`#t0${i}`)
+                .style("left", `${500 * (tp[i - 1] + 1) - tipWidth / 2}px`)
+                .attr("transform", `translate(${500 * (tp[i - 1] + 1)}, 0)`)
+            })
+            svg5.transition()
+                .duration(1000)
+                .style("left", `${500 * (positions[mid] + 1) - 57.59 / 2}px`)
+                .style("bottom", `20%`)
+            d3.select('#v5').remove()
+            line.append("circle")
+              .attr("id", "v5")
+              .attr("r", 10).attr("style", `left:${500 * (positions[mid] + 1) - 57.59 / 2}px;`)
+              .attr("transform", `translate(${500 * (positions[mid] + 1)}, 0)`)
+              .attr("fill", "#bababa")
+            d3.select('#l05').remove()
+            line.append("text")
+              .attr("id", "l05")
+              .attr("class", "tick-label")
+              .attr("style", `left:${500 * (positions[mid] + 1) - 57.59 / 2}px;`)
+              .attr("transform", `translate(${500 * (positions[mid] + 1)}, 0)`)
+              .attr("y", 30)
+              .attr("dy", ".35em")
+              .text(positions[mid])
+              .attr("fill", "#bababa")
+            return mid
+          }
+
+          const drag = d3.drag()
+            .on('start', function(){
+              d3.select(this)
+                .select('img')
+                  .attr("src", `./img/aix-doll5-ani.gif`)
+              })
+            .on('drag', function(){
+              d3.select(this)
+                .attr("style",
+                  `left:${d3.event.x-25}px;bottom:${-d3.event.y+100}px;cursor: grab;`
+                )
+              })
+            .on('end', function(){
+              const target = (d3.event.x-25 - 500) / 500
+              const pivot = setPosition(positions, (d3.event.x-25) / 500 - 1)
+              
+              d3.select(this)
+                .select('img')
+                .attr("src", `./img/aix_doll-05.svg`)
+            })
+          svg5.call(drag)
+          const reset = () => setPosition(positions, 0.2)
+          d3.select('#reset').on("click", reset)
+
+          reset()
+          const x = d3.scaleLinear()
+              .domain([-1, 1])
+              .range([0, 1000])
+          const axis = line.call(d3.axisBottom(x))
+          const ticks = axis.selectAll(".tick").style("font-size",".85rem")
+          ticks.each(function() { d3.select(this).append("circle").attr("r", 5).attr("fill", "black"); })
+          ticks.selectAll("line").remove()
+          const ps = [-0.8, 1, 0.1, -0.1]
+          const pcolor = ["#d04a5b", "#00798c", "#edae49", "#30638e"]
+          ps.forEach((p, i) => {
+            line.append("circle")
+              .attr("id", `v${i + 1}`)
+              .attr("r", 10).attr("style", `left:${500 * (p + 1) - 57.59 / 2}px;position: relative;`)
+              .attr("transform", `translate(${500 * (p + 1)}, 0)`)
+              .attr("fill", pcolor[i])
+            line.append("text")
+              .attr("id", `l0${i + 1}`)
+              .attr("class", "tick-label")
+              .attr("style", `left:${500 * (p + 1) - 57.59 / 2}px;`)
+              .attr("transform", `translate(${500 * (p + 1)}, 0)`)
+              .attr("y", 30)
+              .attr("dy", ".35em")
+              .text(p)
+              .attr("fill", pcolor[i])
+          })
+          justifyTips()
+      </script>
+
+      <script type="module">
+        const line2 = d3.select("#Viz_area2")
+        const svg6 = d3.select("#s06")
+        const svg7 = d3.select("#s07")
+        const svg8 = d3.select("#s08")
+        const svg9 = d3.select("#s09")
+        const svg10 = d3.select("#s010")
+        svg6.transition().attr("style", `left:${500 * (-0.8 + 1) - 57.59 / 2}px;bottom: 20%;`)
+        svg7.transition().attr("style", `left:${500 * (1 + 1) - 57.59 / 2}px;bottom: 20%;`)
+        svg8.transition().attr("style", `left:${500 * (0.1 + 1) - 57.59 / 2}px;bottom: 20%;`)
+        svg9.transition().attr("style", `left:${500 * (-0.1 + 1) - 57.59 / 2}px;bottom: 20%;`)
+        svg10.transition().attr("style", `left:${500 * (0.2 + 1) - 57.59 / 2}px;bottom: 20%;cursor: grab;`)
+
+        const wp6 = d3.select("#wp6")
+        const wp7 = d3.select("#wp7")
+        const wp8 = d3.select("#wp8")
+        const wp9 = d3.select("#wp9")
+        const wp10 = d3.select("#wp10")
+        const r6 = d3.select("#r6")
+        const r7 = d3.select("#r7")
+        const r8 = d3.select("#r8")
+        const r9 = d3.select("#r9")
+        const r10 = d3.select("#r10")
+
+
+        const setPointAndLabel = (ps, pcolor) => {
+          ps.forEach((p, i) => {
+            d3.select(`v${i + 6}`).remove()
+            d3.select(`l0${i + 6}`).remove()
+            line2.append("circle")
+              .attr("id", `v${i + 6}`)
+              .attr("r", 10).attr("style", `left:${500 * (p + 1) - 57.59 / 2}px;position: relative;`)
+              .attr("transform", `translate(${500 * (p + 1)}, 0)`)
+              .attr("fill", pcolor[i])
+            line2.append("text")
+              .attr("id", `l0${i + 6}`)
+              .attr("class", "tick-label")
+              .attr("style", `left:${500 * (p + 1) - 57.59 / 2}px;`)
+              .attr("transform", `translate(${500 * (p + 1)}, 0)`)
+              .attr("y", 30)
+              .attr("dy", ".35em")
+              .text(p)
+              .attr("fill", pcolor[i])
+          })
+        }
+
+        const setPosition2 = (arr, target) => {
+          d3.selectAll('.extratip').remove()
+          d3.selectAll('.extraPoint').remove()
+          d3.selectAll('.extraLabel').remove()
+          d3.selectAll(`.tip`).style('display', 'flex')
+          d3.select('#l010').remove()
+
+          const mid = findClosest(positions, target)
+          svg6.transition().attr("style", `left:${500 * (-0.8 + 1) - 57.59 / 2}px;bottom: 20%;`)
+          svg7.transition().attr("style", `left:${500 * (1 + 1) - 57.59 / 2}px;bottom: 20%;`)
+          svg8.transition().attr("style", `left:${500 * (0.1 + 1) - 57.59 / 2}px;bottom: 20%;`)
+          svg9.transition().attr("style", `left:${500 * (-0.1 + 1) - 57.59 / 2}px;bottom: 20%;`)
+          svg8
+              .select('img')
+              .attr("src", `./img/aix_doll-03.svg`)
+          svg9
+            .select('img')
+            .attr("src", `./img/aix_doll-04.svg`)
+          d3.select('#i01').attr("style", `display: ${Math.abs(-0.8 - target) < 0.2 ? 'flex' : 'none'};`)
+          d3.select('#i02').attr("style", `display: ${Math.abs(1 - target) < 0.2 ? 'flex' : 'none'};`)
+          d3.select('#i03').attr("style", `display: ${Math.abs(0.1 - target) < 0.2 ? 'flex' : 'none'};`)
+          d3.select('#i04').attr("style", `display: ${Math.abs(-0.1 - target) < 0.2 ? 'flex' : 'none'};`)
+          wp6.node().innerHTML = `win. prob. ${data[1][mid]}`
+          wp7.node().innerHTML = `win. prob. ${data[2][mid]}`
+          wp8.node().innerHTML = `win. prob. ${data[3][mid]}`
+          wp9.node().innerHTML = `win. prob. ${data[4][mid]}`
+          wp10.node().innerHTML = `win. prob. ${data[5][mid]}`
+          r6.node().innerHTML = `reward ${rs[1][mid]}`
+          r7.node().innerHTML = `reward ${rs[2][mid]}`
+          r8.node().innerHTML = `reward ${rs[3][mid]}`
+          r9.node().innerHTML = `reward ${rs[4][mid]}`
+          r10.node().innerHTML = `reward ${rs[5][mid]}`
+
+          let tp = [0, 0, 0, 0, 0]
+          if (positions[mid] < -0.8) tp = [-0.48, 0.9, 0.3, -0.1, -0.8]
+          else if (positions[mid] < -0.1) tp = [-0.8, 0.9, 0.34, -0.08, -0.48]
+          else if (positions[mid] < 0.1) tp = [-0.8, 0.9, 0.4, -0.4, 0]
+          else tp = [-0.8, 0.9, 0.13, -0.3, 0.55]
+
+          const range = [6, 7, 8, 9, 10]
+          range.forEach((i) => {
+            d3.select(`#t0${i}`)
+              .style("left", `${500 * (tp[i - 6] + 1) - tipWidth / 2}px`)
+              .attr("transform", `translate(${500 * (tp[i - 6] + 1)}, 0)`)
+          })
+          svg10.transition()
+              .duration(1000)
+              .attr("style", 
+                `left:${500 * (positions[mid] + 1) - 57.59 / 2}px;bottom: 20%;;cursor: grab;`
+              )
+          svg10
+            .select('img')
+            .attr("src", `./img/aix_doll-05.svg`)
+          d3.select('#v10').remove()
+          line2.append("circle")
+            .attr("id", "v10")
+            .attr("r", 10).attr("style", `left:${500 * (positions[mid] + 1) - 57.59 / 2}px;`)
+            .attr("transform", `translate(${500 * (positions[mid] + 1)}, 0)`)
+            .attr("fill", "#bababa")
+          setPointAndLabel([-0.8, 1, 0.1, -0.1], ["#d04a5b", "#00798c", "#edae49", "#30638e"])
+          line2.append("text")
+              .attr("id", "l010")
+              .attr("class", "tick-label")
+              .attr("style", `left:${500 * (positions[mid] + 1) - 57.59 / 2}px;`)
+              .attr("transform", `translate(${500 * (positions[mid] + 1)}, 0)`)
+              .attr("y", 30)
+              .attr("dy", ".35em")
+              .text(positions[mid])
+              .attr("fill", "#bababa")
+          return mid
+        }
+
+        const setGroups = (number) => {
+          d3.selectAll('.extratip').remove()
+          d3.selectAll(`.tip`).style('display', 'flex')
+          const target = combinations[number]
+          const { group, position, tp, wp, r } = target
+          d3.select('#i01').attr("style", `display: none;`)
+          d3.select('#i02').attr("style", `display: none;`)
+          d3.select('#i03').attr("style", `display: none;`)
+          d3.select('#i04').attr("style", `display: none;`)
+          d3.selectAll('.extraPoint').remove()
+          d3.selectAll('.extraLabel').remove()
+          group.forEach((g, i) => {
+            g.forEach((e, j) => {
+              d3.select(`#s0${e + 5}`)
+                .transition()
+                .duration(1000)
+                .style("left",
+                  `${500 * (position[i] + 1) - 57.59 * (g.length / 2 - j)}px`
+                )
+              d3.select(`#t0${e + 5}`)
+                .style("left", `${500 * (tp[i] + 1) - tipWidth / 2}px`)
+                .attr("transform", `translate(${500 * (tp[i] + 1)}, 0)`)
+              d3.select(`#wp${e + 5}`).node().innerHTML = `win. prob. ${wp[i]}`
+              d3.select(`#r${e + 5}`).node().innerHTML = `reward ${r[i]}`
+            })
+            if (g.length > 1) {
+              const tcolor = ['#d04a5c23', '#02798c33', '#ffc1073b', '#4a6bd023', '#bababa69']
+              const extrabox = d3.select('#box2')
+                .append("div")
+                .attr('class', 'tip extratip')
+                .style('background-color', tcolor[g[0] - 1])
+                .style('left', `${500 * (tp[i] + 1) - 90}px`)
+              extrabox.append("p")
+                .attr('class', "my-auto small lh-sm")
+                .node()
+                .innerHTML = `win. prob. ${wp[i]}`
+              g.forEach((n) => {
+                d3.selectAll(`#v${n + 5}`).remove()
+                d3.selectAll(`#l0${n + 5}`).remove()
+                extrabox.append("p")
+                  .attr('class', "my-auto small lh-sm")
+                  .node()
+                  .innerHTML = `reward of ${n}. ${r[n - 1]}`
+                d3.select(`#t0${n + 5}`).style('display', 'none')
+              })
+              const colors = {
+                1: "#d04a5b",
+                2: "#00798c",
+                3: "#edae49",
+                4: "#30638e",
+              }
+              line2.append("circle")
+                .attr("class", "extraPoint")
+                .attr("r", 10).attr("style", `left:${500 * (position[i] + 1)}px;`)
+                .attr("transform", `translate(${500 * (position[i] + 1)}, 0)`)
+                .attr("fill", colors[g[0]])
+              line2.append("text")
+                .attr("id", `l0${i + 6}`)
+                .attr("class", "extraLabel tick-label")
+                .attr("style", `left:${500 * (position[i] + 1)}px;`)
+                .attr("transform", `translate(${500 * (position[i] + 1)}, 0)`)
+                .attr("y", 30)
+                .attr("dy", ".35em")
+                .text(position[i])
+                .attr("fill", ["#d04a5b", "#00798c", "#edae49", "#30638e"][g[0] - 1])
+            }
+          })
+          svg10
+            .select('img')
+            .attr("src", `./img/aix_doll-05-${number === 5 ? '2' : number}.svg`)
+          if (number === 5) {
+            svg8
+              .select('img')
+              .attr("src", `./img/aix_doll-03-best.svg`)
+            svg9
+              .select('img')
+              .attr("src", `./img/aix_doll-04-best.svg`)
+          } else {
+            svg8
+              .select('img')
+              .attr("src", `./img/aix_doll-03.svg`)
+            svg9
+              .select('img')
+              .attr("src", `./img/aix_doll-04.svg`)
+          }
+          justifyTips()
+        }
+
+        const drag2 = d3.drag()
+          .on('start', function(){
+            d3.select(this)
+              .select('img')
+                .attr("src", `./img/aix-doll5-ani.gif`)
+            })
+          .on('drag', function(){
+            d3.select(this)
+              .attr("style",
+                `left:${d3.event.x-25}px;bottom:${-d3.event.y+100}px;cursor: grab;`
+              )
+            })
+          .on('end', function(){
+            const target = (d3.event.x-25 - 500) / 500
+            const pivot = setPosition2(positions, (d3.event.x-25) / 500 - 1)
+            d3.select(this)
+              .select('img')
+              .attr("src", `./img/aix_doll-05.svg`)
+          })
+        svg10.call(drag2)
+        const reset2 = () => setPosition2(positions, 0.2)
+        d3.select('#i01').on("click", () => setGroups(1))
+        d3.select('#i02').on("click", () => setGroups(2))
+        d3.select('#i03').on("click", () => setGroups(3))
+        d3.select('#i04').on("click", () => setGroups(4))
+        d3.select('#best').on("click", () => setGroups(5))
+        d3.select('#reset2').on("click", reset2)
+
+        reset2()
+        const x2 = d3.scaleLinear()
+            .domain([-1, 1])
+            .range([0, 1000])
+        const axis2 = line2.call(d3.axisBottom(x2))
+        const ticks2 = axis2.selectAll(".tick")
+        ticks2.each(function() { d3.select(this).append("circle").attr("r", 5).attr("fill", "black"); })
+        ticks2.selectAll("line").remove()
+      </script>
+
+      <script type="module">
+        const line3 = d3.select("#Viz_area3")
+        const svg11 = d3.select("#s011")
+        const svg12 = d3.select("#s012")
+        const svg13 = d3.select("#s013")
+        const svg14 = d3.select("#s014")
+        const svg15 = d3.select("#s015")
+        svg11.transition().attr("style", `left:${500 * (-0.8 + 1) - 57.59 / 2}px;bottom: 20%;`)
+        svg12.transition().attr("style", `left:${500 * (1 + 1) - 57.59 / 2}px;bottom: 20%;`)
+        svg13.transition().attr("style", `left:${500 * (0.1 + 1) - 57.59 / 2}px;bottom: 20%;`)
+        svg14.transition().attr("style", `left:${500 * (-0.1 + 1) - 57.59 / 2}px;bottom: 20%;`)
+        svg15.transition().attr("style", `left:${500 * (0.2 + 1) - 57.59 / 2}px;bottom: 20%;cursor: grab;`)
+
+        const wp11 = d3.select("#wp11")
+        const wp12 = d3.select("#wp12")
+        const wp13 = d3.select("#wp13")
+        const wp14 = d3.select("#wp14")
+        const wp15 = d3.select("#wp15")
+        const r11 = d3.select("#r11")
+        const r12 = d3.select("#r12")
+        const r13 = d3.select("#r13")
+        const r14 = d3.select("#r14")
+        const r15 = d3.select("#r15")
+
+
+        const setPointAndLabel2 = (ps, pcolor) => {
+          ps.forEach((p, i) => {
+            d3.select(`v${i + 11}`).remove()
+            d3.select(`l0${i + 11}`).remove()
+            line2.append("circle")
+              .attr("id", `v${i + 11}`)
+              .attr("r", 10).attr("style", `left:${500 * (p + 1) - 57.59 / 2}px;position: relative;`)
+              .attr("transform", `translate(${500 * (p + 1)}, 0)`)
+              .attr("fill", pcolor[i])
+            line2.append("text")
+              .attr("id", `l0${i + 11}`)
+              .attr("class", "tick-label")
+              .attr("style", `left:${500 * (p + 1) - 57.59 / 2}px;`)
+              .attr("transform", `translate(${500 * (p + 1)}, 0)`)
+              .attr("y", 30)
+              .attr("dy", ".35em")
+              .text(p)
+              .attr("fill", pcolor[i])
+          })
+        }
+
+        const tipcolor = ['#f8e6e8', '#d3e5e9', '#fff0d1', '#e5ebf9', '#e3e3e3']
+        const tipDelay = 300
+        svg11.on('mouseover', () => {
+          setTimeout(function() {
+            d3.select("#myopic").transition().duration(300).style("opacity", 1)
+            d3.select("#leftTip").style("background-color", tipcolor[0]).node().innerHTML = 'myopic reward of 1: 0.1056'
+            d3.select("#rightTip").style("background-color", tipcolor[0]).node().innerHTML = 'myopic reward of 1: -0.2450'
+          }, tipDelay)
+        })
+        svg11.on('mouseleave', () => {
+          setTimeout(function() {
+            d3.select("#myopic").transition().duration(300).style("opacity", 0)
+          }, tipDelay)
+        })
+        svg12.on('mouseover', () => {
+          setTimeout(function() {
+            d3.select("#myopic").transition().duration(300).style("opacity", 1)
+            d3.select("#leftTip").style("background-color", tipcolor[1]).node().innerHTML = 'myopic reward of 2: -0.1319'
+            d3.select("#rightTip").style("background-color", tipcolor[1]).node().innerHTML = 'myopic reward of 2: 0.3062'
+          }, tipDelay)
+        })
+        svg12.on('mouseleave', () => {
+          setTimeout(function() {
+            d3.select("#myopic").transition().duration(300).style("opacity", 0)
+          }, tipDelay)
+        })
+        svg13.on('mouseover', () => {
+          setTimeout(function() {
+            d3.select("#myopic").transition().duration(300).style("opacity", 1)
+            d3.select("#leftTip").style("background-color", tipcolor[2]).node().innerHTML = 'myopic reward of 3: 0.0132'
+            d3.select("#rightTip").style("background-color", tipcolor[2]).node().innerHTML = 'myopic reward of 3: 0.0306'
+          }, tipDelay)
+        })
+        svg13.on('mouseleave', () => {
+          setTimeout(function() {
+            d3.select("#myopic").transition().duration(300).style("opacity", 0)
+          }, tipDelay)
+        })
+        svg14.on('mouseover', () => {
+          setTimeout(function() {
+            d3.select("#myopic").transition().duration(300).style("opacity", 1)
+            d3.select("#leftTip").style("background-color", tipcolor[3]).node().innerHTML = 'myopic reward of 4: 0.0132'
+            d3.select("#rightTip").style("background-color", tipcolor[3]).node().innerHTML = 'myopic reward of 4: -0.0306'
+          }, tipDelay)
+        })
+        svg14.on('mouseleave', () => {
+          setTimeout(function() {
+            d3.select("#myopic").transition().duration(300).style("opacity", 0)
+          }, tipDelay)
+        })
+        svg15.on('mouseover', () => {
+          setTimeout(function() {
+            d3.select("#myopic").transition().duration(300).style("opacity", 1)
+            d3.select("#leftTip").style("background-color", tipcolor[4]).node().innerHTML = 'myopic reward of 5: -0.0264'
+            d3.select("#rightTip").style("background-color", tipcolor[4]).node().innerHTML = 'myopic reward of 5: 0.0613'
+          }, tipDelay)
+        })
+        svg15.on('mouseleave', () => {
+          setTimeout(function() {
+            d3.select("#myopic").transition().duration(300).style("opacity", 0)
+          }, tipDelay)
+        })
+
+        const setPosition3 = (arr, target) => {
+          d3.selectAll('.extratip').remove()
+          d3.selectAll('.extraPoint').remove()
+          d3.selectAll('.extraLabel').remove()
+          d3.selectAll(`.tip`).style('display', 'flex')
+          d3.select('#l015').remove()
+
+          const mid = findClosest(positions, target)
+          svg11.transition().attr("style", `left:${500 * (-0.8 + 1) - 57.59 / 2}px;bottom: 20%;`)
+          svg12.transition().attr("style", `left:${500 * (1 + 1) - 57.59 / 2}px;bottom: 20%;`)
+          svg13.transition().attr("style", `left:${500 * (0.1 + 1) - 57.59 / 2}px;bottom: 20%;`)
+          svg14.transition().attr("style", `left:${500 * (-0.1 + 1) - 57.59 / 2}px;bottom: 20%;`)
+          svg13
+              .select('img')
+              .attr("src", `./img/aix_doll-03.svg`)
+          svg14
+            .select('img')
+            .attr("src", `./img/aix_doll-04.svg`)
+          // d3.select('#i06').attr("style", `display: ${Math.abs(-0.8 - target) < 0.2 ? 'flex' : 'none'};`)
+          // d3.select('#i07').attr("style", `display: ${Math.abs(1 - target) < 0.2 ? 'flex' : 'none'};`)
+          // d3.select('#i08').attr("style", `display: ${Math.abs(0.1 - target) < 0.2 ? 'flex' : 'none'};`)
+          // d3.select('#i09').attr("style", `display: ${Math.abs(-0.1 - target) < 0.2 ? 'flex' : 'none'};`)
+          wp11.node().innerHTML = `win. prob. ${data[1][mid]}`
+          wp12.node().innerHTML = `win. prob. ${data[2][mid]}`
+          wp13.node().innerHTML = `win. prob. ${data[3][mid]}`
+          wp14.node().innerHTML = `win. prob. ${data[4][mid]}`
+          wp15.node().innerHTML = `win. prob. ${data[5][mid]}`
+          r11.node().innerHTML = `reward ${rs[1][mid]}`
+          r12.node().innerHTML = `reward ${rs[2][mid]}`
+          r13.node().innerHTML = `reward ${rs[3][mid]}`
+          r14.node().innerHTML = `reward ${rs[4][mid]}`
+          r15.node().innerHTML = `reward ${rs[5][mid]}`
+
+          let tp = [0, 0, 0, 0, 0]
+          if (positions[mid] < -0.8) tp = [-0.48, 0.9, 0.3, -0.1, -0.8]
+          else if (positions[mid] < -0.1) tp = [-0.8, 0.9, 0.34, -0.08, -0.48]
+          else if (positions[mid] < 0.1) tp = [-0.8, 0.9, 0.4, -0.4, 0]
+          else tp = [-0.8, 0.9, 0.13, -0.3, 0.55]
+
+          const range = [11, 12, 13, 14, 15]
+          range.forEach((i) => {
+            d3.select(`#t0${i}`)
+              .style("left", `${500 * (tp[i - 11] + 1) - tipWidth / 2}px`)
+              .attr("transform", `translate(${500 * (tp[i - 11] + 1)}, 0)`)
+          })
+          svg15.transition()
+              .duration(1000)
+              .attr("style", 
+                `left:${500 * (positions[mid] + 1) - 57.59 / 2}px;bottom: 20%;;cursor: grab;`
+              )
+          svg15
+            .select('img')
+            .attr("src", `./img/aix_doll-05.svg`)
+          d3.select('#v15').remove()
+          line2.append("circle")
+            .attr("id", "v15")
+            .attr("r", 10).attr("style", `left:${500 * (positions[mid] + 1) - 57.59 / 2}px;`)
+            .attr("transform", `translate(${500 * (positions[mid] + 1)}, 0)`)
+            .attr("fill", "#bababa")
+          setPointAndLabel2([-0.8, 1, 0.1, -0.1], ["#d04a5b", "#00798c", "#edae49", "#30638e"])
+          line3.append("text")
+              .attr("id", "l010")
+              .attr("class", "tick-label")
+              .attr("style", `left:${500 * (positions[mid] + 1) - 57.59 / 2}px;`)
+              .attr("transform", `translate(${500 * (positions[mid] + 1)}, 0)`)
+              .attr("y", 30)
+              .attr("dy", ".35em")
+              .text(positions[mid])
+              .attr("fill", "#bababa")
+          return mid
+        }
+
+        const setGroups2 = (number) => {
+          d3.selectAll('.extratip').remove()
+          d3.selectAll(`.tip`).style('display', 'flex')
+          const target = combinations[number]
+          const { group, position, tp, wp, r } = target
+          // d3.select('#i06').attr("style", `display: none;`)
+          // d3.select('#i07').attr("style", `display: none;`)
+          // d3.select('#i08').attr("style", `display: none;`)
+          // d3.select('#i09').attr("style", `display: none;`)
+          d3.selectAll('.extraPoint').remove()
+          d3.selectAll('.extraLabel').remove()
+          group.forEach((g, i) => {
+            g.forEach((e, j) => {
+              d3.select(`#s0${e + 10}`)
+                .transition()
+                .duration(1000)
+                .style("left",
+                  `${500 * (position[i] + 1) - 57.59 * (g.length / 2 - j)}px`
+                )
+                .style("bottom",
+                  '20%'
+                )
+              d3.select(`#t0${e + 10}`)
+                .style("left", `${500 * (tp[i] + 1) - tipWidth / 2}px`)
+                .attr("transform", `translate(${500 * (tp[i] + 1)}, 0)`)
+              d3.select(`#wp${e + 10}`).node().innerHTML = `win. prob. ${wp[i]}`
+              d3.select(`#r${e + 10}`).node().innerHTML = `reward ${r[i]}`
+            })
+            if (g.length > 1) {
+              const tcolor = ['#d04a5c23', '#02798c33', '#ffc1073b', '#4a6bd023', '#bababa69']
+              const extrabox = d3.select('#box3')
+                .append("div")
+                .attr('class', 'tip extratip')
+                .style('background-color', tcolor[g[0] - 1])
+                .style('left', `${500 * (tp[i] + 1) - 90}px`)
+              extrabox.append("p")
+                .attr('class', "my-auto small lh-sm")
+                .node()
+                .innerHTML = `win. prob. ${wp[i]}`
+              g.forEach((n) => {
+                d3.selectAll(`#v${n + 10}`).remove()
+                d3.selectAll(`#l0${n + 10}`).remove()
+                extrabox.append("p")
+                  .attr('class', "my-auto small lh-sm")
+                  .node()
+                  .innerHTML = `reward of ${n}. ${r[n - 1]}`
+                d3.select(`#t0${n + 10}`).style('display', 'none')
+              })
+              const colors = {
+                1: "#d04a5b",
+                2: "#00798c",
+                3: "#edae49",
+                4: "#30638e",
+              }
+              line3.append("circle")
+                .attr("class", "extraPoint")
+                .attr("r", 10).attr("style", `left:${500 * (position[i] + 1)}px;`)
+                .attr("transform", `translate(${500 * (position[i] + 1)}, 0)`)
+                .attr("fill", colors[g[0]])
+              line3.append("text")
+                .attr("id", `l0${i + 6}`)
+                .attr("class", "extraLabel tick-label")
+                .attr("style", `left:${500 * (position[i] + 1)}px;`)
+                .attr("transform", `translate(${500 * (position[i] + 1)}, 0)`)
+                .attr("y", 30)
+                .attr("dy", ".35em")
+                .text(position[i])
+                .attr("fill", ["#d04a5b", "#00798c", "#edae49", "#30638e"][g[0] - 1])
+            }
+          })
+          svg15
+            .select('img')
+            .attr("src", `./img/aix_doll-05-${number === 5 ? '2' : number}.svg`)
+          if (number === 5) {
+            svg13
+              .select('img')
+              .attr("src", `./img/aix_doll-03-best.svg`)
+            svg14
+              .select('img')
+              .attr("src", `./img/aix_doll-04-best.svg`)
+          } else {
+            svg13
+              .select('img')
+              .attr("src", `./img/aix_doll-03.svg`)
+            svg14
+              .select('img')
+              .attr("src", `./img/aix_doll-04.svg`)
+          }
+          justifyTips()
+        }
+
+        const drag3 = d3.drag()
+          .on('start', function(){
+            d3.select(this)
+              .select('img')
+                .attr("src", `./img/aix-doll5-ani.gif`)
+            })
+          .on('drag', function(){
+            d3.select(this)
+              .attr("style",
+                `left:${d3.event.x-25}px;bottom:${-d3.event.y+100}px;cursor: grab;`
+              )
+            })
+          .on('end', function(){
+            // const target = (d3.event.x-25 - 500) / 500
+            // const pivot = setPosition3(positions, (d3.event.x-25) / 500 - 1)
+            // d3.select(this)
+            //   .select('img')
+            //   .attr("src", `./img/aix_doll-05.svg`)
+            setGroups2(5)
+          })
+        svg15.call(drag3)
+        const reset3 = () => setPosition3(positions, 0.2)
+        // d3.select('#i01').on("click", () => setGroups(1))
+        // d3.select('#i02').on("click", () => setGroups(2))
+        // d3.select('#i03').on("click", () => setGroups(3))
+        // d3.select('#i04').on("click", () => setGroups(4))
+        // d3.select('#best').on("click", () => setGroups(5))
+        // d3.select('#reset2').on("click", reset2)
+
+        // reset2()
+        setGroups2(5)
+        const x3 = d3.scaleLinear()
+            .domain([-1, 1])
+            .range([0, 1000])
+        const axis3 = line3.call(d3.axisBottom(x3))
+        const ticks3 = axis3.selectAll(".tick")
+        ticks3.each(function() { d3.select(this).append("circle").attr("r", 5).attr("fill", "black"); })
+        ticks3.selectAll("line").remove()
+      </script>
+</div>
+
+
+<div class="container mt-lg">
+  <section id="group_join">
+  <!-- Group box 1 -->  
+    <h2>III. Group Joining</h2>
+    <h3>1D Representation</h3>
+    <p id="1D_representation" class="inline-math">
+      To better illustrate the computation of a winning probability and the reward for each agent, it is a good 
+      idea to first consider 1D space. Let us consider the opinions and beliefs to be in \([-1, 1]\subset\mathbb{R}\). 
+      These vectors and the dynamics of changes can be represented in a real line. The constraint that 
+      \(z_i,s_i\in [-1, 1]\) has a 2-norm bounded by 1 for each \(i\) clearly holds. \(M^{\top}\) represents the transpose of matrix \(M\).
+	  </p>
+    <p class="inline-math">
+      Note that changes in the opinion of an agent affect not only its own winning probability but also 
+      those of the others. This is intuitively true when competitions in the real world are considered. This observation 
+	    is captured in our definition of the winning probability. The changes in the opinion of a 
+      single agent will contribute to the denominator of the formula. 
+    </p>
+    <p class="inline-math">
+      For example, consider the following figure. There are five agents \(v_1,v_2,v_3,v_4\), and \(v_5\) such that each agent is 
+      regarded as a group individually. Assume their beliefs are \(s_1 = -0.8, s_2 = 1.0, s_3 = 0.1, s_4 = -0.1\), and \(s_5 = 0.2,\) 
+      respectively. It is assumed that \(z_i = s_i\) for each \(i\) to simplify our discussion. 
+      By keeping the opinions \(z_1,z_2,z_3\), and \(z_4\) of \(v_1,v_2,v_3\), and \(v_4\), respectively, fixed and altering the opinion 
+      \(z_5\) from \(-1\) to \(1\), the variations in the winning probabilities and the rewards of all the agents can be observed. 
+      After obtaining the winning probabilities, their rewards can be derived as well. 
+    </p>
+
+	<!-- Interactive frame -->
+	  <div class="framed" style="margin-bottom: 20px">
+      <div class="inside">
+        <div class="eyebrow">
+          Drag \(v_5\) (agent No. 5) to see the changes in the winning probabilities 
+          of each agent. Also observe the changes in the reward of each agent. You should be 
+          able to see that moving \(v_5\) to the left is more beneficial to agent \(v_1\), and 
+          moving \(v_5\) to the right is more beneficial to agent \(v_2\).
+        </div>
+        <!--  <div style="height: 42vh;">-->
+          <div class="d-flex w-100">
+            <h4 class="ps-3 pt-3 text-start">Policy Dimension = 1</h4>
+            <span class="pe-3 pb-2 ms-auto mt-auto h-25">
+              <button id="reset" class="btn btn-secondary py-1">RESET</button>
+            </span>
+          </div>
+          <div class="Group-box pb-3">
+            <div class="d-flex flex-column px-3 justify-content-center">
+              <div id="box1" class="d-flex mx-auto position-relative" style="width: 1000px">
+                <div id="t01" class="tip" style="background-color: #d04a5c23;">
+                  <p id="wp1" class="my-auto lh-sm">win prob.</p>
+                  <p id="r1" class="my-auto small">reward</p>
+                </div>
+                <div id="t02" class="tip" style="background-color: #02798c33;">
+                  <p id="wp2" class="my-auto lh-sm">win prob.</p>
+                  <p id="r2" class="my-auto small">reward</p>
+                </div>
+                <div id="t03" class="tip" style="background-color: #ffc1073b;">
+                  <p id="wp3" class="my-auto lh-sm">win prob.</p>
+                  <p id="r3" class="my-auto small">reward</p>
+                </div>
+                <div id="t04" class="tip" style="background-color: #4a6bd023;">
+                  <p id="wp4" class="my-auto lh-sm">win prob.</p>
+                  <p id="r4" class="my-auto small">reward</p>
+                </div>
+                <div id="t05" class="tip" style="background-color: #bababa69;">
+                  <p id="wp5" class="my-auto lh-sm">win prob.</p>
+                  <p id="r5" class="my-auto small">reward</p>
+                </div>
+                <!-- Doll 1 -->
+                <span id="s01" class="position-absolute">
+                  <img src="./img/aix_doll-01.svg" style="transition:'left .3s ease-in'; height: 100px;" />
+                </span>
+                <!-- Doll 2 -->
+                <span id="s02" class="position-absolute">
+                  <img src="./img/aix_doll-02.svg" style="transition:'left .3s ease-in'; height: 100px;" />
+                </span>
+                <!-- Doll 3 -->
+                <span id="s03" class="position-absolute">
+                  <img src="./img/aix_doll-03.svg" style="transition:'left .3s ease-in'; height: 100px;" />
+                </span>
+                <!-- Doll 4 -->
+                <span id="s04" class="position-absolute">
+                  <img src="./img/aix_doll-04.svg" style="transition:'left .3s ease-in'; height: 100px;" />
+                </span>
+                <!-- Doll 5 -->
+                <span id="s05" class="position-absolute" style="cursor: grab; height: 100px;">
+                  <span
+                    class="position-absolute badge rounded-pill bg-secondary"
+                    style="bottom:-80%"
+                  >
+                    Drag Me
+                  </span>
+                  <img src="./img/aix_doll-05.svg" style="height: 100px" />
+                </span>
+                <!-- Line-chart -->
+                <svg class="pt-6 w-100 overflow-visible" id="Viz_area" style="height:180px; width:250px;"></svg>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex px-3">
+            <Card class="w-100 bg-grey rounded py-3 px-4 h5 lh-lg mb-0" style="align-items: center; flex-flow: wrap;">
+              <img src="./img/aix_doll-05.svg" style="height: 50px; width: 50px" class="ps-3" />
+              &emsp; \(v_5\) &ensp; is considering joining one of the currently existing groups or remaining alone.
+            </Card>
+          </div>
+          <div class="caption">
+            <b>Figure 3:</b> 
+            Introducing the winning probabilities and rewards of agents in the 1D representation. 
+          </div>
+        </div>
+    </div>
+	  <p class="inline-math">
+      In this example, the utility that \(v_1\) brings to all the agents is 
+      $$\langle z_1, s_1+s_2+s_3+s_4+s_5\rangle = (-0.8)\cdot (-0.8-0.1+0.1+0.2+1) = -0.32.$$
+      Similarly, there are \(v_2, v_3, v_4,\) and \(v_5\) bringing utility \(0.4, 0.04, -0.04,\) and \(0.08\) to all the agents, respectively. 
+      Then, we have that the winning probability \(p_1\) of agent \(v_1\) is 
+	  $$\frac{e^{-0.32}}{e^{-0.32}+e^{0.4}+e^{0.04}+e^{-0.04}+e^{0.08}} = 0.1369.$$
+      Similarly, one can derive \(p_2 = 0.2813, p_3 = 0.1963, p_4 = 0.1812\), and \(p_5 = 0.2043\). Thus, the reward \(r_1\) of agent \(v_1\) is 
+      $$\begin{eqnarray*}
+      r_1 &=& p_1\cdot \langle z_1, s_1\rangle + p_2\cdot \langle z_2, s_1\rangle + p_3\cdot \langle z_3, s_1\rangle + 
+      p_4\cdot \langle z_4, s_1\rangle + p_5\cdot \langle z_5, s_1\rangle\\
+      &=& 0.1369\cdot (-0.8\cdot (-0.8)) + 0.2813\cdot (1\cdot (-0.8))+ 0.1963\cdot (0.1\cdot (-0.8)) \\
+      & & + 0.1812\cdot ((-0.1)\cdot (-0.8)) + 0.2043\cdot (0.2\cdot (-0.8))\\ 
+      &=& -0.1713.
+      \end{eqnarray*}$$ 
+      Thus, the reward for agents \(v_2, v_3, v_4,\) and \(v_5\) can be similarly obtained.
+    </p>
+  <!-- Group box 2 -->
+    <h3>Group Joining: Myopic Best Responses</h3>
+    <p class="inline-math">
+      A type of best response is considered for each agent in this section. Assume that agent \(v_i\) decides to join \(G_j\), for which 
+      $$j = \arg\max_{\ell} p_{\ell}(\tau)\cdot \langle \bar{g}_{\ell}, s_i\rangle.$$ This strategy is the so-called <i>myopic best response</i>. 
+      Namely, an agent joins a group by considering not only its winning probability but also the utility that the agent can get 
+      from the group before joining. The agents do not consider the next and future states, thus the name &ldquo;myopic&rdquo; best response.
+    </p>
+    <p>
+      In Fig. 4, the changes in the group opinions can be observed due to agent \(v_5\)'s group-joining strategy. 
+	    In addition, a stable state is the final outcome after each agent performs its myopic best response in parallel iteratively. 
+    </p>
+    <div class="framed" style="margin-bottom: 20px">
+      <div class="inside">
+        <div class="eyebrow">
+        Drag \(v_5\) (agent No. 5) to see the changes in the winning probabilities and reward of 
+        each agent. Moreover, try to drag \(v_5\) to be near any agent. You will find 
+        a circled \(\oplus\) operator above the agent. Click it, and then you can see the two agents are grouped 
+        with a new group opinion and updated winning probabilities and rewards of all groups. Dragging \(v_5\) to 
+        positions elsewhere can dismiss this group. Click the button &ldquo;Myopic Best Responses for All,&ldquo; 
+        and then you will see the final outcome after the iterations of parallel group joining actions. By clicking the 
+        button &ldquo;RESET,&ldquo; you can restore the state to the very beginning.
+        </div>
+      <!--<div style="height: 42vh;"> -->
+        <div class="d-flex w-100 pt-4">
+          <h4 class="ps-3 pt-3 text-start">Myopic Best Responses / Manual Joining</h4>
+          <span class="pe-2 pb-2 ms-auto mt-auto h-25">
+            <button id="best" class="btn btn-ieee py-1">
+              Myopic Best Responses for All
+            </button>
+          </span>
+          <span class="pe-3 pb-2 mt-auto h-25">
+            <button id="reset2" class="btn btn-secondary py-1">
+              RESET
+            </button>
+          </span>
+        </div>
+
+        <div class="Group-box pb-3">
+          <div class="d-flex flex-column px-3 justify-content-center">
+            <div id="box2" class="d-flex mx-auto position-relative" style="width: 1000px">
+              <div id="t06" class="tip" style="background-color: #d04a5c23;">
+                <p id="wp6" class="my-auto lh-sm">win prob.</p>
+                <p id="r6" class="my-auto small">reward</p>
+              </div>
+              <div id="t07" class="tip" style="background-color: #02798c33;">
+                <p id="wp7" class="my-auto lh-sm">win prob.</p>
+                <p id="r7" class="my-auto small">reward</p>
+              </div>
+              <div id="t08" class="tip" style="background-color: #ffc1073b;">
+                <p id="wp8" class="my-auto lh-sm">win prob.</p>
+                <p id="r8" class="my-auto small">reward</p>
+              </div>
+              <div id="t09" class="tip" style="background-color: #4a6bd023;">
+                <p id="wp9" class="my-auto lh-sm">win prob.</p>
+                <p id="r9" class="my-auto small">reward</p>
+              </div>
+              <div id="t010" class="tip" style="background-color: #bababa69;">
+                <p id="wp10" class="my-auto lh-sm">win prob.</p>
+                <p id="r10" class="my-auto small">reward</p>
+              </div>
+
+              <div id="s06" class="position-absolute">
+                <div id="i01" class="plus w-100 pb-2" style="display: none">
+                  <i
+                    class="fa-solid fa-circle-plus mx-auto text-doll-red"
+                    style="cursor: pointer;"
+                    title="Join"
+                  >
+                  </i>
+                </div>
+                <img src="./img/aix_doll-01.svg" style="transition:'left .3s ease-in'; height: 100px" />
+              </div>
+
+              <div id="s07" class="position-absolute">
+                <div id="i02" class="plus w-100 pb-2" style="display: none">
+                  <i
+                    class="fa-solid fa-circle-plus mx-auto text-doll-green"
+                    style="cursor: pointer;"
+                    title="Join"
+                  >
+                </i>
+                </div>
+                <img src="./img/aix_doll-02.svg" style="transition:'left .3s ease-in'; height: 100px" />
+              </div>
+
+              <div id="s08" class="position-absolute">
+                <div id="i03" class="plus w-100 pb-2" style="display: none">
+                  <i
+                    class="fa-solid fa-circle-plus mx-auto text-doll-yellow"
+                    style="cursor: pointer;"
+                    title="Join"
+                  >
+                  </i>
+                </div>
+                <img src="./img/aix_doll-03.svg" style="transition:'left .3s ease-in'; height: 100px" />
+              </div>
+
+              <div id="s09" class="position-absolute">
+                <div id="i04" class="plus w-100 pb-2" style="display: none">
+                  <i
+                    class="fa-solid fa-circle-plus mx-auto text-doll-blue"
+                    style="cursor: pointer;"
+                    title="Join"
+                  >
+                </i>
+                </div>
+                <img src="./img/aix_doll-04.svg" style="transition:'left .3s ease-in'; height: 100px;" />
+              </div>
+
+              <span id="s010" class="position-absolute" style="cursor: grab;">
+                <span class="position-absolute badge rounded-pill bg-secondary" style="bottom:-80%">Drag Me</span>
+                <img src="./img/aix_doll-05.svg" style="height: 100px;" />
+              </span>
+              <svg class="pt-6 w-100 overflow-visible" id="Viz_area2" style="height: 180px; width: 250px"></svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="caption">
+          <b>Figure 4:</b>
+            Myopic best responses and manual joining illustration.
+        </div>
+      </div>
+    </div>
+	<p id="group_explanation">
+    Suppose that \(v_5\) joins \(v_2\) to form a new group, say \(G_{2,5}\). Then, the formation results in 
+    four distinct groups:  
+    \(G_1 = \{v_1\}\), \(G_{2,5} = \{v_2, v_5\}\), \(G_3 = \{v_3\}\), and \(G_4 = \{v_4\}\), with the group 
+	opinions \(g_1 = -0.8\), \(g_{2,5} = (0.2+1.0)/2 = 0.6\), \(g_3 = 0.1\), and \(g_4 = -0.1\), respectively. 
+    Using the same approach to calculate the winning probabilities of these groups, 
+    the rewards for all agents can be derived. 
+	</p>
+	
+	<div class="static">
+	<figure class="text-center">
+		<img src="img/group_merging.png" alt="group_merging" style="margin: auto auto; width: 680px; display: block">
+		<figcaption><strong>Figure 5:</strong> Join \(v_5\) with \(v_2\) to form a group.</figcaption>
+	</figure>
+	</div>
+    <!-- Group box 3 -->
+    <p>
+      In Fig. 6, one can check that the final stable state is a pure-strategy Nash equilibrium. That is, 
+      the dynamics of group-joining strategies of all the agents lead to a pure-strategy Nash equilibrium.  
+    </p>
+    <div class="framed" style="margin-bottom: 20px">
+      <div class="inside">
+        <!--<div style="height: 42vh;"> -->
+		<div class="eyebrow">
+      Hover your mouse over the grouped agents to see the myopic rewards of the two options for group joining. 
+      You may want to drag an agent, for example, \(v_5\), to see if you can make it change its mind. 
+      Observe whether it will have the incentive to change its mind. 
+		</div>
+    <div class="d-flex w-100 pt-4">
+      <h4 class="ps-3 pt-3 text-start">The pure-strategy Nash equilibrium</h4>
+    </div>
+
+    <div class="Group-box pb-3">
+      <div class="d-flex flex-column px-3 justify-content-center">
+        <div id="box3" class="d-flex mx-auto position-relative" style="width: 1000px">
+          <div id="myopic" class="d-flex position-absolute" style="width: 1000px; top: 230px;">
+            <div class="mx-auto d-flex" style="width: 600px">
+              <span id="leftTip" class="p-3 small rounded"></span>
+              <span id="rightTip" class="ms-auto p-3 small rounded"></span>
+            </div>
+          </div>
+          <div id="t011" class="tip" style="background-color: #d04a5c23;">
+            <p id="wp11" class="my-auto small lh-sm">win prob.</p>
+            <p id="r11">reward</p>
+          </div>
+          <div id="t012" class="tip" style="background-color: #02798c33;">
+            <p id="wp12" class="my-auto small lh-sm">win prob.</p>
+            <p id="r12">reward</p>
+          </div>
+          <div id="t013" class="tip" style="background-color: #ffc1073b;">
+            <p id="wp13" class="my-auto small lh-sm">win prob.</p>
+            <p id="r13">reward</p>
+          </div>
+          <div id="t014" class="tip" style="background-color: #4a6bd023;">
+            <p id="wp14" class="my-auto small lh-sm">win prob.</p>
+            <p id="r14">reward</p>
+          </div>
+          <div id="t015" class="tip" style="background-color: #bababa69;">
+            <p id="wp15" class="my-auto small lh-sm">win prob.</p>
+            <p id="r15">reward</p>
+          </div>
+
+          <div id="s011" class="position-absolute">
+            <div id="i06" class="plus w-100 pb-2" style="display: none">
+              <i
+                class="fa-solid fa-circle-plus mx-auto text-doll-red"
+                style="cursor: pointer;"
+                title="Join"
+              >
+              </i>
+            </div>
+            <img src="./img/aix_doll-01.svg" style="transition:'left .3s ease-in'; height: 100px" />
+          </div>
+
+          <div id="s012" class="position-absolute">
+            <div id="i07" class="plus w-100 pb-2" style="display: none">
+              <i
+                class="fa-solid fa-circle-plus mx-auto text-doll-green"
+                style="cursor: pointer;"
+                title="Join"
+              >
+            </i>
+            </div>
+            <img src="./img/aix_doll-02.svg" style="transition:'left .3s ease-in'; height: 100px" />
+          </div>
+
+          <div id="s013" class="position-absolute">
+            <div id="i08" class="plus w-100 pb-2" style="display: none">
+              <i
+                class="fa-solid fa-circle-plus mx-auto text-doll-yellow"
+                style="cursor: pointer;"
+                title="Join"
+              >
+              </i>
+            </div>
+            <img src="./img/aix_doll-03.svg" style="transition:'left .3s ease-in'; height: 100px" />
+          </div>
+
+          <div id="s014" class="position-absolute">
+            <div id="i09" class="plus w-100 pb-2" style="display: none">
+              <i
+                class="fa-solid fa-circle-plus mx-auto text-doll-blue"
+                style="cursor: pointer;"
+                title="Join"
+              >
+            </i>
+            </div>
+            <img src="./img/aix_doll-04.svg" style="transition:'left .3s ease-in'; height: 100px;" />
+          </div>
+
+          <span id="s015" class="position-absolute" style="cursor: grab;">
+            <span class="position-absolute badge rounded-pill bg-secondary" style="bottom:-80%">Drag Me</span>
+            <img src="./img/aix_doll-05.svg" style="height: 100px;" />
+          </span>
+          <svg class="pt-6 w-100 overflow-visible" id="Viz_area3" style="height: 180px; width: 250px"></svg>
+        </div>
+      </div>
+    </div>
+		<div class="d-flex px-3">
+      <Card class="d-flex w-100 bg-grey rounded py-3 px-4 h5 lh-lg mb-0" style="align-items: center; flex-flow: wrap;">
+        <div style="width: 5%">
+          <i class="fa-solid fa-lightbulb text-secondary my-auto h2"></i>
+        </div>
+        <div style="width: 95%">
+          <h5 class="ps-2 lh-md">
+            No one wants to deviate from their current group to the other group because the expected gain cannot be better. 
+            This is a pure-strategy Nash equilibrium of the &ldquo;game.&rdquo;
+          </h5>
+        </div>
+      </Card>
+    </div>
+	  <div class="caption">
+      <b>Figure 6:</b>
+      Illustration of a pure-strategy Nash equilibrium.
+    </div>
+  </div>
+</div>
+</section>
+</div>
+
+
+<div class="container mt-lg">
+  <!-- Anchor ID -->
+  <section id="online_learning">
+    <h2>IV. Opinion Updates by Online Gradient Ascent</h2>
+    <h3>2D Representation and the Algorithm</h3>
+	  <p class="inline-math"> 
+      In this section, the focus is the situation in which each agent tries to maximize its own reward by 
+      &ldquo;changing its opinion&rdquo; without deviating from the group to which it belongs to. 
+      Agents' opinions are represented as points in 
+      \(\mathcal{K} = \{x\in [-1, 1]^2: \|x\|_2\leq 1\}\subset\mathbb{R}^2\). Consider the following 
+      figure as an example. There are 10 agents with opinions which are initially 
+      their beliefs: $$
+      \begin{align*}
+      &z_1 = (0.3757, -0.8405),  & z_2 = (0.7536, -0.5736),\\
+      &z_3 = (0.8314, -0.5334),  & z_4 = (-0.4106, -0.1695),\\
+      &z_5 = (-0.4207, -0.4805), & z_6 = (-0.4853, -0.0533),\\
+      &z_7 = (-0.6936, -0.4227), & z_8 = (-0.4561, -0.1088),\\
+      &z_9 = (-0.6769, -0.2457), & z_{10} = (-0.6488, -0.4109).
+      \end{align*}
+      $$
+      Two scenarios will be considered: Either the 10 agents are regarded as 10 different groups, 
+      or they are grouped as \(\{\textcolor{red}{v_1,v_2,v_3}\}\), \(\{\textcolor{DarkGreen}{v_4,v_5,v_6}\}\), 
+      \(\{\textcolor{blue}{v_7,v_8}\}\), and \(\{\textcolor{Goldenrod}{v_9, v_{10}}\}\).
+      The 2-norm constraint, \(\|z_i\|_2, \|s_i\|_2\leq 1\), correlates the dimensions, and 
+      projection of the opinion is required if the constraint is not satisfied. 
+	  </p>
+	  
+	  <div class="static">
+	  <figure class="text-center">
+		<img src="img/2D_representation.png" alt="2D_representatino" style="margin: auto auto; width: 650px; display: block">
+		<figcaption>
+        <strong>Figure 7:</strong> 
+        2D Representation of Agents' Opinions.
+		</figcaption>
+	  </figure>
+	  </div>
+	  
+	  <p class="inline-math">
+      Below, the online gradient ascent algorithm is introduced. The pseudo-code is given in Fig. 8. Suppose that 
+      the agents update their opinions in \(T\) iterations. At each iteration, agents update 
+      their opinions in a decentralized way. In each iteration, each agent first observes the reward resulting from 
+      the previous iteration and then computes the &ldquo;gradient&rdquo; (the symbol \(\nabla\)), which is the first derivative 
+      with respect to its opinion and can be regarded as &ldquo;slopes&rdquo; in each dimension of the feasible space. 
+      Then, each agent updates its opinion by adding the gradient multiplied by \(\eta\), which is 
+      called the learning rate or the step size. Roughly speaking, the gradient shows the direction of improving 
+      an agent's reward, and the learning rate decides how far the updating step should be made in such a direction. 
+	    The number of total iterations \(T\) is set sufficiently large for the agents running the algorithm.  
+	    Whenever each agent finds that its updated opinion is exactly the same as or extremely close (by setting a small constant as a threshold) 
+	    to that in the previous iteration, none of the agents can make any improvement, and thus, an equilibrium is reached. 
+	  </p>
+	  
+	  <figure class="text-center">
+      <img src="img/gradient_ascent_algo.svg" alt="AlgorithmGA" style="margin: auto auto; width: 520px; display: block">
+      <figcaption>
+        <strong>Figure 8:</strong> 
+        Pseudo-code of the Multi-Agent Online Gradient Ascent Algorithm.
+      </figcaption>
+	  </figure>
+	  
+	  <p class="inline-math">
+      At line 4 of the algorithm, $$
+      \Pi_{\mathcal{K}}(x) = \left\{
+			\begin{array}{ll}
+			x & \mbox{ if } \|x\|_2\leq 1\\
+			\frac{x}{\|x\|_2} & \mbox{ otherwise}
+			\end{array}
+			\right.$$
+      is a simple &ldquo;projection&rdquo; that projects \(x\) onto the feasible set \(\mathcal{K}\), 
+      if it is outside \(\mathcal{K}\), by dividing its 2-norm. Note that, in this article, 
+		  constant learning rates are considered to simplify our discussion. In fact, learning rates can be set adaptively and decay over time. 	  
+	  </p>
+	  <h4>Regularization</h4>
+	  <p class="inline-math">
+      Recall that each agent has its own belief. An agent can be benefited by maximizing its own reward; however, it 
+      may not be as &ldquo;happy&rdquo; as it assumed at the beginning. Thus, it is interesting to consider a 
+      constraint to make the agent update the opinion in a more controlled way. The concept called &ldquo;regularization&rdquo; 
+      is introduced. The reward function for agent \(v_i\), including the regularizer, is defined as 
+      $$r_i(\tau) = \sum_{j=1}^m p_j(\tau)\langle s_i, \bar{g}_j\rangle - \|z_i-s_i\|_2^2.$$ 
+	    The idea is inspired by online mirror descent [<a href="#ref_14">14</a>], in which a locality constraint 
+	    is appended to the object to force the algorithm to iteratively update the solution in a &ldquo;moderate&rdquo; way.
+      In our application, reward maximization is considered, and the regularization term is \(-\|z_i-s_i\|_2^2\). 
+	    As \(-\|z_i-s_i\|_2^2\) is always non-positive, an agent will be forced to consider &ldquo;not being too far 
+      from its belief.&rdquo; Our experimental illustrations show that such regularization helps the 
+      game converge to a stable state where the difference between the opinion and belief of each agent is moderate. 
+	  </p>
+	  
+	  <p class="inline-math">
+	  Our multi-agent online gradient ascent is exemplified as follows. Let us consider the scenario in which the 10 agents 
+	  \(v_1,v_2,\ldots,v_{10}\) are grouped into four groups, that is, \(G_1 = \{v_1,v_2,v_3\}\), \(G_2 = \{v_4,v_5,v_6\}\), 
+	  \(G_3\{v_7,v_8\}\), and \(G_4\{v_9, v_{10}\}\). Regularization is considered in the reward, and the focus is on the first iteration; 
+	  let \(\tau\) be the initial state. 
+	  Initially, \(z_i = s_i\) for each \(i\in \{1,2,\ldots, 10\}\). 
+	  The groups' opinions are \(\bar{g}_1 = (0.6536, -0.6492)\), \(\bar{g}_2 = (-0.4389, -0.2344)\), \(\bar{g}_3 = (-0.5748, -0.2658)\), 
+	  and \(\bar{g}_4 = (-0.6629, -0.3283)\). By computing the inner product of each group opinion and each agent's belief, it is obtained 
+	  \(e^{n_1\langle \bar{g}_1, \sum_{i=1}^{10}s_i\rangle} = 48.6975\), \(e^{n_2\langle \bar{g}_2, \sum_{i=1}^{10}s_i\rangle} = 165.8341\), 
+	  \(e^{n_3\langle \bar{g}_3, \sum_{i=1}^{10}s_i\rangle} = 63.1695\), and \(e^{n_4\langle \bar{g}_4, \sum_{i=1}^{10}s_i\rangle} = 140.9458\). 
+	  Therefore, the winning probabilities of \(G_1\), \(G_2\), \(G_3\), and \(G_4\) are 
+	  $$
+	  \begin{eqnarray*}
+	  p_1(\tau) &=& 48.6975/418.6469 = 0.1163,\\
+	  p_2(\tau) &=& 165.8341/418.6469 = 0.3961,\\
+	  p_3(\tau) &=& 63.1695/418.6469 = 0.1509,\\ 
+	  p_4(\tau) &=& 140.9458/418.6469 = 0.3367 
+	  \end{eqnarray*}
+	  $$
+	  respectively. Then, the reward of each agent \(v_i\) can be computed. For example, 
+	  consider the two agents \(v_1\) and \(v_7\). Note that \(z_i = s_i\) for each \(i\) initially, so the regularization term has a value 
+	  of 0 for each \(i\). The following is derived:  
+	  $$\begin{eqnarray*}
+	  r_1(\tau) &=& \sum_{j=1}^4 p_j(\tau)\langle s_1, \bar{g}_j\rangle = 0.1149, \\ 
+	  r_7(\tau) &=& \sum_{j=1}^4 p_j(\tau)\langle s_7, \bar{g}_j\rangle = 0.4176. 
+	  \end{eqnarray*}$$
+	  The gradients \(\nabla_{z_i}r_i(\tau)\) can be computed using a PyTorch program. For example, one has \(\nabla_{z_1}r_1(\tau) = \) \((-0.1540, -0.3859)\) and \(\nabla_{z_7}r_7(\tau) = \) \((-0.1935, -0.3279)\). 
+	  By setting the learning rate \(\eta = 0.1\), it can be derived that the updated opinions of \(v_1\) and \(v_7\) are \((0.3757, -0.8405)+0.1\cdot (-0.1540, -0.3859)\)
+	  \( = (0.3603, -0.8791)\) and \((-0.6936, -0.4227)+0.1\cdot (-0.1935, -0.3279)\) \( = (-0.7130, -0.4555)\), respectively. As their 2-norms are smaller 
+	  than 1, no projection is needed. 
+	  
+	  </p>
+	  
+	 <h4>Computational Complexity of the Algorithm</h4>
+	 <p class="inline-math">
+	 Since the algorithm is decentralized, the \(n\) agents update their own opinions in parallel. Below, it is argued that 
+	 such an update for each agent in one iteration takes \(O(kn)\) time; thus the total time is \(O(Tkn)\) over \(T\) 
+	 iterations. Note that it is still open whether our algorithm converges to a stable state within \(T\) iterations. So far, 
+   a fixed value of \(T\) (e.g., \(T=100\)) is used in our experiments. 
+	 </p>
+	 <p class="inline-math">
+	 To compute the reward \(r_i(\tau)\) for agent \(v_i\) in an iteration, it requires computing the 
+	 winning probability \(p_i(\tau)\) first, which takes \(O(kn)\) time overall by computing all inner products of the existing 
+	 groups' opinions and each agent's belief. 
+	 Note that, each group opinion \(\bar{g}_j\) can be obtained in \(O(n_jk)\) time, and then it takes \(O(k)\) time to compute the 
+	 inner product of group opinion \(g_j\) and agent \(i\)'s belief \(s_i\). Thus, by \(\sum_{j=1}^m n_j = n\), it takes 
+	 \(\sum_{j=1}^m (O(n_jk)+O(k)) = O(kn)\) time to compute the expected utility, 
+	 in which \(m\) is the number of existing groups. The regularization term requires only \(O(k)\) time to compute the norm 
+	 of the difference between an agent's opinion and belief. 
+	 </p>
+	 <p class="inline-math">
+	 To update opinion \(z_i\), the gradient \(\nabla_{z_i}r_i(\tau)\) needs to be computed. 
+	 Suppose that \(v_i\in G_{\ell}\), then one can have 
+	 $$
+	 \nabla_{z_i}r_i(\tau) = p_{\ell}(\tau)\cdot \frac{s_i}{n_{\ell}} + \sum_{j\in [m], n_j> 0} \langle s_i, \bar{g}_j\rangle 
+	 \nabla_{z_i} p_j(\tau) - 2(z_i-s_i), 
+	 $$
+	 where \(\nabla_{z_i} p_j(\tau)=\frac{-U_{j}U_{\ell}\sum_{v_r\in V}s_r}{U_{all}^2}\) for \(j\neq\ell\), 
+	 \(\nabla_{z_i} p_{\ell}(\tau)=\left(\frac{U_{\ell}}{U_{all}}-\frac{U_{\ell}^2}{U_{all}^2}\right)\sum_{v_r\in V}s_r\), 
+	 and note \(U_{all}:= \sum_{h\in[m], n_h> 0}e^{n_h\langle \bar{g}_h, \sum_{v_r\in V}s_r\rangle}\) and  
+	 \(U_{j}:= e^{n_j\langle \bar{g}_j, \sum_{v_r\in V}s_r\rangle}\) for each \(j\). Since it takes 
+	 \(O(kn)\) time to compute \(U_{all}\) and all \(U_{j}\) for \(j\in [m], n_j\neq 0\), it is derived that all 
+	 \(\nabla_{z_i} p_j(\tau)\) can be computed in \(O(kn)\) time for \(j\in [m], n_j> 0\). Thus, \(\nabla_{z_i}r_i(\tau)\) can be 
+	 computed in \(O(kn)\) time as well. The projection, which is performed if necessary, of the updated opinion \(z_i\)
+	 takes additional \(O(k)\) time. Thus, an agent takes \(O(kn)\) time to update its opinion in one iteration.
+	 </p>
+
+	<h3>
+      Initially Ungrouped Agents: Reward with and without Regularization
+    </h3>
+    <p>
+      In this section, 10 agents are regarded as 10 individual groups in 10 different colors. 
+      The convergence results of the multi-agent gradient ascent with regularization are compared with those without regularization.
+    </p>
+		
+		<!-- HERE -->
+		<div class="framed" style="margin-bottom: 20px">
+        <div class="inside">
+		<div class="eyebrow">
+      Choose how fast you would like to see the online gradient ascent algorithm update the agents' opinions. 
+      The left side considers regularization, while the right side does not. 
+      The videos can be paused, dragged, and resumed manually. The playing speed can also be adjusted. 
+		</div>
+		<!-- VIDEO box -->
+      <h4 class="ps-3 pt-5">Initially 10 agents regarded as 10 groups</h4>
+      <div class="Group-box pb-5">
+        <div class="p-3" style="height:62%">
+          <Row class="d-flex">
+            <Col xs="6" class="d-flex flex-column flex-fill my-2 justify-content-center">
+              <video
+                autoplay
+                controls
+                id="video3"
+                class="mx-auto"
+                style="transition:'left .3s ease-in'; height: 230px; width: 350px;"
+                src="img/v5.mp4"
+                type="video/mp4"
+              >
+              </video>
+              <div class="d-flex flex-column mx-auto">
+                <div class="form-check pt-5">
+                  <input
+                    class="form-check-input pt-3"
+                    type="radio"
+                    name="flexRadioDefault7"
+                    id="flexRadio_video3_v5"
+                    onchange="replaceVideo('#video3', 'v5')"
+                    checked
+                  >
+                  <label class="form-check-label h6 text-end" for="flexRadio_video3_v5">
+                    Learning rate 0.1
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="flexRadioDefault7"
+                    id="flexRadio_video3_v6"
+                    onchange="replaceVideo('#video3', 'v6')"
+                  >
+                  <label class="form-check-label h6 text-end" for="flexRadio_video3_v6">
+                    Learning rate 0.01
+                  </label>
+                </div>
+              </div>
+            </Col>
+
+            <Col xs="6" class="d-flex flex-column flex-fill my-2 mx-auto justify-content-center">
+              <video
+                autoplay
+                controls
+                id="video4"
+                class="mx-auto"
+                style="transition:'left .3s ease-in'; height: 230px; width: 350px;"
+                src="img/v7.mp4"
+                type="video/mp4"
+              >
+              </video>
+              <div class="d-flex flex-column mx-auto">
+                <div class="form-check pt-5">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="flexRadioDefault8"
+                    id="flexRadio_video4_v7"
+                    onchange="replaceVideo('#video4', 'v7')"
+                    checked
+                  >
+                  <label class="form-check-label h6 text-end" for="flexRadio_video4_v7">
+                    Learning rate 0.1
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="flexRadioDefault8"
+                    id="flexRadio_video4_v8"
+                    onchange="replaceVideo('#video4', 'v8')"
+                  >
+                  <label class="form-check-label h6 text-end" for="flexRadio_video4_v8">
+                    Learning rate 0.01
+                  </label>
+                </div>
+              </div>
+            </Col>
+          </Row>
+        </div>
+      </div>
+			<div class="caption"><b>Figure 9:</b>The dynamics of opinion update with the online gradient ascent for ungrouped agents. 
+			The left side considers regularization, while the right side does not. With a slight abuse of notation, 
+			the \(x\)-dimension and the \(y\)-dimension in the figures denote the first dimension of opinions and beliefs, respectively.</div>
+		</div>
+		</div>
+		<p> 
+      It is found that, for example, agent \(v_1\) moves toward the bottom-left direction in the feasible space, even though the agent 
+      behaves more conservatively with regularization (see the figure on the left side). Moreover, the learning rate, either 0.1 
+      or 0.01, seems to lead to final convergence, although the larger learning rate gives the agents faster speed of convergence 
+      in this example. 
+		</p>
+		<h3>
+      Initially Grouped Agents: Reward with and without Regularization
+    </h3>
+    <p>
+      In this section, the 10 agents are regarded as four groups in four different colors. 
+      The convergence results of the multi-agent gradient ascent with regularization are compared with those without regularization.
+    </p>
+		
+		<!-- HERE -->
+		<div class="framed" style="margin-bottom: 20px">
+      <div class="inside">
+      <div class="eyebrow">
+      Choose how fast you would like to see the online gradient ascent algorithm update the agents' opinions. 
+      The left side considers regularization, while the right side does not. 
+      The videos can be paused, dragged, and resumed manually. The playing speed can also be adjusted. 
+		</div>
+
+		<!-- VIDEO box -->
+      <h4 class="ps-3 pt-5">Initially 10 agents regarded as 4 groups</h4>
+      <div class="Group-box pb-5">
+        <div class="p-3" style="height:62%">
+          <Row class="d-flex">
+            <Col xs="6" class="d-flex flex-column flex-fill my-2 justify-content-center">
+              <video
+                autoplay
+                controls
+                id="video1"
+                class="mx-auto"
+                style="transition:'left .3s ease-in'; height: 230px; width: 350px;"
+                src="img/v1.mp4"
+                type="video/mp4"
+              >
+              </video>
+              <div class="d-flex flex-column mx-auto">
+                <div class="form-check pt-5">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="flexRadioDefault5"
+                    id="flexRadio_video1_v1"
+                    onchange="replaceVideo('#video1', 'v1')"
+                    checked
+                  >
+                  <label class="form-check-label h6 text-end" for="flexRadio_video1_v1">
+                    Learning rate 0.1
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="flexRadioDefault5"
+                    id="flexRadio_video1_v2"
+                    onchange="replaceVideo('#video1', 'v2')"
+                  >
+                  <label class="form-check-label h6 text-end" for="flexRadio_video1_v2">
+                    Learning rate 0.01
+                  </label>
+                </div>
+              </div>
+            </Col>
+
+            <Col xs="6" class="d-flex flex-column flex-fill my-2 justify-content-center">
+              <video
+                autoplay
+                controls
+                id="video2"
+                class="mx-auto"
+                style="transition:'left .3s ease-in'; height: 230px; width: 350px;"
+                src="img/v3.mp4"
+                type="video/mp4"
+              >
+              </video>
+              <div class="d-flex flex-column mx-auto">
+                <div class="form-check pt-5">
+                  <input class="form-check-input"
+                    type="radio"
+                    name="flexRadioDefault6"
+                    id="flexRadio_video2_v3"
+                    onchange="replaceVideo('#video2', 'v3')"
+                    checked
+                  >
+                  <label class="form-check-label h6 text-end" for="flexRadio_video2_v3">
+                    Learning rate 0.1
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="flexRadioDefault6"
+                    id="flexRadio_video2_v4"
+                    onchange="replaceVideo('#video2', 'v4')"
+                  >
+                  <label class="form-check-label h6 text-end" for="flexRadio_video2_v4">
+                    Learning rate 0.01
+                  </label>
+                </div>
+              </div>
+            </Col>
+          </Row>
+        </div>
+      </div>
+			<div class="caption"><b>Figure 10:</b>The dynamics of opinion update with the online gradient ascent for grouped agents. 
+        The left side considers regularization, while the right side does not. With a slight abuse of notation, 
+        the \(x\)-dimension and the \(y\)-dimension in the figures denote the first dimension of opinions and beliefs respectively.</div>
+		</div>
+		</div>
+		
+		<p>
+		As what has been seen in the previous figures, online gradient ascent for grouped agents still 
+		results in the final convergence in this case. One can observe that agents in the same group update their opinions 
+		roughly in the same direction. The reason is that their grouped opinion matters, which affects their winning probabilities, 
+		as well as the rewards. 	
+		</p>
+		
+		<p>
+		Here is an interesting observation. On the left of Fig. 10, agents \(v_4, v_5, v_6, v_9,\) 
+		and \(v_{10}\), which belong to the green group and the yellow group, move downward to maximize their own rewards. 
+		However, using the learning rate of 0.1, one can see that agents 
+		\(v_9\) and \(v_{10}\) &ldquo;fall back&rdquo; in the upward direction. This phenomenon can be explained 
+		as the green group, which is beneficial to the yellow group, has higher odds of winning, and the updates 
+		of the opinions are constrained by the regularization term. Therefore, eventually, the agents in the yellow group 
+		try to minimize the loss from deviating their beliefs.
+		</p>
+		
+		<h3>Reward Function Image Changes and Dynamics of the Opinion Updates</h3>
+      <p>
+        In this section, the changes in the reward function image are studied. Our goal 
+        is to stress that the reward function of each agent actually changes due to 
+        the updates of the other agents. As what has been illustrated in the first section, each 
+        agent's winning probability is affected not only by its own opinion but also by the other 
+        agents' opinions. Due to this reason, each agent deals with a time-varying 
+        reward function. 
+		</p> 
+		<p> 
+      	The previous example of 10 agents in four groups is considered, and the two agents \(v_4\) and \(v_9\) are 
+        focused on, which are in the green group and yellow group, respectively. In the previous 
+      	section, the peculiar behavior of agents \(v_9\) and \(v_{10}\) in the yellow group has been observed: 
+		    They move downward at the beginning but fall back afterward to the positions close to their 
+      	beliefs. In addition to the dynamics of their opinion updates, let us look into the changes in their 
+      	reward function images as well. With the following interactive illustration, it is revealed that 
+		    the reward function images with or without regularization are quite different. 
+    </p>
+		
+		
+		<!-- HERE -->
+		<div class="framed" style="margin-bottom: 20px">
+      <div class="inside">
+      <div class="eyebrow">
+        Choose whether you want to see the reward function with or without regularization. By playing or pausing the videos, 
+        you will be able to observe the reward function image changes, such as environmental changes, as well as the dynamics 
+        of the opinion updates. Do they really move in the desired directions? 	
+      </div>
+		<!-- VIDEO box -->
+      <h4 class="ps-3 pt-5">Reward function image changes and opinion updates of \(v_4\) and \(v_9\).</h4>
+      <div class="Group-box pb-5">
+        <div class="p-3" style="height:62%">
+          <Row class="d-flex">
+            <Col xs="6" class="d-flex flex-column flex-fill my-2 justify-content-center">
+              <video
+                autoplay
+                controls
+                id="video5"
+                class="mx-auto"
+                style="transition:'left .3s ease-in'; height: 230px; width: 350px;"
+                src="img/v4_no_regularizer.mp4"
+                type="video/mp4"
+              >
+              </video>
+              <div class="d-flex flex-column mx-auto">
+                <div class="form-check pt-5">
+                  <input
+                    class="form-check-input pt-3"
+                    type="radio"
+                    name="flexRadioDefault7"
+                    id="flexRadio_video5_no"
+                    onchange="replaceVideo('#video5', 'v4_no_regularizer')"
+                    checked
+                  >
+                  <label class="form-check-label h6 text-end" for="flexRadio_video5_no">
+                    v4: no regularizer
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="flexRadioDefault7"
+                    id="flexRadio_video5_with"
+                    onchange="replaceVideo('#video5', 'v4_with_regularizer')"
+                  >
+                  <label class="form-check-label h6 text-end" for="flexRadio_video5_with">
+                    v4: with regularizer
+                  </label>
+                </div>
+              </div>
+            </Col>
+
+            <Col xs="6" class="d-flex flex-column flex-fill my-2 mx-auto justify-content-center">
+              <video
+                autoplay
+                controls
+                id="video6"
+                class="mx-auto"
+                style="transition:'left .3s ease-in'; height: 230px; width: 350px;"
+                src="img/v9_no_regularizer.mp4"
+                type="video/mp4"
+              >
+              </video>
+              <div class="d-flex flex-column mx-auto">
+                <div class="form-check pt-5">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="flexRadioDefault8"
+                    id="flexRadio_video6_no"
+                    onchange="replaceVideo('#video6', 'v9_no_regularizer')"
+                    checked
+                  >
+                  <label class="form-check-label h6 text-end" for="flexRadio_video6_no">
+                    v9: no regularizer
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="flexRadioDefault8"
+                    id="flexRadio_video6_with"
+                    onchange="replaceVideo('#video6', 'v9_with_regularizer')"
+                  >
+                  <label class="form-check-label h6 text-end" for="flexRadioDefault8">
+                    v9: with regularizer
+                  </label>
+                </div>
+              </div>
+            </Col>
+          </Row>
+        </div>
+      </div>
+			<div class="caption"><b>Figure 11:</b>The dynamics of the reward function images and the opinion updates with multi-agent 
+        online gradient ascent for \(v_4\) and \(v_9\) in two different groups. The reward functions of the two agents can be 
+        either with or without regularization. 
+			</div>
+		</div>
+		</div>
+		<p>
+      As what can be observed from the above figures, without the regularization, an agent is more likely to have its opinion eventually to 
+      fall into the one leading to a local maximum reward. However, in the case of considering regularization, an agent somehow 
+      will eventually express an opinion that provides a reward close to the global maximum.   
+		</p>
+	</section>
+</div>
+
+
+<div class="container mt-lg">
+  <!-- Anchor ID -->
+  <section id="discussion">
+    <h2>V. Discussion</h2>
+
+    <p class="inline-math"> 
+      Regarding the group-joining setting, each agent has a finite number of existing groups to join as a finite  
+      number of pure strategies to play. However, a pure-strategy Nash equilibrium does not always exist in 
+      a non-cooperative game, and finding such an equilibrium can be computationally difficult [<a href="#ref_1">1</a>].
+      Whenever a game in our setting does not have a pure-strategy Nash equilibrium, the dynamics of the myopic best responses
+      of the agents will never reach a stable state. As the number of possible states is upper bounded by \(n^n\), which corresponds  
+      to the number of possible ways of throwing \(n\) balls into \(n\) bins, the dynamics must eventually get into a state 
+      that has been reached before; therefore, a cycle of the dynamics occurs. 
+    </p>
+    
+    <p class="inline-math"> 
+      When each agent is assumed to play the online gradient ascent algorithm, the number of possible pure-strategies is 
+      infinite. Indeed, all real vectors in \(\{ x\in [-1, 1]^k: \|x\|_2\leq 1\}\subset\mathbb{R}^k\) are feasible. So far, 
+      it is still unclear whether such a game in our setting &ldquo;always&rdquo; has a pure-strategy Nash equilibrium. However, 
+      based on the numerical simulations we have conducted, every game instance converges to a stable state. 
+      Note that a stable state reached by agents simultaneously playing online gradient ascent algorithms is not necessarily 
+      a pure-strategy Nash equilibrium. This is because the update of the opinion considers only the local deviations; thus, it is 
+      merely locally stable.
+    </p>
+	</section>
+</div>
+
+
+
+
+<div class="container mt-lg">
+  <!-- Anchor ID -->
+  <section id="conclusion">
+  <h2>VI. Conclusion</h2>
+    <p> 
+      This article presents a preliminary study on the dynamics of group formation. From the illustrations, 
+      readers can have a better grasp of what a pure-strategy Nash equilibrium in a system of multi-agents is, and learn 
+      how an online gradient ascent algorithm can help reach a stable state of the game. 
+    </p>       
+    <p>
+      In the future, proving the system stabilization by running our multi-agent online gradient ascent algorithm and also analyzing 
+      the convergence speed is planned. Other online learning algorithms, such as follow-the-regularized leader, 
+      multiplicative-weight update, mirror ascent, etc., can also be applied (see [<a href="#ref_14">14</a>]). Moreover, 
+      it will also be interesting to consider myopic best responses and the online gradient ascent together as strategies 
+      that agents can play instead of considering each separately as different settings. 
+      One might also be curious about the other types of the best response. For example, an agent can quit the group to which it 
+	    belongs in any iteration. 
+    </p>
+	</section>
+</div>
+
+
+<div class="container mt-lg">
+  <!-- Anchor ID -->
+  <section id="acknowledgement">
+    <h3>Acknowledgments</h3>
+      <p id="Acknowledgment" class="inline-math">
+        This work is supported by the Taiwan Ministry of Science and Technology under grant nos. NSTC 112-2221-E-032-018-MY3, 
+        NSTC 111-2221-E-005-047- and NSTC 111-2410-H-A49-022-MY2. The authors also thank Victorien Yen for helping implement 
+        the JavaScript codes in this immersive article. 
+      </p>
+  </section>
+</div>
+
+
+<div class="container mt-lg">
+    <section class="references">
+      <h2>References</h2>
+      <ol>
+		<li id="ref_1">
+        Equilibria Problems on Games: Complexity Versus Succinctness. 
+        <br>
+        <span>
+        &Agrave;lvarez, C., Gabarro, J. and Serna, M., 2011. Journal of Computer and System Sciences, 
+        Vol 77, pp. 1172--1197. DOI: <a href="http://dx.doi.org/10.1016/j.jcss.2011.01.001" target="_blank">10.1016/j.jcss.2011.01.001</a>
+        </span>
+        </li>
+		
+		<li id="ref_2">
+		On the Convergence of Block Coordinate Descent Type Methods.
+		<br>
+		<span>
+		Beck, A. and Tetruashvili, L., 2013. SIAM Journal of Optimization,  
+		Vol 23(4), pp. 2037--2060.  
+		DOI: <a href="https://doi.org/10.1137/120887679" target="_blank">10.1137/120887679</a>
+		</span>
+		</li>
+		
+		<li id="ref_3">
+		How Bad Is Forming Your Own Opinion? 
+		<br>
+		<span>
+		Bindel, D., Kleinberg, J. and Oren, S., 2011. Games and Economic Behavior,  
+		Vol 92, pp. 248--265. DOI: <a href="https://doi.org/10.1016/j.geb.2014.06.004" target="_blank">10.1016/j.geb.2014.06.004</a>
+		</span>
+		</li>
+		
+		<li id="ref_4">
+		Multiagent Learning for Competitive Opinion Optimization (Extended Abstract). 
+		<br>
+		<span>
+		Chen, P.-A., Lu, C.-J., Lin, C.-C. and Fu, K.-W., 2022. In: Hsieh, SY., Hung, LJ., Klasing, R., Lee, CW., Peng, SL. (eds) 
+		New Trends in Computer Technologies and Applications. ICS 2022. Communications in Computer and Information Science, 
+		Vol 1723, Springer, Singapore.,  
+		pp. 61--72. DOI: <a href="https://doi.org/10.1007/978-981-19-9582-8_6" target="_blank">10.1007/978-981-19-9582-8_6</a>
+		</span>
+		</li>
+
+		<li id="ref_5">
+          Generative Adversarial Networks
+          <br />
+          <span>
+            Goodfellow, I., Pouget-Abadie, J., Mirza, M., Xu, B., Warde-Farley, D.,
+            Ozair, S., Courville, A. and Bengio, Y., 2020. Communications of the ACM, Vol 63, pp. 139--144.
+            DOI: 
+            <a href="https://dl.acm.org/doi/10.1145/3422622" target="_blank">10.1145/3422622</a>
+          </span>
+        </li>
+	
+		<li id="ref_6">
+		Understanding Animal Group-Size Distributions. 
+		<br>
+		<span>
+		Griesser, M., Ma, Q., Webber, S., Bowgen, K. and Sumpter, D. J. T., 2011. PLOS ONE,  
+		Vol 6(8), pp. e23438.  
+		DOI: <a href="https://doi.org/10.1371/journal.pone.0023438" target="_blank">10.1371/journal.pone.0023438</a>
+		</span>
+		</li>
+		
+		<li id="ref_7">
+		The Dynamics of Group Formation. 
+		<br>
+		<span>
+		Gueron, S. and Levin, S. A., 1995. Mathematical Biosciences, 
+		Vol 128(1--2), pp. 243--264.  
+		DOI: <a href="https://doi.org/10.1016/0025-5564(94)00074-A" target="_blank">10.1016/0025-5564(94)00074-A</a>
+		</span>
+		</li>
+		
+		<li id="ref_8">
+        Introduction to Online Convex Optimization.
+        <br>
+        <span>
+        Hazan, E., 2016. Foundations and Trends in Optimization, Vol 2(3-4), pp. 157--325. DOI: 
+        <a href="https://doi.org/10.1561/2400000013" target="_blank">10.1561/2400000013</a>
+        </span>
+        </li>
+
+		<li id="ref_9">
+		The Role of Individual Heterogeneity in Collective Animal Behaviour.
+		<br>
+		<span>
+		Jolles, J. W., King, A. J. and Killen, S. S., 2020. Trends in Ecology &amp; Evolution,  
+		Vol 35(3), pp. 278--291.  
+		DOI: <a href="https://doi.org/10.1016/j.tree.2019.11.001" target="_blank">10.1016/j.tree.2019.11.001</a>
+		</span>
+		</li>
+		
+		<li id="ref_10">
+		Worst-Case Equilibria. 
+		<br>
+		<span>
+		Koutsoupias, E. and Papadimitriou, C., 2009. Computer Science Review,  
+		Vol 3(2), pp. 65--69. DOI: <a href="https://doi.org/10.1016/j.cosrev.2009.04.003" target="_blank">10.1016/j.cosrev.2009.04.003</a>
+		</span>
+		</li>
+		
+		<li id="ref_11">
+          How Good Is a Two-Party Election Game?
+          <br />
+          <span>
+            Lin, C.-C., Lu, C.-J. and Chen, P.-A., 2021. Theoretical Computer Science, Vol 871(6), pp. 79--93.  
+            DOI: 
+            <a href="https://doi.org/10.1016/j.tcs.2021.04.013" target="_blank">10.1016/j.tcs.2021.04.013</a>
+          </span>
+        </li>
+        
+		<li id="ref_12">
+          On the Efficiency of an Election Game of Two or More Parties: How Bad Can It Be?
+          <br />
+          <span>
+          Lin, C.-C., Lu, C.-J. and Chen, P.-A., 2023. arXiv:2303.14405. 
+          DOI: 
+          <a href="https://doi.org/10.48550/arXiv.2303.14405" target="_blank">10.48550/arXiv.2303.14405</a>
+          </span>
+        </li>
+		
+        <li id="ref_13">
+		Algorithmic Game Theory. 
+		<br>
+		<span>
+		Nisan, N., Roughgarden, T., Tardos, E. and Vazirani, V. V. (eds.), 2007.  
+		Cambridge University Press, Cambridge.  
+		DOI: <a href="https://doi.org/10.1017/CBO9780511800481" target="_blank">10.1017/CBO9780511800481</a>
+		</span>
+		</li>
+		
+		<li id="ref_14">
+          A Modern Introduction to Online Learning.
+          <br />
+          <span>
+            Orabona, F., 2022. arXiv:1912.13213.
+            DOI:
+            <a href="https://doi.org/10.48550/arXiv.1912.13213" target="_blank">10.48550/arXiv.1912.13213</a>
+          </span>
+        </li>
+        
+		<li id="ref_15">
+        A Paradigm Shift Toward Satisfaction, Realism and Efficiency in Wireless Networks Resource Sharing. 
+        <br>
+        <span>
+        Papavassiliou, S., Tsiropoulou, E. E., Promponas, P. and Vamvakas, P., 2020. IEEE Network, 
+        Vol 35(1), pp. 348--355. DOI: <a href="https://doi.org/10.1109/MNET.011.2000368" target="_blank">10.1109/MNET.011.2000368</a>
+        </span>
+        </li>
+				
+		<li id="ref_16">
+		Collective Animal Behavior. 
+		<br>
+		<span>
+		Sumpter, D. J. T., 2011.  
+		Princeton University Press.  
+		DOI: <a href="https://doi.org/10.1515/9781400837106" target="_blank">10.1515/9781400837106	</a>
+		</span>
+		</li>
+		
+		<li id="ref_17">
+		Multiagent Cooperation and Competition with Deep Reinforcement Learning.
+		<br>
+		<span>
+		Tampuu, A., Matiisen, T., Kodelja, D., Kuzovkin, I., Korjus, K., Aru, J., Aru, J. and Vicente, R., 2017. PLOS ONE,  
+		Vol 12(4), pp. e0172395.  
+		DOI: <a href="https://doi.org/10.1371/journal.pone.0172395" target="_blank">10.1371/journal.pone.0172395</a>
+		</span>
+		</li>
+		
+      </ol>
+    </section>
+  </div>
+
+  </article><!-- End of aticle -->
+
+  <!-- Scroll to top button -->
+  <a class="scroll-top" href="#">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 312.36">
+      <path fill="white"
+        d="M0 276.77 253.12 0 512 282.48l-32.65 29.88-226.2-246.83L32.66 306.64z" />
+    </svg>
+  </a>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      let scrollTopBtn = document.querySelector(".scroll-top");
+      window.onscroll = function () { scrollFunction(scrollTopBtn) };
+
+      function scrollFunction(el) {
+        if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+          el.style.display = "flex";
+        } else {
+          el.style.display = "none";
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>
