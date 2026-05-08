@@ -2,6 +2,7 @@ a:link { color: #A02B00; text-decoration: none; }
 a:visited { color: #996600; text-decoration: none; }
 a:active { color: red; text-decoration: none; }
 a:hover { color: #FF9900; text-decoration: none; font-weight: bold; }
+a.button { color:green; text-decoration: none; }
 
 h1,h2,h3,h4,p,ul,ol,li,div,span,td,th,nobr,b,i { font-family: 'Droid Serif', sans-serif; }
 
@@ -27,13 +28,13 @@ div.paragraph {
 }
  
 td.index { 
-	background-color: #ECE5B6; 
+	background-color: #FEF3C6; 
 	width: 115px; 
 	height: 25px; 
    	text-align: center; 
-   	border-style: solid; 
+   	border-style: outset; 
    	border-color: #FFFFFF; 
-   	border-width: 1px; 
+   	border-width: 2px; 
 }
 
 ul.list1 { 
