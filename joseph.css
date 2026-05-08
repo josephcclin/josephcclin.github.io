@@ -27,12 +27,8 @@ div.paragraph {
 	text-align: left;
 }
  
-td.index { 
-	background-color: #FEF3C6; 
-	width: 115px; 
-	height: 25px; 
-   	text-align: center; 
-   	border-style: outset; 
+td.index {  
+	text-align: center; 
    	border-color: #FFFFFF; 
    	border-width: 2px; 
 }
@@ -96,3 +92,30 @@ float: left;
  margin: 0 15px 0 0;
 }
 
+td.index {
+  padding: 4px;
+  text-align: center;
+}
+
+.index-button {
+  display: inline-block;
+  padding: 8px 10px;
+  border: 1px solid #555;
+  border-radius: 20px;
+  background-color: #f5f5f5;
+  color: #003366;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.index-button:hover {
+  background-color: ##996600;
+  color: #FF9900;
+  text-decoration: none;
+}
+
+.index-button:active {
+  background-color: #996600;
+  color: white;
+}
