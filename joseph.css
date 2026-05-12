@@ -119,22 +119,33 @@ td.index {
   color: white;
 }
 
-.lab-photo {
-  margin: 1.0em auto;
-  max-width: 360px;
+#lab-life {
+  margin-top: 1.5em;
+}
+
+.photo-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 640px));
+  gap: 1.2em;
+  margin-top: 1em;
+}
+
+.photo-gallery figure {
+  margin: 0.8em;
+  width: 50%;
+  height: auto;
   text-align: center;
 }
 
-.lab-photo img {
-  width: auto;
-  max-width: 360px;
+.photo-gallery img {
+  width: 95%;
   height: auto;
   border-radius: 12px;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
 }
 
-.lab-photo figcaption {
-  margin-top: 0.6em;
+.photo-gallery figcaption {
+  margin-top: 0.5em;
   font-size: 0.95em;
   color: #555;
 }
