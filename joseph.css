@@ -118,3 +118,23 @@ td.index {
   background-color: #996600;
   color: white;
 }
+
+.lab-photo {
+  margin: 1.0em auto;
+  max-width: 360px;
+  text-align: center;
+}
+
+.lab-photo img {
+  width: auto;
+  max-width: 360px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+}
+
+.lab-photo figcaption {
+  margin-top: 0.6em;
+  font-size: 0.95em;
+  color: #555;
+}
