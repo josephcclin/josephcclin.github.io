@@ -138,3 +138,30 @@ td.index {
   font-size: 0.95em;
   color: #555;
 }
+
+.member-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em 0.7em;
+  margin-top: 0.8em;
+  max-width: 720px;
+}
+
+.member {
+  display: inline-block;
+  padding: 0.35em 0.75em;
+  border: 1px solid #ddd;
+  border-radius: 999px;
+  background: #f8f8f8;
+  font-size: 0.98em;
+  white-space: nowrap;
+}
+
+.member.visiting {
+  background: #fff;
+  border-style: dashed;
+}
+
+.member small {
+  color: #666;
+}
