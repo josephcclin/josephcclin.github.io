@@ -3,6 +3,10 @@ a:visited { color: #996600; text-decoration: none; }
 a:active { color: red; text-decoration: none; }
 a:hover { color: #FF9900; text-decoration: none; font-weight: bold; }
 
+html {
+  scroll-behavior: smooth;
+}
+
 h1,h2,h3,h4,p,ul,ol,li,div,span,td,th,nobr,b,i { font-family: 'Droid Serif', sans-serif; }
 
 h1 { 
