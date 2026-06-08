@@ -23,7 +23,12 @@ summary {
 .expand-box .content {
 	display: grid;
 	grid-template-rows: 0fr;
-	transition: grid-template-rows 2s ease-out;
+	transition: grid-template-rows 3s ease-out;
+}
+
+.expand-box .content > * {
+  overflow: hidden;
+  min-height: 0;
 }
 
 .expand-box[open] .content {
