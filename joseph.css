@@ -7,6 +7,29 @@ html {
   scroll-behavior: smooth;
 }
 
+summary {
+  list-style: none; /* Standard modern browsers */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.expand-box {
+	border: 0px solid #ddd;
+	padding: 0px;
+	overflow: hidden;
+}
+
+.expand-box .content {
+	display: grid;
+	grid-template-rows: 0fr;
+	transition: grid-template-rows 2s ease-out;
+}
+
+.expand-box[open] .content {
+	grid-template-rows: 1fr;
+}
+
 h1,h2,h3,h4,p,ul,ol,li,div,span,td,th,nobr,b,i { font-family: 'Droid Serif', sans-serif; }
 
 h1 { 
